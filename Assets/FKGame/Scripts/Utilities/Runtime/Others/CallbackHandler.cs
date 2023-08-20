@@ -4,7 +4,7 @@ using UnityEngine.EventSystems;
 using System.Collections;
 using System.Collections.Generic;
 
-namespace DevionGames{
+namespace FKGame{
 	/// <summary>
 	/// Callback handler for custom events.
 	/// </summary>

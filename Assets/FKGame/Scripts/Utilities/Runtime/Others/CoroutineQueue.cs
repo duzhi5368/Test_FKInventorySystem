@@ -2,7 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 
-namespace DevionGames{
+namespace FKGame{
 	public class CoroutineQueue
 	{
 		MonoBehaviour m_Owner = null;

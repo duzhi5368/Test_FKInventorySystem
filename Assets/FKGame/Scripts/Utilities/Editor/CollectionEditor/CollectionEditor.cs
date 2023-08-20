@@ -6,7 +6,7 @@ using System;
 using System.Linq;
 using System.Runtime.Remoting.Contexts;
 
-namespace DevionGames{
+namespace FKGame{
 	/// <summary>
 	/// Base class for a collection of items.
 	/// </summary>

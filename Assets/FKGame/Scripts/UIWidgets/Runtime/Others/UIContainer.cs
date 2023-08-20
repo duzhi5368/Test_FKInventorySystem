@@ -6,7 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Collections.ObjectModel;
 
-namespace DevionGames.UIWidgets
+namespace FKGame.UIWidgets
 {
 	public class UIContainer<T> : UIWidget where T : class
 	{

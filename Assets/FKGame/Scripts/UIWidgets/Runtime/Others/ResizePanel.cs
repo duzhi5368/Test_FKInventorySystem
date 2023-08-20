@@ -2,7 +2,7 @@
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
-namespace DevionGames.UIWidgets
+namespace FKGame.UIWidgets
 {
 	public class ResizePanel : MonoBehaviour, IPointerDownHandler, IDragHandler
 	{

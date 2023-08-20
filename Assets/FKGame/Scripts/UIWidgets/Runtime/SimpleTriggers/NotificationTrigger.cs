@@ -2,7 +2,7 @@
 using UnityEngine.UI;
 using System.Collections;
 //Import Namespace
-using DevionGames.UIWidgets;
+using FKGame.UIWidgets;
 
 /// <summary>
 /// Message container example.

@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.UI;
 
-namespace DevionGames.UIWidgets
+namespace FKGame.UIWidgets
 {
     [RequireComponent(typeof(Slider))]
     public class AudioVolume : MonoBehaviour

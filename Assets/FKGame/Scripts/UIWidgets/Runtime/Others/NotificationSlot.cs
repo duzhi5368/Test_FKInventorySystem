@@ -3,7 +3,7 @@ using UnityEngine.UI;
 using System.Collections;
 using System;
 
-namespace DevionGames.UIWidgets{
+namespace FKGame.UIWidgets{
 	public class NotificationSlot : UISlot<NotificationOptions> {
         /// <summary>
         /// Notification text to display

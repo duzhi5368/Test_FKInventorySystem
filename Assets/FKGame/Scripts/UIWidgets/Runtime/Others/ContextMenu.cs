@@ -5,7 +5,7 @@ using UnityEngine.UI;
 using UnityEngine.Events;
 using UnityEngine.EventSystems;
 
-namespace DevionGames.UIWidgets
+namespace FKGame.UIWidgets
 {
 	public class ContextMenu : UIWidget
 	{

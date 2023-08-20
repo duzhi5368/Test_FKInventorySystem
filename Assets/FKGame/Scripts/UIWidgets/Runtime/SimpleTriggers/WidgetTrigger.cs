@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace DevionGames.UIWidgets
+namespace FKGame.UIWidgets
 {
     public class WidgetTrigger : MonoBehaviour
     {

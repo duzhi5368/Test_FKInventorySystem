@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-namespace DevionGames
+namespace FKGame
 {
     public class TimedEnable : MonoBehaviour
     {

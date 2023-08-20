@@ -5,7 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Reflection;
 
-namespace DevionGames{
+namespace FKGame{
 	public static class JsonSerializer {
 		/*public static string Serialize(List<object> list, ref List<UnityEngine.Object> objectReferences)
 		{

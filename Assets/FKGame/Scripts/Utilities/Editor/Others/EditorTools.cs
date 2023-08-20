@@ -8,7 +8,7 @@ using System;
 using System.Linq;
 using System.Text.RegularExpressions;
 
-namespace DevionGames{
+namespace FKGame{
 	/// <summary>
 	/// Editor helper class.
 	/// </summary>

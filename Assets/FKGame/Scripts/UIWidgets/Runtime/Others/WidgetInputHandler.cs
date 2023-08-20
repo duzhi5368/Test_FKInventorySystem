@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-namespace DevionGames.UIWidgets
+namespace FKGame.UIWidgets
 {
     public class WidgetInputHandler : MonoBehaviour
     {

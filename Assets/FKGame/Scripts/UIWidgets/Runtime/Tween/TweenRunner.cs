@@ -2,7 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 
-namespace DevionGames.UIWidgets{
+namespace FKGame.UIWidgets{
 	internal class TweenRunner<T> where T : struct, ITweenValue
 	{
 		protected MonoBehaviour m_CoroutineContainer;

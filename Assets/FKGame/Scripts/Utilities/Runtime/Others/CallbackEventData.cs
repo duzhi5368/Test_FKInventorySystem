@@ -2,7 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 
-namespace DevionGames{
+namespace FKGame{
 	/// <summary>
 	/// Callback event data that can be derived from.
 	/// </summary>

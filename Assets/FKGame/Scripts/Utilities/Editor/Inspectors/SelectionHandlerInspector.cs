@@ -4,7 +4,7 @@ using UnityEditor;
 using UnityEditor.AnimatedValues;
 using UnityEngine;
 
-namespace DevionGames
+namespace FKGame
 {
     [CustomEditor(typeof(SelectionHandler),true)]
     public class SelectionHandlerInspector : CallbackHandlerInspector

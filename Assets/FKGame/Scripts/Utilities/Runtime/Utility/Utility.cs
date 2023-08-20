@@ -5,7 +5,7 @@ using System.Linq;
 using System.Reflection;
 using UnityEngine;
 
-namespace DevionGames
+namespace FKGame
 {
     public static class Utility
     {

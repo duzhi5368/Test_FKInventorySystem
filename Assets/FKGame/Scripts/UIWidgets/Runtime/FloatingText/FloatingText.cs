@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace DevionGames.UIWidgets
+namespace FKGame.UIWidgets
 {
     public class FloatingText : MonoBehaviour
     {

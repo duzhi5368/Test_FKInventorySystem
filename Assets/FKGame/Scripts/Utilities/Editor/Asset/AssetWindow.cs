@@ -7,7 +7,7 @@ using System.Linq;
 using System.IO;
 using System.Reflection;
 
-namespace DevionGames
+namespace FKGame
 {
     public class AssetWindow : EditorWindow
     {

@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-namespace DevionGames{
+namespace FKGame{
 	public class HeaderLineAttribute : PropertyAttribute {
 		/// <summary>
 		///   <para>The header text.</para>

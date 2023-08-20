@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
 
-namespace DevionGames.UIWidgets
+namespace FKGame.UIWidgets
 {
     public class DialogBox : UIWidget
     {

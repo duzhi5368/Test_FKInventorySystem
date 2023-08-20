@@ -12,7 +12,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 using UnityEngine;
 using System.Collections;
 
-namespace DevionGames.UIWidgets{
+namespace FKGame.UIWidgets{
 	public static class EasingEquations {
 		
 		public enum EaseType{

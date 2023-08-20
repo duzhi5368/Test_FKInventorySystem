@@ -3,7 +3,7 @@ using System.Collections;
 using UnityEngine.UI;
 using System.Collections.Generic;
 
-namespace DevionGames.UIWidgets
+namespace FKGame.UIWidgets
 {
 	[RequireComponent (typeof(Image), typeof(CanvasGroup))]
 	public class UICursor : MonoBehaviour

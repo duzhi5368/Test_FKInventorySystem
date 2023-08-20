@@ -3,11 +3,11 @@ using UnityEditor;
 using UnityEngine;
 using System.Collections.Generic;
 
-namespace DevionGames
+namespace FKGame
 {
 	public class BuiltInResourcesWindow : EditorWindow
 	{
-		[MenuItem("Tools/Devion Games/Internal/Built-in styles and icons")]
+		[MenuItem("Tools/FKGame/Internal/Built-in styles and icons")]
 		public static void ShowWindow()
 		{
 			BuiltInResourcesWindow w = (BuiltInResourcesWindow)EditorWindow.GetWindow<BuiltInResourcesWindow>();

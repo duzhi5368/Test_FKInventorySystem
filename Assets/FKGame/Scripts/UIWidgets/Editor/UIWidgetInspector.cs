@@ -8,7 +8,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System;
 
-namespace DevionGames.UIWidgets
+namespace FKGame.UIWidgets
 {
 	[CustomEditor (typeof(UIWidget), true)]
 	public class UIWidgetInspector: CallbackHandlerInspector

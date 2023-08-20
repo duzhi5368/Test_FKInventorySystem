@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.EventSystems;
 
-namespace DevionGames.UIWidgets
+namespace FKGame.UIWidgets
 {
 	/// <summary>
 	/// Tooltip trigger to display fixed tooltips

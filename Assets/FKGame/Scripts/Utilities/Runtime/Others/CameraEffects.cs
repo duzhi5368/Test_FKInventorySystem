@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace DevionGames
+namespace FKGame
 {
     /// <summary>
     /// Camera Effects

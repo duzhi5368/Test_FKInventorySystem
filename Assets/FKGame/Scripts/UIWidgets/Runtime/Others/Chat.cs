@@ -4,7 +4,7 @@ using System.Collections;
 using System.Linq;
 using System.Collections.Generic;
 
-namespace DevionGames.UIWidgets
+namespace FKGame.UIWidgets
 {
 	public class Chat : UIWidget
 	{

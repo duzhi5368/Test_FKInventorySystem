@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-namespace DevionGames{
+namespace FKGame{
 	public interface INameable  {
 		string Name {get; set;}
 	}

@@ -6,7 +6,7 @@ using UnityEngine.Events;
 using UnityEngine.EventSystems;
 using System.Linq;
 
-namespace DevionGames.UIWidgets
+namespace FKGame.UIWidgets
 {
 	public class RadialMenu : UIWidget
 	{

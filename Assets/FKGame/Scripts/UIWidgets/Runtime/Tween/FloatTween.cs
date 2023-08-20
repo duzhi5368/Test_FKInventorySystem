@@ -2,7 +2,7 @@
 using System.Collections;
 using UnityEngine.Events;
 
-namespace DevionGames.UIWidgets{
+namespace FKGame.UIWidgets{
 	internal struct FloatTween : ITweenValue
 	{
 		private FloatTween.FloatTweenCallback m_Target;

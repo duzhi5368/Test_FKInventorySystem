@@ -3,7 +3,7 @@ using UnityEditor;
 using System;
 using System.Collections;
 
-namespace DevionGames{
+namespace FKGame{
 	/// <summary>
 	/// Utility editor window.
 	/// </summary>

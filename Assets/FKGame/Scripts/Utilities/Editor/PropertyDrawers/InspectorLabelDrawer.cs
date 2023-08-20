@@ -2,7 +2,7 @@
 using System.Collections;
 using UnityEditor;
 
-namespace DevionGames
+namespace FKGame
 {
 	[CustomPropertyDrawer (typeof(InspectorLabelAttribute))]
 	public class InspectorLabelDrawer : PropertyDrawer

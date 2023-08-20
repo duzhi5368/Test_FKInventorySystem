@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine.UI;
 
-namespace DevionGames.UIWidgets
+namespace FKGame.UIWidgets
 {
     public class UISlot<T> : MonoBehaviour where T : class
     {

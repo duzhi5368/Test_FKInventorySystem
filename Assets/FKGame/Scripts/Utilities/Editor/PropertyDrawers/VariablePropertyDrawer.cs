@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 
-namespace DevionGames
+namespace FKGame
 {
     [CustomPropertyDrawer(typeof(Variable),true)]
     public class VariablePropertyDrawer : PropertyDrawer

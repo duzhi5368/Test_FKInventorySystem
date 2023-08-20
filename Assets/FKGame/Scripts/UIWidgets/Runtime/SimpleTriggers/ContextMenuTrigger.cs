@@ -1,8 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using DevionGames.UIWidgets;
-using ContextMenu = DevionGames.UIWidgets.ContextMenu;
+using FKGame.UIWidgets;
+using ContextMenu = FKGame.UIWidgets.ContextMenu;
 using UnityEngine.EventSystems;
 
 public class ContextMenuTrigger : MonoBehaviour, IPointerDownHandler

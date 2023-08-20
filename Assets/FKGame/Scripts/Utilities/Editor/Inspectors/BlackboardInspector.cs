@@ -6,7 +6,7 @@ using UnityEditor;
 using UnityEditorInternal;
 using UnityEngine;
 
-namespace DevionGames
+namespace FKGame
 {
     [CustomEditor(typeof(Blackboard),true)]
     public class BlackboardInspector : Editor

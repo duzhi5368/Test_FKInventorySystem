@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-namespace DevionGames{
+namespace FKGame{
 	public class DontDestroyOnLoad : MonoBehaviour {
 		private void Awake(){
 			DontDestroyOnLoad (gameObject);

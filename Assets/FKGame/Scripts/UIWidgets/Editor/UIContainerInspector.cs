@@ -6,7 +6,7 @@ using UnityEditor.AnimatedValues;
 using UnityEngine.UI;
 using UnityEngine.Events;
 
-namespace DevionGames.UIWidgets
+namespace FKGame.UIWidgets
 {
     [CustomEditor(typeof(UIContainer<>), true)]
     public class UIContainerInspector : UIWidgetInspector

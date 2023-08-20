@@ -6,7 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Reflection;
 
-namespace DevionGames{
+namespace FKGame{
 	[CustomEditor(typeof(PropertyBinding))]
 	public class PropertyBindingInspector : Editor {
 		private SerializedProperty execution;

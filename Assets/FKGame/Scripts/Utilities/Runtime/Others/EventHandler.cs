@@ -3,7 +3,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 
-namespace DevionGames{
+namespace FKGame{
 	public class EventHandler : MonoBehaviour {
 		private static Dictionary<string, Delegate> m_GlobalEvents;
 		private static Dictionary<object, Dictionary<string, Delegate>> m_Events;

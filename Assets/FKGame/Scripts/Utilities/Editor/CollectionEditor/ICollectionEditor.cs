@@ -2,7 +2,7 @@
 using System.Collections;
 using UnityEditor;
 
-namespace DevionGames
+namespace FKGame
 {
     public interface ICollectionEditor
     {

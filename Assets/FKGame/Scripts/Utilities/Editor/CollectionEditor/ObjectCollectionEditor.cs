@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 
-namespace DevionGames
+namespace FKGame
 {
     [System.Serializable]
     public abstract class ObjectCollectionEditor<T> : CollectionEditor<T> where T : INameable

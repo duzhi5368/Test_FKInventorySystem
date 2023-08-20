@@ -5,11 +5,11 @@ using UnityEditor;
 using System.Linq;
 using System;
 
-namespace DevionGames.UIWidgets
+namespace FKGame.UIWidgets
 {
 	public class UIWidgetEditor : EditorWindow
 	{
-		[UnityEditor.MenuItem ("Tools/Devion Games/UI Widgets", false, -999)]
+		[UnityEditor.MenuItem ("Tools/FKGame/UI Widgets", false, -999)]
 		public static void ShowWindow ()
 		{
 			UIWidgetEditor window = EditorWindow.GetWindow<UIWidgetEditor> ("UI Manager");

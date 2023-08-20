@@ -5,14 +5,14 @@ using UnityEditor;
 using UnityEditorInternal;
 using UnityEngine;
 
-namespace DevionGames
+namespace FKGame
 {
 	public class CopyComponentEditor : EditorWindow
 	{
 		private GameObject m_Source;
 		private GameObject m_Destination;
 
-		[UnityEditor.MenuItem("Tools/Devion Games/Internal/Copy Components", false)]
+		[UnityEditor.MenuItem("Tools/FKGame/Internal/Copy Components", false)]
 		public static void ShowWindow()
 		{
 			CopyComponentEditor window = EditorWindow.GetWindow<CopyComponentEditor>("Copy Components");

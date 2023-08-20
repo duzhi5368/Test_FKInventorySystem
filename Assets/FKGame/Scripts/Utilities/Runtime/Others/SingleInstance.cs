@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 
-namespace DevionGames
+namespace FKGame
 {
     public class SingleInstance : MonoBehaviour
     {

@@ -4,7 +4,7 @@ using UnityEngine;
 using System;
 using System.Linq;
 
-namespace DevionGames
+namespace FKGame
 {
 	public class Blackboard : MonoBehaviour
 	{

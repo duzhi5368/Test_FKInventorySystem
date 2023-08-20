@@ -5,12 +5,12 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace DevionGames
+namespace FKGame
 {
 	public class TextToTextMeshPro : EditorWindow
 	{
 
-		[UnityEditor.MenuItem("Tools/Devion Games/Internal/Update to TextMeshPro", false)]
+		[UnityEditor.MenuItem("Tools/FKGame/Internal/Update to TextMeshPro", false)]
 		public static void ShowWindow()
 		{
 			TextToTextMeshPro window = EditorWindow.GetWindow<TextToTextMeshPro>("Update to TextMeshPro");

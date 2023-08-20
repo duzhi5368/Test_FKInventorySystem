@@ -4,7 +4,7 @@ using UnityEngine.Events;
 using UnityEngine.EventSystems;
 using System.Collections;
 
-namespace DevionGames.UIWidgets{
+namespace FKGame.UIWidgets{
 	public class Spinner : MonoBehaviour {
 		public float changeDelay = 0.1f;
 		[SerializeField]

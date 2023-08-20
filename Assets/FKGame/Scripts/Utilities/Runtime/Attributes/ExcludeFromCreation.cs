@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace DevionGames
+namespace FKGame
 {
     [AttributeUsage(AttributeTargets.Class)]
     public class ExcludeFromCreation : Attribute

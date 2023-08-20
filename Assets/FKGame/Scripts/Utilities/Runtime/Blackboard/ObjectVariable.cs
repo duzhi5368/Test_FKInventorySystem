@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace DevionGames
+namespace FKGame
 {
 	[System.Serializable]
 	public class ObjectVariable : Variable

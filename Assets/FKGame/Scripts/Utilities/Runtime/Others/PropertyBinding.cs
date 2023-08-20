@@ -3,7 +3,7 @@ using System.Collections;
 using System.Reflection;
 using System;
 
-namespace DevionGames{
+namespace FKGame{
 	public class PropertyBinding : MonoBehaviour
 	{	
 		[SerializeField]

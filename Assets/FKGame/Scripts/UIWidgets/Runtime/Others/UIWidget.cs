@@ -3,7 +3,7 @@ using System.Collections;
 using UnityEngine.UI;
 using System.Collections.Generic;
 
-namespace DevionGames.UIWidgets
+namespace FKGame.UIWidgets
 {
 	/// <summary>
 	/// UIWidget is responsible for the management of widgets as well as animating them. 

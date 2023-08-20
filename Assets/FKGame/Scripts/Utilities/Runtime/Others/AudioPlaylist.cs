@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Audio;
 
-namespace DevionGames
+namespace FKGame
 {
-    [CreateAssetMenu(fileName = "Audio Playlist", menuName = "Devion Games/Utilities/Audio Playlist")]
+    [CreateAssetMenu(fileName = "Audio Playlist", menuName = "FKGame/Utilities/Audio Playlist")]
     [System.Serializable]
     public class AudioPlaylist : ScriptableObject
     {

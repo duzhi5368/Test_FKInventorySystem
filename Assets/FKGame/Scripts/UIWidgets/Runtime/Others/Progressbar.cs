@@ -2,7 +2,7 @@
 using System.Collections;
 using UnityEngine.UI;
 
-namespace DevionGames.UIWidgets
+namespace FKGame.UIWidgets
 {
 	public class Progressbar : UIWidget
 	{

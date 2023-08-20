@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System;
 using System.Linq;
 
-namespace DevionGames
+namespace FKGame
 {
 	/// <summary>
 	/// A collection class for ScriptableObjects.

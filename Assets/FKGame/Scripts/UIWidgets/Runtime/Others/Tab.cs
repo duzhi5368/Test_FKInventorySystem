@@ -4,7 +4,7 @@ using UnityEngine.Events;
 using System.Collections;
 
 
-namespace DevionGames.UIWidgets{
+namespace FKGame.UIWidgets{
 	[RequireComponent(typeof(Button))]
 	public class Tab : MonoBehaviour {
         public Color selectedColor;

@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-namespace DevionGames
+namespace FKGame
 {
     public class SaveUIComponent : MonoBehaviour
     {

@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-namespace DevionGames.UIWidgets{
+namespace FKGame.UIWidgets{
 	public interface IValidation<T> {
 		bool Validate(T item);
 	}

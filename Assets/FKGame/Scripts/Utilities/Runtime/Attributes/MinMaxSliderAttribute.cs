@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
-namespace DevionGames
+namespace FKGame
 {
 	[System.Serializable]
 	public class MinMaxSliderAttribute : PropertyAttribute

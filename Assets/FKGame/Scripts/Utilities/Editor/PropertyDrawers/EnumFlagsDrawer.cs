@@ -3,7 +3,7 @@ using System.Collections;
 using System;
 using UnityEditor;
 
-namespace DevionGames
+namespace FKGame
 {
     [CustomPropertyDrawer(typeof(EnumFlagsAttribute))]
     public class EnumFlagsAttributeDrawer : PropertyDrawer

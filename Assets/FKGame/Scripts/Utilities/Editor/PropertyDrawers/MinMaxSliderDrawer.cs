@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityEditor;
 
-namespace DevionGames
+namespace FKGame
 {
 	[CustomPropertyDrawer (typeof(MinMaxSliderAttribute))]
 	class MinMaxSliderDrawer : PropertyDrawer

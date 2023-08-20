@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
-namespace DevionGames
+namespace FKGame
 {
 	[System.Serializable]
 	public abstract class Variable

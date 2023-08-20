@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using DevionGames.UIWidgets;
+using FKGame.UIWidgets;
 
 public class DialogBoxTrigger : MonoBehaviour
 {

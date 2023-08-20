@@ -4,7 +4,7 @@ using UnityEngine.UI;
 using System.Collections.Generic;
 using System;
 
-namespace DevionGames.UIWidgets{
+namespace FKGame.UIWidgets{
 	public class Tooltip : UIWidget {
         [Header("Behaviour")]
         /// <summary>

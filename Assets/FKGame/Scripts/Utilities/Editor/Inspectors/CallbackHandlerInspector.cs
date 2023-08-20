@@ -10,7 +10,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEditorInternal;
 
-namespace DevionGames{
+namespace FKGame{
 	[CustomEditor(typeof(CallbackHandler), true)]
 	public class CallbackHandlerInspector : Editor {
 		protected GUIContent addButtonContent;
