@@ -1,11 +1,9 @@
 ﻿using System;
-using System.Collections;
-using System.Collections.Generic;
 using System.Linq;
 using UnityEditor;
 using UnityEditorInternal;
 using UnityEngine;
-
+//------------------------------------------------------------------------
 namespace FKGame
 {
     [CustomEditor(typeof(Blackboard),true)]
@@ -47,7 +45,6 @@ namespace FKGame
 
             if (GUILayout.Button(EditorGUIUtility.IconContent("d_Toolbar Plus"), createAddNewDropDown, GUILayout.Width(35f)))
             {
-                
                 if (string.IsNullOrEmpty(this.m_VariableName))
                 {
                     EditorUtility.DisplayDialog("New Variable", "Please enter a variable name.", "OK");
@@ -142,7 +139,6 @@ namespace FKGame
                     style2.Draw(rect, false, isActive, isActive, isFocused);
                 }
             };
-
             this.m_VariableList.onAddCallback = (ReorderableList list) => {
 
                 Type[] types = AppDomain.CurrentDomain.GetAssemblies().SelectMany(assembly => assembly.GetTypes()).Where(x => typeof(Variable).IsAssignableFrom(x) && !x.IsAbstract && !x.HasAttribute(typeof(ExcludeFromCreation))).ToArray();
@@ -156,7 +152,6 @@ namespace FKGame
                 }
                 menu.ShowAsContext();
             };
-
         }
 
         private void AddVariable(Type type)
@@ -169,11 +164,6 @@ namespace FKGame
             serializedObject.ApplyModifiedProperties();
             this.m_VariableName = string.Empty;
             this.m_VariableList.index = this.m_Variables.arraySize-1;
-     
-
-
         }
-
- 
     }
 }

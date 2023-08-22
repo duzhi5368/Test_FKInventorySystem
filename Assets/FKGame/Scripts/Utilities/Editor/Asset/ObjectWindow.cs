@@ -1,11 +1,9 @@
 ﻿using System;
 using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
 using System.Reflection;
 using UnityEditor;
 using UnityEngine;
-
+//------------------------------------------------------------------------
 namespace FKGame
 {
     [System.Serializable]
@@ -51,7 +49,6 @@ namespace FKGame
             window.Initialize(list, onChange);
             window.ShowUtility();
         }
-        
 
         private void Initialize(IList list, System.Action onChange)
         {
@@ -197,7 +194,6 @@ namespace FKGame
             Debug.LogWarning("This is not implemented yet!");
         }
 
-
         private void Add(Type type)
         {
             object value = System.Activator.CreateInstance(type);
@@ -217,7 +213,6 @@ namespace FKGame
             }
 
         }
-
 
         private GenericMenu GetObjectMenu(int index)
         {
@@ -325,8 +320,6 @@ namespace FKGame
                     menu.AddDisabledItem(new GUIContent("Paste " + this.m_ElementType.Name + " Values"));
                 }
             }
-
-
             MonoScript script = EditorTools.FindMonoScript(this.m_List[index].GetType());
             if (script != null)
             {
@@ -338,20 +331,11 @@ namespace FKGame
 
         private void OnPlaymodeStateChange(PlayModeStateChange stateChange)
         {
-
             Reload();
         }
 
         public void OnBeforeAssemblyReload()
         {
-            /*this.m_ElementTypeName = this.m_ElementType.Name;
-            FieldInfo[] fields = this.m_Target.GetType().GetSerializedFields();
-            for (int i = 0; i < fields.Length; i++)
-            {
-                object temp = fields[i].GetValue(this.m_Target);
-                if (temp == this.m_List)
-                    this.m_FieldName = fields[i].Name;
-            }*/
             if (this.m_Target != null && this.m_Target is Component)
             {
                 this.m_GameObject = (this.m_Target as Component).gameObject;

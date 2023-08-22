@@ -1,8 +1,7 @@
-﻿using System;
-using UnityEditor;
+﻿using UnityEditor;
 using UnityEngine;
 using System.Collections.Generic;
-
+//------------------------------------------------------------------------
 namespace FKGame
 {
 	public class BuiltInResourcesWindow : EditorWindow

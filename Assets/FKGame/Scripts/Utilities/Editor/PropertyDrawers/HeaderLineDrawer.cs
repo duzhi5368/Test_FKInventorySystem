@@ -1,7 +1,6 @@
 ﻿using UnityEngine;
-using System.Collections;
 using UnityEditor;
-
+//------------------------------------------------------------------------
 namespace FKGame
 {
 	[CustomPropertyDrawer (typeof(HeaderLineAttribute))]
@@ -40,10 +39,6 @@ namespace FKGame
 					this.m_LineStyle.padding = new RectOffset();
 
 					this.m_LineStyle.normal.background = EditorGUIUtility.whiteTexture;
-					/* line = new GUIStyle ("ProjectBrowserHeaderBgMiddle");
-                     line.fontSize = 14;
-                     line.fontStyle = FontStyle.Bold;
-                     line.normal.textColor = ((GUIStyle)"label").normal.textColor;*/
 				}
 				return this.m_LineStyle;
 			}
@@ -55,7 +50,6 @@ namespace FKGame
                 if (this.m_TextStyle == null) {
                     this.m_TextStyle = new GUIStyle(EditorStyles.boldLabel);
                     this.m_TextStyle.fontSize = 12;
-
                 }
                 return this.m_TextStyle;
             }

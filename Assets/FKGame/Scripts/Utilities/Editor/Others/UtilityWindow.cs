@@ -1,13 +1,8 @@
 ﻿using UnityEngine;
 using UnityEditor;
-using System;
-using System.Collections;
-
-namespace FKGame{
-	/// <summary>
-	/// Utility editor window.
-	/// </summary>
-
+//------------------------------------------------------------------------
+namespace FKGame
+{
 	public class UtilityWindow : EditorWindow {
 		private System.Action onClose;
 		private System.Action onGUI;
@@ -49,7 +44,6 @@ namespace FKGame{
 				onClose.Invoke();
 			}
 		}
-
 
 		private void OnGUI(){
             if(useScrollView)

@@ -34,7 +34,7 @@ namespace FKGame.InventorySystem
 			Selection.activeGameObject = go;
 		}
 
-		[MenuItem ("Tools/Devion Dames/Inventory System/Create Inventory Manager", true)]
+		[MenuItem ("Tools/FKGame/Inventory System/Create Inventory Manager", true)]
 		static bool ValidateCreateInventoryManager()
 		{
 			return GameObject.FindObjectOfType<InventoryManager> () == null;

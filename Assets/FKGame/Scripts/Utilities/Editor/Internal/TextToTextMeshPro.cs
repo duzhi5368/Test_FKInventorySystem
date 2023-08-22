@@ -4,7 +4,7 @@ using TMPro;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
-
+//------------------------------------------------------------------------
 namespace FKGame
 {
 	public class TextToTextMeshPro : EditorWindow
@@ -165,7 +165,6 @@ namespace FKGame
 
 			if (hasShadow)
 			{
-				
 				material.EnableKeyword(ShaderUtilities.Keyword_Underlay);
 
 				material.SetColor("_UnderlayColor", shadowColor);

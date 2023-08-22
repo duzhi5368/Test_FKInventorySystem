@@ -2,16 +2,13 @@
 using UnityEngine;
 using UnityEditor;
 using System.Collections;
-using System.IO;
 using System.Reflection;
 using System;
 using System.Linq;
 using System.Text.RegularExpressions;
-
-namespace FKGame{
-	/// <summary>
-	/// Editor helper class.
-	/// </summary>
+//------------------------------------------------------------------------
+namespace FKGame
+{
 	public static class EditorTools {
         private static Dictionary<Type, CustomDrawer> m_Drawers;
         private static Dictionary<Type, EditorTools.DrawerKeySet> m_DrawerTypeForType;
@@ -62,12 +59,6 @@ namespace FKGame{
             return after;
         }
 
-        /// <summary>
-        /// Search field gui.
-        /// </summary>
-        /// <returns>The field.</returns>
-        /// <param name="search">Search.</param>
-        /// <param name="options">Options.</param>
         public static string[] SearchField(string search,string filter,List<string> filters,params GUILayoutOption[] options){
 			GUILayout.BeginHorizontal ();
 			string[] result = new string[]{filter,search};
@@ -82,7 +73,6 @@ namespace FKGame{
             if (!String.IsNullOrEmpty(before))
                 EditorGUIUtility.AddCursorRect(buttonRect, MouseCursor.Arrow);
 
-
             if (Event.current.type == EventType.MouseUp && buttonRect.Contains(Event.current.mousePosition) || before == "Search..." && GUI.GetNameOfFocusedControl() == "SearchTextFieldFocus")
             {
                 before = "";
@@ -96,7 +86,6 @@ namespace FKGame{
                 style.normal.textColor = Color.gray;
                 style.hover.textColor = Color.gray;
             }
-            //  string after = EditorGUI.TextField(rect, "", before, style);
             Rect rect1 = GUILayoutUtility.GetLastRect();
             rect1.width = 20;
 
@@ -172,7 +161,6 @@ namespace FKGame{
         public static void BeginIndent(int indent, bool fold = false)
         {
             GUILayout.BeginHorizontal();
-
             GUILayout.Space(indent * 15f - (fold ? 2f : 0f));
             GUILayout.BeginVertical();
         }
@@ -1592,7 +1580,6 @@ namespace FKGame{
             }
         }
 
-       
         public static IEnumerable<SerializedProperty> EnumerateChildProperties(this SerializedProperty property)
         {
             var iterator = property.Copy();
@@ -1622,7 +1609,6 @@ namespace FKGame{
         private struct DrawerKeySet
         {
             public Type drawer;
-
             public Type type;
         }
 
@@ -1641,7 +1627,6 @@ namespace FKGame{
             public static GUIStyle inspectorTitle;
             public static GUIStyle inspectorTitleText;
             public static GUIStyle inspectorBigTitle;
-
 
             static Styles() {
                 Styles.seperator = new GUIStyle("IN Title"){

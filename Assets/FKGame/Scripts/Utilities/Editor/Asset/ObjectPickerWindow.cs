@@ -1,11 +1,9 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using System.Reflection;
 using UnityEditor;
 using UnityEngine;
-
+//------------------------------------------------------------------------
 namespace FKGame
 {
     public class ObjectPickerWindow : EditorWindow
@@ -19,7 +17,6 @@ namespace FKGame
                 return !string.IsNullOrEmpty(m_SearchString);
             }
         }
-
 
         private Vector2 m_ScrollPosition;
         private Type m_Type;
@@ -128,7 +125,6 @@ namespace FKGame
                 }
 
                 ObjectPickerWindow.m_Styles.elementButton.padding.left = (icon != null ? 22 : padding);
-
 
                  if (GUI.Button(rect, label, ObjectPickerWindow.m_Styles.elementButton))
                  {
@@ -262,7 +258,6 @@ namespace FKGame
 
             public Styles()
             {
-
                 this.header.stretchWidth = true;
                 this.header.margin = new RectOffset(1, 1, 0, 4);
 

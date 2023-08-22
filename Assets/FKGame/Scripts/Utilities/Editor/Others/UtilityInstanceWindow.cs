@@ -1,12 +1,8 @@
 ﻿using UnityEngine;
 using UnityEditor;
-using System;
-using System.Collections;
-
-namespace FKGame{
-	/// <summary>
-	/// Utility editor window.
-	/// </summary>
+//------------------------------------------------------------------------
+namespace FKGame
+{
 	public class UtilityInstanceWindow : EditorWindow {
 		public static UtilityInstanceWindow instance;
 		private System.Action onClose;
@@ -34,7 +30,6 @@ namespace FKGame{
 			AssemblyReloadEvents.afterAssemblyReload += OnAfterAssemblyReload;
 		}
 
-
         private void OnDisable()
         {
 			AssemblyReloadEvents.afterAssemblyReload -= OnAfterAssemblyReload;
@@ -45,7 +40,6 @@ namespace FKGame{
 				UtilityInstanceWindow.instance.Close();
 			}
 		}
-
 
 		private void OnAfterAssemblyReload()
 		{

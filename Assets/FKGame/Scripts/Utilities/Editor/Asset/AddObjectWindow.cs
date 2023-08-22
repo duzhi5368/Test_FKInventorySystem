@@ -1,15 +1,13 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEditor;
 using UnityEngine;
-
+//------------------------------------------------------------------------
 namespace FKGame
 {
     public class AddObjectWindow : EditorWindow
     {
-
         private static AddObjectWindow.Styles m_Styles;
         private string m_SearchString = string.Empty;
         private bool isSearching{
@@ -17,7 +15,6 @@ namespace FKGame
                 return !string.IsNullOrEmpty(m_SearchString);
             }
         }
-
 
         private Vector2 m_ScrollPosition;
         private Type m_Type;
@@ -48,7 +45,6 @@ namespace FKGame
         private void OnEnable()
         {
             this.m_SearchString = EditorPrefs.GetString("AddAssetSearch",this.m_SearchString);
-
         }
 
         private void Update()
@@ -108,13 +104,10 @@ namespace FKGame
                     element.onGUI();
                     continue;
                 }
-
-
                 if (!SearchMatch(element))
                 {
                     continue;
                 }
-
                 Color backgroundColor = GUI.backgroundColor;
                 Color textColor = AddObjectWindow.m_Styles.elementButton.normal.textColor;
                 int padding = AddObjectWindow.m_Styles.elementButton.padding.left;
@@ -136,17 +129,14 @@ namespace FKGame
                         else
                         {
                             icon = Resources.Load<Texture2D>(iconAttribute.path);
-                           
                         }
                     }
                     
                 }
                 AddObjectWindow.m_Styles.elementButton.padding.left = (icon != null? 22 : padding);
 
-
                 if (GUI.Button(rect, element.label, AddObjectWindow.m_Styles.elementButton))
                 {
-                    
                     if (element.children.Count == 0)
                     {
                         if (onAddCallback != null) {
@@ -169,7 +159,6 @@ namespace FKGame
                 {
                     GUI.Label(new Rect(rect.x + rect.width - 16f, rect.y + 2f, 16f, 16f), "", AddObjectWindow.m_Styles.rightArrow);
                 }
-
             }
             EditorGUILayout.EndScrollView();
         }
@@ -208,7 +197,6 @@ namespace FKGame
             Element root = new Element(ObjectNames.NicifyVariableName(this.m_Type.Name), "");
 
              Type[] types = AppDomain.CurrentDomain.GetAssemblies().SelectMany(assembly => assembly.GetTypes()).Where(type => (IsAssignableToGenericType(type,this.m_Type) || this.m_Type.IsAssignableFrom(type)) && !type.IsAbstract && !type.HasAttribute(typeof(ExcludeFromCreation))).ToArray();
-           // Type[] types = AppDomain.CurrentDomain.GetAssemblies().SelectMany(assembly => assembly.GetTypes()).Where(c => c.GetType().GetInterfaces().Any(x => x.IsGenericType && x.GetGenericTypeDefinition() == this.m_Type)).ToArray();
             types = types.OrderBy(x => x.BaseType.Name).ToArray();
             foreach (Type type in types)
             {
@@ -346,7 +334,6 @@ namespace FKGame
 
         public class Element
         {
-
             public Type type;
             public Element parent;
             public System.Action onGUI;
@@ -445,7 +432,6 @@ namespace FKGame
 
             public Styles()
             {
-
                 this.header.stretchWidth = true;
                 this.header.margin = new RectOffset(1, 1, 0, 4);
 

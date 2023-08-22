@@ -17,6 +17,7 @@ public class ContextMenuTrigger : MonoBehaviour, IPointerDownHandler
         this.m_ContextMenu = WidgetUtility.Find<ContextMenu>("ContextMenu");
     }
 
+    // 注意，需要在camera上添加physical raycast
     public void OnPointerDown(PointerEventData eventData)
     {
         if (eventData.button == PointerEventData.InputButton.Left)

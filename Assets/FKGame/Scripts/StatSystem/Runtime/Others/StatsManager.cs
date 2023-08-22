@@ -19,7 +19,7 @@ namespace FKGame.StatSystem
         {
             get
             {
-                Assert.IsNotNull(m_Current, "Requires a Stats Manager.Create one from Tools > Devion Games > Stat System > Create Stats Manager!");
+                Assert.IsNotNull(m_Current, "Requires a Stats Manager.Create one from Tools > FKGame > Stat System > Create Stats Manager!");
                 return m_Current;
             }
         }

@@ -1,15 +1,11 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEditor;
+﻿using UnityEditor;
 using UnityEditor.AnimatedValues;
-using UnityEngine;
-
+//------------------------------------------------------------------------
 namespace FKGame
 {
     [CustomEditor(typeof(SelectionHandler),true)]
     public class SelectionHandlerInspector : CallbackHandlerInspector
     {
-
         private SerializedProperty m_SelectionType;
         private SerializedProperty m_SelectionDistance;
         private SerializedProperty m_SelectionKey;

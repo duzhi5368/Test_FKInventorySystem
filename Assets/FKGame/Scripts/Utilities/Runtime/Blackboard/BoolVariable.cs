@@ -1,11 +1,9 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
+﻿using UnityEngine;
+//------------------------------------------------------------------------
 namespace FKGame
 {
 	[System.Serializable]
-	public class BoolVariable:Variable
+	public class BoolVariable : Variable
 	{
 		[SerializeField]
 		private bool m_Value;

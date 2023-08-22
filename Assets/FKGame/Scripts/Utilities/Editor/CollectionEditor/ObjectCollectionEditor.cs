@@ -1,8 +1,6 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEditor;
-using UnityEngine;
-
+//------------------------------------------------------------------------
 namespace FKGame
 {
     [System.Serializable]
@@ -18,7 +16,6 @@ namespace FKGame
         public override string ToolbarName => this.m_ToolbarName;
 
         protected override List<T> Items => this.m_SerializedProperty.GetValue() as List<T>;
-
 
         public ObjectCollectionEditor(SerializedObject serializedObject, SerializedProperty serializedProperty) : this(ObjectNames.NicifyVariableName(typeof(T).Name+"s"), serializedObject, serializedProperty)
         {
@@ -117,6 +114,5 @@ namespace FKGame
             this.m_SerializedObject = new SerializedObject(EditorUtility.InstanceIDToObject(this.m_TargetInstanceID));
             this.m_SerializedProperty = this.m_SerializedObject.FindProperty(this.m_SerializedPropertyPath);
         }
-
     }
 }

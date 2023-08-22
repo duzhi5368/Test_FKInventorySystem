@@ -1,9 +1,7 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEditor;
+﻿using UnityEditor;
 using UnityEditorInternal;
 using UnityEngine;
-
+//------------------------------------------------------------------------
 namespace FKGame
 {
     [CustomEditor(typeof(AudioEventListener))]
@@ -48,7 +46,6 @@ namespace FKGame
 
             if (GUILayout.Button(EditorGUIUtility.IconContent("d_Toolbar Plus"), (GUIStyle)"toolbarbuttonLeft", GUILayout.Width(28f)))
             {
-
                 if (string.IsNullOrEmpty(this.m_AudioGroupName))
                 {
                     EditorUtility.DisplayDialog("New Audio Group", "Please enter a group name.", "OK");
@@ -136,7 +133,6 @@ namespace FKGame
 
         private void AddGroup()
         {
-           
             serializedObject.Update();
             this.m_AudioGroups.arraySize++;
             SerializedProperty property = this.m_AudioGroups.GetArrayElementAtIndex(this.m_AudioGroups.arraySize - 1);
@@ -144,9 +140,6 @@ namespace FKGame
             serializedObject.ApplyModifiedProperties();
             this.m_AudioGroupName = string.Empty;
             this.m_AudioGroupList.index = this.m_AudioGroups.arraySize - 1;
-
-
-
         }
     }
 }

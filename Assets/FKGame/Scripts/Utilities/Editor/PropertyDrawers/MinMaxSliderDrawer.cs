@@ -1,12 +1,11 @@
 ﻿using UnityEngine;
 using UnityEditor;
-
+//------------------------------------------------------------------------
 namespace FKGame
 {
 	[CustomPropertyDrawer (typeof(MinMaxSliderAttribute))]
 	class MinMaxSliderDrawer : PropertyDrawer
 	{
-
 		public override void OnGUI (Rect position, SerializedProperty property, GUIContent label)
 		{
 

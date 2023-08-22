@@ -1,8 +1,6 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEditor;
+﻿using UnityEditor;
 using UnityEngine;
-
+//------------------------------------------------------------------------
 namespace FKGame
 {
     [CustomPropertyDrawer(typeof(Variable),true)]
@@ -21,7 +19,6 @@ namespace FKGame
             }
             else
             {
-
                 position.width = position.width - 21f;
                 EditorGUI.PropertyField(position, isShared.boolValue ? name : value, label);
                 position.x += position.width + 2f;

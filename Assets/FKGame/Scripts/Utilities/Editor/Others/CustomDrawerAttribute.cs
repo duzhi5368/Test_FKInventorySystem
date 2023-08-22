@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
+//------------------------------------------------------------------------
 namespace FKGame
 {
     [AttributeUsage(AttributeTargets.Class, Inherited = false, AllowMultiple = true)]

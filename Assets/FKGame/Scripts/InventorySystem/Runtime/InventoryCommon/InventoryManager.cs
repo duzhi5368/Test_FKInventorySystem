@@ -25,7 +25,7 @@ namespace FKGame.InventorySystem
 		/// </summary>
 		public static InventoryManager current {
 			get {
-                Assert.IsNotNull(m_Current, "Requires an Inventory Manager.Create one from Tools > Devion Games > Inventory System > Create Inventory Manager!");
+                Assert.IsNotNull(m_Current, "Requires an Inventory Manager.Create one from Tools > FKGame > Inventory System > Create Inventory Manager!");
 				return m_Current;
 			}
 		}

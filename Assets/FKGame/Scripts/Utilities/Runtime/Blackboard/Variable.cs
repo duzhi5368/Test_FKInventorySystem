@@ -1,8 +1,6 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using System;
-
+//------------------------------------------------------------------------
 namespace FKGame
 {
 	[System.Serializable]
@@ -35,9 +33,7 @@ namespace FKGame
 			set;
 		}
 
-		public Variable ()
-		{
-
+		public Variable (){
 		}
 
 		public Variable (string name)

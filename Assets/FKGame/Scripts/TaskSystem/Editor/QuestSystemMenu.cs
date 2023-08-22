@@ -7,13 +7,13 @@ namespace FKGame.QuestSystem
 {
     public static class QuestSystemMenu
     {
-        [MenuItem("Tools/Devion Games/Quest System/Editor", false, 0)]
+        [MenuItem("Tools/FKGame/Quest System/Editor", false, 0)]
         private static void OpenEditor()
         {
             QuestSystemEditor.ShowWindow();
         }
 
-		[MenuItem("Tools/Devion Games/Quest System/Create Quest Manager", false, 1)]
+		[MenuItem("Tools/FKGame/Quest System/Create Quest Manager", false, 1)]
 		private static void CreateQuestManager()
 		{
 			GameObject go = new GameObject("Quest Manager");
@@ -21,7 +21,7 @@ namespace FKGame.QuestSystem
 			Selection.activeGameObject = go;
 		}
 
-		[MenuItem("Tools/Devion Dames/Quest System/Create Quest Manager", true)]
+		[MenuItem("Tools/FKGame/Quest System/Create Quest Manager", true)]
 		static bool ValidateCreateQuestManager()
 		{
 			return GameObject.FindObjectOfType<QuestManager>() == null;

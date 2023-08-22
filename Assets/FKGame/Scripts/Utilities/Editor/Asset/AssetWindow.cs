@@ -1,12 +1,11 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 using System;
 using System.Linq;
 using System.IO;
 using System.Reflection;
-
+//------------------------------------------------------------------------
 namespace FKGame
 {
     public class AssetWindow : EditorWindow
@@ -36,7 +35,6 @@ namespace FKGame
         protected bool m_HasPrefab;
         protected static Component[] m_CopyComponents;
 
-
         public static void ShowWindow(string title, SerializedProperty elements)
         {
             AssetWindow[] objArray = Resources.FindObjectsOfTypeAll<AssetWindow>();
@@ -59,7 +57,6 @@ namespace FKGame
                 window.m_Editors.Add(editor);
             }
             window.FixMissingAssets();
-          //  EditorApplication.playModeStateChanged += OnPlaymodeStateChange;
             window.ShowUtility();
         }
 
@@ -75,7 +72,6 @@ namespace FKGame
             EditorApplication.playModeStateChanged -= OnPlayModeStateChanged;
         }
 
-
         protected virtual void OnPlayModeStateChanged(PlayModeStateChange state)
         {
             Close();
@@ -85,14 +81,6 @@ namespace FKGame
         {
             Close();
         }
-
-
-        /*protected static void OnPlaymodeStateChange(PlayModeStateChange state) {
-            AssetWindow[] objArray = Resources.FindObjectsOfTypeAll<AssetWindow>();
-            for (int i = 0; i < objArray.Length; i++) {
-                objArray[i].Close();
-            }
-        }*/
 
         protected virtual void OnGUI()
         {
@@ -118,15 +106,11 @@ namespace FKGame
             DoCopyPaste();
         }
 
-
-
         protected virtual void DoApplyToPrefab() {
             if (this.m_HasPrefab && typeof(Component).IsAssignableFrom(this.m_Target.GetType()))
             {
                 GUILayout.BeginHorizontal();
-
                 GUILayout.Label("Prefab Overrides: " + PrefabUtility.GetObjectOverrides((this.m_Target as Component).gameObject).Count);
-
                 GUILayout.FlexibleSpace();
 
                 if (!this.m_ApplyToPrefab)
@@ -166,9 +150,8 @@ namespace FKGame
             serializedObject.ApplyModifiedProperties();
         }
 
-
-        protected virtual void DoCopyPaste() {
-
+        protected virtual void DoCopyPaste() 
+        {
             Event currentEvent = Event.current;
             switch (currentEvent.rawType)
             {
@@ -199,9 +182,8 @@ namespace FKGame
                             }
                         }
                     }
-                    break;
+                break;
             }
-
         }
 
         protected virtual void AddAsset(Type type) {
@@ -342,7 +324,6 @@ namespace FKGame
              EditorPrefs.DeleteKey("AssetWindowID");
         }
 
-
         protected virtual GenericMenu GetContextMenu(UnityEngine.Object target) {
             GenericMenu menu = new GenericMenu();
             int index = Array.IndexOf(this.m_Targets,target);
@@ -455,9 +436,8 @@ namespace FKGame
             return menu;
         }
 
-        protected void FixMissingAssets() {
-
-            //Component added manually
+        protected void FixMissingAssets() 
+        {
             if (typeof(Component).IsAssignableFrom(this.m_Target.GetType()))
             {
                 Component[] components = (this.m_Target as Component).GetComponents(elementType);
@@ -479,7 +459,7 @@ namespace FKGame
                     }
                 }
             }
-            //Component removed manually
+
             for (int i = 0; i < this.m_Targets.Length; i++) {
                 if (this.m_Targets[i] == null) {
                     DestroyImmediate(this.m_Editors[i]);
@@ -500,7 +480,6 @@ namespace FKGame
             }
         }
 
-
         protected virtual void Update()
         {
             Repaint();
@@ -513,6 +492,5 @@ namespace FKGame
                 DestroyImmediate(this.m_Editors[i]);
             }
         }
-
     }
 }

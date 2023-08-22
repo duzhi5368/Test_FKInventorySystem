@@ -1,15 +1,11 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
+//------------------------------------------------------------------------
 namespace FKGame
 {
 	[System.Serializable]
 	public class ArrayListVariable : Variable
 	{
-
 		private ArrayList m_Value= new ArrayList();
-
 		public ArrayList Value
 		{
 			get { return this.m_Value; }

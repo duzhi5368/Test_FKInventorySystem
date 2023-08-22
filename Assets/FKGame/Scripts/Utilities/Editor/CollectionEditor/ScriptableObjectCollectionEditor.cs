@@ -1,15 +1,11 @@
 ﻿using UnityEngine;
 using UnityEditor;
-using System.Collections;
 using System.Collections.Generic;
 using System;
 using System.Linq;
-
+//------------------------------------------------------------------------
 namespace FKGame
 {
-	/// <summary>
-	/// A collection class for ScriptableObjects.
-	/// </summary>
 	[System.Serializable]
 	public class ScriptableObjectCollectionEditor<T> : CollectionEditor<T> where T: ScriptableObject, INameable
 	{
@@ -63,7 +59,6 @@ namespace FKGame
 
 		protected virtual void CreateItem (Type type)
 		{
-
 			T item = (T)ScriptableObject.CreateInstance (type);
 			item.hideFlags = HideFlags.HideInHierarchy;
 			AssetDatabase.AddObjectToAsset (item, target);
@@ -144,7 +139,5 @@ namespace FKGame
 				Select(selected);
 			});
 		}
-
-
     }
 }

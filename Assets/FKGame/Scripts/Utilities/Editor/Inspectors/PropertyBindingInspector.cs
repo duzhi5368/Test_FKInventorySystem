@@ -1,12 +1,11 @@
 ﻿using UnityEngine;
 using UnityEditor;
-using System.Collections;
-using System.Linq;
 using System;
 using System.Collections.Generic;
 using System.Reflection;
-
-namespace FKGame{
+//------------------------------------------------------------------------
+namespace FKGame
+{
 	[CustomEditor(typeof(PropertyBinding))]
 	public class PropertyBindingInspector : Editor {
 		private SerializedProperty execution;

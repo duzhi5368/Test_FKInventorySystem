@@ -1,7 +1,5 @@
 ﻿using UnityEngine;
-using System.Collections;
-using UnityEditor;
-
+//------------------------------------------------------------------------
 namespace FKGame
 {
     public interface ICollectionEditor
@@ -11,6 +9,5 @@ namespace FKGame
         void OnEnable();
         void OnDisable();
         void OnDestroy();
-      
     }
 }

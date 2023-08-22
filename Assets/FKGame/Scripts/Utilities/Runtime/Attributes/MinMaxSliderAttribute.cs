@@ -1,6 +1,5 @@
-﻿using System;
-using UnityEngine;
-
+﻿using UnityEngine;
+//------------------------------------------------------------------------
 namespace FKGame
 {
 	[System.Serializable]

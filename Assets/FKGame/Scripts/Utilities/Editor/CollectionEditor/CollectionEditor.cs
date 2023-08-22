@@ -1,15 +1,9 @@
 ﻿using UnityEngine;
 using UnityEditor;
-using System.Collections;
 using System.Collections.Generic;
-using System;
-using System.Linq;
-using System.Runtime.Remoting.Contexts;
-
-namespace FKGame{
-	/// <summary>
-	/// Base class for a collection of items.
-	/// </summary>
+//------------------------------------------------------------------------
+namespace FKGame
+{
 	[System.Serializable]
 	public abstract class CollectionEditor<T> : ICollectionEditor {
 		private const  float LIST_MIN_WIDTH = 200f;
@@ -36,13 +30,9 @@ namespace FKGame{
 		}
 
 		protected abstract List<T> Items {get;}
-
 		protected virtual bool CanAdd => true;
-
 		protected virtual bool CanRemove => true;
-
 		protected virtual bool CanDuplicate => true;
-
 		protected virtual bool UseInspectorDefaultMargins => true;
 
 		private string m_ToolbarName;
@@ -109,7 +99,6 @@ namespace FKGame{
 			GUILayout.Space(1f);
 			GUILayout.EndHorizontal();
 			EditorGUILayout.Space();
-
 
 			m_SidebarScrollPosition = GUILayout.BeginScrollView(m_SidebarScrollPosition);
 
@@ -225,7 +214,6 @@ namespace FKGame{
 
 			for (int j = 0; j < rects.Count; j++)
 			{
-
 				Rect rect = rects[j];
 				Rect rect1 = new Rect(rect.x, rect.y, rect.width, rect.height * 0.5f);
 				Rect rect2 = new Rect(rect.x, rect.y + rect.height * 0.5f, rect.width, rect.height * 0.5f);
@@ -301,10 +289,6 @@ namespace FKGame{
 			GUILayout.EndArea();
 		}
 
-		/// <summary>
-		/// Select an item.
-		/// </summary>
-		/// <param name="item">Item.</param>
 		protected virtual void Select(T item){
 			int index = Items.IndexOf(item);
 			if (this.m_SelectedItemIndex != index)
@@ -314,46 +298,22 @@ namespace FKGame{
 			}
 		}
 
-		/// <summary>
-		/// Create an item.
-		/// </summary>
 		protected virtual void Create(){}
 
-		/// <summary>
-		/// Does the specified item has configuration errors
-		/// </summary>
-		/// <param name="item"></param>
-		/// <returns></returns>
 		protected virtual string HasConfigurationErrors(T item) {
 			return string.Empty;
 		}
 
-		/// <summary>
-		/// Remove the specified item from collection.
-		/// </summary>
-		/// <param name="item">Item.</param>
 		protected virtual void Remove(T item){}
 
-		/// <summary>
-		/// Duplicates the specified item in collection
-		/// </summary>
-		/// <param name="item"></param>
 		protected virtual void Duplicate(T item) { }
 
-		/// <summary>
-		/// Moves the item in database up.
-		/// </summary>
-		/// <param name="item"></param>
 		protected virtual void MoveUp(T item) {
 			int oldIndex = Items.IndexOf(item);
 			MoveItem(oldIndex, oldIndex - 1);
 			Select(Items[oldIndex - 1]);
 		}
 
-		/// <summary>
-		/// Moves the item in database down.
-		/// </summary>
-		/// <param name="item"></param>
 		protected virtual void MoveDown(T item) {
 			int oldIndex = Items.IndexOf(item);
 			MoveItem(oldIndex, oldIndex + 1);
@@ -391,21 +351,12 @@ namespace FKGame{
 			Items[newIndex] = tmp;
 		}
 
-		/// <summary>
-		/// Draws the item properties.
-		/// </summary>
-		/// <param name="item">Item.</param>
 		protected virtual void DrawItem(T item){}
 
 		protected virtual void DrawItemLabel(int index, T item) {
 			GUILayout.Label(ButtonLabel(index, item), Styles.selectButtonText);
 		}
 
-		/// <summary>
-		/// Gets the sidebar label displayed in sidebar.
-		/// </summary>
-		/// <returns>The sidebar label.</returns>
-		/// <param name="item">Item.</param>
 		protected abstract string GetSidebarLabel(T item);
 
 		protected virtual string ButtonLabel(int index, T item)
@@ -413,12 +364,6 @@ namespace FKGame{
 			return index + ":  " + GetSidebarLabel(item);
 		}
 
-		/// <summary>
-		/// Checks for search.
-		/// </summary>
-		/// <returns><c>true</c>, if search was matchesed, <c>false</c> otherwise.</returns>
-		/// <param name="item">Item.</param>
-		/// <param name="search">Search.</param>
 		protected abstract bool MatchesSearch (T item, string search);
 
 		protected virtual void DoSearchGUI(){
@@ -485,7 +430,6 @@ namespace FKGame{
 			public static GUIStyle indicatorColor;
 
 			private static GUISkin skin;
-
 
 			static Styles(){
 				skin = Resources.Load<GUISkin>("EditorSkin");

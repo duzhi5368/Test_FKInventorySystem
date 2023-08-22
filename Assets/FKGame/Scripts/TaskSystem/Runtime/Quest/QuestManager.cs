@@ -30,7 +30,7 @@ namespace FKGame.QuestSystem
         {
             get
             {
-                Assert.IsNotNull(m_Current, "Requires a Quest Manager.Create one from Tools > Devion Games > Quest System > Create Quest Manager!");
+                Assert.IsNotNull(m_Current, "Requires a Quest Manager.Create one from Tools > FKGame > Quest System > Create Quest Manager!");
                 return m_Current;
             }
         }

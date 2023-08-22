@@ -1,8 +1,6 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEditor;
+﻿using UnityEditor;
 using UnityEngine;
-
+//------------------------------------------------------------------------
 namespace FKGame
 {
     [CustomDrawer(typeof(NamedVariable),true)]
@@ -16,6 +14,5 @@ namespace FKGame
             variable.SetValue(EditorTools.DrawFields(variable.GetValue()));
 
         }
-
     }
 }

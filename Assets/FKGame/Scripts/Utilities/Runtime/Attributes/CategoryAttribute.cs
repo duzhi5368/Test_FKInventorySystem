@@ -1,12 +1,11 @@
 ﻿using System;
-
+//------------------------------------------------------------------------
 namespace FKGame
 {
 	[AttributeUsage(AttributeTargets.Class)]
 	public sealed class CategoryAttribute : Attribute
 	{
 		private readonly string category;
-
 		public string Category
 		{
 			get

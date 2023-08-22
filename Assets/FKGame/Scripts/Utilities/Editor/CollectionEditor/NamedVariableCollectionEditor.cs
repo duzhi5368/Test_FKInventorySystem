@@ -1,8 +1,5 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEditor;
-using UnityEngine;
-
+﻿using UnityEditor;
+//------------------------------------------------------------------------
 namespace FKGame
 {
     [System.Serializable]
@@ -16,11 +13,8 @@ namespace FKGame
             }
         }
 
-
         public NamedVariableCollectionEditor(SerializedObject serializedObject, SerializedProperty serializedProperty) : base(serializedObject, serializedProperty)
         {
-
         }
     }
-
 }

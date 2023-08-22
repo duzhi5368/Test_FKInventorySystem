@@ -1,10 +1,9 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using UnityEditor;
 using UnityEditorInternal;
 using UnityEngine;
-
+//------------------------------------------------------------------------
 namespace FKGame
 {
 	public class CopyComponentEditor : EditorWindow
@@ -62,9 +61,6 @@ namespace FKGame
 				}
 				Selection.activeObject = m_Destination;
 			}
-
-		}
-
-		
+		}	
 	}
 }

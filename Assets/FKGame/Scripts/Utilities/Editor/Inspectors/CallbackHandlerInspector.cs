@@ -1,16 +1,12 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using System.Runtime.CompilerServices;
-using System.Text;
 using UnityEditor;
 using UnityEngine;
-using UnityEngine.Events;
-using UnityEditorInternal;
-
-namespace FKGame{
+//------------------------------------------------------------------------
+namespace FKGame
+{
 	[CustomEditor(typeof(CallbackHandler), true)]
 	public class CallbackHandlerInspector : Editor {
 		protected GUIContent addButtonContent;
@@ -33,7 +29,6 @@ namespace FKGame{
             Type[] subInspectors = Utility.BaseTypesAndSelf(GetType()).Where(x=>x.IsSubclassOf(typeof(CallbackHandlerInspector))).ToArray();
             Array.Reverse(subInspectors);
 
-
             for (int i = 0; i < subInspectors.Length; i++){
 
                 MethodInfo method = subInspectors[i].GetMethod("DrawInspector", BindingFlags.NonPublic | BindingFlags.Instance);
@@ -41,13 +36,10 @@ namespace FKGame{
                 FieldInfo[] fields = inspectedType.GetAllSerializedFields().Where(x => !x.HasAttribute(typeof(HideInInspector))).ToArray();
 
                 string[] classProperties = fields.Where(x => x.DeclaringType == inspectedType).Select(x => x.Name).ToArray();
-               
-
                 if (!this.m_ClassProperties.ContainsKey(inspectedType)) {
                     this.m_ClassProperties.Add(inspectedType, classProperties);
                 }
                 propertiesToExclude.AddRange(classProperties);
-
 
                 if (method != null) {
                     m_DrawInspectors.Add(delegate { method.Invoke(this, null); });
@@ -57,13 +49,11 @@ namespace FKGame{
                             SerializedProperty property = serializedObject.FindProperty(classProperties[j]);
                             EditorGUILayout.PropertyField(property);
                         }
-
                     });
                 }
             }
 
             this.m_PropertiesToExcludeForChildClasses = propertiesToExclude.ToArray();
-           
             this.m_Script = base.serializedObject.FindProperty("m_Script");
             this.m_DelegatesProperty = base.serializedObject.FindProperty("delegates");
 			this.addButtonContent = new GUIContent ("Add New Callback");
@@ -101,17 +91,13 @@ namespace FKGame{
             string[] propertiesToDraw;
             if (this.m_ClassProperties.TryGetValue(type, out propertiesToDraw))
             {
-
                 for (int i = 0; i < propertiesToDraw.Length; i++)
                 {
-
                     if (!propertyToExclude.Contains(propertiesToDraw[i]))
                     {
-
                         SerializedProperty property = serializedObject.FindProperty(propertiesToDraw[i]);
                         EditorGUILayout.PropertyField(property);
                     }
-
                 }
             }
         }
@@ -119,16 +105,12 @@ namespace FKGame{
         protected void DrawClassPropertiesExcluding(params string[] propertyToExclude) {
             string[] propertiesToDraw = new string[0];
             if (this.m_ClassProperties.TryGetValue(target.GetType(), out propertiesToDraw)){
-            
                 for (int i = 0; i < propertiesToDraw.Length; i++) {
-
                     if (!propertyToExclude.Contains(propertiesToDraw[i]))
                     {
-
                         SerializedProperty property = serializedObject.FindProperty(propertiesToDraw[i]);
                         EditorGUILayout.PropertyField(property);
                     }
-                    
                 }
             }
         }

@@ -1,10 +1,9 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using UnityEngine;
-
+//------------------------------------------------------------------------
 namespace FKGame
 {
     public static class Utility
@@ -23,14 +22,14 @@ namespace FKGame
 			Utility.m_MemberAttributeLookup = new Dictionary<MemberInfo, object[]>();
 		}
 
-		/// <summary>
-		/// Gets the Type with the specified name, performing a case-sensitive search.
-		/// </summary>
-		/// <param name="typeName"></param>
-		/// <returns>The type with the specified name, if found; otherwise, null.</returns>
+		// 获取指定名称的Type，如无，则返回null
 		public static Type GetType(string typeName)
 		{
-			if (string.IsNullOrEmpty(typeName)) { Debug.LogWarning("Type name should not be null or empty!"); return null; }
+			if (string.IsNullOrEmpty(typeName)) 
+			{ 
+				Debug.LogWarning("Type name should not be null or empty!"); 
+				return null; 
+			}
 			Type type;
 			if (m_TypeLookup.TryGetValue(typeName, out type))
 			{
@@ -74,14 +73,12 @@ namespace FKGame
 			{
 				m_TypeLookup.Add(typeName, type);
 			}
-
 			return type;
 		}
 
 		public static Type GetElementType(Type type)
 		{
 			Type[] interfaces = type.GetInterfaces();
-
 			return (from i in interfaces
 					where i.IsGenericType && i.GetGenericTypeDefinition() == typeof(IEnumerable<>)
 					select i.GetGenericArguments()[0]).FirstOrDefault();
@@ -95,7 +92,6 @@ namespace FKGame
 				methods = type.GetMethods(BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance).Concat(GetAllMethods(type.GetBaseType())).ToArray();
 				Utility.m_MethodInfoLookup.Add(type, methods);
 			}
-
 			return methods;
 		}
 
@@ -142,7 +138,6 @@ namespace FKGame
 			{
 				type = type.BaseType;
 				yield return type;
-
 			}
 		}
 
@@ -209,36 +204,7 @@ namespace FKGame
 
 		private static Assembly[] GetLoadedAssemblies()
 		{
-#if NETFX_CORE
-			var folder = Windows.ApplicationModel.Package.Current.InstalledLocation;
-			
-			List<Assembly> loadedAssemblies = new List<Assembly>();
-			
-			var folderFilesAsync = folder.GetFilesAsync();
-			folderFilesAsync.AsTask().Wait();
-			
-			foreach (var file in folderFilesAsync.GetResults())
-			{
-				if (file.FileType == ".dll" || file.FileType == ".exe")
-				{
-					try
-					{
-						var filename = file.Name.Substring(0, file.Name.Length - file.FileType.Length);
-						AssemblyName name = new AssemblyName { Name = filename };
-						Assembly asm = Assembly.Load(name);
-						loadedAssemblies.Add(asm);
-					}
-					catch (BadImageFormatException)
-					{
-						// Thrown reflecting on C++ executable files for which the C++ compiler stripped the relocation addresses (such as Unity dlls): http://msdn.microsoft.com/en-us/library/x4cw969y(v=vs.110).aspx
-					}
-				}
-			}
-			
-			return loadedAssemblies.ToArray();
-#else
 			return AppDomain.CurrentDomain.GetAssemblies();
-#endif
 		}
 
 		
