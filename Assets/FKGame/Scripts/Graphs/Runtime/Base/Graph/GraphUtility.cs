@@ -4,8 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using UnityEngine;
-
-
+//------------------------------------------------------------------------
 namespace FKGame.Graphs
 {
 	public static class GraphUtility
@@ -106,8 +105,6 @@ namespace FKGame.Graphs
 			Dictionary<string, object> data = new Dictionary<string, object>() {
 				{ "Type", node.GetType () },
 			};
-
-
 			SerializeFields(node, ref data, ref objectReferences);
 			return data;
 		}
@@ -126,7 +123,6 @@ namespace FKGame.Graphs
 				FieldInfo field = fields[j];
 				object value = field.GetValue(obj);
 				SerializeValue(field.Name, value, ref dic, ref objectReferences);
-
 			}
 		}
 
@@ -198,7 +194,6 @@ namespace FKGame.Graphs
 					node.graph = graph;
 					graph.nodes.Add(node);
 				}
-
 				for (int i = 0; i < graph.nodes.Count; i++) {
 					graph.nodes[i].OnAfterDeserialize();
 				}
@@ -235,8 +230,6 @@ namespace FKGame.Graphs
 				}
 			}
 		}
-
-
 
 		private static object DeserializeValue(string key, object source, FieldInfo field, Type type, Dictionary<string, object> data, List<UnityEngine.Object> objectReferences)
 		{
@@ -309,7 +302,6 @@ namespace FKGame.Graphs
 
 		public static object ConvertToArray(this IList collection)
 		{
-			// guess type
 			Type type;
 			if (collection.GetType().IsGenericType && collection.GetType().GetGenericArguments().Length == 0)
 				type = collection.GetType().GetGenericArguments()[0];
@@ -330,14 +322,11 @@ namespace FKGame.Graphs
 			for (int i = 0; i < array.Length; ++i)
 			{
 				var obj = collection[i];
-
-				// if it's not castable, try to convert it
 				if (!arrayType.IsInstanceOfType(obj))
 					obj = Convert.ChangeType(obj, arrayType);
 
 				array[i] = obj;
 			}
-
 			return array;
 		}
 	}

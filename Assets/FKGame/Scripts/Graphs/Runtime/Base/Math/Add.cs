@@ -1,11 +1,11 @@
 ﻿using UnityEngine;
-
+//------------------------------------------------------------------------
 namespace FKGame.Graphs
 {
     [System.Serializable]
-    [ComponentMenu("Math/Random")]
-    [NodeStyle( true, "Math")]
-    public class Random : FlowNode
+    [ComponentMenu("Math/Add")]
+    [NodeStyle("Icons/Add", false, "Math")]
+    public class Add : FlowNode
     {
         [Input(false,true)]
         public float a;
@@ -16,7 +16,7 @@ namespace FKGame.Graphs
 
         public override object OnRequestValue(Port port)
         {
-            return UnityEngine.Random.Range(GetInputValue("a", a), GetInputValue("b", b));
+            return GetInputValue("a", a) + GetInputValue("b", b);
         }
     }
 }

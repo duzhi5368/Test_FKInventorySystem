@@ -1,8 +1,7 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
-
+//------------------------------------------------------------------------
 namespace FKGame.Graphs
 {
     [System.Serializable]
@@ -20,7 +19,7 @@ namespace FKGame.Graphs
 
         public void OnBeforeSerialize()
         {
-          //  GraphUtility.Save(this);
+            GraphUtility.Save(this);
         }
 
         public void OnAfterDeserialize()

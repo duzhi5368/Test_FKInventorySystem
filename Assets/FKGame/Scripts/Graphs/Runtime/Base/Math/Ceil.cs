@@ -1,13 +1,11 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
+﻿using UnityEngine;
+//------------------------------------------------------------------------
 namespace FKGame.Graphs
 {
     [System.Serializable]
     [ComponentMenu("Math/Add")]
     [NodeStyle(true, "Math")]
-    public class Floor : FlowNode
+    public class Ceil : FlowNode
     {
         [Input(false,true)]
         public float value;
@@ -16,7 +14,7 @@ namespace FKGame.Graphs
 
         public override object OnRequestValue(Port port)
         {
-            return Mathf.Floor(GetInputValue("value", value));
+            return Mathf.Ceil(GetInputValue("value", value));
         }
     }
 }

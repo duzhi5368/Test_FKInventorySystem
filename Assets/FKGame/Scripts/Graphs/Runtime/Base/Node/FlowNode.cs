@@ -1,9 +1,8 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 using System;
-
+//------------------------------------------------------------------------
 namespace FKGame.Graphs
 {
     [System.Serializable]
@@ -35,10 +34,7 @@ namespace FKGame.Graphs
             }
         }
 
-        public FlowNode()
-        {
-  
-        }
+        public FlowNode(){}
 
         public abstract object OnRequestValue(Port port);
 
@@ -51,7 +47,6 @@ namespace FKGame.Graphs
                     $"[{name}] No input port named `{portName}`"
                 );
             }
-
             return port.GetValue(defaultValue);
         }
 
@@ -64,7 +59,6 @@ namespace FKGame.Graphs
                     $"<b>[{name}]</b> No output port named `{portName}`"
                 );
             }
-
             return port.GetValue(default(T));
         }
 
@@ -96,7 +90,6 @@ namespace FKGame.Graphs
         {
             for (int i = 0; i < this.m_Ports.Count; i++)
             {
-                //Dirty fix for existing serialized graphs.
                 if (this.m_Ports[i].m_FieldTypeName == "String")
                     this.m_Ports[i].m_FieldTypeName = "System.String";
 
@@ -110,6 +103,5 @@ namespace FKGame.Graphs
                 }
             }
         }
-
     }
 }

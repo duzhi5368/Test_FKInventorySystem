@@ -1,9 +1,8 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using UnityEditor;
 using UnityEngine;
-
+//------------------------------------------------------------------------
 namespace FKGame.Graphs
 {
     [System.Serializable]
@@ -618,9 +617,7 @@ namespace FKGame.Graphs
             tangents[1] = end + (new Vector2(-single2, (end.y - start.y) * -single1 - 30f) * single6);
         }
 
-        /// <summary>
-        /// Draw grid in graph view area with offset and zoom
-        /// </summary>
+        // 绘制一个格子
         private void DrawGrid()
         {
             if (Event.current.type == EventType.Repaint)
@@ -636,11 +633,7 @@ namespace FKGame.Graphs
             }
         }
 
-        /// <summary>
-        /// Draw grid lines in area
-        /// </summary>
-        /// <param name="gridSize"></param>
-        /// <param name="offset"></param>
+        // 绘制一个格子
         private void DrawGridLines(Rect area, float gridSize, Vector2 offset)
         {
             float x = area.x + offset.x;
@@ -663,11 +656,7 @@ namespace FKGame.Graphs
             }
         }
 
-        /// <summary>
-        /// Draw a line between p1 and p2
-        /// </summary>
-        /// <param name="p1"></param>
-        /// <param name="p2"></param>
+        // 绘制一条线
         private void DrawLine(Vector2 p1, Vector2 p2)
         {
             GL.Vertex(p1);

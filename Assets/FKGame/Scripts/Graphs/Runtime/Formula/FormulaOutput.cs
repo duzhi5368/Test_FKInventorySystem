@@ -1,5 +1,5 @@
 ﻿using UnityEngine;
-
+//------------------------------------------------------------------------
 namespace FKGame.Graphs
 {
     [NodeStyle(true)]

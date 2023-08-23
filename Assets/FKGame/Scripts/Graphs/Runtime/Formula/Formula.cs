@@ -1,7 +1,5 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
+﻿using UnityEngine;
+//------------------------------------------------------------------------
 namespace FKGame.Graphs
 {
     [CreateAssetMenu(fileName = "Formula", menuName = "FKGame/Graphs/Formula")]

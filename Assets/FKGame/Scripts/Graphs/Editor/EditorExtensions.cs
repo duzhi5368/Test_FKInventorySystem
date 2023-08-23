@@ -1,9 +1,6 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using System.Reflection;
+﻿using System.Reflection;
 using UnityEditor;
-using UnityEngine;
-
+//------------------------------------------------------------------------
 namespace FKGame.Graphs
 {
     public static class EditorExtensions 

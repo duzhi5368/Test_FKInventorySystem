@@ -2,7 +2,7 @@
 using System.Linq;
 using UnityEditor;
 using UnityEngine;
-
+//------------------------------------------------------------------------
 namespace FKGame.Graphs
 {
 	[System.Serializable]
@@ -106,6 +106,5 @@ namespace FKGame.Graphs
 			this.m_GraphView.CenterGraphView();
 			Repaint();
 		}
-
 	}
 }

@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection;
-using UnityEditor;
+﻿using UnityEditor;
 using UnityEngine;
-
+//------------------------------------------------------------------------
 namespace FKGame.Graphs
 {
     public class GraphPropertyDrawer<T> : PropertyDrawer
@@ -17,7 +12,6 @@ namespace FKGame.Graphs
                 GraphEditorWindow window = GraphEditorWindow.ShowWindow();
                 IGraphProvider behavior = (IGraphProvider)property.GetParent();
                 window.Load<T>(behavior, property.serializedObject.targetObject);
-                
             }
             EditorGUI.EndProperty();
         }

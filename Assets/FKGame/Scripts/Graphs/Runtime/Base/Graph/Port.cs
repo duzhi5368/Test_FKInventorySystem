@@ -1,9 +1,7 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Reflection;
 using UnityEngine;
-
+//------------------------------------------------------------------------
 namespace FKGame.Graphs
 {
     [AttributeUsage(AttributeTargets.Field)]
@@ -13,7 +11,6 @@ namespace FKGame.Graphs
         public readonly bool port = true;
 
         public InputAttribute() { }
-
         public InputAttribute(bool label, bool port) {
             this.label = label;
             this.port = port;
@@ -21,11 +18,8 @@ namespace FKGame.Graphs
     }
 
     [AttributeUsage(AttributeTargets.Field)]
-    public sealed class OutputAttribute : Attribute
-    {
-
+    public sealed class OutputAttribute : Attribute{
         public OutputAttribute() { }
-        
     }
 
     public enum PortDirection { Input = 0 , Output = 1 }
@@ -33,13 +27,11 @@ namespace FKGame.Graphs
 
     [System.Serializable]
     public class Edge {
-
         public string nodeId;
         public string fieldName;
 
         [NonSerialized] 
         public Port port;
-
     }
 
 
@@ -65,18 +57,13 @@ namespace FKGame.Graphs
         public PortCapacity capacity = PortCapacity.Single;
         public PortDirection direction = PortDirection.Input;
 
-
         [SerializeField]
         private List<Edge> m_Connections;
-        public List<Edge> Connections
-        {
-            get
-            {
+        public List<Edge> Connections{
+            get{
                 return this.m_Connections;
             }
         }
-
-        //Changed to public because it was using not FullName, and need to change that. Will be switched back to private
         [SerializeField]
         public string m_FieldTypeName;
 
@@ -98,23 +85,19 @@ namespace FKGame.Graphs
         {
             if (direction == PortDirection.Input)
             {
-
                 if (Connections.Count > 0)
                 {
                     return Connections[0].port.GetValue<T>();
                 }
                 return defaultValue;
             }
-
             object value = node.OnRequestValue(this);
-
             if (value == null && typeof(T).IsValueType)
             {
                 throw new InvalidCastException(
                     $"Cannot cast null to value type `{typeof(T).FullName}`"
                 );
             }
-
             if (value == null || typeof(T).IsAssignableFrom(value.GetType()))
             {
                 return (T)value;
@@ -144,7 +127,6 @@ namespace FKGame.Graphs
                     }
                 }
             }
-
             var values = node.OnRequestValue(this) as IEnumerable<T>;
             foreach (var value in values)
             {

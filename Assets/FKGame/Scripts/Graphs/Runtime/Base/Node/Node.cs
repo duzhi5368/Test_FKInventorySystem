@@ -1,7 +1,5 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
+﻿using UnityEngine;
+//------------------------------------------------------------------------
 namespace FKGame.Graphs
 {
     [System.Serializable]
@@ -15,8 +13,7 @@ namespace FKGame.Graphs
         [System.NonSerialized]
         public Graph graph;
 
-        public Node()
-        {
+        public Node(){
             id = System.Guid.NewGuid().ToString();
         }
 

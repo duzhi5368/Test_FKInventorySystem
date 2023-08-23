@@ -1,11 +1,9 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEditor;
+﻿using UnityEditor;
 using UnityEngine;
 using System.Linq;
 using System.Reflection;
 using System;
-
+//------------------------------------------------------------------------
 namespace FKGame.Graphs
 {
     [System.Serializable]
@@ -25,8 +23,6 @@ namespace FKGame.Graphs
 
         private Vector2 m_CreateNodePosition;
         private Port m_ConnectingPort;
-
-
         private string m_Copy;
 
         public FlowGraphView(EditorWindow host, FlowGraph graph, UnityEngine.Object target) : base(host) {
@@ -37,7 +33,6 @@ namespace FKGame.Graphs
         protected override FlowNode[] inspectedNodes {
             get {
                 return this.m_Graph.nodes.Cast<FlowNode>().ToArray();
-            
             }
         }
 
@@ -158,7 +153,6 @@ namespace FKGame.Graphs
             }
         }
 
-
         private void DrawPortFields(Rect rect, FlowNode node) {
             float labelWidth = GetLabelWidth(node);
             float fieldWidth = GetFieldWidth(node);
@@ -220,7 +214,6 @@ namespace FKGame.Graphs
             }
         }
 
-
         private void DrawPorts(FlowNode node)
         {
             for (int i = 0; i < node.Ports.Count; i++)
@@ -239,7 +232,6 @@ namespace FKGame.Graphs
             }
         }
 
-      
         private Rect GetPortRect(Port port)
         {
             Rect rect = GetNodeRect(port.node,this.m_GraphOffset);
@@ -260,14 +252,12 @@ namespace FKGame.Graphs
 
         }
 
-
         private Rect GetHeaderRect(FlowNode node, Vector2 offset) {
             NodeStyleAttribute nodeStyle = node.GetType().GetCustomAttribute<NodeStyleAttribute>();
             if (nodeStyle == null) { nodeStyle = new NodeStyleAttribute(true); }
             Texture2D icon = Resources.Load<Texture2D>(nodeStyle.iconPath);
 
             Vector2 size = Vector2.zero;
-
             if (nodeStyle.displayHeader)
             {
                 size = EditorStyles.label.CalcSize(new GUIContent(ObjectNames.NicifyVariableName(node.name)));
@@ -410,7 +400,6 @@ namespace FKGame.Graphs
                 Vector2 pos = (position + this.m_GraphOffset) * this.m_GraphZoom + this.m_GraphViewArea.position;
                 this.m_CreateNodePosition = position;
                 AddObjectWindow.ShowWindow<FlowNode>(new Rect(pos.x - this.m_GraphViewArea.x, pos.y, 230f, 0f), AddNode, CreateNodeScript);
-               // AddNodeWindow.ShowWindow(new Rect(pos.x, pos.y, 230f, 21f), position, this.m_Graph);
             });
 
             if (!string.IsNullOrEmpty(this.m_Copy))
@@ -431,10 +420,9 @@ namespace FKGame.Graphs
         {
             if (typeof(EventNode).IsAssignableFrom(node.GetType()))
             {
-            //    return;
+            // return;
             }
             GenericMenu menu = new GenericMenu();
-         //   this.m_Selection.RemoveAll(x => x.GetType() == typeof(EventNode));
             string s = (this.m_Selection.Count > 1 ? "s" : "");
             menu.AddItem(new GUIContent("Copy Node" + s), false, new GenericMenu.MenuFunction(this.CopyNodes));
             if (!string.IsNullOrEmpty(this.m_Copy))
@@ -527,9 +515,6 @@ namespace FKGame.Graphs
             }
         }
 
-        /// <summary>
-        /// GraphView styles
-        /// </summary>
         private static class Styles
         {
             private static GUISkin skin;
