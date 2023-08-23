@@ -1,5 +1,5 @@
 ﻿using UnityEngine;
-
+//------------------------------------------------------------------------
 namespace FKGame.StatSystem
 {
     [UnityEngine.Scripting.APIUpdating.MovedFromAttribute(true, null, "Assembly-CSharp")]

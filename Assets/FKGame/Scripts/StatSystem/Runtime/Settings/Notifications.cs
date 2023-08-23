@@ -1,7 +1,6 @@
 ﻿using FKGame.UIWidgets;
-using UnityEngine;
 using UnityEngine.Events;
-
+//------------------------------------------------------------------------
 namespace FKGame.StatSystem
 {
     public static class NotificationExtension
@@ -29,7 +28,6 @@ namespace FKGame.StatSystem.Configuration
     [System.Serializable]
     public class Notifications : Settings
     {
-
         public override string Name
         {
             get

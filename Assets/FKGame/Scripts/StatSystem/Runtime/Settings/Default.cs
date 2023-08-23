@@ -1,8 +1,5 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-
-using UnityEngine;
-
+﻿using UnityEngine;
+//------------------------------------------------------------------------
 namespace FKGame.StatSystem.Configuration
 {
     [System.Serializable]

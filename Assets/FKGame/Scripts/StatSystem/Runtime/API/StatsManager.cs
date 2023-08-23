@@ -1,20 +1,17 @@
 ﻿using UnityEngine;
 using System.Collections;
-using UnityEngine.Events;
 using System.Collections.Generic;
 using UnityEngine.Assertions;
 using System.Linq;
 using FKGame.StatSystem.Configuration;
-
+//------------------------------------------------------------------------
 namespace FKGame.StatSystem
 {
     public class StatsManager : MonoBehaviour
     {
         private static StatsManager m_Current;
 
-        /// <summary>
-        /// The StatManager singleton object. This object is set inside Awake()
-        /// </summary>
+        // StatsManager单例
         public static StatsManager current
         {
             get
@@ -27,10 +24,7 @@ namespace FKGame.StatSystem
         [SerializeField]
         private StatDatabase m_Database = null;
 
-        /// <summary>
-        /// Gets the item database. Configurate it inside the editor.
-        /// </summary>
-        /// <value>The database.</value>
+        // 物品数据库，在编辑器中进行配置
         public static StatDatabase Database
         {
             get
@@ -105,20 +99,16 @@ namespace FKGame.StatSystem
             return default(T);
         }
 
-        /// Don't destroy this object instance when loading new scenes.
-        /// </summary>
+        // 加载新场景时，不要销毁该实例
         public bool dontDestroyOnLoad = true;
 
         private List<StatsHandler> m_StatsHandler;
 
-        /// <summary>
-        /// Awake is called when the script instance is being loaded.
-        /// </summary>
+
         private void Awake()
         {
             if (StatsManager.m_Current != null)
             {
-                // Debug.Log("Multiple Stat Manager in scene...this is not supported. Destroying instance!");
                 Destroy(gameObject);
                 return;
             }
@@ -135,7 +125,6 @@ namespace FKGame.StatSystem
                     }
                     DontDestroyOnLoad(gameObject);
                 }
-
                 this.m_StatsHandler = new List<StatsHandler>();
                 if (StatsManager.SavingLoading.autoSave)
                 {
@@ -154,7 +143,6 @@ namespace FKGame.StatSystem
             }
         }
 
-
         public static void Save()
         {
             string key = PlayerPrefs.GetString(StatsManager.SavingLoading.savingKey, StatsManager.SavingLoading.savingKey);
@@ -167,9 +155,6 @@ namespace FKGame.StatSystem
             if (results.Length > 0)
             {
                 string data = JsonSerializer.Serialize(results);
-
-              
-                //Required for Select Character Scene in RPG Kit, Workaound to display stats without StatsHandler
                 foreach (StatsHandler handler in results)
                 {
                     foreach (Stat stat in handler.m_Stats)
@@ -190,7 +175,6 @@ namespace FKGame.StatSystem
                 }
                 PlayerPrefs.SetString("StatSystemSavedKeys", string.Join(";", keys));
 
-    
                 if (StatsManager.DefaultSettings.debugMessages)
                     Debug.Log("[Stat System] Stats saved: " + data);
             }
@@ -224,8 +208,6 @@ namespace FKGame.StatSystem
             if (StatsManager.DefaultSettings.debugMessages)
                 Debug.Log("[Stat System] Stats loaded: "+ data);
         }
-
-
 
         private IEnumerator DelayedLoading(float seconds)
         {

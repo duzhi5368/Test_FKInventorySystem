@@ -3,7 +3,7 @@ using UnityEditor;
 using System.Collections.Generic;
 using System.Linq;
 using System.Collections;
-
+//------------------------------------------------------------------------
 namespace FKGame.StatSystem
 {
 	[CustomPropertyDrawer(typeof(StatPickerAttribute), true)]

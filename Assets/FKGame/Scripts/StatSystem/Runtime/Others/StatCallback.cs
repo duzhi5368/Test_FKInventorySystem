@@ -1,7 +1,5 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
+﻿using UnityEngine;
+//------------------------------------------------------------------------
 namespace FKGame.StatSystem
 {
     [UnityEngine.Scripting.APIUpdating.MovedFromAttribute(true, null, "Assembly-CSharp")]
@@ -40,7 +38,8 @@ namespace FKGame.StatSystem
             this.m_Handler.onUpdate += Update;
         }
 
-        private void Update() {
+        private void Update() 
+        {
             if (this.m_Sequence != null)
             {
                 this.m_Sequence.Tick();
@@ -51,7 +50,6 @@ namespace FKGame.StatSystem
         {
             if (TriggerCallback(this.m_Stat.Value))
             {
-               // Debug.Log("OnValueChange");
                 this.m_Sequence.Start();
             }
         }
@@ -60,12 +58,9 @@ namespace FKGame.StatSystem
         {
             if (TriggerCallback((this.m_Stat as Attribute).CurrentValue))
             {
-               // Debug.Log("OnCurrentValueChange");
                 this.m_Sequence.Start();
             }
         }
-
-
 
         private bool TriggerCallback(float value)
         {
@@ -82,7 +77,6 @@ namespace FKGame.StatSystem
             }
             return false;
         }
-
     }
 
     public enum ValueType

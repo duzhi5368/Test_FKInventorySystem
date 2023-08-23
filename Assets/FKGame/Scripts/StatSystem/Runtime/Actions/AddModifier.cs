@@ -1,7 +1,5 @@
-﻿
-using System.Linq;
-using UnityEngine;
-
+﻿using UnityEngine;
+//------------------------------------------------------------------------
 namespace FKGame.StatSystem
 {
     [UnityEngine.Scripting.APIUpdating.MovedFromAttribute(true, null, "Assembly-CSharp")]
@@ -30,12 +28,10 @@ namespace FKGame.StatSystem
         public override ActionStatus OnUpdate()
         {
             Stat stat = this.m_Handler.GetStat(this.m_StatName);
-            if (stat == null) return ActionStatus.Failure;
-
+            if (stat == null) 
+                return ActionStatus.Failure;
             stat.AddModifier(new StatModifier(this.m_Value, this.m_ModType, this.m_Handler.gameObject));
             return ActionStatus.Success;
         }
-
-
     }
 }

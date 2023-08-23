@@ -1,9 +1,7 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEditor;
+﻿using UnityEditor;
 using UnityEditorInternal;
 using UnityEngine;
-
+//------------------------------------------------------------------------
 namespace FKGame.StatSystem
 {
     [CustomEditor(typeof(StatsHandler))]
@@ -30,7 +28,6 @@ namespace FKGame.StatSystem
             this.m_StatList.index = selectedStatIndex;
         }
 
-
         protected virtual void OnDisable() {
             if (target == null) return;
             EditorPrefs.SetInt("SelectedStatIndex." + target.GetInstanceID(),this.m_StatList.index) ;
@@ -46,7 +43,6 @@ namespace FKGame.StatSystem
             DrawPropertiesExcluding(serializedObject,this.m_Script.propertyPath,this.m_Stats.propertyPath,this.m_Effects.propertyPath);
 
             this.m_StatList.DoLayoutList();
-
             if (this.m_StatOverrides.arraySize < this.m_Stats.arraySize)
             {
                 for (int i = this.m_StatOverrides.arraySize; i < this.m_Stats.arraySize; i++)
@@ -69,27 +65,7 @@ namespace FKGame.StatSystem
                     EditorGUILayout.PropertyField(baseValue);
                     EditorGUI.indentLevel -= 1;
                 }
-               
-
-                /*SerializedProperty stat = this.m_Stats.GetArrayElementAtIndex(selectedStatIndex);
-                if (stat.objectReferenceValue != null)
-                {
-                    SerializedObject statObj = new SerializedObject(stat.objectReferenceValue);
-                    SerializedProperty inherit = statObj.FindProperty("m_InheritBaseValue");
-                    SerializedProperty overrideBaseValue = statObj.FindProperty("m_OverrideBaseValue");
-                    statObj.Update();
-                    EditorGUILayout.PropertyField(inherit);
-                    if (!inherit.boolValue)
-                    {
-                        EditorGUI.indentLevel += 1;
-                        EditorGUILayout.PropertyField(overrideBaseValue);
-                        EditorGUI.indentLevel -= 1;
-                    }
-                    statObj.ApplyModifiedProperties();
-                }*/
             }
-
-
             EditorGUILayout.Space();
             this.m_EffectsList.DoLayoutList();
             serializedObject.ApplyModifiedProperties();

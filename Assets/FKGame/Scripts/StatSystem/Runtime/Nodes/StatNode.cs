@@ -1,6 +1,6 @@
 ﻿using FKGame.StatSystem;
 using UnityEngine;
-
+//------------------------------------------------------------------------
 namespace FKGame.Graphs
 {
     [System.Serializable]

@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
+﻿//------------------------------------------------------------------------
 namespace FKGame.StatSystem
 {
     public enum StatModType
@@ -15,7 +11,6 @@ namespace FKGame.StatSystem
     public class StatModifier
     {
         public object source;
-
         private float m_Value;
         public float Value
         {

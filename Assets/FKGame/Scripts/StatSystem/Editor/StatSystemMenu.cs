@@ -1,8 +1,6 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEditor;
+﻿using UnityEditor;
 using UnityEngine;
-
+//------------------------------------------------------------------------
 namespace FKGame.StatSystem
 {
     public static class StatSystemMenu

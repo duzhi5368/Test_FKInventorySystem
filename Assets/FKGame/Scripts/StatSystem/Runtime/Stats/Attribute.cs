@@ -1,7 +1,6 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
-
+//------------------------------------------------------------------------
 namespace FKGame.StatSystem
 {
     public class Attribute : Stat

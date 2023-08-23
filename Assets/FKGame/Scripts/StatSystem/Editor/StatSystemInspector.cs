@@ -1,8 +1,7 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
-
+//------------------------------------------------------------------------
 namespace FKGame.StatSystem
 {
     [System.Serializable]
@@ -41,7 +40,6 @@ namespace FKGame.StatSystem
             }
             toolbarIndex = EditorPrefs.GetInt("StatToolbarIndex");
             ResetChildEditors();
-
         }
 
         public void OnDisable()
@@ -73,9 +71,7 @@ namespace FKGame.StatSystem
 
         public void OnGUI(Rect position)
         {
-
             DoToolbar();
-
             if (m_ChildEditors != null)
             {
                 m_ChildEditors[toolbarIndex].OnGUI(new Rect(0f, 30f, position.width, position.height - 30f));
@@ -122,7 +118,6 @@ namespace FKGame.StatSystem
 
         private void ResetChildEditors()
         {
-
             if (this.m_Database != null)
             {
                 this.m_ChildEditors = new List<ICollectionEditor>();

@@ -1,7 +1,5 @@
-﻿
-using System.Linq;
-using UnityEngine;
-
+﻿using UnityEngine;
+//------------------------------------------------------------------------
 namespace FKGame.StatSystem
 {
     [UnityEngine.Scripting.APIUpdating.MovedFromAttribute(true, null, "Assembly-CSharp")]
@@ -17,7 +15,6 @@ namespace FKGame.StatSystem
         protected string m_StatName="Critical Strike";
 
         private StatsHandler m_Handler;
-
         public override void OnStart()
         {
             this.m_Handler = this.m_Target == TargetType.Self ? gameObject.GetComponent<StatsHandler>() : playerInfo.gameObject.GetComponent<StatsHandler>();
@@ -30,7 +27,5 @@ namespace FKGame.StatSystem
             stat.RemoveModifiersFromSource(this.m_Handler.gameObject);
             return ActionStatus.Success;
         }
-
-
     }
 }

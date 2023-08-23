@@ -1,5 +1,5 @@
 ﻿using UnityEngine;
-
+//------------------------------------------------------------------------
 namespace FKGame.Graphs
 {
     [ComponentMenu("Stat System/Get Stat Current Value")]

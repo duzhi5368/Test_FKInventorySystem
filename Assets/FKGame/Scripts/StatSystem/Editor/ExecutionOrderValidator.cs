@@ -1,6 +1,6 @@
 ﻿using UnityEditor;
 using UnityEngine;
-
+//------------------------------------------------------------------------
 namespace FKGame.StatSystem
 {
     [InitializeOnLoad]

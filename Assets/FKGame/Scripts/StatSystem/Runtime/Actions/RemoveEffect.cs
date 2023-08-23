@@ -1,7 +1,5 @@
-﻿
-using System.Linq;
-using UnityEngine;
-
+﻿using UnityEngine;
+//------------------------------------------------------------------------
 namespace FKGame.StatSystem
 {
     [UnityEngine.Scripting.APIUpdating.MovedFromAttribute(true, null, "Assembly-CSharp")]
@@ -13,8 +11,6 @@ namespace FKGame.StatSystem
         private TargetType m_Target = TargetType.Player;
         [SerializeField]
         protected StatEffect m_Effect;
-      
-
         private StatsHandler m_Handler;
 
         public override void OnStart()
@@ -24,11 +20,8 @@ namespace FKGame.StatSystem
 
         public override ActionStatus OnUpdate()
         {
-
             this.m_Handler.RemoveEffect(this.m_Effect);
             return ActionStatus.Success;
         }
-
-
     }
 }

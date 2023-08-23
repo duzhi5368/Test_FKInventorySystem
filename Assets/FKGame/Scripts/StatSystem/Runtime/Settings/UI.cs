@@ -1,9 +1,7 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using FKGame.UIWidgets;
+﻿using FKGame.UIWidgets;
 using UnityEngine;
 using UnityEngine.Assertions;
-
+//------------------------------------------------------------------------
 namespace FKGame.StatSystem.Configuration
 {
     [System.Serializable]

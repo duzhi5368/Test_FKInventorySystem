@@ -1,23 +1,18 @@
 ﻿using UnityEngine;
 using UnityEditor;
-
+//------------------------------------------------------------------------
 namespace FKGame.StatSystem
 {
 	public class StatSystemEditor : EditorWindow
 	{
-
 		private StatSystemInspector m_StatSystemInspector;
-
 		public static void ShowWindow()
 		{
-
 			StatSystemEditor[] objArray = Resources.FindObjectsOfTypeAll<StatSystemEditor>();
 			StatSystemEditor editor = (objArray.Length <= 0 ? ScriptableObject.CreateInstance<StatSystemEditor>() : objArray[0]);
-
 			editor.hideFlags = HideFlags.HideAndDontSave;
 			editor.minSize = new Vector2(690, 300);
 			editor.titleContent = new GUIContent("Stat System");
-
 			editor.Show();
 		}
 

@@ -1,7 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
+﻿//------------------------------------------------------------------------
 namespace FKGame.StatSystem.Configuration
 {
     [System.Serializable]
@@ -18,7 +15,6 @@ namespace FKGame.StatSystem.Configuration
         public string savingKey = "Player";
         public float savingRate = 60f;
         public SavingProvider provider;
-
 
         public enum SavingProvider
         {

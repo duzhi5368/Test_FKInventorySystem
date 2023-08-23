@@ -1,8 +1,6 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
-
+//------------------------------------------------------------------------
 namespace FKGame.StatSystem
 {
 	public class UIStat : MonoBehaviour
@@ -44,7 +42,6 @@ namespace FKGame.StatSystem
 		}
 
 		protected virtual void Update() {
-			//TODO BETTER FIX, SelectableUIStat is displaying same values for all enemies
 			//if (stat == null) {
 				StatsHandler handler = GetStatsHandler();
 				if (handler == null)
@@ -55,7 +52,7 @@ namespace FKGame.StatSystem
 
 				if (this.m_StatName != null)
 					this.m_StatName.text = this.stat.Name;
-		//	}
+			//}
 			Repaint();
 		}
 
@@ -67,29 +64,23 @@ namespace FKGame.StatSystem
 			if (stat is Attribute attribute)
 			{
 				float normalized = attribute.CurrentValue / attribute.Value;
-
 				if (this.m_StatBar != null)
 				{
 					this.m_StatBar.fillAmount = normalized;
 				}
-
 				if (this.m_StatBarFade != null)
 				{
 					this.m_StatBarFade.fillAmount = Mathf.MoveTowards(this.m_StatBarFade.fillAmount, normalized, Time.deltaTime * 0.5f);
 				}
-
 				if (this.m_CurrentValue != null)
 				{
 					this.m_CurrentValue.text = attribute.CurrentValue.ToString();
 				}
 			}
-
 			if (this.m_Value != null)
 			{
-
 				this.m_Value.text = stat.Value.ToString();
 			}
-			
 			if (this.m_IncrementButton != null && freePoints != null)
 			{
 				this.m_IncrementButton.gameObject.SetActive(freePoints.Value > 0?true:false);
@@ -102,7 +93,6 @@ namespace FKGame.StatSystem
 			{
 				return;
 			}
-			
 			string key = data.GetData("CharacterName") + ".Stats." + this.m_StatsHandler + "." + this.m_Stat.Name;
 			if (PlayerPrefs.HasKey(key + ".Value"))
 			{

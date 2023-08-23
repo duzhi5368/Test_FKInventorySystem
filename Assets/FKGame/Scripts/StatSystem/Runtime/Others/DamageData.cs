@@ -1,7 +1,6 @@
-﻿using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.Audio;
-
+//------------------------------------------------------------------------
 namespace FKGame.StatSystem
 {
     [CreateAssetMenu(fileName = "DamageData", menuName = "FKGame/Stat System/Damage Data")]

@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.Audio;
 using UnityEngine.UI;
-
+//------------------------------------------------------------------------
 namespace FKGame.StatSystem
 {
     public class StatsHandler : MonoBehaviour, IJsonSerializable
@@ -123,7 +123,6 @@ namespace FKGame.StatSystem
                 SendMessage(ev.stringParameter, ev.objectReferenceParameter, SendMessageOptions.DontRequireReceiver);
         }
 
-        //Received by animation
         private void SendDamage(Object data)
         {
             DamageData damageData = data as DamageData;
@@ -151,7 +150,6 @@ namespace FKGame.StatSystem
             StatsHandler receiverHandler = receiver.GetComponent<StatsHandler>();
             DamageData damageData = data as DamageData;
 
-            //Exclude self tag, needs some kind of frieds tag system
             if (gameObject.tag == receiver.tag)
                 return;
 
@@ -226,12 +224,9 @@ namespace FKGame.StatSystem
             agent.acceleration = acceleration;
         }
 
-        
-
         private void DisplayDamage(GameObject prefab, float damage, Color color, Vector3 intensity)
         {
             Canvas canvas = GetComponentInChildren<Canvas>();
-            //TODO Pooling
             if (canvas != null)
             {
                 GameObject go = Instantiate(prefab, canvas.transform);
@@ -239,7 +234,6 @@ namespace FKGame.StatSystem
                 Text text = go.GetComponentInChildren<Text>();
                 text.color = color;
                 text.text = (damage > 0 ? "-" : "+") + Mathf.Abs(damage).ToString();
-
                 go.SetActive(true);
                 Destroy(go, 4f);
             }
@@ -254,7 +248,6 @@ namespace FKGame.StatSystem
             this.m_AudioSource.outputAudioMixerGroup = audioMixerGroup;
             this.m_AudioSource.spatialBlend = 1f;
             this.m_AudioSource.PlayOneShot(clip, volumeSclae);
-
         }
 
         public Stat GetStat(Stat stat)
@@ -357,7 +350,6 @@ namespace FKGame.StatSystem
                     stat.GetObjectData(statData);
                     statsList.Add(statData);
                 }
-
             }
             data.Add("Stats", statsList);
         }
@@ -382,7 +374,5 @@ namespace FKGame.StatSystem
                 }
             }
         }
-   
-
     }
 }

@@ -1,10 +1,9 @@
 ﻿using UnityEngine;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
 using System.Linq;
 using System;
-
+//------------------------------------------------------------------------
 namespace FKGame.StatSystem
 {
 	[System.Serializable]
@@ -70,10 +69,8 @@ namespace FKGame.StatSystem
 		{
 			if (string.IsNullOrEmpty(item.Name))
 				return "Name field can't be empty. Please enter a unique name.";
-
 			if (Items.Any(x => !x.Equals(item) && x.Name == item.Name))
 				return "Duplicate name. Stat names need to be unique.";
-
 			return string.Empty;
 		}
 
@@ -103,8 +100,6 @@ namespace FKGame.StatSystem
 
 			EditorUtility.SetDirty(target);
 		}
-
-		
 
 		protected override void DrawItemLabel(int index, Stat item)
 		{

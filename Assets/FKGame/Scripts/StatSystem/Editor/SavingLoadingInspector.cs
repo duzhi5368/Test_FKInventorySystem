@@ -4,7 +4,7 @@ using UnityEditor;
 using UnityEditor.AnimatedValues;
 using UnityEngine;
 using UnityEngine.Events;
-
+//------------------------------------------------------------------------
 namespace FKGame.StatSystem.Configuration
 {
     [CustomEditor(typeof(SavingLoading))]
@@ -33,7 +33,6 @@ namespace FKGame.StatSystem.Configuration
             this.m_Provider = serializedObject.FindProperty("provider");
             this.m_ShowMySQL = new AnimBool(this.m_Provider.enumValueIndex == 1);
             this.m_ShowMySQL.valueChanged.AddListener(new UnityAction(Repaint));
-
 
             this.m_SavingKey = serializedObject.FindProperty("savingKey");
             this.m_SavingRate = serializedObject.FindProperty("savingRate");
@@ -88,13 +87,10 @@ namespace FKGame.StatSystem.Configuration
                 {
                     GUILayout.Label("No data saved on this device!");
                 }
-
-
                 for (int i = 0; i < keys.Count; i++)
                 {
                     string key = keys[i];
                     GenericMenu keyMenu = new GenericMenu();
-
                     keyMenu.AddItem(new GUIContent("Delete Key"), false, () => {
                         List<string> allKeys = new List<string>(keys);
                         allKeys.Remove(key);

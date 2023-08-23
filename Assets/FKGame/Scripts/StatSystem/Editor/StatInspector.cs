@@ -2,8 +2,7 @@
 using System.Collections;
 using UnityEditor;
 using UnityEngine;
-using System.Linq;
-
+//------------------------------------------------------------------------
 namespace FKGame.StatSystem
 {
     [CustomEditor(typeof(Stat),true)]

@@ -1,9 +1,7 @@
 ﻿using FKGame.Graphs;
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+//------------------------------------------------------------------------
 namespace FKGame.StatSystem
 {
     [System.Serializable]
@@ -19,14 +17,6 @@ namespace FKGame.StatSystem
 
         [SerializeField]
         protected float m_BaseValue;
-       /* [HideInInspector]
-        [SerializeField]
-        protected bool m_InheritBaseValue = true;
-        [InspectorLabel("Base Value")]
-        [HideInInspector]
-        [SerializeField]
-        protected float m_OverrideBaseValue;*/
-
         [SerializeField]
         protected FormulaGraph m_FormulaGraph;
         [SerializeField]
@@ -47,16 +37,13 @@ namespace FKGame.StatSystem
             
             if (statOverride.overrideBaseValue)
                 this.m_BaseValue = statOverride.baseValue;
-
             List<StatNode> statNodes = this.m_FormulaGraph.FindNodesOfType<StatNode>();
-
             for (int i = 0; i < statNodes.Count; i++)
             {
                 Stat referencedStat = handler.GetStat(statNodes[i].stat.Trim());
                 statNodes[i].statValue = referencedStat;
                 referencedStat.onValueChangeInternal += CalculateValue;
             }
-        
             for (int i = 0; i < this.m_Callbacks.Count; i++)
             {
                 this.m_Callbacks[i].Initialize(handler, this);
@@ -119,15 +106,11 @@ namespace FKGame.StatSystem
             }
             if (this.m_Cap >= 0)
                 finalValue = Mathf.Clamp(finalValue, 0, this.m_Cap);
-
-
-
             if (this.m_Value != finalValue)
             {
                 this.m_Value = finalValue;
                 if(invokeCallbacks)
                     onValueChange?.Invoke();
-
                 onValueChangeInternal?.Invoke();
             }
         }
@@ -151,7 +134,6 @@ namespace FKGame.StatSystem
         public bool RemoveModifiersFromSource(object source)
         {
             int numRemovals = this.m_StatModifiers.RemoveAll(mod => mod.source == source);
-
             if (numRemovals > 0)
             {
                 CalculateValue();
