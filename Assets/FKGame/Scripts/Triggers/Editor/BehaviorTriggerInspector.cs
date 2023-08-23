@@ -1,11 +1,6 @@
 ﻿using UnityEngine;
 using UnityEditor;
-using UnityEditor.AnimatedValues;
-using UnityEngine.Events;
-using UnityEditorInternal;
-using System.Linq;
-
-
+//------------------------------------------------------------------------
 namespace FKGame
 {
     [CustomEditor(typeof(BehaviorTrigger), true)]
@@ -25,10 +20,7 @@ namespace FKGame
                 
                 ObjectWindow.ShowWindow("Edit Behavior",serializedObject, actionList);
             }
-            EditorGUI.EndDisabledGroup();
-            
+            EditorGUI.EndDisabledGroup(); 
         }
-
-
     }
 }

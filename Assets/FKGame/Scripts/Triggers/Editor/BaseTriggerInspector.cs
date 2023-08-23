@@ -1,11 +1,8 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-using UnityEditor;
+﻿using UnityEditor;
 using UnityEditor.AnimatedValues;
 using UnityEngine;
 using UnityEngine.Events;
-
+//------------------------------------------------------------------------
 namespace FKGame
 {
     [CustomEditor(typeof(BaseTrigger), true)]
@@ -76,6 +73,5 @@ namespace FKGame
             Handles.DrawWireDisc(position, Vector3.up, trigger.useDistance);
             Handles.color = color;
         }
-
     }
 }

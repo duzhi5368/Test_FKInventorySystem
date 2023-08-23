@@ -1,9 +1,8 @@
 ﻿using System;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
-
+//------------------------------------------------------------------------
 namespace FKGame
 {
     public abstract class ActionInspector : Editor
@@ -72,7 +71,6 @@ namespace FKGame
             GUILayout.FlexibleSpace();
             DoActionAddButton();
             GUILayout.Space(10f);
-
         }
 
         protected void AddAction(Type type)
@@ -104,7 +102,6 @@ namespace FKGame
 
         protected GenericMenu ElementContextMenu(IList list, int index)
         {
-
             GenericMenu menu = new GenericMenu();
             if (list[index] == null)
             {
@@ -123,7 +120,6 @@ namespace FKGame
                 EditorUtility.SetDirty(target);
 
             });
-
 
             if (index > 0)
             {

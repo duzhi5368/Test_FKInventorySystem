@@ -1,9 +1,8 @@
 ﻿using System;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
-
+//------------------------------------------------------------------------
 namespace FKGame
 {
     [CustomEditor(typeof(ActionTemplate))]
@@ -73,8 +72,6 @@ namespace FKGame
                     EditorGUI.indentLevel -= 1;
                 }
             }
-
-
             DoAddButton(typeof(Action));
             GUILayout.Space(10f);
         }
@@ -110,7 +107,6 @@ namespace FKGame
 
         private GenericMenu ElementContextMenu(IList list, int index)
         {
-
             GenericMenu menu = new GenericMenu();
             if (list[index] == null)
             {

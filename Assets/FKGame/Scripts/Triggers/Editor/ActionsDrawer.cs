@@ -1,21 +1,18 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
 using System;
-
+//------------------------------------------------------------------------
 namespace FKGame
 {
     [CustomPropertyDrawer(typeof(Actions))]
     public class ActionsDrawer : PropertyDrawer
     {
-
         private SerializedProperty m_Actions;
         private SerializedProperty m_Add;
 
         public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
         {
-
             this.m_Actions = property.FindPropertyRelative("actions");
             GUILayout.BeginHorizontal();
             GUILayout.Space(20);
@@ -23,7 +20,6 @@ namespace FKGame
             DoGUI(this.m_Actions);
             GUILayout.EndVertical();
             GUILayout.EndHorizontal();
-
         }
 
         public override float GetPropertyHeight(SerializedProperty property, GUIContent label)
@@ -69,8 +65,6 @@ namespace FKGame
                     EditorGUI.indentLevel -= 1;
                 }
             }
-
-
             DoAddButton(typeof(Action));
             GUILayout.Space(10f);
         }
@@ -83,7 +77,6 @@ namespace FKGame
             this.m_Add.GetArrayElementAtIndex(this.m_Add.arraySize - 1).managedReferenceValue = value;
             this.m_Add.serializedObject.ApplyModifiedProperties();
         }
-
 
         private void CreateScript(string scriptName)
         {
@@ -106,7 +99,6 @@ namespace FKGame
 
         private GenericMenu ElementContextMenu(IList list, int index)
         {
-
             GenericMenu menu = new GenericMenu();
             if (list[index] == null)
             {
