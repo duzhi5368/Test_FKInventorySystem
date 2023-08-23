@@ -1,17 +1,14 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using FKGame.UIWidgets;
 using UnityEngine.EventSystems;
-
+//------------------------------------------------------------------------
+// 弹出二次面板
+//------------------------------------------------------------------------
 public class RadialMenuTrigger : MonoBehaviour, IPointerDownHandler
-{
- 
+{ 
     public Sprite[] menuIcons;
-
     private RadialMenu m_RadialMenu;
 
-    // Start is called before the first frame update
     private void Start()
     {
         this.m_RadialMenu = WidgetUtility.Find<RadialMenu>("RadialMenu");

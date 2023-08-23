@@ -1,10 +1,11 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
 using System.Linq;
 using System;
-
+//------------------------------------------------------------------------
+// 扫描全项目，找到属于UIWidgetEditor的物件
+//------------------------------------------------------------------------
 namespace FKGame.UIWidgets
 {
 	public class UIWidgetEditor : EditorWindow
@@ -37,7 +38,6 @@ namespace FKGame.UIWidgets
 		private void OnEnable ()
 		{
 			FindWidgets ();
-
 		}
 
 		private void OnFocus ()
@@ -99,15 +99,13 @@ namespace FKGame.UIWidgets
 				if (GUILayout.Button(canvasGroup.alpha > 0.01f ? EditorGUIUtility.FindTexture("d_scenevis_hidden") : EditorGUIUtility.FindTexture("d_scenevis_visible"), EditorStyles.label))
 				{
 					if (canvasGroup.alpha > 0.01f)
-					{
-						//Hide
+					{	// Hide
 						canvasGroup.alpha = 0f;
 						canvasGroup.interactable = false;
 						canvasGroup.blocksRaycasts = false;
 					}
 					else
-					{
-						//Show
+					{	// Show
 						canvasGroup.alpha = 1f;
 						canvasGroup.interactable = true;
 						canvasGroup.blocksRaycasts = true;
@@ -132,11 +130,8 @@ namespace FKGame.UIWidgets
 					break;
 				}
 				GUILayout.FlexibleSpace ();
-			
-
 				GUILayout.EndHorizontal ();
 				GUILayout.EndVertical ();
-
 			}
 			EditorGUILayout.EndScrollView ();
 		}
@@ -176,11 +171,6 @@ namespace FKGame.UIWidgets
 			return path;
 		}
 
-		/// <summary>
-		/// Finds components the in scene.
-		/// </summary>
-		/// <returns>The in scene.</returns>
-		/// <typeparam name="T">The 1st type parameter.</typeparam>
 		public static List<T> FindInScene<T> () where T : Component
 		{
 			T[] comps = Resources.FindObjectsOfTypeAll (typeof(T)) as T[];

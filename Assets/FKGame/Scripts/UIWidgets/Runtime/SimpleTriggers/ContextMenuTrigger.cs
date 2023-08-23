@@ -1,19 +1,18 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using FKGame.UIWidgets;
 using ContextMenu = FKGame.UIWidgets.ContextMenu;
 using UnityEngine.EventSystems;
-
+//------------------------------------------------------------------------
+// 弹出子菜单
+//------------------------------------------------------------------------
 public class ContextMenuTrigger : MonoBehaviour, IPointerDownHandler
 {
     private ContextMenu m_ContextMenu;
-
     public string[] menu;
 
-    // Start is called before the first frame update
     private void Start()
     {
+        // 性能开销不小，要注意
         this.m_ContextMenu = WidgetUtility.Find<ContextMenu>("ContextMenu");
     }
 

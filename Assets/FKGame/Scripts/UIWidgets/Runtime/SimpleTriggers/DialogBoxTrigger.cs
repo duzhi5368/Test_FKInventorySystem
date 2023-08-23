@@ -1,8 +1,8 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using FKGame.UIWidgets;
-
+//------------------------------------------------------------------------
+// 弹出Dialog窗口
+//------------------------------------------------------------------------
 public class DialogBoxTrigger : MonoBehaviour
 {
     public string title;

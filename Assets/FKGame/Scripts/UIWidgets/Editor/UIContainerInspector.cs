@@ -1,11 +1,9 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEditor;
 using UnityEditor.AnimatedValues;
 using UnityEngine.UI;
 using UnityEngine.Events;
-
+//------------------------------------------------------------------------
 namespace FKGame.UIWidgets
 {
     [CustomEditor(typeof(UIContainer<>), true)]
@@ -59,6 +57,5 @@ namespace FKGame.UIWidgets
             EditorGUILayout.EndFadeGroup();
             DrawClassPropertiesExcluding(this.m_PropertiesToExcludeForDefaultInspector);
         }
-
     }
 }
