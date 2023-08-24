@@ -1,6 +1,9 @@
 ﻿using System.Collections.Generic;
 using System;
 using System.Linq;
+using FKGame.Macro;
+//------------------------------------------------------------------------
+// Tools -> FKGame -> 属性系统 -> 编辑器 面板上方的"设置"Tab
 //------------------------------------------------------------------------
 namespace FKGame.StatSystem.Configuration
 {
@@ -11,7 +14,7 @@ namespace FKGame.StatSystem.Configuration
         {
             get
             {
-                return "Settings";
+                return LanguagesMacro.SETTING;
             }
         }
 

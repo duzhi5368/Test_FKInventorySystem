@@ -3,6 +3,7 @@ using UnityEditor;
 using System.Collections.Generic;
 using System;
 using System.Linq;
+using FKGame.Macro;
 //------------------------------------------------------------------------
 namespace FKGame
 {
@@ -126,12 +127,12 @@ namespace FKGame
         protected override void AddContextItem(GenericMenu menu)
         {
             base.AddContextItem(menu);
-			menu.AddItem(new GUIContent("Sort/A-Z"), false, delegate {
+			menu.AddItem(new GUIContent(LanguagesMacro.SORT + "/" + LanguagesMacro.A_Z), false, delegate {
 				T selected = selectedItem;
 				Items.Sort(delegate (T a, T b) {return a.Name.CompareTo(b.Name); });
 				Select(selected);
 				});
-			menu.AddItem(new GUIContent("Sort/Type"), false, delegate {
+			menu.AddItem(new GUIContent(LanguagesMacro.SORT + "/" + LanguagesMacro.TYPE), false, delegate {
 				T selected = selectedItem;
 				Items.Sort(delegate (T a, T b) {
 					return a.GetType().FullName.CompareTo(b.GetType().FullName);

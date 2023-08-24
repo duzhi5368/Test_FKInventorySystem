@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using UnityEditor;
 using System.Linq;
 using System;
+using FKGame.Macro;
+//------------------------------------------------------------------------
+// Tools -> FKGame -> 属性系统 -> 编辑器 面板上方的"属性"Tab
 //------------------------------------------------------------------------
 namespace FKGame.StatSystem
 {
@@ -18,7 +21,7 @@ namespace FKGame.StatSystem
 		{
 			get
 			{
-				return "Stats";
+				return LanguagesMacro.STAT;
 			}
 		}
 
@@ -29,7 +32,7 @@ namespace FKGame.StatSystem
 
 			this.searchFilters = searchFilters;
 			this.searchFilters.Insert(0, "All");
-			this.m_SearchString = "All";
+            this.m_SearchString = "All";
 		}
 
 		protected override void Create()
@@ -53,6 +56,7 @@ namespace FKGame.StatSystem
 			}
 		}
 
+		// 进行搜索
 		protected override void DoSearchGUI()
 		{
 			string[] searchResult = EditorTools.SearchField(m_SearchString, searchFilter, searchFilters);

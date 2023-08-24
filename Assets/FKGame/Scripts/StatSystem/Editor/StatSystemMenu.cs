@@ -5,13 +5,13 @@ namespace FKGame.StatSystem
 {
     public static class StatSystemMenu
     {
-        [MenuItem("Tools/FKGame/Stat System/Editor", false, 0)]
+        [MenuItem("Tools/FKGame/属性系统/编辑器", false, 0)]
         private static void OpenItemEditor()
         {
             StatSystemEditor.ShowWindow();
         }
 
-		[MenuItem("Tools/FKGame/Stat System/Create Stats Manager", false, 1)]
+		[MenuItem("Tools/FKGame/属性系统/创建Stats Manager", false, 1)]
 		private static void CreateStatManager()
 		{
 			GameObject go = new GameObject("Stats Manager");
@@ -19,7 +19,7 @@ namespace FKGame.StatSystem
 			Selection.activeGameObject = go;
 		}
 
-		[MenuItem("Tools/FKGame/Stat System/Create Stats Manager", true)]
+		[MenuItem("Tools/FKGame/属性系统/创建属性管理器", true)]
 		private static bool ValidateCreateStatusSystem()
 		{
 			return GameObject.FindObjectOfType<StatsManager>() == null;

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using FKGame.Macro;
+using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 //------------------------------------------------------------------------
@@ -7,11 +8,11 @@ namespace FKGame.StatSystem
     [System.Serializable]
     public class StatSystemInspector
     {
-        private StatDatabase m_Database;
-        private List<ICollectionEditor> m_ChildEditors;
+        private StatDatabase m_Database;                    // 属性数据库对象
+        private List<ICollectionEditor> m_ChildEditors;     // 属性编辑器界面
 
         [SerializeField]
-        private int toolbarIndex;
+        private int toolbarIndex;                           // 当前所选的TAB页【属性，效果，设置】
 
         private string[] toolbarNames
         {
@@ -71,7 +72,9 @@ namespace FKGame.StatSystem
 
         public void OnGUI(Rect position)
         {
+            // 上面追加Tab页面
             DoToolbar();
+            // 下面面板是 CollectionEditor
             if (m_ChildEditors != null)
             {
                 m_ChildEditors[toolbarIndex].OnGUI(new Rect(0f, 30f, position.width, position.height - 30f));
@@ -122,7 +125,7 @@ namespace FKGame.StatSystem
             {
                 this.m_ChildEditors = new List<ICollectionEditor>();
                 this.m_ChildEditors.Add(new StatCollectionEditor(this.m_Database, this.m_Database.items, new List<string>()));
-                this.m_ChildEditors.Add(new ScriptableObjectCollectionEditor<StatEffect>("Effects",this.m_Database, this.m_Database.effects,false));
+                this.m_ChildEditors.Add(new ScriptableObjectCollectionEditor<StatEffect>(LanguagesMacro.EFFECT, this.m_Database, this.m_Database.effects,false));
                 this.m_ChildEditors.Add(new Configuration.StatSettingsEditor(this.m_Database, this.m_Database.settings));
 
                 for (int i = 0; i < this.m_ChildEditors.Count; i++)

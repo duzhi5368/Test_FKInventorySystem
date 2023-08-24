@@ -1,6 +1,7 @@
 ﻿using FKGame.Graphs;
 using System.Collections.Generic;
 using UnityEngine;
+using FKGame.Macro;
 //------------------------------------------------------------------------
 namespace FKGame.StatSystem
 {
@@ -12,7 +13,7 @@ namespace FKGame.StatSystem
 
         [InspectorLabel("Name")]
         [SerializeField]
-        protected string m_StatName = "New Stat";
+        protected string m_StatName = LanguagesMacro.NEW_STAT;
         public string Name { get => this.m_StatName; set => this.m_StatName=value; }
 
         [SerializeField]

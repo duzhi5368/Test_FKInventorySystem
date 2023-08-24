@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityEditor;
 using System.Collections.Generic;
+using FKGame.Macro;
 //------------------------------------------------------------------------
 namespace FKGame
 {
@@ -69,8 +70,9 @@ namespace FKGame
 		public virtual void OnDestroy() { Debug.Log("OnDestroy " + ToolbarName); }
 
 		public virtual void OnGUI(Rect position){
-			
+			// 绘制左边栏：搜索，列表等
 			DrawSidebar(new Rect(position.x, position.y, m_SidebarRect.width, position.height));
+			// 绘制右侧详细信息
 			DrawContent(new Rect(m_SidebarRect.width, m_SidebarRect.y, position.width - m_SidebarRect.width, position.height));
 			ResizeSidebar();
 		}
@@ -81,6 +83,7 @@ namespace FKGame
 			GUILayout.BeginHorizontal();
 			DoSearchGUI();
 
+			// 添加“创建”按钮
 			if (CanAdd)
 			{
 				GUIStyle style = new GUIStyle("ToolbarCreateAddNewDropDown");
@@ -96,6 +99,7 @@ namespace FKGame
 					}
 				}
 			}
+
 			GUILayout.Space(1f);
 			GUILayout.EndHorizontal();
 			EditorGUILayout.Space();
@@ -230,7 +234,6 @@ namespace FKGame
 					m_DragRect = rect;
 					m_DragRect.y = rect.y + 10f;
 					m_DragRect.x = rect.x + 5f;
-
 					break;
 				}
 				else
@@ -250,25 +253,25 @@ namespace FKGame
 		protected void ShowContextMenu(T currentItem) {
 			GenericMenu contextMenu = new GenericMenu();
 			if (CanRemove)
-				contextMenu.AddItem(new GUIContent("Delete"), false, delegate { Remove(currentItem); });
+				contextMenu.AddItem(new GUIContent(LanguagesMacro.DELETE), false, delegate { Remove(currentItem); });
 			if (CanDuplicate)
-				contextMenu.AddItem(new GUIContent("Duplicate"), false, delegate { Duplicate(currentItem); });
+				contextMenu.AddItem(new GUIContent(LanguagesMacro.DUPLICATE), false, delegate { Duplicate(currentItem); });
 			int oldIndex = Items.IndexOf(currentItem);
 			if (CanMove(currentItem, oldIndex - 1))
 			{
-				contextMenu.AddItem(new GUIContent("Move Up"), false, delegate { MoveUp(currentItem); });
+				contextMenu.AddItem(new GUIContent(LanguagesMacro.MOVE_UP), false, delegate { MoveUp(currentItem); });
 			}
 			else
 			{
-				contextMenu.AddDisabledItem(new GUIContent("Move Up"));
+				contextMenu.AddDisabledItem(new GUIContent(LanguagesMacro.MOVE_UP));
 			}
 			if (CanMove(currentItem, oldIndex + 1))
 			{
-				contextMenu.AddItem(new GUIContent("Move Down"), false, delegate { MoveDown(currentItem); });
+				contextMenu.AddItem(new GUIContent(LanguagesMacro.MOVE_DOWN), false, delegate { MoveDown(currentItem); });
 			}
 			else
 			{
-				contextMenu.AddDisabledItem(new GUIContent("Move Down"));
+				contextMenu.AddDisabledItem(new GUIContent(LanguagesMacro.MOVE_DOWN));
 			}
 
 			AddContextItem(contextMenu);
@@ -433,6 +436,11 @@ namespace FKGame
 
 			static Styles(){
 				skin = Resources.Load<GUISkin>("EditorSkin");
+				if(skin == null)
+				{
+					Debug.LogError("需要创建一个 GUISkin 用于编辑器配置");
+					return;
+				}
 				m_LeftPaneLight = skin.GetStyle("Left Pane");
 				m_CenterPaneLight = skin.GetStyle("Center Pane");
 				m_LeftPaneDark = skin.GetStyle("Left Pane Dark");
