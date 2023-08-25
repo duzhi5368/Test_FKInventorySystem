@@ -2,6 +2,8 @@
 using UnityEngine;
 using UnityEngine.Assertions;
 //------------------------------------------------------------------------
+// 属性系统 -> 设置 -> UI
+//------------------------------------------------------------------------
 namespace FKGame.StatSystem.Configuration
 {
     [System.Serializable]
@@ -15,9 +17,9 @@ namespace FKGame.StatSystem.Configuration
             }
         }
 
-        [InspectorLabel("Notification", "Name of Notification widget.")]
+        [InspectorLabel("通知面板", "[通知] 组件的名称")]
         public string notificationName = "Notification";
-        [InspectorLabel("Dialog Box", "Name of the dialog box widget.")]
+        [InspectorLabel("弹出面板", "[弹出面板] 组件的名称")]
         public string dialogBoxName = "Dialog Box";
 
 

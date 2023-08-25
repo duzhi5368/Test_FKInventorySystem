@@ -4,7 +4,7 @@ namespace FKGame.Graphs
 {
     [System.Serializable]
     [ComponentMenu("Math/Round")]
-    [NodeStyle("Icons/Round",false, "Math")]
+    [NodeStyle("GraphIcons/Round", false, "Math")]
     public class Round : FlowNode
     {
         [Input(false,true)]

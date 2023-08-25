@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FKGame.Macro;
+using System;
 using System.Collections;
 using System.Reflection;
 using UnityEditor;
@@ -217,7 +218,7 @@ namespace FKGame
         private GenericMenu GetObjectMenu(int index)
         {
             GenericMenu menu = new GenericMenu();
-            menu.AddItem(new GUIContent("Reset"), false, delegate
+            menu.AddItem(new GUIContent(LanguagesMacro.RESET), false, delegate
             {
                 object value = System.Activator.CreateInstance(this.m_List[index].GetType());
                 this.m_List[index] = value;
@@ -236,7 +237,7 @@ namespace FKGame
 
             if (index > 0)
             {
-                menu.AddItem(new GUIContent("Move Up"), false, delegate
+                menu.AddItem(new GUIContent(LanguagesMacro.MOVE_UP), false, delegate
                 {
                     object value = this.m_List[index];
                     this.m_List.RemoveAt(index);
@@ -249,12 +250,12 @@ namespace FKGame
             }
             else
             {
-                menu.AddDisabledItem(new GUIContent("Move Up"));
+                menu.AddDisabledItem(new GUIContent(LanguagesMacro.MOVE_UP));
             }
 
             if (index < this.m_List.Count - 1)
             {
-                menu.AddItem(new GUIContent("Move Down"), false, delegate
+                menu.AddItem(new GUIContent(LanguagesMacro.MOVE_DOWN), false, delegate
                 {
                     object value = this.m_List[index];
                     this.m_List.RemoveAt(index);
@@ -267,7 +268,7 @@ namespace FKGame
             }
             else
             {
-                menu.AddDisabledItem(new GUIContent("Move Down"));
+                menu.AddDisabledItem(new GUIContent(LanguagesMacro.MOVE_DOWN));
             }
 
             menu.AddItem(new GUIContent("Copy " + this.m_ElementType.Name), false, delegate
@@ -324,7 +325,7 @@ namespace FKGame
             if (script != null)
             {
                 menu.AddSeparator(string.Empty);
-                menu.AddItem(new GUIContent("Edit Script"), false, delegate { AssetDatabase.OpenAsset(script); });
+                menu.AddItem(new GUIContent(LanguagesMacro.EDIT_SCRIPT), false, delegate { AssetDatabase.OpenAsset(script); });
             }
             return menu;
         }

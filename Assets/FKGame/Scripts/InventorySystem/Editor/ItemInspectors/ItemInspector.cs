@@ -8,6 +8,7 @@ using UnityEngine.Events;
 using System.Linq;
 using System.Reflection;
 using System.Collections.Generic;
+using FKGame.Macro;
 
 namespace FKGame.InventorySystem
 {
@@ -127,7 +128,7 @@ namespace FKGame.InventorySystem
 				Event ev = Event.current;
 				if (ev.type == EventType.MouseDown && ev.button == 1 && rect.Contains (ev.mousePosition)) {
 					GenericMenu menu = new GenericMenu ();
-					menu.AddItem (new GUIContent ("Copy"), false, delegate {
+					menu.AddItem (new GUIContent (LanguagesMacro.COPY), false, delegate {
 						ObjectProperty[] properties = (target as Item).GetProperties ();
 						foreach (ObjectProperty property in properties) {
 							ObjectProperty clone = new ObjectProperty ();

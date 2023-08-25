@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using FKGame.Macro;
+using UnityEditor;
 //------------------------------------------------------------------------
 namespace FKGame.StatSystem
 {
@@ -11,17 +12,18 @@ namespace FKGame.StatSystem
         public System.Action onValueChange;
         private System.Action onValueChangeInternal;
 
-        [InspectorLabel("Name")]
+        [InspectorLabel(LanguagesMacro.NAME)]
         [SerializeField]
         protected string m_StatName = LanguagesMacro.NEW_STAT;
         public string Name { get => this.m_StatName; set => this.m_StatName=value; }
-
+        [InspectorLabel(LanguagesMacro.BASE_VALUE)]
         [SerializeField]
         protected float m_BaseValue;
         [SerializeField]
         protected FormulaGraph m_FormulaGraph;
+        [InspectorLabel(LanguagesMacro.MAX_VALUE)]
         [SerializeField]
-        protected float m_Cap = -1;
+        protected float m_MaxValue = -1;
         [SerializeReference]
         protected List<StatCallback> m_Callbacks = new List<StatCallback>();
 
@@ -105,8 +107,8 @@ namespace FKGame.StatSystem
                     finalValue *= 1f + mod.Value;
                 }
             }
-            if (this.m_Cap >= 0)
-                finalValue = Mathf.Clamp(finalValue, 0, this.m_Cap);
+            if (this.m_MaxValue >= 0)
+                finalValue = Mathf.Clamp(finalValue, 0, this.m_MaxValue);
             if (this.m_Value != finalValue)
             {
                 this.m_Value = finalValue;

@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using FKGame.Macro;
+using UnityEngine;
 //------------------------------------------------------------------------
 namespace FKGame
 {
@@ -7,6 +8,7 @@ namespace FKGame
     [Icon("Time")]
     public class Wait : Action
     {
+        [InspectorLabel(LanguagesMacro.WAIT_TIME)]
         [SerializeField]
         private float duration = 1f;
 

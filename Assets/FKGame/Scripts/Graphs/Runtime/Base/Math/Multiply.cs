@@ -4,7 +4,7 @@ namespace FKGame.Graphs
 {
     [System.Serializable]
     [ComponentMenu("Math/Add")]
-    [NodeStyle("Icons/Multiply",false,"Math")]
+    [NodeStyle("GraphIcons/Multiply", false,"Math")]
     public class Multiply : FlowNode
     {
         [Input(false, true)]

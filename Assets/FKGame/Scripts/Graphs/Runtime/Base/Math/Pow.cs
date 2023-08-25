@@ -4,7 +4,7 @@ namespace FKGame.Graphs
 {
     [System.Serializable]
     [ComponentMenu("Math/Pow")]
-    [NodeStyle("Icons/Pow",false, "Math")]
+    [NodeStyle("GraphIcons/Pow", false, "Math")]
     public class Pow : FlowNode
     {
         [Input(false,true)]

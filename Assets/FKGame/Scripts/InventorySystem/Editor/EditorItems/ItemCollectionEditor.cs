@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEditor;
 using System.Linq;
 using System;
+using FKGame.Macro;
 
 namespace FKGame.InventorySystem
 {
@@ -68,11 +69,9 @@ namespace FKGame.InventorySystem
 		protected override string HasConfigurationErrors(Item item)
 		{
 			if (string.IsNullOrEmpty(item.Name))
-				return "Name field can't be empty. Please enter a unique name.";
-
+				return LanguagesMacro.EMPTY_NAME;
 			if (Items.Any(x => !x.Equals(item) && x.Name == item.Name))
-				return "Duplicate name. Item names need to be unique.";
-
+				return LanguagesMacro.DUPLICATE_NAME;
 			return string.Empty;
 		}
 

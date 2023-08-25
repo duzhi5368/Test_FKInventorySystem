@@ -6,6 +6,7 @@ using System.Reflection;
 using System;
 using System.Linq;
 using System.Text.RegularExpressions;
+using FKGame.Macro;
 //------------------------------------------------------------------------
 namespace FKGame
 {
@@ -26,7 +27,7 @@ namespace FKGame
             EditorGUILayout.BeginHorizontal();
             string before = search;
 
-            Rect rect = GUILayoutUtility.GetRect(GUIContent.none, "ToolbarSeachTextField", options);
+            Rect rect = GUILayoutUtility.GetRect(GUIContent.none, "ToolbarSearchTextField", options);
             rect.x += 2f;
             rect.width -= 2f;
             Rect buttonRect = rect;
@@ -36,16 +37,15 @@ namespace FKGame
             if (!String.IsNullOrEmpty(before))
                 EditorGUIUtility.AddCursorRect(buttonRect, MouseCursor.Arrow);
 
-            if (Event.current.type == EventType.MouseUp && buttonRect.Contains(Event.current.mousePosition) || before == "Search..." && GUI.GetNameOfFocusedControl() == "SearchTextFieldFocus")
+            if (Event.current.type == EventType.MouseUp && buttonRect.Contains(Event.current.mousePosition) || before == LanguagesMacro.RESEARCH && GUI.GetNameOfFocusedControl() == "SearchTextFieldFocus")
             {
                 before = "";
                 GUI.changed = true;
                 GUI.FocusControl(null);
-
             }
             GUI.SetNextControlName("SearchTextFieldFocus");
-            GUIStyle style = new GUIStyle("ToolbarSeachTextField");
-            if (before == "Search...")
+            GUIStyle style = new GUIStyle("ToolbarSearchTextField");
+            if (before == LanguagesMacro.RESEARCH)
             {
                 style.normal.textColor = Color.gray;
                 style.hover.textColor = Color.gray;
@@ -54,7 +54,7 @@ namespace FKGame
             if(focus)
                 EditorGUI.FocusTextInControl("SearchTextFieldFocus");
 
-            GUI.Button(buttonRect, GUIContent.none, (after != "" && after != "Search...") ? "ToolbarSeachCancelButton" : "ToolbarSeachCancelButtonEmpty");
+            GUI.Button(buttonRect, GUIContent.none, (after != "" && after != LanguagesMacro.RESEARCH) ? "ToolbarSearchCancelButton" : "ToolbarSearchCancelButtonEmpty");
             EditorGUILayout.EndHorizontal();
             return after;
         }
@@ -64,7 +64,7 @@ namespace FKGame
 			string[] result = new string[]{filter,search};
 			string before = search;
 
-			Rect rect = GUILayoutUtility.GetRect (GUIContent.none,(GUIStyle)"ToolbarSeachTextFieldPopup",options);
+			Rect rect = GUILayoutUtility.GetRect(GUIContent.none,(GUIStyle)"ToolbarSearchTextFieldPopup",options);
             rect.x += 2f;
             rect.width -= 2f;
             Rect buttonRect = rect;
@@ -73,15 +73,15 @@ namespace FKGame
             if (!String.IsNullOrEmpty(before))
                 EditorGUIUtility.AddCursorRect(buttonRect, MouseCursor.Arrow);
 
-            if (Event.current.type == EventType.MouseUp && buttonRect.Contains(Event.current.mousePosition) || before == "Search..." && GUI.GetNameOfFocusedControl() == "SearchTextFieldFocus")
+            if (Event.current.type == EventType.MouseUp && buttonRect.Contains(Event.current.mousePosition) || before == LanguagesMacro.RESEARCH && GUI.GetNameOfFocusedControl() == "SearchTextFieldFocus")
             {
                 before = "";
                 GUI.changed = true;
                 GUI.FocusControl(null);
             }
 
-            GUIStyle style = new GUIStyle("ToolbarSeachTextField");
-            if (before == "Search...")
+            GUIStyle style = new GUIStyle("ToolbarSearchTextField");
+            if (before == LanguagesMacro.RESEARCH)
             {
                 style.normal.textColor = Color.gray;
                 style.hover.textColor = Color.gray;
@@ -99,9 +99,9 @@ namespace FKGame
                     before = result[0];
                 }
             }
-            string after = EditorGUI.TextField(rect, "", before, (GUIStyle)"ToolbarSeachTextFieldPopup");
+            string after = EditorGUI.TextField(rect, "", before, (GUIStyle)"ToolbarSearchTextFieldPopup");
 
-            GUI.Button(buttonRect, GUIContent.none, (after != "" && after != "Search...") ? "ToolbarSeachCancelButton" : "ToolbarSeachCancelButtonEmpty");
+            GUI.Button(buttonRect, GUIContent.none, (after != "" && after != LanguagesMacro.RESEARCH) ? "ToolbarSearchCancelButton" : "ToolbarSearchCancelButtonEmpty");
             EditorGUILayout.EndHorizontal();
             result[1] = after;
             return result;
@@ -169,7 +169,6 @@ namespace FKGame
         {
             GUILayout.EndVertical();
             GUILayout.EndHorizontal();
-
         }
 
         public static LayerMask LayerMaskField(GUIContent label, LayerMask layerMask, params GUILayoutOption[] options)

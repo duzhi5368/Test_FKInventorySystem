@@ -5,6 +5,7 @@ using System;
 using System.Linq;
 using System.IO;
 using System.Reflection;
+using FKGame.Macro;
 //------------------------------------------------------------------------
 namespace FKGame
 {
@@ -327,7 +328,7 @@ namespace FKGame
         protected virtual GenericMenu GetContextMenu(UnityEngine.Object target) {
             GenericMenu menu = new GenericMenu();
             int index = Array.IndexOf(this.m_Targets,target);
-            menu.AddItem(new GUIContent("Reset"), false, delegate {
+            menu.AddItem(new GUIContent(LanguagesMacro.RESET), false, delegate {
                 Type type = target.GetType();
                 DestroyImmediate(target);
                 this.m_Targets[index] = (this.m_Target as Component).gameObject.AddComponent(type);
@@ -345,7 +346,7 @@ namespace FKGame
 
             });
             menu.AddSeparator(string.Empty);
-            menu.AddItem(new GUIContent("Remove"), false, delegate {
+            menu.AddItem(new GUIContent(LanguagesMacro.REMOVE), false, delegate {
                 DestroyImmediate(this.m_Editors[index]);
                 this.m_Editors.RemoveAt(index);
                 DestroyImmediate(target);
@@ -363,13 +364,13 @@ namespace FKGame
                 }
             });
 
-            menu.AddItem(new GUIContent("Copy"), false, delegate {
+            menu.AddItem(new GUIContent(LanguagesMacro.COPY), false, delegate {
                 m_CopyComponent = target as Component;
             });
 
             if (m_CopyComponent != null && m_CopyComponent.GetType() == target.GetType())
             {
-                menu.AddItem(new GUIContent("Paste"), false, delegate {
+                menu.AddItem(new GUIContent(LanguagesMacro.PASTE), false, delegate {
                     UnityEditorInternal.ComponentUtility.CopyComponent(m_CopyComponent);
                     UnityEditorInternal.ComponentUtility.PasteComponentValues((Component)target);
                     if (this.m_HasPrefab && typeof(Component).IsAssignableFrom(this.m_Target.GetType()) && this.m_ApplyToPrefab)
@@ -385,7 +386,7 @@ namespace FKGame
 
             if (index > 0)
             {
-                menu.AddItem(new GUIContent("Move Up"), false, delegate
+                menu.AddItem(new GUIContent(LanguagesMacro.MOVE_UP), false, delegate
                 {
                     ArrayUtility.RemoveAt(ref this.m_Targets, index);
                     ArrayUtility.Insert(ref this.m_Targets, index - 1, target);
@@ -406,11 +407,11 @@ namespace FKGame
             }
             else
             {
-                menu.AddDisabledItem(new GUIContent("Move Up"));
+                menu.AddDisabledItem(new GUIContent(LanguagesMacro.MOVE_UP));
             }
             if (index < this.m_Targets.Length - 1)
             {
-                menu.AddItem(new GUIContent("Move Down"), false, delegate
+                menu.AddItem(new GUIContent(LanguagesMacro.MOVE_DOWN), false, delegate
                 {
                     ArrayUtility.RemoveAt(ref this.m_Targets, index);
                     ArrayUtility.Insert(ref this.m_Targets, index + 1, target);
@@ -431,7 +432,7 @@ namespace FKGame
             }
             else
             {
-                menu.AddDisabledItem(new GUIContent("Move Down"));
+                menu.AddDisabledItem(new GUIContent(LanguagesMacro.MOVE_DOWN));
             }
             return menu;
         }

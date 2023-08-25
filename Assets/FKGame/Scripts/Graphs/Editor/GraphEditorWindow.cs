@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FKGame.Macro;
+using System;
 using System.Linq;
 using UnityEditor;
 using UnityEngine;
@@ -12,7 +13,8 @@ namespace FKGame.Graphs
 		{
 			GraphEditorWindow window = EditorWindow.GetWindow<GraphEditorWindow>(false, "Graph Editor");
 			window.minSize = new Vector2(500f, 100f);
-			return window;
+            window.titleContent = new GUIContent(LanguagesMacro.GRAPH_EDITOR_TITLE);
+            return window;
 		}
 
 		[SerializeReference]

@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using FKGame.Macro;
+using UnityEngine;
 //------------------------------------------------------------------------
 namespace FKGame
 {
@@ -9,8 +10,10 @@ namespace FKGame
     {
         [SerializeField]
         private TargetType m_Target= TargetType.Player;
+        [InspectorLabel(LanguagesMacro.ANIMATOR_STATE)]
         [SerializeField]
         private string m_AnimatorState = "Pickup";
+        [InspectorLabel(LanguagesMacro.TRANSITION_DURATION)]
         [SerializeField]
         private float m_TransitionDuration = 0.2f;
 

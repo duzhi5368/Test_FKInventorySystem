@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using FKGame.Macro;
+using UnityEngine;
 //------------------------------------------------------------------------
 namespace FKGame.StatSystem
 {
@@ -6,10 +7,13 @@ namespace FKGame.StatSystem
     [System.Serializable]
     public class StatCallback
     {
+        [InspectorLabel(LanguagesMacro.VALUE_TYPE)]
         [SerializeField]
         protected ValueType m_ValueType = ValueType.CurrentValue;
+        [InspectorLabel(LanguagesMacro.CONDITION)]
         [SerializeField]
         protected ConditionType m_Condition;
+        [InspectorLabel(LanguagesMacro.VALUE)]
         [SerializeField]
         protected float m_Value = 0f;
         [SerializeField]

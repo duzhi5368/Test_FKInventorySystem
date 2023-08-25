@@ -4,7 +4,7 @@ namespace FKGame.Graphs
 {
     [System.Serializable]
     [ComponentMenu("Math/Sqrt")]
-    [NodeStyle("Icons/Sqrt",false, "Math")]
+    [NodeStyle("GraphIcons/Sqrt", false, "Math")]
     public class Sqrt : FlowNode
     {
         [Input(false,true)]

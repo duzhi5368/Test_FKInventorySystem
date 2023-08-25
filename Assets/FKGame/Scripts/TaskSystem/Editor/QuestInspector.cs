@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FKGame.Macro;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -375,7 +376,7 @@ namespace FKGame.QuestSystem
             {
                 return menu;
             }
-            menu.AddItem(new GUIContent("Reset"), false, delegate {
+            menu.AddItem(new GUIContent(LanguagesMacro.RESET), false, delegate {
 
                 object value = System.Activator.CreateInstance(list[index].GetType());
                 list[index] = value;
@@ -458,7 +459,7 @@ namespace FKGame.QuestSystem
                 if (script != null)
                 {
                     menu.AddSeparator(string.Empty);
-                    menu.AddItem(new GUIContent("Edit Script"), false, delegate { AssetDatabase.OpenAsset(script); });
+                    menu.AddItem(new GUIContent(LanguagesMacro.EDIT_SCRIPT), false, delegate { AssetDatabase.OpenAsset(script); });
                 }
             }
             return menu;

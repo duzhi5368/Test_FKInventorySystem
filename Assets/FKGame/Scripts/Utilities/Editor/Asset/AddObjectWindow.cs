@@ -1,8 +1,11 @@
-﻿using System;
+﻿using FKGame.Macro;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEditor;
 using UnityEngine;
+//------------------------------------------------------------------------
+// 编辑器中 添加一个新对象的弹出小窗口
 //------------------------------------------------------------------------
 namespace FKGame
 {
@@ -64,8 +67,8 @@ namespace FKGame
             }
 
             GUILayout.Space(5f);
-            this.m_SearchString=  SearchField(m_SearchString);
-            Header();
+            this.m_SearchString = DrawSearchField(m_SearchString);
+            DrawHeader();
 
             if (isSearching){
                 Element[] elements = GetAllElements(this.m_RootElement);
@@ -80,7 +83,7 @@ namespace FKGame
             }
         }
 
-        private void Header() {
+        private void DrawHeader() {
             GUIContent content = this.m_SelectedElement.label;
             Rect headerRect = GUILayoutUtility.GetRect(content, AddObjectWindow.m_Styles.header);
             if (GUI.Button(headerRect,content, AddObjectWindow.m_Styles.header))
@@ -244,20 +247,19 @@ namespace FKGame
             }
            root.children =  root.children.OrderByDescending(x => x.children.Count).ToList() ;
 
-            Element newScript = new Element("New script" ,"");
+            Element newScript = new Element(LanguagesMacro.NEW_SCRIPT, "");
             newScript.parent = root;
-            Element script = new Element(ObjectNames.NicifyVariableName(this.m_Type.Name), "New script." + ObjectNames.NicifyVariableName(this.m_Type.Name));
+            Element script = new Element(ObjectNames.NicifyVariableName(this.m_Type.Name), LanguagesMacro.NEW_SCRIPT + "." + ObjectNames.NicifyVariableName(this.m_Type.Name));
             script.parent = newScript;
             script.type = this.m_Type;
             script.onGUI = delegate () {
-
-                GUILayout.Label("Name");
+                GUILayout.Label(LanguagesMacro.SCRIPT_NAME);
                 GUI.SetNextControlName("AddAssetNewScript");
                 this.m_NewScriptName = GUILayout.TextField(this.m_NewScriptName);
                 GUI.FocusControl("AddAssetNewScript");
                 GUILayout.FlexibleSpace();
-                EditorGUI.BeginDisabledGroup(onCreateCallback ==null || string.IsNullOrEmpty(this.m_NewScriptName));
-                if (GUILayout.Button("Create and add") || Event.current.keyCode == KeyCode.Return)
+                EditorGUI.BeginDisabledGroup(onCreateCallback == null || string.IsNullOrEmpty(this.m_NewScriptName));
+                if (GUILayout.Button(LanguagesMacro.CREATE_SCRIPT) || Event.current.keyCode == KeyCode.Return)
                 {
                     onCreateCallback(this.m_NewScriptName);
                     Close();
@@ -287,12 +289,12 @@ namespace FKGame
             }
         }
 
-        private string SearchField(string search, params GUILayoutOption[] options)
+        private string DrawSearchField(string search, params GUILayoutOption[] options)
         {
             EditorGUILayout.BeginHorizontal();
             string before = search;
 
-            Rect rect = GUILayoutUtility.GetRect(GUIContent.none, "ToolbarSeachTextField", options);
+            Rect rect = GUILayoutUtility.GetRect(GUIContent.none, "ToolbarSearchTextField", options);
             rect.x += 2f;
             rect.width -= 2f;
             Rect buttonRect = rect;
@@ -302,7 +304,7 @@ namespace FKGame
             if (!String.IsNullOrEmpty(before))
                 EditorGUIUtility.AddCursorRect(buttonRect, MouseCursor.Arrow);
 
-            if (Event.current.type == EventType.MouseUp && buttonRect.Contains(Event.current.mousePosition) || before == "Search..." && GUI.GetNameOfFocusedControl() == "SearchTextFieldFocus")
+            if (Event.current.type == EventType.MouseUp && buttonRect.Contains(Event.current.mousePosition) || before == LanguagesMacro.RESEARCH && GUI.GetNameOfFocusedControl() == "SearchTextFieldFocus")
             {
                 before = "";
                 GUI.changed = true;
@@ -310,8 +312,8 @@ namespace FKGame
 
             }
             GUI.SetNextControlName("SearchTextFieldFocus");
-            GUIStyle style = new GUIStyle("ToolbarSeachTextField");
-            if (before == "Search...")
+            GUIStyle style = new GUIStyle("ToolbarSearchTextField");
+            if (before == LanguagesMacro.RESEARCH)
             {
                 style.normal.textColor = Color.gray;
                 style.hover.textColor = Color.gray;
@@ -319,7 +321,7 @@ namespace FKGame
             string after = EditorGUI.TextField(rect, "", before, style);
             EditorGUI.FocusTextInControl("SearchTextFieldFocus");
 
-            GUI.Button(buttonRect, GUIContent.none, (after != "" && after != "Search...") ? "ToolbarSeachCancelButton" : "ToolbarSeachCancelButtonEmpty");
+            GUI.Button(buttonRect, GUIContent.none, (after != "" && after != LanguagesMacro.RESEARCH) ? "ToolbarSearchCancelButton" : "ToolbarSearchCancelButtonEmpty");
             EditorGUILayout.EndHorizontal();
             return after;
         }

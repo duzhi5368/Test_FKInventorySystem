@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using FKGame.Macro;
+using UnityEngine;
 //------------------------------------------------------------------------
 namespace FKGame
 {
@@ -7,8 +8,10 @@ namespace FKGame
     [ComponentMenu("GameObject/Compare Tag")]
     public class CompareTag : Action, ICondition
     {
+        [InspectorLabel(LanguagesMacro.EFFECT_TARGET)]
         [SerializeField]
         private TargetType m_Target = TargetType.Self;
+        [InspectorLabel(LanguagesMacro.CHECK_TAG)]
         [SerializeField]
         private string m_Tag = "Player";
 

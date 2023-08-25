@@ -1,5 +1,8 @@
-﻿using FKGame.UIWidgets;
+﻿using FKGame.Macro;
+using FKGame.UIWidgets;
 using UnityEngine.Events;
+//------------------------------------------------------------------------
+// 属性系统 -> 设置 -> 通知
 //------------------------------------------------------------------------
 namespace FKGame.StatSystem
 {
@@ -32,7 +35,7 @@ namespace FKGame.StatSystem.Configuration
         {
             get
             {
-                return "Notification";
+                return LanguagesMacro.NOTIFICATION;
             }
         }
     }

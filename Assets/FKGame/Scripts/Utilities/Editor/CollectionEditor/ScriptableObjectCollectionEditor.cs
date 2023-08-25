@@ -73,7 +73,9 @@ namespace FKGame
 
 		protected override void Remove (T item)
 		{
-			if (EditorUtility.DisplayDialog ("Delete Item", "Are you sure you want to delete " + item.Name + "?", "Yes", "No")) {
+			if (EditorUtility.DisplayDialog (LanguagesMacro.DELETE_ITEM, 
+				LanguagesMacro.ARE_YOU_SURE_DELETE + item.Name + LanguagesMacro.QUESTION_MARK, 
+				LanguagesMacro.YES, LanguagesMacro.NO)) {
 				GameObject.DestroyImmediate (item, true);
 				AssetDatabase.SaveAssets ();
 				AssetDatabase.Refresh ();

@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using FKGame.Macro;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEditor;
@@ -10,7 +11,7 @@ namespace FKGame.InventorySystem
     {
         public static EquipmentHandlerEditor instance;
         private SerializedObject serializedObject;
-        private string searchString = "Search...";
+        private string searchString = LanguagesMacro.RESEARCH;
         private Vector2 scrollPosition;
         private int selectedIndex = -1;
         private Item selectedÍtem;
@@ -147,7 +148,7 @@ namespace FKGame.InventorySystem
       
 
         private bool MatchesSearch(Item item, string search) {
-            return searchString == "Search..." || item != null && item.Name.ToLower().Contains(search.ToLower());
+            return searchString == LanguagesMacro.RESEARCH || item != null && item.Name.ToLower().Contains(search.ToLower());
         }
 
     }

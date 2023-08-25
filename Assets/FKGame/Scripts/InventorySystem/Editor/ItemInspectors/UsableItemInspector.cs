@@ -7,6 +7,7 @@ using System.Reflection;
 using UnityEditor.AnimatedValues;
 using UnityEngine.Events;
 using System.Collections.Generic;
+using FKGame.Macro;
 
 namespace FKGame.InventorySystem
 {
@@ -212,8 +213,7 @@ namespace FKGame.InventorySystem
             if (list[index] == null) {
                 return menu;
             }
-            menu.AddItem(new GUIContent("Reset"), false, delegate {
-
+            menu.AddItem(new GUIContent(LanguagesMacro.RESET), false, delegate {
                 object value = System.Activator.CreateInstance(list[index].GetType());
                 list[index] = value;
                 EditorUtility.SetDirty(target);
@@ -223,7 +223,7 @@ namespace FKGame.InventorySystem
 
             if (index > 0)
             {
-                menu.AddItem(new GUIContent("Move Up"), false, delegate {
+                menu.AddItem(new GUIContent(LanguagesMacro.MOVE_UP), false, delegate {
                     object value = list[index];
                     list.RemoveAt(index);
                     list.Insert(index - 1, value);
@@ -232,12 +232,12 @@ namespace FKGame.InventorySystem
             }
             else
             {
-                menu.AddDisabledItem(new GUIContent("Move Up"));
+                menu.AddDisabledItem(new GUIContent(LanguagesMacro.MOVE_UP));
             }
 
             if (index < list.Count - 1)
             {
-                menu.AddItem(new GUIContent("Move Down"), false, delegate
+                menu.AddItem(new GUIContent(LanguagesMacro.MOVE_DOWN), false, delegate
                 {
                     object value = list[index];
                     list.RemoveAt(index);
@@ -247,7 +247,7 @@ namespace FKGame.InventorySystem
             }
             else
             {
-                menu.AddDisabledItem(new GUIContent("Move Down"));
+                menu.AddDisabledItem(new GUIContent(LanguagesMacro.MOVE_DOWN));
             }
 
             menu.AddItem(new GUIContent("Copy " + this.m_ElementType.Name), false, delegate {
@@ -295,7 +295,7 @@ namespace FKGame.InventorySystem
                 if (script != null)
                 {
                     menu.AddSeparator(string.Empty);
-                    menu.AddItem(new GUIContent("Edit Script"), false, delegate { AssetDatabase.OpenAsset(script); });
+                    menu.AddItem(new GUIContent(LanguagesMacro.EDIT_SCRIPT), false, delegate { AssetDatabase.OpenAsset(script); });
                 }
             }
             return menu;

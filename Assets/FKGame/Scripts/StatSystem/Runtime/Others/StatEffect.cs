@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using FKGame.Macro;
+using System.Collections.Generic;
 using UnityEngine;
 //------------------------------------------------------------------------
 namespace FKGame.StatSystem
@@ -6,10 +7,12 @@ namespace FKGame.StatSystem
     [System.Serializable]
     public class StatEffect : ScriptableObject, INameable
     {
-        [InspectorLabel("Name")]
+        [InspectorLabel(LanguagesMacro.NAME)]
         [SerializeField]
-        protected string m_StatEffectName="New Effect";
+        protected string m_StatEffectName = LanguagesMacro.NEW_EFFECT;
         public string Name { get => this.m_StatEffectName; set => this.m_StatEffectName = value; }
+
+        [InspectorLabel(LanguagesMacro.REPEAT)]
         [SerializeField]
         protected int m_Repeat = -1;
 

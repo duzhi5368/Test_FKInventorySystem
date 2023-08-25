@@ -35,6 +35,7 @@ namespace FKGame.StatSystem
             this.m_SearchString = "All";
 		}
 
+		// 点击【创建】时，遍历stat system中的全部继承Stat的类
 		protected override void Create()
 		{
 			Type[] types = AppDomain.CurrentDomain.GetAssemblies().SelectMany(assembly => assembly.GetTypes()).Where(type => typeof(Stat).IsAssignableFrom(type) && type.IsClass && !type.IsAbstract).ToArray();
@@ -72,9 +73,9 @@ namespace FKGame.StatSystem
 		protected override string HasConfigurationErrors(Stat item)
 		{
 			if (string.IsNullOrEmpty(item.Name))
-				return "Name field can't be empty. Please enter a unique name.";
-			if (Items.Any(x => !x.Equals(item) && x.Name == item.Name))
-				return "Duplicate name. Stat names need to be unique.";
+				return LanguagesMacro.EMPTY_NAME;
+            if (Items.Any(x => !x.Equals(item) && x.Name == item.Name))
+				return LanguagesMacro.DUPLICATE_NAME;
 			return string.Empty;
 		}
 

@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using FKGame.Macro;
+//------------------------------------------------------------------------
+// 属性系统 -> 设置 -> 默认
 //------------------------------------------------------------------------
 namespace FKGame.StatSystem.Configuration
 {
@@ -9,10 +11,10 @@ namespace FKGame.StatSystem.Configuration
         {
             get
             {
-                return "Default";
+                return LanguagesMacro.DEFAULT;
             }
         }
-        [Header("Debug")]
+        [InspectorLabel("显示DEBUG信息", "是否显示DEBUG信息")]
         public bool debugMessages = true;
     }
 }

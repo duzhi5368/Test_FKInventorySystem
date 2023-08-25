@@ -4,7 +4,7 @@ namespace FKGame.Graphs
 {
     [System.Serializable]
     [ComponentMenu("Math/Add")]
-    [NodeStyle("Icons/Divide",false,"Math")]
+    [NodeStyle("GraphIcons/Divide", false,"Math")]
     public class Divide : FlowNode
     {
         [Input(false,true)]

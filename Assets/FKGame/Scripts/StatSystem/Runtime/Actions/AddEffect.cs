@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using FKGame.Macro;
+using UnityEngine;
 //------------------------------------------------------------------------
 namespace FKGame.StatSystem
 {
@@ -7,8 +8,10 @@ namespace FKGame.StatSystem
     [System.Serializable]
     public class AddEffect : Action
     {
+        [InspectorLabel(LanguagesMacro.EFFECT_TARGET)]
         [SerializeField]
         private TargetType m_Target = TargetType.Player;
+        [InspectorLabel(LanguagesMacro.EFFECT_TYPE)]
         [SerializeField]
         protected StatEffect m_Effect;
         private StatsHandler m_Handler;

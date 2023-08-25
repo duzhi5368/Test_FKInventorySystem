@@ -1,24 +1,33 @@
-﻿using UnityEngine;
+﻿using FKGame.Macro;
+using UnityEngine;
 //------------------------------------------------------------------------
 namespace FKGame
 {
     [System.Serializable]
     public class ArgumentVariable
     {
+        [InspectorLabel(LanguagesMacro.BOOL_VALUE)]
         [SerializeField]
         private bool m_BoolValue = false;
+        [InspectorLabel(LanguagesMacro.INT_VALUE)]
         [SerializeField]
         private int m_IntValue = 0;
+        [InspectorLabel(LanguagesMacro.FLOAT_VALUE)]
         [SerializeField]
         private float m_FloatValue = 0f;
+        [InspectorLabel(LanguagesMacro.STRING_VALUE)]
         [SerializeField]
         private string m_StringValue = string.Empty;
+        [InspectorLabel(LanguagesMacro.VECTOR2_VALUE)]
         [SerializeField]
         private Vector2 m_Vector2Value = Vector2.zero;
+        [InspectorLabel(LanguagesMacro.VECTOR3_VALUE)]
         [SerializeField]
         private Vector3 m_Vector3Value= Vector3.zero;
+        [InspectorLabel(LanguagesMacro.COLOR_VALUE)]
         [SerializeField]
         private Color m_ColorValue=Color.white;
+        [InspectorLabel(LanguagesMacro.OBJECT_VALUE)]
         [SerializeField]
         private Object m_ObjectValue = null;
 

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FKGame.Macro;
+using System;
 using System.Collections;
 using UnityEditor;
 using UnityEngine;
@@ -9,13 +10,18 @@ namespace FKGame
     {
         protected SerializedProperty m_Script;
         protected SerializedProperty m_Actions;
-        protected virtual void OnEnable() {
-            if (target == null) return;
+        protected virtual void OnEnable() 
+        {
+            if (target == null) 
+                return;
             this.m_Script = serializedObject.FindProperty("m_Script");
             this.m_Actions = serializedObject.FindProperty("m_Actions");
         }
         public override void OnInspectorGUI()
         {
+            if (target == null)
+                return;
+
             EditorGUI.BeginDisabledGroup(true);
             EditorGUILayout.PropertyField(this.m_Script);
             EditorGUI.EndDisabledGroup();
@@ -90,7 +96,7 @@ namespace FKGame
         protected void DoActionAddButton()
         {
             GUIStyle buttonStyle = new GUIStyle("AC Button");
-            GUIContent buttonContent = new GUIContent("Add Action");
+            GUIContent buttonContent = new GUIContent(LanguagesMacro.ADD_ACTION);
             Rect buttonRect = GUILayoutUtility.GetRect(buttonContent, buttonStyle, GUILayout.ExpandWidth(true));
             buttonRect.x = buttonRect.width * 0.5f - buttonStyle.fixedWidth * 0.5f;
             buttonRect.width = buttonStyle.fixedWidth;
@@ -108,14 +114,14 @@ namespace FKGame
                 return menu;
             }
             Type elementType = list[index].GetType();
-            menu.AddItem(new GUIContent("Reset"), false, delegate {
+            menu.AddItem(new GUIContent(LanguagesMacro.RESET), false, delegate {
 
                 object value = System.Activator.CreateInstance(list[index].GetType());
                 list[index] = value;
                 EditorUtility.SetDirty(target);
             });
             menu.AddSeparator(string.Empty);
-            menu.AddItem(new GUIContent("Remove"), false, delegate {
+            menu.AddItem(new GUIContent(LanguagesMacro.REMOVE), false, delegate {
                 list.RemoveAt(index);
                 EditorUtility.SetDirty(target);
 
@@ -123,7 +129,7 @@ namespace FKGame
 
             if (index > 0)
             {
-                menu.AddItem(new GUIContent("Move Up"), false, delegate {
+                menu.AddItem(new GUIContent(LanguagesMacro.MOVE_UP), false, delegate {
                     object value = list[index];
                     list.RemoveAt(index);
                     list.Insert(index - 1, value);
@@ -132,12 +138,12 @@ namespace FKGame
             }
             else
             {
-                menu.AddDisabledItem(new GUIContent("Move Up"));
+                menu.AddDisabledItem(new GUIContent(LanguagesMacro.MOVE_UP));
             }
 
             if (index < list.Count - 1)
             {
-                menu.AddItem(new GUIContent("Move Down"), false, delegate
+                menu.AddItem(new GUIContent(LanguagesMacro.MOVE_DOWN), false, delegate
                 {
                     object value = list[index];
                     list.RemoveAt(index);
@@ -147,7 +153,7 @@ namespace FKGame
             }
             else
             {
-                menu.AddDisabledItem(new GUIContent("Move Down"));
+                menu.AddDisabledItem(new GUIContent(LanguagesMacro.MOVE_DOWN));
             }
 
             if (list[index] != null)
@@ -156,7 +162,7 @@ namespace FKGame
                 if (script != null)
                 {
                     menu.AddSeparator(string.Empty);
-                    menu.AddItem(new GUIContent("Edit Script"), false, delegate { AssetDatabase.OpenAsset(script); });
+                    menu.AddItem(new GUIContent(LanguagesMacro.EDIT_SCRIPT), false, delegate { AssetDatabase.OpenAsset(script); });
                 }
             }
             return menu;

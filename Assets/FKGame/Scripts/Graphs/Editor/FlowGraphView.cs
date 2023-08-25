@@ -3,6 +3,7 @@ using UnityEngine;
 using System.Linq;
 using System.Reflection;
 using System;
+using FKGame.Macro;
 //------------------------------------------------------------------------
 namespace FKGame.Graphs
 {
@@ -136,8 +137,14 @@ namespace FKGame.Graphs
         private void DrawNodeHeader(Rect rect, FlowNode node, bool selected)
         {
             NodeStyleAttribute nodeStyle = node.GetType().GetCustomAttribute<NodeStyleAttribute>();
-            if (nodeStyle == null) { nodeStyle = new NodeStyleAttribute(true); }
-            if (!nodeStyle.displayHeader){return;}
+            if (nodeStyle == null) 
+            { 
+                nodeStyle = new NodeStyleAttribute(true); 
+            }
+            if (!nodeStyle.displayHeader)
+            {
+                return;
+            }
 
             Styles.nodeHeaderText.fontStyle = selected ? FontStyle.Bold : FontStyle.Normal;
             Texture2D icon = Resources.Load<Texture2D>(nodeStyle.iconPath);
@@ -145,7 +152,7 @@ namespace FKGame.Graphs
             {
                 GUI.Label(new Rect(rect.x + NODE_CONTENT_OFFSET, rect.y + NODE_HEADER_HEIGHT * 0.5f - icon.height * 0.5f, icon.width, icon.height), icon);
             }
-
+            
             GUI.Label(new Rect(rect.x + NODE_CONTENT_OFFSET + (icon != null ? icon.width + 3 : 0), rect.y, rect.width, NODE_HEADER_HEIGHT), node.name, Styles.nodeHeaderText);
             if (Event.current.type == EventType.Repaint)
             {
@@ -395,7 +402,7 @@ namespace FKGame.Graphs
         {
             GenericMenu menu = new GenericMenu();
 
-            menu.AddItem(new GUIContent("Add Node"), false, delegate ()
+            menu.AddItem(new GUIContent(LanguagesMacro.GRAPH_ADD_NODE), false, delegate ()
             {
                 Vector2 pos = (position + this.m_GraphOffset) * this.m_GraphZoom + this.m_GraphViewArea.position;
                 this.m_CreateNodePosition = position;
@@ -404,14 +411,14 @@ namespace FKGame.Graphs
 
             if (!string.IsNullOrEmpty(this.m_Copy))
             {
-                menu.AddItem(new GUIContent("Paste Nodes"), false, delegate {
+                menu.AddItem(new GUIContent(LanguagesMacro.GRAPH_PASTE_NODE), false, delegate {
                     this.PasteNodes(position);
                 });
 
             }
             else
             {
-                menu.AddDisabledItem(new GUIContent("Paste Nodes"));
+                menu.AddDisabledItem(new GUIContent(LanguagesMacro.GRAPH_PASTE_NODE));
             }
             menu.ShowAsContext();
         }
@@ -423,23 +430,22 @@ namespace FKGame.Graphs
             // return;
             }
             GenericMenu menu = new GenericMenu();
-            string s = (this.m_Selection.Count > 1 ? "s" : "");
-            menu.AddItem(new GUIContent("Copy Node" + s), false, new GenericMenu.MenuFunction(this.CopyNodes));
+            menu.AddItem(new GUIContent(LanguagesMacro.GRAPH_COPY_NODE), false, new GenericMenu.MenuFunction(this.CopyNodes));
             if (!string.IsNullOrEmpty(this.m_Copy))
             {
-                menu.AddItem(new GUIContent("Paste Node" + s), false, delegate () {
+                menu.AddItem(new GUIContent(LanguagesMacro.GRAPH_PASTE_NODE), false, delegate () {
                     this.PasteNodes(position);
                 });
             }
             else
             {
-                menu.AddDisabledItem(new GUIContent("Paste Node" + s));
+                menu.AddDisabledItem(new GUIContent(LanguagesMacro.GRAPH_PASTE_NODE));
             }
-            menu.AddItem(new GUIContent("Cut Node" + s), false, delegate {
+            menu.AddItem(new GUIContent(LanguagesMacro.GRAPH_CUT_NODE), false, delegate {
                 SaveSelection();
                 this.CutNodes();
             });
-            menu.AddItem(new GUIContent("Delete Node" + s), false, delegate {
+            menu.AddItem(new GUIContent(LanguagesMacro.GRAPH_DELETE_NODE), false, delegate {
                 SaveSelection();
                 this.DeleteNodes();
             });
@@ -529,7 +535,7 @@ namespace FKGame.Graphs
 
             static Styles()
             {
-                skin = Resources.Load<GUISkin>("FormulaSkin");
+                skin = Resources.Load<GUISkin>(ResourcesMacro.DEFAULT_GUISKIN_FILE_NAME);
                 nodeNormal = skin.GetStyle("NodeNormal");
                 nodeActive = skin.GetStyle("NodeActive");
                 nodeSelected = skin.GetStyle("NodeSelected");

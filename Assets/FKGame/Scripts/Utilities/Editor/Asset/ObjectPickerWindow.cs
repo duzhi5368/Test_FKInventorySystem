@@ -1,8 +1,12 @@
-﻿using System;
+﻿using FKGame.Macro;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEditor;
 using UnityEngine;
+//------------------------------------------------------------------------
+// 对象选择面板
+// 由一个 搜索面板，一个 可选择列表， 一个创建按钮 组成。
 //------------------------------------------------------------------------
 namespace FKGame
 {
@@ -66,25 +70,24 @@ namespace FKGame
 
         private void OnGUI()
         {
-            if (ObjectPickerWindow.m_Styles == null)
+            if (m_Styles == null)
             {
-                ObjectPickerWindow.m_Styles = new ObjectPickerWindow.Styles();
+                m_Styles = new Styles();
             }
-            GUILayout.Space(5f);
-            this.m_SearchString = SearchField(m_SearchString);
-            Header();
-
-            DrawSelectableObjects();
+            GUILayout.Space(5.0f);
+            this.m_SearchString = DrawSearchField(m_SearchString);  // 绘制搜索栏
+            DrawHeader();                                           // 绘制标题
+            DrawSelectableObjects();                                // 绘制可选择对象
 
             if (Event.current.type == EventType.Repaint)
             {
-                ObjectPickerWindow.m_Styles.background.Draw(new Rect(0, 0, position.width, position.height), false, false, false, false);
+                m_Styles.background.Draw(new Rect(0, 0, position.width, position.height), false, false, false, false);
             }
         }
 
-        private void Header()
+        private void DrawHeader()
         {
-            GUIContent content = new GUIContent(this.m_Root==null?"Select " +ObjectNames.NicifyVariableName(this.m_Type.Name):this.m_Root.name);
+            GUIContent content = new GUIContent(this.m_Root == null ? LanguagesMacro.SELECT + " " + ObjectNames.NicifyVariableName(this.m_Type.Name):this.m_Root.name);
             Rect headerRect = GUILayoutUtility.GetRect(content, ObjectPickerWindow.m_Styles.header);
             if (GUI.Button(headerRect, content, ObjectPickerWindow.m_Styles.header))
             {
@@ -203,12 +206,12 @@ namespace FKGame
             return true;
         }
 
-        private string SearchField(string search, params GUILayoutOption[] options)
+        private string DrawSearchField(string search, params GUILayoutOption[] options)
         {
             EditorGUILayout.BeginHorizontal();
             string before = search;
 
-            Rect rect = GUILayoutUtility.GetRect(GUIContent.none, "ToolbarSeachTextField", options);
+            Rect rect = GUILayoutUtility.GetRect(GUIContent.none, "ToolbarSearchTextField", options);
             rect.x += 2f;
             rect.width -= 2f;
             Rect buttonRect = rect;
@@ -218,16 +221,16 @@ namespace FKGame
             if (!string.IsNullOrEmpty(before))
                 EditorGUIUtility.AddCursorRect(buttonRect, MouseCursor.Arrow);
 
-            if (Event.current.type == EventType.MouseUp && buttonRect.Contains(Event.current.mousePosition) || before == "Search..." && GUI.GetNameOfFocusedControl() == "SearchTextFieldFocus")
+            if (Event.current.type == EventType.MouseUp && buttonRect.Contains(Event.current.mousePosition) 
+                || before == LanguagesMacro.RESEARCH && GUI.GetNameOfFocusedControl() == "SearchTextFieldFocus")
             {
                 before = "";
                 GUI.changed = true;
                 GUI.FocusControl(null);
-
             }
             GUI.SetNextControlName("SearchTextFieldFocus");
-            GUIStyle style = new GUIStyle("ToolbarSeachTextField");
-            if (before == "Search...")
+            GUIStyle style = new GUIStyle("ToolbarSearchTextField");
+            if (before == LanguagesMacro.RESEARCH)
             {
                 style.normal.textColor = Color.gray;
                 style.hover.textColor = Color.gray;
@@ -235,7 +238,9 @@ namespace FKGame
             string after = EditorGUI.TextField(rect, "", before, style);
             EditorGUI.FocusTextInControl("SearchTextFieldFocus");
 
-            GUI.Button(buttonRect, GUIContent.none, (after != "" && after != "Search...") ? "ToolbarSeachCancelButton" : "ToolbarSeachCancelButtonEmpty");
+            string strStyle = (after != "" && after != LanguagesMacro.RESEARCH) ? "ToolbarSearchCancelButton" : "ToolbarSearchCancelButtonEmpty";
+            GUIStyle guiStyle = (GUIStyle)strStyle;
+            GUI.Button(buttonRect, GUIContent.none, guiStyle);
             EditorGUILayout.EndHorizontal();
             return after;
         }

@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEditor;
+using FKGame.Macro;
 //------------------------------------------------------------------------
 namespace FKGame.StatSystem
 {
@@ -12,7 +13,7 @@ namespace FKGame.StatSystem
 			StatSystemEditor editor = (objArray.Length <= 0 ? ScriptableObject.CreateInstance<StatSystemEditor>() : objArray[0]);
 			editor.hideFlags = HideFlags.HideAndDontSave;
 			editor.minSize = new Vector2(690, 300);
-			editor.titleContent = new GUIContent("自由骑士属性系统");
+			editor.titleContent = new GUIContent(LanguagesMacro.STAT_EDITOR_TITLE);
 			editor.Show();
 		}
 

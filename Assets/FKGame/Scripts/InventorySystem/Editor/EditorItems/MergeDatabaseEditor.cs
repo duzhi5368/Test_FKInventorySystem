@@ -1,5 +1,6 @@
 ﻿using FKGame.InventorySystem.ItemActions;
 using FKGame.InventorySystem.Restrictions;
+using FKGame.Macro;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -267,7 +268,7 @@ namespace FKGame.InventorySystem
 
 			if (GUILayout.Button(current != null ? current.name : "Null", EditorStyles.objectField))
 			{
-				string searchString = "Search...";
+				string searchString = LanguagesMacro.RESEARCH;
 				ItemDatabase[] databases = EditorTools.FindAssets<ItemDatabase>();
 
 				UtilityInstanceWindow.ShowWindow("Select Database", delegate ()
@@ -276,7 +277,7 @@ namespace FKGame.InventorySystem
 
 					for (int i = 0; i < databases.Length; i++)
 					{
-						if (!string.IsNullOrEmpty(searchString) && !searchString.Equals("Search...") && !databases[i].name.Contains(searchString))
+						if (!string.IsNullOrEmpty(searchString) && !searchString.Equals(LanguagesMacro.RESEARCH) && !databases[i].name.Contains(searchString))
 						{
 							continue;
 						}

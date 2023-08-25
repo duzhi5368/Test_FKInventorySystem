@@ -4,7 +4,7 @@ namespace FKGame.Graphs
 {
     [System.Serializable]
     [ComponentMenu("Math/Add")]
-    [NodeStyle("Icons/Add", false, "Math")]
+    [NodeStyle("GraphIcons/Add", false, "Math")]
     public class Add : FlowNode
     {
         [Input(false,true)]

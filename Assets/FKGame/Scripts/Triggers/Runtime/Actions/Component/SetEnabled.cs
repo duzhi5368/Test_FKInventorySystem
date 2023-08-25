@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using FKGame.Macro;
+using UnityEngine;
 //------------------------------------------------------------------------
 namespace FKGame
 {
@@ -7,12 +8,15 @@ namespace FKGame
     [ComponentMenu("Component/Set Enabled")]
     public class SetEnabled : Action
     {
+        [InspectorLabel(LanguagesMacro.EFFECT_TARGET)]
         [SerializeField]
         private TargetType m_Target = TargetType.Player;
+        [InspectorLabel(LanguagesMacro.COMPONENT_NAME)]
         [SerializeField]
-        private string m_ComponentName=string.Empty;
+        private string m_ComponentName = string.Empty;
+        [InspectorLabel(LanguagesMacro.SET_ENABLE)]
         [SerializeField]
-        private bool m_Enable=false;
+        private bool m_Enable = false;
 
         private Behaviour m_Component;
         private bool m_IsEnabled;

@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using FKGame.Macro;
+using UnityEngine;
 //------------------------------------------------------------------------
 namespace FKGame
 {
@@ -7,12 +8,15 @@ namespace FKGame
     [ComponentMenu("GameObject/SendMessage")]
     public class SendMessage : Action
     {
+        [InspectorLabel(LanguagesMacro.EFFECT_TARGET)]
         [SerializeField]
         private TargetType m_Target = TargetType.Player;
+        [InspectorLabel(LanguagesMacro.METHOD_NAME)]
         [SerializeField]
         private string methodName = string.Empty;
         [SerializeField]
         private ArgumentVariable m_Argument = null;
+        [InspectorLabel(LanguagesMacro.SEND_MESSAGE_OPTIONS)]
         [SerializeField]
         private SendMessageOptions m_Options = SendMessageOptions.DontRequireReceiver;
 

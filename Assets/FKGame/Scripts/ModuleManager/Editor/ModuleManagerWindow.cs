@@ -7,6 +7,7 @@ using UnityEngine;
 using UnityEngine.Networking;
 using System.Linq;
 using UnityEngine.Events;
+using FKGame.Macro;
 
 namespace FKGame
 {
@@ -20,7 +21,7 @@ namespace FKGame
         private static string m_ModuleTxtPath = "https://deviongames.com/modules/modules.txt";
         private Rect m_SidebarRect = new Rect(0, 30, 280, 1000);
         private Vector2 m_ScrollPosition;
-        private string m_SearchString = "Search...";
+        private string m_SearchString = LanguagesMacro.RESEARCH;
         private Vector2 m_SidebarScrollPosition;
         private ModuleItem selectedItem;
         private ModuleItem[] m_Items= new ModuleItem[0];
@@ -463,27 +464,27 @@ namespace FKGame
             return combinedPath;
         }
 
-       /* private static string SearchField(string search, params GUILayoutOption[] options)
-        {
-            GUILayout.BeginHorizontal();
-            string before = search;
-            string after = EditorGUILayout.TextField("", before, "SearchTextField", options);
+        /* private static string SearchField(string search, params GUILayoutOption[] options)
+         {
+             GUILayout.BeginHorizontal();
+             string before = search;
+             string after = EditorGUILayout.TextField("", before, "SearchTextField", options);
 
-            if (GUILayout.Button("", "SearchCancelButton", GUILayout.Width(18f)))
-            {
-                after = "Search...";
-                GUIUtility.keyboardControl = 0;
-            }
-            GUILayout.EndHorizontal();
-            return after;
-        }*/
+             if (GUILayout.Button("", "SearchCancelButton", GUILayout.Width(18f)))
+             {
+                 after = LanguagesMacro.RESEARCH;
+                 GUIUtility.keyboardControl = 0;
+             }
+             GUILayout.EndHorizontal();
+             return after;
+         }*/
 
         private static string SearchField(string search, params GUILayoutOption[] options)
         {
             EditorGUILayout.BeginHorizontal();
             string before = search;
 
-            Rect rect = GUILayoutUtility.GetRect(GUIContent.none, "ToolbarSeachTextField", options);
+            Rect rect = GUILayoutUtility.GetRect(GUIContent.none, "ToolbarSearchTextField", options);
             rect.x += 2f;
             rect.width -= 2f;
             Rect buttonRect = rect;
@@ -493,7 +494,7 @@ namespace FKGame
             if (!String.IsNullOrEmpty(before))
                 EditorGUIUtility.AddCursorRect(buttonRect, MouseCursor.Arrow);
 
-            if (Event.current.type == EventType.MouseUp && buttonRect.Contains(Event.current.mousePosition) || before == "Search..." && GUI.GetNameOfFocusedControl() == "SearchTextFieldFocus")
+            if (Event.current.type == EventType.MouseUp && buttonRect.Contains(Event.current.mousePosition) || before == LanguagesMacro.RESEARCH && GUI.GetNameOfFocusedControl() == "SearchTextFieldFocus")
             {
                 before = "";
                 GUI.changed = true;
@@ -501,8 +502,8 @@ namespace FKGame
 
             }
             GUI.SetNextControlName("SearchTextFieldFocus");
-            GUIStyle style = new GUIStyle("ToolbarSeachTextField");
-            if (before == "Search...")
+            GUIStyle style = new GUIStyle("ToolbarSearchTextField");
+            if (before == LanguagesMacro.RESEARCH)
             {
                 style.normal.textColor = Color.gray;
                 style.hover.textColor = Color.gray;
@@ -510,7 +511,7 @@ namespace FKGame
             string after = EditorGUI.TextField(rect, "", before, style);
            // EditorGUI.FocusTextInControl("SearchTextFieldFocus");
 
-            GUI.Button(buttonRect, GUIContent.none, (after != "" && after != "Search...") ? "ToolbarSeachCancelButton" : "ToolbarSeachCancelButtonEmpty");
+            GUI.Button(buttonRect, GUIContent.none, (after != "" && after != LanguagesMacro.RESEARCH) ? "ToolbarSearchCancelButton" : "ToolbarSearchCancelButtonEmpty");
             EditorGUILayout.EndHorizontal();
             return after;
         }

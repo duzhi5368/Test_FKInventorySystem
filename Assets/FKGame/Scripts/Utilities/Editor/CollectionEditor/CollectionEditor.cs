@@ -280,13 +280,14 @@ namespace FKGame
 
 		protected virtual void AddContextItem(GenericMenu menu) { }
 
-		protected virtual void DrawContent(Rect position) {
-			
+		protected virtual void DrawContent(Rect position) 
+		{
 			GUILayout.BeginArea(position, "", Styles.centerPane);
-			m_ScrollPosition = GUILayout.BeginScrollView(m_ScrollPosition, UseInspectorDefaultMargins?EditorStyles.inspectorDefaultMargins: GUIStyle.none);
+			m_ScrollPosition = GUILayout.BeginScrollView(m_ScrollPosition, 
+				UseInspectorDefaultMargins ? EditorStyles.inspectorDefaultMargins: GUIStyle.none);
 			if (selectedItem != null)
 			{
-				DrawItem(selectedItem);
+                DrawItem(selectedItem);
 			}
 			GUILayout.EndScrollView();
 			GUILayout.EndArea();

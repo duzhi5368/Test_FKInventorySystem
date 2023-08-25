@@ -5,6 +5,8 @@ using System.Linq;
 using System.Reflection;
 using UnityEngine;
 //------------------------------------------------------------------------
+// 图表编辑
+//------------------------------------------------------------------------
 namespace FKGame.Graphs
 {
 	public static class GraphUtility

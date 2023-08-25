@@ -6,6 +6,7 @@ using System.Linq;
 using System;
 using System.Reflection;
 using System.IO;
+using FKGame.Macro;
 
 namespace FKGame.InventorySystem
 {
@@ -13,7 +14,7 @@ namespace FKGame.InventorySystem
     {
 
         private static VisibleItemsEditor.Styles m_Styles;
-        private string m_SearchString = "Search...";
+        private string m_SearchString = LanguagesMacro.RESEARCH;
         private int m_SelectedIndex = -1;
         private Item m_SelectedItem;
 
@@ -179,7 +180,7 @@ namespace FKGame.InventorySystem
             EditorGUILayout.BeginHorizontal();
             string before = search;
 
-            Rect rect = GUILayoutUtility.GetRect(GUIContent.none, "ToolbarSeachTextField", options);
+            Rect rect = GUILayoutUtility.GetRect(GUIContent.none, "ToolbarSearchTextField", options);
             rect.x += 2f;
             rect.width -= 2f;
             Rect buttonRect = rect;
@@ -189,7 +190,7 @@ namespace FKGame.InventorySystem
             if (!String.IsNullOrEmpty(before))
                 EditorGUIUtility.AddCursorRect(buttonRect, MouseCursor.Arrow);
 
-            if (Event.current.type == EventType.MouseUp && buttonRect.Contains(Event.current.mousePosition) || before == "Search..." && GUI.GetNameOfFocusedControl() == "SearchTextFieldFocus")
+            if (Event.current.type == EventType.MouseUp && buttonRect.Contains(Event.current.mousePosition) || before == LanguagesMacro.RESEARCH && GUI.GetNameOfFocusedControl() == "SearchTextFieldFocus")
             {
                 before = "";
                 GUI.changed = true;
@@ -198,8 +199,8 @@ namespace FKGame.InventorySystem
             }
 
                 GUI.SetNextControlName("SearchTextFieldFocus");
-            GUIStyle style = new GUIStyle("ToolbarSeachTextField");
-            if (before == "Search...")
+            GUIStyle style = new GUIStyle("ToolbarSearchTextField");
+            if (before == LanguagesMacro.RESEARCH)
             {
                 style.normal.textColor = Color.gray;
                 style.hover.textColor = Color.gray;
@@ -208,7 +209,7 @@ namespace FKGame.InventorySystem
             if(this.m_SelectedIndex == -1)
             EditorGUI.FocusTextInControl("SearchTextFieldFocus");
 
-            GUI.Button(buttonRect, GUIContent.none, (after != "" && after != "Search...") ? "ToolbarSeachCancelButton" : "ToolbarSeachCancelButtonEmpty");
+            GUI.Button(buttonRect, GUIContent.none, (after != "" && after != LanguagesMacro.RESEARCH) ? "ToolbarSearchCancelButton" : "ToolbarSearchCancelButtonEmpty");
             EditorGUILayout.EndHorizontal();
             return after;
         }
