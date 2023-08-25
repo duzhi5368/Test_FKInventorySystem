@@ -1,19 +1,18 @@
 ﻿using UnityEngine;
 using UnityEditor;
-using System.Collections;
 using System.Collections.Generic;
-
+//------------------------------------------------------------------------
 namespace FKGame.InventorySystem{
 	[CustomPropertyDrawer(typeof(ItemGroup))]
-	public class ItemGroupPickerDrawer : PickerDrawer<ItemGroup> {
-
-		protected override List<ItemGroup> GetItems(ItemDatabase database) {
+	public class ItemGroupPickerDrawer : PickerDrawer<ItemGroup> 
+    {
+		protected override List<ItemGroup> GetItems(ItemDatabase database) 
+        {
             return database.itemGroups;
 		}
 
         protected override void DoSelection(Rect buttonRect, SerializedProperty property, GUIContent label, ItemGroup current)
         {
-
             GUIStyle buttonStyle = EditorStyles.objectField;
             GUIContent buttonContent = new GUIContent(current != null ? current.Name : "Database");
             if (GUI.Button(buttonRect, buttonContent, buttonStyle))
@@ -24,9 +23,7 @@ namespace FKGame.InventorySystem{
                         property.objectReferenceValue = obj;
                         property.serializedObject.ApplyModifiedProperties();
                     },
-                    () => {
-
-                    });
+                    () => {});
             }
         }
     }

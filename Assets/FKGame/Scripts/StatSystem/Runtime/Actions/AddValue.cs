@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using FKGame.Macro;
+using UnityEngine;
 //------------------------------------------------------------------------
 namespace FKGame.StatSystem
 {
@@ -10,7 +11,7 @@ namespace FKGame.StatSystem
         [SerializeField]
         private TargetType m_Target = TargetType.Player;
 
-        [InspectorLabel("Stat")]
+        [InspectorLabel(LanguagesMacro.STAT)]
         [SerializeField]
         protected string m_StatName="Vitality";
         [SerializeField]

@@ -1,12 +1,10 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
-
+//------------------------------------------------------------------------
 namespace FKGame.InventorySystem
 {
     public abstract class Weapon : VisibleItem
     {
-
         public override string[] Callbacks
         {
             get
@@ -44,8 +42,6 @@ namespace FKGame.InventorySystem
         protected StartType m_StartType;
         [SerializeField]
         protected StopType m_StopType;
-        
-
 
         [Header("Animator IK:")]
         [SerializeField]
@@ -64,8 +60,6 @@ namespace FKGame.InventorySystem
         protected float m_LeftHandIKSpeed = 1f;
         protected float m_LeftHandIKLerp = 0f;
 
-
-
         [Header("Animator States:")]
         [SerializeField]
         public int m_ItemID = 0;
@@ -73,8 +67,6 @@ namespace FKGame.InventorySystem
         protected string m_IdleState="Movement";
         [SerializeField]
         protected string m_UseState="Sword Slash";
-
-        
 
         protected bool m_InUse;
         protected float m_UseClipLength;
@@ -97,10 +89,10 @@ namespace FKGame.InventorySystem
         public override void OnItemUnEquip(Item item)
         {
             base.OnItemUnEquip(item);
-           // if (this.m_ActivationType == ActivationType.Automatic)
-            //{
+            if (this.m_ActivationType == ActivationType.Automatic)
+            {
                 IsActive = false;
-            //}
+            }
         }
 
         protected override void Update()
@@ -109,13 +101,10 @@ namespace FKGame.InventorySystem
                 this.m_CharacterAnimator.SetBool("Item Use",false);
                 return; 
             }
- 
             switch (this.m_ActivationType)
             {
                 case ActivationType.Button:
-
                     IsActive = Input.GetButton(this.m_ActivationInputName);
-
                     break;
                 case ActivationType.Toggle:
                     if (Input.GetButtonDown(this.m_ActivationInputName))
@@ -124,10 +113,10 @@ namespace FKGame.InventorySystem
                     }
                     break;
             }
-            if (!IsActive) { return; }
-
-            if (string.IsNullOrEmpty(this.m_UseInputName)) return;
-
+            if (!IsActive)
+                return;
+            if (string.IsNullOrEmpty(this.m_UseInputName)) 
+                return;
             if (this.m_StartType != StartType.Down || !Input.GetButtonDown(this.m_UseInputName))
             {
                 if (this.m_StopType == StopType.Up && (Input.GetButtonUp(this.m_UseInputName) || !Input.GetButton(this.m_UseInputName)))
@@ -139,14 +128,10 @@ namespace FKGame.InventorySystem
             {
                 this.TryStartUse();
             }
-
             if (this.m_StartType == StartType.Press && Input.GetButton(this.m_UseInputName))
             {
                 this.TryStartUse();
             }
-
-           
-
             if (!IsActive  || !this.m_CharacterAnimator.GetCurrentAnimatorStateInfo(0).IsName(this.m_IdleState) || this.m_InUse)
             {
                 m_RightHandIKLerp = 0f;
@@ -157,7 +142,8 @@ namespace FKGame.InventorySystem
             m_LeftHandIKLerp = Mathf.Lerp(m_LeftHandIKLerp, 1f, Time.deltaTime*this.m_LeftHandIKSpeed);
         }
 
-        private void TryStartUse() {
+        private void TryStartUse() 
+        {
             if (!this.m_InUse && CanUse()) {
                 StartUse();
             }
@@ -165,8 +151,8 @@ namespace FKGame.InventorySystem
                 this.m_CharacterAnimator.SetBool("Item Use", true);
         }
 
-        protected virtual bool CanUse() {
-
+        protected virtual bool CanUse() 
+        {
             int layers = this.m_CharacterAnimator.layerCount;
             for (int i = 0; i < layers; i++) {
                 if (this.m_CharacterAnimator.HasState(i, Animator.StringToHash(this.m_UseState)) && 
@@ -174,21 +160,21 @@ namespace FKGame.InventorySystem
                     return false;
                 }
             }
-
-            if (!this.m_CharacterAnimator.GetCurrentAnimatorStateInfo(GetUseLayer()).IsTag("Interruptable")) return false;
+            if (!this.m_CharacterAnimator.GetCurrentAnimatorStateInfo(GetUseLayer()).IsTag("Interruptable")) 
+                return false;
 
             Ray  ray = this.m_Camera.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
-            if (Physics.Raycast(ray, out hit)) {
+            if (Physics.Raycast(ray, out hit)) 
+            {
                 BaseTrigger trigger = hit.collider.GetComponentInParent<BaseTrigger>();
-
                 return trigger == null || !trigger.enabled;
             }
-
             return true; 
         }
 
-        protected int GetUseLayer() {
+        protected int GetUseLayer()
+        {
             int layers = this.m_CharacterAnimator.layerCount;
             for (int i = 0; i < layers; i++)
             {
@@ -200,13 +186,17 @@ namespace FKGame.InventorySystem
             return -1;
         }
 
-        private void TryStopUse() {
-            if (m_InUse && CanUnuse()) {
+        private void TryStopUse() 
+        {
+            if (m_InUse && CanUnuse()) 
+            {
                 StopUse();
             }
         }
 
-        protected virtual bool CanUnuse() { return true; }
+        protected virtual bool CanUnuse() { 
+            return true; 
+        }
 
         protected void StopUse() {
             if (IsActive)
@@ -222,7 +212,6 @@ namespace FKGame.InventorySystem
             }
         }
 
-
         protected virtual void OnStopUse() { }
 
         protected void StartUse()
@@ -234,7 +223,8 @@ namespace FKGame.InventorySystem
 
         protected virtual void OnStartUse() { }
 
-        protected virtual void Use() {
+        protected virtual void Use() 
+        {
             this.m_CharacterAnimator.CrossFadeInFixedTime(this.m_UseState, 0.15f);
             this.m_CharacterAnimator.Update(0f);
             CallbackEventData data = new CallbackEventData();
@@ -249,14 +239,16 @@ namespace FKGame.InventorySystem
                 (this.m_CurrentEquipedItem as EquipmentItem).Use();
         }
 
-        private void OnEndUse() {
+        private void OnEndUse() 
+        {
             if (this.m_InUse && this.m_StopType == StopType.EndUseEvent) {
                 StopUse();
             }
         }
 
         protected bool m_Pause;
-        private void PauseItemUpdate(bool state) {
+        private void PauseItemUpdate(bool state) 
+        {
             this.m_Pause = state;
 
             ItemContainer[] containers = UIWidgets.WidgetUtility.FindAll<ItemContainer>();
@@ -270,13 +262,13 @@ namespace FKGame.InventorySystem
             if (activated)
             {
                 this.m_CharacterAnimator.Update(1f);
-               // this.m_DefaultStates = new AnimatorStateInfo[this.m_CharacterAnimator.layerCount];
-                 for (int j = 0; j < this.m_CharacterAnimator.layerCount; j++)
-                 {
-                     AnimatorStateInfo stateInfo = this.m_CharacterAnimator.GetCurrentAnimatorStateInfo(j);
-                    if(stateInfo.IsTag("Default"))
-                        this.m_DefaultStates[j] = stateInfo;
-                 }
+                // this.m_DefaultStates = new AnimatorStateInfo[this.m_CharacterAnimator.layerCount];
+                for (int j = 0; j < this.m_CharacterAnimator.layerCount; j++)
+                {
+                    AnimatorStateInfo stateInfo = this.m_CharacterAnimator.GetCurrentAnimatorStateInfo(j);
+                   if(stateInfo.IsTag("Default"))
+                       this.m_DefaultStates[j] = stateInfo;
+                }
                 this.m_CharacterAnimator.SetInteger("Item ID", this.m_ItemID);
                 this.m_CharacterAnimator.CrossFadeInFixedTime(this.m_IdleState, 0.15f);
                 this.m_InUse = false;
@@ -302,7 +294,6 @@ namespace FKGame.InventorySystem
             {
                 this.m_CharacterAnimator.SetIKPosition(AvatarIKGoal.RightHand, this.m_RightHandIKTarget.position);
                 this.m_CharacterAnimator.SetIKPositionWeight(AvatarIKGoal.RightHand, this.m_RightHandIKWeight*this.m_RightHandIKLerp);
-
                 this.m_CharacterAnimator.SetIKRotation(AvatarIKGoal.RightHand, this.m_RightHandIKTarget.rotation);
                 this.m_CharacterAnimator.SetIKRotationWeight(AvatarIKGoal.RightHand, this.m_RightHandIKWeight*this.m_RightHandIKLerp);
             }
@@ -311,11 +302,9 @@ namespace FKGame.InventorySystem
             {
                 this.m_CharacterAnimator.SetIKPosition(AvatarIKGoal.LeftHand, this.m_LeftHandIKTarget.position);
                 this.m_CharacterAnimator.SetIKPositionWeight(AvatarIKGoal.LeftHand, this.m_LeftHandIKWeight*this.m_LeftHandIKLerp);
-
                 this.m_CharacterAnimator.SetIKRotation(AvatarIKGoal.LeftHand, this.m_LeftHandIKTarget.rotation);
                 this.m_CharacterAnimator.SetIKRotationWeight(AvatarIKGoal.LeftHand, this.m_LeftHandIKWeight*this.m_LeftHandIKLerp);
             }
-
         }
 
         public enum ActivationType {

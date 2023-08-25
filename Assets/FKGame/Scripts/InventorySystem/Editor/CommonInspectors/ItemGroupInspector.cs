@@ -1,9 +1,7 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEditor;
 using UnityEditorInternal;
-
+//------------------------------------------------------------------------
 namespace FKGame.InventorySystem
 {
     [CustomEditor(typeof(ItemGroup))]
@@ -11,10 +9,8 @@ namespace FKGame.InventorySystem
     {
         private SerializedProperty m_Script;
         private SerializedProperty m_GroupName;
-
         private SerializedProperty m_Items;
         private ReorderableList m_ItemList;
-
         private SerializedProperty m_Modifiers;
         private ReorderableList m_ModifierList;
 
@@ -23,20 +19,18 @@ namespace FKGame.InventorySystem
             if (target == null) return;
             this.m_Script = serializedObject.FindProperty("m_Script");
             this.m_GroupName = serializedObject.FindProperty("m_GroupName");
-
             this.m_Items = serializedObject.FindProperty("m_Items");
             this.m_Modifiers = serializedObject.FindProperty("m_Modifiers");
-
             CreateItemList(serializedObject, this.m_Items);
         }
 
         private void CreateItemList(SerializedObject serializedObject, SerializedProperty elements)
         {
             this.m_ItemList = new ReorderableList(serializedObject, elements, true, true, true, true);
+            
             this.m_ItemList.drawHeaderCallback = (Rect rect) => {
                 EditorGUI.LabelField(rect, "Items (Item, Amount)");
             };
-
             this.m_ItemList.drawElementCallback = (Rect rect, int index, bool isActive, bool isFocused) => {
                 float verticalOffset = (rect.height - EditorGUIUtility.singleLineHeight) * 0.5f;
                 rect.height = EditorGUIUtility.singleLineHeight;
@@ -57,27 +51,18 @@ namespace FKGame.InventorySystem
                 SerializedProperty amount = amounts.GetArrayElementAtIndex(index);
                 rect.x += rect.width + 2f;
                 rect.width = 50f;
-
-                /* Resets group amount to 1 in playmode
-                 * if (EditorApplication.isPlaying)
-                {
-                    amount.intValue = element.objectReferenceValue != null ? (element.objectReferenceValue as Item).Stack : amount.intValue;
-                }*/
                 EditorGUI.PropertyField(rect, amount, GUIContent.none);
 
             };
-
             this.m_ItemList.onReorderCallbackWithDetails = (ReorderableList list, int oldIndex, int newIndex) => {
                 this.m_Modifiers.MoveArrayElement(oldIndex, newIndex);
                 SerializedProperty amounts = serializedObject.FindProperty("m_Amounts");
                 amounts.MoveArrayElement(oldIndex, newIndex);
             };
-
             this.m_ItemList.onAddCallback = (ReorderableList list) => {
                 ReorderableList.defaultBehaviours.DoAddButton(list);
                 this.m_Modifiers.InsertArrayElementAtIndex(list.index);
             };
-
             this.m_ItemList.onRemoveCallback = (ReorderableList list) =>
             {
                 this.m_Modifiers.DeleteArrayElementAtIndex(list.index);
@@ -88,7 +73,6 @@ namespace FKGame.InventorySystem
                 list.serializedProperty.GetArrayElementAtIndex(list.index).objectReferenceValue = null;
                 ReorderableList.defaultBehaviours.DoRemoveButton(list);
             };
-
             this.m_ItemList.onSelectCallback = (ReorderableList list) =>
             {
                 if (this.m_Modifiers.arraySize < this.m_Items.arraySize)
@@ -104,7 +88,6 @@ namespace FKGame.InventorySystem
 
         private void CreateModifierList(string title, SerializedObject serializedObject, SerializedProperty property)
         {
-
             this.m_ModifierList = new ReorderableList(serializedObject, property.FindPropertyRelative("modifiers"), true, true, true, true);
             this.m_ModifierList.drawHeaderCallback = (Rect rect) => {
                 EditorGUI.LabelField(rect, title);
@@ -119,7 +102,6 @@ namespace FKGame.InventorySystem
             };
         }
 
-
         public override void OnInspectorGUI()
         {
             EditorGUI.BeginDisabledGroup(true);
@@ -133,8 +115,6 @@ namespace FKGame.InventorySystem
             if (this.m_ModifierList != null)
                 this.m_ModifierList.DoLayoutList();
             serializedObject.ApplyModifiedProperties();
-
-
         }
     }
 }

@@ -85,14 +85,21 @@ namespace FKGame.StatSystem
 
     public enum ValueType
     {
-        Value, CurrentValue
+        [Header("值")]
+        Value,
+        [Header("当前值")]
+        CurrentValue
     }
 
     public enum ConditionType
     {
+        [Header("大于")]
         Greater,
+        [Header("大于等于")]
         GreaterOrEqual,
+        [Header("小于")]
         Less,
+        [Header("大于等于")]
         LessOrEqual,
     }
 }

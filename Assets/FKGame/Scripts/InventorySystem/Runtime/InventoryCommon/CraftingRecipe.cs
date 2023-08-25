@@ -1,9 +1,7 @@
 ﻿using FKGame.UIWidgets;
-using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
-
+//------------------------------------------------------------------------
 namespace FKGame.InventorySystem
 {
     [System.Serializable]
@@ -72,7 +70,6 @@ namespace FKGame.InventorySystem
 
         public bool CheckConditions()
         {
-
             for (int i = 0; i < conditions.Count; i++)
             {
                 ICondition condition = conditions[i];
@@ -87,7 +84,6 @@ namespace FKGame.InventorySystem
             return true;
         }
 
-
         [System.Serializable]
         public class ItemAmountDefinition
         {
@@ -95,6 +91,4 @@ namespace FKGame.InventorySystem
             public int amount = 1;
         }
     }
-
-
 }

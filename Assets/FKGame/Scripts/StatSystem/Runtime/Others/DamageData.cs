@@ -3,7 +3,7 @@ using UnityEngine.Audio;
 //------------------------------------------------------------------------
 namespace FKGame.StatSystem
 {
-    [CreateAssetMenu(fileName = "DamageData", menuName = "FKGame/Stat System/Damage Data")]
+    [CreateAssetMenu(fileName = "DamageData", menuName = "FKGame/属性系统/伤害数据")]
     [System.Serializable]
     public class DamageData : ScriptableObject
     {

@@ -1,7 +1,8 @@
-﻿using System.Collections;
+﻿using FKGame.Macro;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+//------------------------------------------------------------------------
 namespace FKGame.QuestSystem
 {
     [System.Serializable]
@@ -9,28 +10,29 @@ namespace FKGame.QuestSystem
     {
         [HideInInspector]
         [SerializeField]
-        protected string m_Name = "New Task";
+        protected string m_Name = LanguagesMacro.NEW_TASK;
         public string Name {
             get { return this.m_Name; }
             set { this.m_Name = value; }
         }
-        [HeaderLine("General")]
+        [HeaderLine(LanguagesMacro.TASK_GENERAL)]
         [TextArea(4, 4)]
         [SerializeField]
+        //[InspectorLabel(LanguagesMacro.TASK_GENERAL_DESCRIPTION)]
         protected string m_Description;
         public string Description
         {
             get { return this.m_Description; }
             set { this.m_Description = value; }
         }
-
+        [InspectorLabel(LanguagesMacro.TASK_REQUIRED_PROGRESS)]
         [SerializeField]
         protected float m_RequiredProgress=1f;
         public float RequiredProgress
         {
             get { return this.m_RequiredProgress; }
         }
-
+        [InspectorLabel(LanguagesMacro.TASK_PROGRESS_MESSAGE)]
         [SerializeField]
         protected string m_ProgressMessage = "{0}/{1}";
         public string ProgressMessage
@@ -41,14 +43,16 @@ namespace FKGame.QuestSystem
             }
         }
 
-        [HeaderLine("Limits")]
+        [HeaderLine(LanguagesMacro.LIMITS)]
         [SerializeField]
+        [InspectorLabel(LanguagesMacro.IS_USE_TIME_LIMIT)]
         protected bool m_UseTimeLimit = false;
         public bool UseTimeLimit {
             get { return this.m_UseTimeLimit; }
         }
 
         [SerializeField]
+        [InspectorLabel(LanguagesMacro.TIME_LIMIT_SECONDS)]
         protected float m_TimeLimit = 300f;
         public float TimeLimit {
             get { return this.m_TimeLimit; }
@@ -62,6 +66,7 @@ namespace FKGame.QuestSystem
         protected bool m_TimerStarted = false;
 
         [SerializeField]
+        [InspectorLabel(LanguagesMacro.IS_OPTIONAL_TASK)]
         protected bool m_Optional = false;
         public bool Optional
         {
@@ -100,7 +105,6 @@ namespace FKGame.QuestSystem
                 owner.NotifyTaskProgressChange(this);
                 Complete();
             }
-           
         }
 
         public virtual void Activate() {
@@ -115,7 +119,6 @@ namespace FKGame.QuestSystem
         }
 
         private IEnumerator Timer() {
-
             while (this.m_RemainingTime > 0f && Status == Status.Active)
             {
                 yield return new WaitForSeconds(1f);
@@ -127,10 +130,10 @@ namespace FKGame.QuestSystem
         }
 
         public virtual bool CanComplete() {
-            if (Status != Status.Active) return false;
-
-            if (this.m_Progress < this.m_RequiredProgress) return false;
-
+            if (Status != Status.Active) 
+                return false;
+            if (this.m_Progress < this.m_RequiredProgress) 
+                return false;
             return true;
         }
 
@@ -147,7 +150,7 @@ namespace FKGame.QuestSystem
             Status = Status.Inactive;
         }
 
-        public virtual void OnQuestCompleted() { }
+        public virtual void OnQuestCompleted() {}
 
         public virtual void GetObjectData(Dictionary<string, object> data)
         {
@@ -155,19 +158,15 @@ namespace FKGame.QuestSystem
             data.Add("Status", (int)Status);
             data.Add("Progress",Progress);
             data.Add("RemainingTime", RemainingTime);
-
         }
 
         public virtual void SetObjectData(Dictionary<string, object> data)
         {
-          
             this.m_Status = (Status)data["Status"];
-
             this.m_Progress = System.Convert.ToSingle(data["Progress"]);
             this.m_RemainingTime = System.Convert.ToSingle(data["RemainingTime"]);
             if (this.UseTimeLimit)
                 StartTimer();
         }
     }
-
 }

@@ -1,9 +1,10 @@
 ﻿using UnityEngine;
-using System.Collections;
-
-namespace FKGame.InventorySystem{
+//------------------------------------------------------------------------
+namespace FKGame.InventorySystem
+{
 	[System.Serializable]
-	public class EquipmentRegion : ScriptableObject, INameable{
+	public class EquipmentRegion : ScriptableObject, INameable
+	{
 		[SerializeField]
 		private new string name="";
 		public string Name{

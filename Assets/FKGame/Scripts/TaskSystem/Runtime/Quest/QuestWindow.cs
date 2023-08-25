@@ -1,16 +1,12 @@
-﻿using FKGame;
-using FKGame.UIWidgets;
-using System.Collections;
+﻿using FKGame.UIWidgets;
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
-
+//------------------------------------------------------------------------
+// 提供给用户的 任务界面
+//------------------------------------------------------------------------
 namespace FKGame.QuestSystem
 {
-    /// <summary>
-    /// QuestWindow responsible for giving player the quest or completing the quest.
-    /// </summary>
     public class QuestWindow : UIWidget
     {
         [Header("References")]
@@ -44,15 +40,10 @@ namespace FKGame.QuestSystem
             base.Show();
             for (int i = 0; i < this.m_TaskSlotCache.Count; i++)
                 this.m_TaskSlotCache[i].gameObject.SetActive(false);
-
             if (this.m_QuestTitle != null)
                 this.m_QuestTitle.text = quest.Title;
-
             if(this.m_QuestDescription != null)
                 this.m_QuestDescription.text = quest.Description;
-
-
-
             for (int i = 0; i < quest.tasks.Count; i++) {
                 TaskSlot slot = null;
                 if (i < this.m_TaskSlotCache.Count)
@@ -89,7 +80,6 @@ namespace FKGame.QuestSystem
                 }
                 else
                 {
-
                     this.m_AcceptButton.gameObject.SetActive(false);
                 }
             }
@@ -108,7 +98,6 @@ namespace FKGame.QuestSystem
                 }
                 else
                 {
-
                     this.m_DeclineButton.gameObject.SetActive(false);
                 }
             }
@@ -127,7 +116,6 @@ namespace FKGame.QuestSystem
                 }
                 else
                 {
-
                     this.m_CompleteButton.gameObject.SetActive(false);
                 }
             }
@@ -157,7 +145,6 @@ namespace FKGame.QuestSystem
                 }
                 else
                 {
-
                     this.m_CancelButton.gameObject.SetActive(false);
                 }
             }

@@ -1,9 +1,6 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-using UnityEditor;
+﻿using UnityEditor;
 using UnityEngine;
-
+//------------------------------------------------------------------------
 namespace FKGame.InventorySystem
 {
     [CustomEditor(typeof(Skill),true)]
@@ -20,7 +17,6 @@ namespace FKGame.InventorySystem
             this.m_CurrentValue = serializedObject.FindProperty("m_CurrentValue");
             this.m_FixedSuccessChance = serializedObject.FindProperty("m_FixedSuccessChance");
             this.m_GainModifier = serializedObject.FindProperty("m_GainModifier");
-
         }
 
         public override void OnInspectorGUI()

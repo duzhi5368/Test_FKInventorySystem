@@ -1,8 +1,6 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using FKGame.UIWidgets;
+﻿using FKGame.UIWidgets;
 using UnityEngine;
-
+//------------------------------------------------------------------------
 namespace FKGame.InventorySystem
 {
     [UnityEngine.Scripting.APIUpdating.MovedFromAttribute(true, null, "Assembly-CSharp")]
@@ -15,7 +13,6 @@ namespace FKGame.InventorySystem
         private string m_WindowName = "Loot";
         [SerializeField]
         private bool m_DestroyWhenEmpty = false;
-
 
         private ItemContainer m_ItemContainer;
         private ItemCollection m_ItemCollection;
@@ -56,7 +53,6 @@ namespace FKGame.InventorySystem
                 Debug.LogWarning("Missing window " + this.m_WindowName + " in scene!");
                 return ActionStatus.Failure;
             }
-
             if (this.m_WindowStatus == ActionStatus.Inactive)
             {
                 Trigger.currentUsedWindow = this.m_ItemContainer;
@@ -71,7 +67,5 @@ namespace FKGame.InventorySystem
             }
             return this.m_WindowStatus;
         }
-
-       
     }
 }

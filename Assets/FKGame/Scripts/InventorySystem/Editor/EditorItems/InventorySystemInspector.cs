@@ -1,9 +1,8 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using UnityEditor;
 using UnityEngine;
-
+//------------------------------------------------------------------------
 namespace FKGame.InventorySystem
 {
     [System.Serializable]
@@ -40,9 +39,7 @@ namespace FKGame.InventorySystem
                 }
             }
             toolbarIndex = EditorPrefs.GetInt("InventoryToolbarIndex");
-
             ResetChildEditors();
-
         }
 
         public void OnDisable()
@@ -74,7 +71,6 @@ namespace FKGame.InventorySystem
 
         public void OnGUI(Rect position)
         {
-
             DoToolbar();
 
             if (m_ChildEditors != null)
@@ -95,8 +91,6 @@ namespace FKGame.InventorySystem
 
             GUILayout.FlexibleSpace();
             GUILayout.EndHorizontal();
-
-
         }
 
         private void SelectDatabaseButton() {

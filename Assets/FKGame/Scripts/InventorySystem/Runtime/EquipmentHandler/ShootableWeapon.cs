@@ -1,10 +1,5 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using FKGame.UIWidgets;
-using UnityEngine;
-using UnityEngine.Animations;
-using UnityEngine.Playables;
-
+﻿using UnityEngine;
+//------------------------------------------------------------------------
 namespace FKGame.InventorySystem
 {
     public class ShootableWeapon : Weapon
@@ -18,7 +13,6 @@ namespace FKGame.InventorySystem
         private bool m_ResetClipSize = false;
 
         [Header("Projectile:")]
-
         [SerializeField]
         protected GameObject m_Projectile;
         [SerializeField]
@@ -37,7 +31,6 @@ namespace FKGame.InventorySystem
         protected GameObject m_CurrentProjectile;
         private int m_CurrentClipSize = 0;
         private bool m_IsReloading;
-        private ItemContainer[] m_ItemContainers;
 
         protected override void OnItemActivated(bool activated)
         {
@@ -45,7 +38,6 @@ namespace FKGame.InventorySystem
             if (activated)
             {
                 this.m_IsReloading = false;
-               
                 if (this.m_CurrentClipSize > 0) {
                     CreateCurrentProjectile();
                 }
@@ -80,13 +72,14 @@ namespace FKGame.InventorySystem
             if (this.m_CurrentClipSize == 0)
             {
                 TryReload();
-            }else {
+            }
+            else 
+            {
                 base.Use();
                 if (this.m_ProjectileVisibility == ProjectileVisibility.OnFire || this.m_CurrentProjectile == null)
                 {
                     CreateCurrentProjectile();
                 }
-
                 this.m_CurrentProjectile.transform.position = this.m_FirePoint.transform.position;
                 this.m_CurrentProjectile.transform.parent = null;
                 Rigidbody projectileRigidbody = this.m_CurrentProjectile.GetComponent<Rigidbody>();
@@ -95,21 +88,17 @@ namespace FKGame.InventorySystem
                 RaycastHit hit;
                 if (Physics.Raycast(this.m_CameraTransform.position, this.m_CameraTransform.forward, out hit, float.PositiveInfinity))
                 {
-                    if(Vector3.Distance(m_CurrentProjectile.transform.position,hit.point)>1f)
+                    if(Vector3.Distance(m_CurrentProjectile.transform.position,hit.point) > 1f)
                         projectileRigidbody.transform.LookAt(hit.point);
-
                 }
                 else
                 {
                     projectileRigidbody.transform.forward = this.m_CameraTransform.forward;
                 }
-
                 projectileRigidbody.velocity = projectileRigidbody.transform.forward * this.m_ProjectileSpeed;
-              
                 this.m_CurrentProjectile = null;
             }
         }
-
 
         protected override bool CanUse()
         {
@@ -117,7 +106,8 @@ namespace FKGame.InventorySystem
         }
 
         private bool TryReload() {
-            if (!this.m_IsReloading && this.m_CurrentClipSize == 0 ) {
+            if (!this.m_IsReloading && this.m_CurrentClipSize == 0 ) 
+            {
                 if (ItemContainer.HasItem(this.m_ProjectileItemWindow, this.m_ProjectileItem, this.m_ReloadClipSize))
                 {
                     ItemContainer.RemoveItem(this.m_ProjectileItemWindow, m_ProjectileItem, this.m_ReloadClipSize);

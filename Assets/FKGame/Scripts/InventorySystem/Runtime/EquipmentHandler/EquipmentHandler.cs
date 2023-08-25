@@ -1,8 +1,7 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using FKGame.UIWidgets;
 using UnityEngine;
-
+//------------------------------------------------------------------------
 namespace FKGame.InventorySystem
 {
     public class EquipmentHandler : MonoBehaviour
@@ -26,7 +25,6 @@ namespace FKGame.InventorySystem
             get { return this.m_VisibleItems; }
             set { this.m_VisibleItems = value; }
         }
-
 
         private ItemContainer m_EquipmentContainer;
 
@@ -74,7 +72,6 @@ namespace FKGame.InventorySystem
                     SendMessage("AddModifier", new object[] { property.Name, value, (value <= 1f && value >= -1f) ? 1 : 0, item }, SendMessageOptions.DontRequireReceiver);
                 }
             }
-
             for (int i = 0; i < this.m_VisibleItems.Count; i++) {
                 VisibleItem visibleItem = this.m_VisibleItems[i];
                 if (visibleItem.item.Id == item.Id) {
@@ -124,7 +121,6 @@ namespace FKGame.InventorySystem
             {
                 EquipItem(item);
             }
-
         }
 
         public Transform GetBone(EquipmentRegion region) {

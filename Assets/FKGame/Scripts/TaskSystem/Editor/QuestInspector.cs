@@ -1,13 +1,12 @@
 ﻿using FKGame.Macro;
 using System;
 using System.Collections;
-using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using UnityEditor;
 using UnityEditorInternal;
 using UnityEngine;
-
+//------------------------------------------------------------------------
 namespace FKGame.QuestSystem
 {
     [CustomEditor(typeof(Quest),true)]
@@ -17,18 +16,13 @@ namespace FKGame.QuestSystem
         protected SerializedProperty m_QuestName;
         protected SerializedProperty m_Title;
         protected SerializedProperty m_Description;
-
         protected SerializedProperty m_AutoComplete;
         protected SerializedProperty m_RestartFailed;
         protected SerializedProperty m_RestartCanceled;
         protected SerializedProperty m_RestartCompleted;
-
         protected SerializedProperty m_TaskExecution;
-
-
         protected SerializedProperty m_Rewards;
         protected ReorderableList m_RewardList;
-
         protected SerializedProperty m_Tasks;
         protected ReorderableList m_TaskList;
 
@@ -45,7 +39,8 @@ namespace FKGame.QuestSystem
 
         protected virtual void OnEnable()
         {
-            if (target == null) return;
+            if (target == null) 
+                return;
             this.m_Script = serializedObject.FindProperty("m_Script");
             this.m_QuestName = serializedObject.FindProperty("m_QuestName");
             this.m_Title = serializedObject.FindProperty("m_Title");
@@ -101,7 +96,6 @@ namespace FKGame.QuestSystem
             serializedObject.ApplyModifiedProperties();
         }
 
-
         protected void CreateRewardList(SerializedObject serializedObject, SerializedProperty elements)
         {
             this.m_RewardList = new ReorderableList(serializedObject, elements, true, true, true, true);
@@ -127,7 +121,6 @@ namespace FKGame.QuestSystem
                 {
                     Debug.LogWarning("No reward implementations found.");
                 }
-
             };
 
             this.m_RewardList.drawElementCallback = (Rect rect, int index, bool isActive, bool isFocused) => {
@@ -158,8 +151,6 @@ namespace FKGame.QuestSystem
             if (this.m_RewardList.index > -1)
             {
                 SerializedProperty element = this.m_Rewards.GetArrayElementAtIndex(this.m_RewardList.index);
-
-                
                 foreach (var child in element.EnumerateChildProperties())
                 { 
                     EditorGUILayout.PropertyField(child, includeChildren: true);
@@ -172,11 +163,9 @@ namespace FKGame.QuestSystem
             this.m_TaskList.drawHeaderCallback = (Rect rect) => {
                 EditorGUI.LabelField(rect, "Tasks");
             };
-
             this.m_TaskList.onAddCallback = (ReorderableList list) => {
                 Type[] types = AppDomain.CurrentDomain.GetAssemblies().SelectMany(assembly => assembly.GetTypes()).Where(x => typeof(QuestTask).IsAssignableFrom(x) && !x.IsAbstract && !x.HasAttribute(typeof(ExcludeFromCreation))).ToArray();
                 types = types.OrderBy(x => x.BaseType.Name).ToArray();
-               
                 if (types.Length > 1) {
                     GenericMenu menu = new GenericMenu();
                     for (int i = 0; i < types.Length; i++) {
@@ -188,7 +177,6 @@ namespace FKGame.QuestSystem
                 else { 
                     AddTask(typeof(QuestTask));
                 }
-        
             };
 
             this.m_TaskList.drawElementCallback = (Rect rect, int index, bool isActive, bool isFocused)=> {
@@ -200,7 +188,6 @@ namespace FKGame.QuestSystem
 
                 if (index == this.m_RenameTaskIndex)
                 {
-
                     string before = name.stringValue;
                     GUI.SetNextControlName("RenameTaskField");
                     string after = EditorGUI.TextField(rect, name.stringValue);
@@ -238,7 +225,6 @@ namespace FKGame.QuestSystem
                             this.m_ClickCount = 0;
                             EditorGUI.FocusTextInControl("RenameTaskField");
                             Event.current.Use();
-
                         }
                         else if (!rect.Contains(Event.current.mousePosition) && Event.current.clickCount > 0 && index == this.m_TaskList.index && this.m_RenameTaskIndex != -1)
                         {
@@ -265,10 +251,8 @@ namespace FKGame.QuestSystem
             if (this.m_TaskList.index > -1)
             {
                 SerializedProperty element = this.m_Tasks.GetArrayElementAtIndex(this.m_TaskList.index);
-
                 SerializedProperty useTimeLimit = element.FindPropertyRelative("m_UseTimeLimit");
                 SerializedProperty timeLimit = element.FindPropertyRelative("m_TimeLimit");
-
 
                 foreach (var child in element.EnumerateChildProperties())
                 {
@@ -291,7 +275,6 @@ namespace FKGame.QuestSystem
       
         protected void ConditionGUI()
         {
-
             GUILayout.Space(10f);
             for (int i = 0; i < this.m_Conditions.arraySize; i++)
             {
@@ -337,12 +320,10 @@ namespace FKGame.QuestSystem
             GUILayout.FlexibleSpace();
             DoAddButton();
             GUILayout.Space(10f);
-
         }
 
         private void Add(Type type)
         {
-
             object value = System.Activator.CreateInstance(type);
             serializedObject.Update();
             this.m_Conditions.arraySize++;
@@ -350,15 +331,12 @@ namespace FKGame.QuestSystem
             serializedObject.ApplyModifiedProperties();
         }
 
-        private void CreateScript(string scriptName)
-        {
-
-        }
+        private void CreateScript(string scriptName){}
 
         private void DoAddButton()
         {
             GUIStyle buttonStyle = new GUIStyle("AC Button");
-            GUIContent buttonContent = new GUIContent("Add Condition");
+            GUIContent buttonContent = new GUIContent(LanguagesMacro.ADD_CONDITION);
             Rect buttonRect = GUILayoutUtility.GetRect(buttonContent, buttonStyle, GUILayout.ExpandWidth(true));
             buttonRect.x = buttonRect.width * 0.5f - buttonStyle.fixedWidth * 0.5f;
             buttonRect.width = buttonStyle.fixedWidth;
@@ -370,7 +348,6 @@ namespace FKGame.QuestSystem
 
         private GenericMenu ElementContextMenu(IList list, int index)
         {
-
             GenericMenu menu = new GenericMenu();
             if (list[index] == null)
             {
@@ -383,11 +360,11 @@ namespace FKGame.QuestSystem
                 EditorUtility.SetDirty(target);
             });
             menu.AddSeparator(string.Empty);
-            menu.AddItem(new GUIContent("Remove " + this.m_ElementType.Name), false, delegate { list.RemoveAt(index); EditorUtility.SetDirty(target); });
+            menu.AddItem(new GUIContent(LanguagesMacro.REMOVE + this.m_ElementType.Name), false, delegate { list.RemoveAt(index); EditorUtility.SetDirty(target); });
 
             if (index > 0)
             {
-                menu.AddItem(new GUIContent("Move Up"), false, delegate {
+                menu.AddItem(new GUIContent(LanguagesMacro.MOVE_UP), false, delegate {
                     object value = list[index];
                     list.RemoveAt(index);
                     list.Insert(index - 1, value);
@@ -396,12 +373,12 @@ namespace FKGame.QuestSystem
             }
             else
             {
-                menu.AddDisabledItem(new GUIContent("Move Up"));
+                menu.AddDisabledItem(new GUIContent(LanguagesMacro.MOVE_UP));
             }
 
             if (index < list.Count - 1)
             {
-                menu.AddItem(new GUIContent("Move Down"), false, delegate
+                menu.AddItem(new GUIContent(LanguagesMacro.MOVE_DOWN), false, delegate
                 {
                     object value = list[index];
                     list.RemoveAt(index);
@@ -411,17 +388,17 @@ namespace FKGame.QuestSystem
             }
             else
             {
-                menu.AddDisabledItem(new GUIContent("Move Down"));
+                menu.AddDisabledItem(new GUIContent(LanguagesMacro.MOVE_DOWN));
             }
 
-            menu.AddItem(new GUIContent("Copy " + this.m_ElementType.Name), false, delegate {
+            menu.AddItem(new GUIContent(LanguagesMacro.COPY + this.m_ElementType.Name), false, delegate {
                 object value = list[index];
                 m_ObjectToCopy = value;
             });
 
             if (m_ObjectToCopy != null)
             {
-                menu.AddItem(new GUIContent("Paste " + this.m_ElementType.Name + " As New"), false, delegate {
+                menu.AddItem(new GUIContent(LanguagesMacro.PASTE + this.m_ElementType.Name), false, delegate {
                     object instance = System.Activator.CreateInstance(m_ObjectToCopy.GetType());
                     FieldInfo[] fields = instance.GetType().GetSerializedFields();
                     for (int i = 0; i < fields.Length; i++)
@@ -435,7 +412,7 @@ namespace FKGame.QuestSystem
 
                 if (list[index].GetType() == m_ObjectToCopy.GetType())
                 {
-                    menu.AddItem(new GUIContent("Paste " + this.m_ElementType.Name + " Values"), false, delegate
+                    menu.AddItem(new GUIContent(LanguagesMacro.PASTE + this.m_ElementType.Name + LanguagesMacro.VALUES), false, delegate
                     {
                         object instance = list[index];
                         FieldInfo[] fields = instance.GetType().GetSerializedFields();
@@ -449,7 +426,7 @@ namespace FKGame.QuestSystem
                 }
                 else
                 {
-                    menu.AddDisabledItem(new GUIContent("Paste " + this.m_ElementType.Name + " Values"));
+                    menu.AddDisabledItem(new GUIContent(LanguagesMacro.PASTE + this.m_ElementType.Name + LanguagesMacro.VALUES));
                 }
             }
 

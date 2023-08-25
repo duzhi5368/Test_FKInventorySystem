@@ -1,13 +1,10 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
+﻿using UnityEngine;
+//------------------------------------------------------------------------
 namespace FKGame.QuestSystem
 {
     public class QuestPickerAttribute : PropertyAttribute
     {
 		public bool utility;
-
 		public QuestPickerAttribute() : this(false) { }
 
 		public QuestPickerAttribute(bool utility)

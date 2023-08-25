@@ -1,7 +1,6 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using FKGame.Macro;
 using UnityEngine;
-
+//------------------------------------------------------------------------
 namespace FKGame.QuestSystem
 {
     [System.Serializable]
@@ -9,7 +8,7 @@ namespace FKGame.QuestSystem
     {
         public virtual string Name
         {
-            get { return "Settings"; }
+            get { return LanguagesMacro.SETTING; }
             set { }
         }
     }

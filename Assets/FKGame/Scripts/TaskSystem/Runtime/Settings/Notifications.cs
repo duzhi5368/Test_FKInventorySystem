@@ -1,8 +1,8 @@
-﻿using FKGame;
+﻿using FKGame.Macro;
 using FKGame.UIWidgets;
 using UnityEngine;
 using UnityEngine.Events;
-
+//------------------------------------------------------------------------
 namespace FKGame.QuestSystem
 {
     public static class NotificationExtension
@@ -30,47 +30,43 @@ namespace FKGame.QuestSystem
     [System.Serializable]
     public class QuestNotifications : Settings
     {
-
         public override string Name
         {
             get
             {
-                return "Notification";
+                return LanguagesMacro.NOTIFICATION;
             }
         }
-        [Header("Trigger:")]
+        [Header(LanguagesMacro.TRIGGER_HEADER)]
         public NotificationOptions toFarAway = new NotificationOptions()
         {
-            text = "This is to far away!"
+            text = LanguagesMacro.TO_FAR_AWAY_NOTIFICATION
         };
         public NotificationOptions inUse = new NotificationOptions()
         {
-            text = "My life is already fairly busy."
+            text = LanguagesMacro.IN_USE_NOTIFICATION
         };
-
-        [Header("Quest:")]
+        [Header(LanguagesMacro.QUEST_HEADER)]
         public NotificationOptions questCompleted = new NotificationOptions()
         {
-            text = "{0} completed."
+            text = "{0} 任务已完成"
         };
         public NotificationOptions questFailed = new NotificationOptions()
         {
-            text = "{0} failed."
+            text = "{0} 任务失败"
         };
-
         public NotificationOptions taskCompleted = new NotificationOptions()
         {
-            text = "{0} completed."
+            text = "{0} 任务已完成"
         };
         public NotificationOptions taskFailed = new NotificationOptions()
         {
-            text = "{0} failed."
+            text = "{0} 任务失败"
         };
         public NotificationOptions cancelQuest= new NotificationOptions()
         {
-            title = "Cancel Quest",
-            text = "Are you sure you want to cancel the quest?"
+            title = LanguagesMacro.CANCEL_QUEST,
+            text = LanguagesMacro.ARE_YOU_SURE_CANCEL_QUEST
         };
-
     }
 }

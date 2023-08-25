@@ -14,13 +14,13 @@ namespace FKGame.StatSystem.Configuration
                 return LanguagesMacro.SAVING_AND_LOADING;
             }
         }
-        [InspectorLabel("自动保存", "是否自动保存本数据库")]
+        [InspectorLabel(LanguagesMacro.IS_AUTO_SAVE, LanguagesMacro.IS_AUTO_SAVE_TIP)]
         public bool autoSave = true;
-        [InspectorLabel("主键名", "本数据库保存的键名")]
+        [InspectorLabel(LanguagesMacro.SAVE_KEY, LanguagesMacro.SAVE_KEY_TIP)]
         public string savingKey = "Player";
-        [InspectorLabel("时间间隔", "单位：秒")]
+        [InspectorLabel(LanguagesMacro.SAVE_RATE, LanguagesMacro.SAVE_RATE_TIP)]
         public float savingRate = 60f;
-        [InspectorLabel("存储方案", "默认使用 PlayerPrefs，可自行拓展类")]
+        [InspectorLabel(LanguagesMacro.PROVIDER, LanguagesMacro.PROVIDER_TIP)]
         public SavingProvider provider;
 
         public enum SavingProvider

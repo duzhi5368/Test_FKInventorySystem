@@ -1,18 +1,13 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
-using System.Linq;
 using System;
-using System.Reflection;
-using System.IO;
 using FKGame.Macro;
-
+//------------------------------------------------------------------------
 namespace FKGame.InventorySystem
 {
     public class VisibleItemsEditor : AssetWindow
     {
-
         private static VisibleItemsEditor.Styles m_Styles;
         private string m_SearchString = LanguagesMacro.RESEARCH;
         private int m_SelectedIndex = -1;
@@ -31,9 +26,7 @@ namespace FKGame.InventorySystem
             for (int i = 0; i < elements.arraySize; i++)
             {
                 window.m_Targets[i] = elements.GetArrayElementAtIndex(i).objectReferenceValue;
-
                 window.m_Targets[i].hideFlags = EditorPrefs.GetBool("InventorySystem.showAllComponents") ? HideFlags.None:HideFlags.HideInInspector;
-
             }
             window.m_HasPrefab = PrefabUtility.GetNearestPrefabInstanceRoot(window.m_Target) != null;
             window.m_Editors = new List<Editor>();
@@ -83,18 +76,10 @@ namespace FKGame.InventorySystem
 
         private void DrawElementList()
         {
-          /*  GUIStyle selectButton = new GUIStyle("MeTransitionSelectHead")
-            {
-                alignment = TextAnchor.MiddleLeft
-            };
-            selectButton.padding.left = 10;*/
-
             for (int i = 0; i < this.m_Targets.Length; i++)
             {
                 UnityEngine.Object target = this.m_Targets[i];
-
                 SerializedObject elementObject = new SerializedObject(target);
-
                 Item item = elementObject.FindProperty("item").objectReferenceValue as Item;
                 if (!SearchMatch(item) && Event.current.type== EventType.Repaint)
                 {
@@ -195,10 +180,8 @@ namespace FKGame.InventorySystem
                 before = "";
                 GUI.changed = true;
                 GUI.FocusControl(null);
-
             }
-
-                GUI.SetNextControlName("SearchTextFieldFocus");
+            GUI.SetNextControlName("SearchTextFieldFocus");
             GUIStyle style = new GUIStyle("ToolbarSearchTextField");
             if (before == LanguagesMacro.RESEARCH)
             {
@@ -214,7 +197,6 @@ namespace FKGame.InventorySystem
             return after;
         }
 
-
         private class Styles
         {
             public GUIStyle header = new GUIStyle("DD HeaderStyle");
@@ -226,10 +208,8 @@ namespace FKGame.InventorySystem
 
             public Styles()
             {
-
                 this.header.stretchWidth = true;
                 this.header.margin = new RectOffset(1, 1, 0, 4);
-
                 this.elementButton.alignment = TextAnchor.MiddleLeft;
                 this.elementButton.padding.left = 22;
                 this.elementButton.margin = new RectOffset(1, 1, 0, 0);

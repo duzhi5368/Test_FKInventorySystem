@@ -1,12 +1,11 @@
 ﻿using FKGame.Macro;
 using System;
 using System.Collections;
-using System.Collections.Generic;
 using System.Reflection;
 using UnityEditor;
 using UnityEditorInternal;
 using UnityEngine;
-
+//------------------------------------------------------------------------
 namespace FKGame.InventorySystem
 {
     [CustomEditor(typeof(CraftingRecipe))]
@@ -86,7 +85,6 @@ namespace FKGame.InventorySystem
                 SerializedProperty element = this.m_CraftingModifierList.serializedProperty.GetArrayElementAtIndex(index);
                 EditorGUI.PropertyField(rect, element, GUIContent.none, true);
             };
-
             this.m_CraftingModifierList.onRemoveCallback = (ReorderableList list) =>
             {
                 list.serializedProperty.GetArrayElementAtIndex(list.index).objectReferenceValue = null;
@@ -118,7 +116,6 @@ namespace FKGame.InventorySystem
 
         protected void ConditionGUI()
         {
-
             GUILayout.Space(10f);
             for (int i = 0; i < this.m_Conditions.arraySize; i++)
             {
@@ -161,12 +158,10 @@ namespace FKGame.InventorySystem
             GUILayout.FlexibleSpace();
             DoAddButton();
             GUILayout.Space(10f);
-
         }
 
         private void Add(Type type)
         {
-
             object value = System.Activator.CreateInstance(type);
             serializedObject.Update();
             this.m_Conditions.arraySize++;
@@ -174,10 +169,7 @@ namespace FKGame.InventorySystem
             serializedObject.ApplyModifiedProperties();
         }
 
-        private void CreateScript(string scriptName)
-        {
-
-        }
+        private void CreateScript(string scriptName){}
 
         private void DoAddButton()
         {
@@ -194,7 +186,6 @@ namespace FKGame.InventorySystem
 
         private GenericMenu ElementContextMenu(IList list, int index)
         {
-
             GenericMenu menu = new GenericMenu();
             if (list[index] == null)
             {

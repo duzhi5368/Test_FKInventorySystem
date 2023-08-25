@@ -1,20 +1,16 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEditor;
 using UnityEditorInternal;
-
+//------------------------------------------------------------------------
 namespace FKGame.InventorySystem
 {
 	[CustomEditor (typeof(ItemCollection), true)]
 	public class ItemCollectionInspector : Editor
 	{
 		private SerializedProperty script;
-        private SerializedProperty savebale;
-	
+        private SerializedProperty savebale;	
         private SerializedProperty m_Items;
         private ReorderableList m_ItemList;
-
         private SerializedProperty m_Modifiers;
         private ReorderableList m_ModifierList;
 
@@ -25,7 +21,6 @@ namespace FKGame.InventorySystem
 
             this.m_Items = serializedObject.FindProperty("m_Items");
             this.m_Modifiers = serializedObject.FindProperty("m_Modifiers");
-
 
            /* if (this.m_Items.arraySize > 0) {
                 CheckForDatabase(this.m_Items.GetArrayElementAtIndex(0).objectReferenceValue);

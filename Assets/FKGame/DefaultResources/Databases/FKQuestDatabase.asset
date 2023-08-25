@@ -1,0 +1,226 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-9198277160623450078
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 48161a9549fdb4f4ab4aeb44f29c9892, type: 3}
+  m_Name: Task2
+  m_EditorClassIdentifier: 
+  m_QuestName: Task2
+  m_Title: 
+  m_Description: 
+  m_AutoComplete: 0
+  m_RestartFailed: 1
+  m_RestartCanceled: 1
+  m_RestartCompleted: 0
+  rewards: []
+  m_TaskExecution: 0
+  conditions: []
+  tasks: []
+  references:
+    version: 2
+    RefIds: []
+--- !u!114 &-7720453231845371554
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 0}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp:FKGame.QuestSystem:QuestNotifications
+  toFarAway:
+    title: 
+    text: This is to far away!
+    color: {r: 1, g: 1, b: 1, a: 1}
+    icon: {fileID: 0}
+    delay: 2
+    duration: 2
+    ignoreTimeScale: 1
+  inUse:
+    title: 
+    text: My life is already fairly busy.
+    color: {r: 1, g: 1, b: 1, a: 1}
+    icon: {fileID: 0}
+    delay: 2
+    duration: 2
+    ignoreTimeScale: 1
+  questCompleted:
+    title: 
+    text: '{0} completed.'
+    color: {r: 1, g: 1, b: 1, a: 1}
+    icon: {fileID: 0}
+    delay: 2
+    duration: 2
+    ignoreTimeScale: 1
+  questFailed:
+    title: 
+    text: '{0} failed.'
+    color: {r: 1, g: 1, b: 1, a: 1}
+    icon: {fileID: 0}
+    delay: 2
+    duration: 2
+    ignoreTimeScale: 1
+  taskCompleted:
+    title: 
+    text: '{0} completed.'
+    color: {r: 1, g: 1, b: 1, a: 1}
+    icon: {fileID: 0}
+    delay: 2
+    duration: 2
+    ignoreTimeScale: 1
+  taskFailed:
+    title: 
+    text: '{0} failed.'
+    color: {r: 1, g: 1, b: 1, a: 1}
+    icon: {fileID: 0}
+    delay: 2
+    duration: 2
+    ignoreTimeScale: 1
+  cancelQuest:
+    title: Cancel Quest
+    text: Are you sure you want to cancel the quest?
+    color: {r: 1, g: 1, b: 1, a: 1}
+    icon: {fileID: 0}
+    delay: 2
+    duration: 2
+    ignoreTimeScale: 1
+--- !u!114 &-6821119923251785210
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8170ddfc90812fb4090f1de3b4094aa6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  notificationName: Notification
+  dialogBoxName: Dialog Box
+  questWindowName: Quest
+  questSelectionWindowName: Quest Selection
+--- !u!114 &-4480672854565153677
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 48161a9549fdb4f4ab4aeb44f29c9892, type: 3}
+  m_Name: TestTask_1
+  m_EditorClassIdentifier: 
+  m_QuestName: TestTask_1
+  m_Title: "\u5FEB\u53BB\u6B8B\u5BB3\u5C0F\u52A8\u7269"
+  m_Description: "\u5C71\u91CC\u7684\u5C0F\u52A8\u7269\u592A\u591A\u4E86\uFF0C\u81EA\u7531\u9A91\u58EB\u7684\u83DC\u56ED\u5B50\u90FD\u88AB\u7834\u574F\u4E86\uFF0C\u8BF7\u53BB\u6E05\u9664\u4E00\u4E9B\u5C0F\u52A8\u7269\u5427\u3002"
+  m_AutoComplete: 0
+  m_RestartFailed: 1
+  m_RestartCanceled: 1
+  m_RestartCompleted: 0
+  rewards: []
+  m_TaskExecution: 1
+  conditions:
+  - rid: 4260692786084053046
+  - rid: 4260692786084053047
+  tasks:
+  - rid: 4260692786084053042
+  - rid: 4260692786084053044
+  references:
+    version: 2
+    RefIds:
+    - rid: 4260692786084053042
+      type: {class: QuestTask, ns: FKGame.QuestSystem, asm: Assembly-CSharp}
+      data:
+        m_Name: "\u6740\u5154\u5B50\u4EFB\u52A1"
+        m_Description: "\u6740\u5154\u5B50 20 \u53EA"
+        m_RequiredProgress: 20
+        m_ProgressMessage: "\u5DF2\u6740\u5154\u5B50 {0}/{1} \u53EA"
+        m_UseTimeLimit: 0
+        m_TimeLimit: 300
+        m_Optional: 0
+    - rid: 4260692786084053044
+      type: {class: QuestTask, ns: FKGame.QuestSystem, asm: Assembly-CSharp}
+      data:
+        m_Name: "\u6740\u732A\u4EFB\u52A1"
+        m_Description: "\u6740\u91CE\u732A 50 \u53EA"
+        m_RequiredProgress: 50
+        m_ProgressMessage: "\u5DF2\u6740\u91CE\u732A {0}/{1} \u53EA"
+        m_UseTimeLimit: 1
+        m_TimeLimit: 300
+        m_Optional: 1
+    - rid: 4260692786084053046
+      type: {class: HasQuest, ns: FKGame.QuestSystem, asm: Assembly-CSharp}
+      data:
+        m_Type: FKGame.QuestSystem.HasQuest
+        m_Enabled: 1
+        requiredQuest: {fileID: -9198277160623450078}
+        m_Status: 2
+    - rid: 4260692786084053047
+      type: {class: HasQuestTask, ns: FKGame.QuestSystem, asm: Assembly-CSharp}
+      data:
+        m_Type: FKGame.QuestSystem.HasQuestTask
+        m_Enabled: 1
+        m_Quest: {fileID: -9198277160623450078}
+        m_Task: "\u9886\u53D6\u6B66\u5668"
+        m_Status: 2
+--- !u!114 &-4177170126182448671
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 96aa16022cc1d94479e594e01eafe712, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerTag: Player
+  debugMessages: 1
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 153f1d3166d57644da10aecdfbda851e, type: 3}
+  m_Name: FKQuestDatabase
+  m_EditorClassIdentifier: 
+  items:
+  - {fileID: -4480672854565153677}
+  - {fileID: -9198277160623450078}
+  settings:
+  - {fileID: -4177170126182448671}
+  - {fileID: -7720453231845371554}
+  - {fileID: 6193271042243092170}
+  - {fileID: -6821119923251785210}
+--- !u!114 &6193271042243092170
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0aa5c3281793f2340b64d962e7c71149, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  savingKey: Player
+  autoSave: 1
+  provider: 0

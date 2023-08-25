@@ -1,7 +1,5 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
+﻿using UnityEngine;
+//------------------------------------------------------------------------
 namespace FKGame.QuestSystem
 {
     [System.Serializable]
@@ -18,7 +16,6 @@ namespace FKGame.QuestSystem
             DisplayReward(go);
         }
 
-        public virtual void DisplayReward(GameObject reward) { }
-
+        public virtual void DisplayReward(GameObject reward) {}
     }
 }

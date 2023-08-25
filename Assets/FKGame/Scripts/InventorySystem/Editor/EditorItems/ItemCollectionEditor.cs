@@ -1,11 +1,10 @@
 ﻿using UnityEngine;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
 using System.Linq;
 using System;
 using FKGame.Macro;
-
+//------------------------------------------------------------------------
 namespace FKGame.InventorySystem
 {
 	[System.Serializable]
@@ -120,7 +119,6 @@ namespace FKGame.InventorySystem
 					return a.Category.Name.CompareTo(b.Category.Name); 
 				});
 				Select(selected);
-				
 			});
 		}
 

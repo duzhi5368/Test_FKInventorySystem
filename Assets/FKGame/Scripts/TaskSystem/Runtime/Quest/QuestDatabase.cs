@@ -1,8 +1,8 @@
 ﻿using UnityEngine;
-using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
-
+//------------------------------------------------------------------------;
+// 任务信息数据库
+//------------------------------------------------------------------------
 namespace FKGame.QuestSystem
 {
 	[System.Serializable]

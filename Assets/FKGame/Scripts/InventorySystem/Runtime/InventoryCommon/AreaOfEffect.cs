@@ -1,8 +1,7 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
-
+//------------------------------------------------------------------------
 namespace FKGame.InventorySystem
 {
     public class AreaOfEffect : MonoBehaviour
@@ -33,7 +32,5 @@ namespace FKGame.InventorySystem
             }
             Destroy(gameObject, 0.1f);
         }
-
-
     }
 }

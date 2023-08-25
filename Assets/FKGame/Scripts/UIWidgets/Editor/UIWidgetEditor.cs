@@ -3,6 +3,7 @@ using UnityEngine;
 using UnityEditor;
 using System.Linq;
 using System;
+using FKGame.Macro;
 //------------------------------------------------------------------------
 // 扫描全项目，找到属于UIWidgetEditor的物件
 //------------------------------------------------------------------------
@@ -10,10 +11,10 @@ namespace FKGame.UIWidgets
 {
 	public class UIWidgetEditor : EditorWindow
 	{
-		[UnityEditor.MenuItem ("Tools/FKGame/UI Widgets", false, -999)]
+		[UnityEditor.MenuItem ("Tools/FKGame/UI管理器", false, -999)]
 		public static void ShowWindow ()
 		{
-			UIWidgetEditor window = EditorWindow.GetWindow<UIWidgetEditor> ("UI Manager");
+			UIWidgetEditor window = EditorWindow.GetWindow<UIWidgetEditor> (LanguagesMacro.UI_MANAGER_VIEWER_TITLE);
 			Vector2 size = new Vector2 (100f, 200f);
 			window.minSize = size;
 			window.wantsMouseMove = true;
@@ -63,7 +64,7 @@ namespace FKGame.UIWidgets
 			}
 
 			GUILayout.FlexibleSpace();
-			if (GUILayout.Button ("Refresh", EditorStyles.toolbarButton) || targets.Any (x => x == null)) {
+			if (GUILayout.Button (LanguagesMacro.REFRESH, EditorStyles.toolbarButton) || targets.Any (x => x == null)) {
 				FindWidgets ();
 				Focus ();
 			}
@@ -187,9 +188,11 @@ namespace FKGame.UIWidgets
 			return list;
 		}
 
-		public enum DisplayType { 
+		public enum DisplayType {
+			[Header("显示UI路径")]
 			Path,
-			Name
+            [Header("显示UI名称")]
+            Name
 		}
 	}
 }

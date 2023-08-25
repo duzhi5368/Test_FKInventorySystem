@@ -1,9 +1,7 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEditor;
+﻿using UnityEditor;
 using UnityEngine;
 using UnityEditorInternal;
-
+//------------------------------------------------------------------------
 namespace FKGame.InventorySystem
 {
     [CustomEditor(typeof(ItemGroupGenerator),true)]
@@ -17,12 +15,9 @@ namespace FKGame.InventorySystem
         private SerializedProperty m_MinAmount;
         private SerializedProperty m_MaxAmount;
         private SerializedProperty m_Chance;
-
-        private ReorderableList m_FilterList;
-
         private SerializedProperty m_Modifiers;
+        private ReorderableList m_FilterList;
         private ReorderableList m_ModifierList;
-
 
         protected virtual void OnEnable()
         {
@@ -39,27 +34,23 @@ namespace FKGame.InventorySystem
             CreateModifierList("Modifiers", serializedObject, this.m_Modifiers);
 
             this.m_FilterList = new ReorderableList(serializedObject, this.m_Filters, true, true, true, true);
+            
             this.m_FilterList.drawHeaderCallback = (Rect rect) => {
                 EditorGUI.LabelField(rect, "Filters");
             };
-
-
             this.m_FilterList.drawElementCallback = (Rect rect, int index, bool isActive, bool isFocused) => {
                 SerializedProperty element = this.m_FilterList.serializedProperty.GetArrayElementAtIndex(index);
                 rect.y += 2;
                 rect.height = EditorGUIUtility.singleLineHeight;
                 EditorGUI.LabelField(rect, (element.objectReferenceValue as INameable).Name+" ("+element.objectReferenceValue.GetType().Name+")");
             };
-
-  
             this.m_FilterList.onRemoveCallback = (ReorderableList list) =>
             {
                 list.serializedProperty.GetArrayElementAtIndex(list.index).objectReferenceValue = null;
                 ReorderableList.defaultBehaviours.DoRemoveButton(list);
             };
-
-            this.m_FilterList.onAddDropdownCallback = (Rect rect, ReorderableList list) => {
-
+            this.m_FilterList.onAddDropdownCallback = (Rect rect, ReorderableList list) => 
+            {
                 GenericMenu menu = new GenericMenu();
                 string[] guids = AssetDatabase.FindAssets("t:"+typeof(ItemDatabase).FullName);
                 for (int i = 0; i < guids.Length; i++)
@@ -90,14 +81,10 @@ namespace FKGame.InventorySystem
                 }
                 menu.DropDown(rect);
             };
-
         }
-
-
 
         private void CreateModifierList(string title, SerializedObject serializedObject, SerializedProperty property)
         {
-
             this.m_ModifierList = new ReorderableList(serializedObject, property.FindPropertyRelative("modifiers"), true, true, true, true);
             this.m_ModifierList.drawHeaderCallback = (Rect rect) => {
                 EditorGUI.LabelField(rect, title);
@@ -110,7 +97,6 @@ namespace FKGame.InventorySystem
                 SerializedProperty element = this.m_ModifierList.serializedProperty.GetArrayElementAtIndex(index);
                 EditorGUI.PropertyField(rect, element, GUIContent.none, true);
             };
-
             this.m_ModifierList.onRemoveCallback = (ReorderableList list) =>
             {
                 list.serializedProperty.GetArrayElementAtIndex(list.index).objectReferenceValue = null;
@@ -137,8 +123,5 @@ namespace FKGame.InventorySystem
 
             serializedObject.ApplyModifiedProperties();
         }
-
-        
-
     }
 }

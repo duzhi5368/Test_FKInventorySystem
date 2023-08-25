@@ -1,6 +1,5 @@
 ﻿using UnityEngine;
-using System.Collections;
-
+//------------------------------------------------------------------------
 namespace FKGame.InventorySystem{
 	[System.Serializable]
 	public class Category : ScriptableObject,INameable {
@@ -21,7 +20,6 @@ namespace FKGame.InventorySystem{
 			set{this.name = value;}
 		}
 
-
 		[SerializeField]
 		protected Color m_EditorColor = Color.clear;
 		public Color EditorColor {
@@ -37,11 +35,8 @@ namespace FKGame.InventorySystem{
 		public bool IsAssignable(Category other) {
 			if (other == null)
 				return false;
-
-			if (this.Name == other.Name) {
+			if (this.Name == other.Name)
 				return true;
-			}
-
 			if (other.Parent != null) {
 				return IsAssignable(other.Parent);
 			}

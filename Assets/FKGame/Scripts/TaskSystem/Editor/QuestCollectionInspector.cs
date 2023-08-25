@@ -1,16 +1,13 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEditor;
 using UnityEditorInternal;
-
+//------------------------------------------------------------------------
 namespace FKGame.QuestSystem
 {
     [CustomEditor(typeof(QuestCollection), true)]
     public class QuestCollectionInspector : Editor
     {
         private SerializedProperty script;
-
         private SerializedProperty m_Quests;
         private ReorderableList m_QuestList;
 
@@ -18,7 +15,6 @@ namespace FKGame.QuestSystem
         {
             this.script = serializedObject.FindProperty("m_Script");
             this.m_Quests = serializedObject.FindProperty("m_Quests");
-
             CreateItemList(serializedObject, this.m_Quests);
         }
 
@@ -28,7 +24,6 @@ namespace FKGame.QuestSystem
             this.m_QuestList.drawHeaderCallback = (Rect rect) => {
                 EditorGUI.LabelField(rect, "Quests");
             };
-
             this.m_QuestList.drawElementCallback = (Rect rect, int index, bool isActive, bool isFocused) => {
                 float verticalOffset = (rect.height - EditorGUIUtility.singleLineHeight) * 0.5f;
                 rect.height = EditorGUIUtility.singleLineHeight;
@@ -36,14 +31,12 @@ namespace FKGame.QuestSystem
                 SerializedProperty element = elements.GetArrayElementAtIndex(index);
                 EditorGUI.PropertyField(rect, element, GUIContent.none, true);
             };
-
             this.m_QuestList.onRemoveCallback = (ReorderableList list) =>
             {
                 list.serializedProperty.GetArrayElementAtIndex(list.index).objectReferenceValue = null;
                 ReorderableList.defaultBehaviours.DoRemoveButton(list);
             };
         }
-
 
         public override void OnInspectorGUI()
         {
@@ -54,7 +47,6 @@ namespace FKGame.QuestSystem
             GUILayout.Space(3f);
             this.m_QuestList.DoLayoutList();
             EditorGUILayout.Space();
-         
             serializedObject.ApplyModifiedProperties();
         }
     }

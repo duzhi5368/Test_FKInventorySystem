@@ -5,7 +5,7 @@ using UnityEngine;
 //------------------------------------------------------------------------
 namespace FKGame
 {
-    [CreateAssetMenu(fileName = "Audio Playlist", menuName = "FKGame/Utilities/Audio Playlist")]
+    [CreateAssetMenu(fileName = "Audio Playlist", menuName = "FKGame/基础/音效列表")]
     [System.Serializable]
     public class AudioPlaylist : ScriptableObject
     {

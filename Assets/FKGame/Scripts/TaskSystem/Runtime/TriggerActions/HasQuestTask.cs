@@ -1,18 +1,21 @@
-﻿using UnityEngine;
-
+﻿using FKGame.Macro;
+using UnityEngine;
+//------------------------------------------------------------------------
 namespace FKGame.QuestSystem
 {
     [UnityEngine.Scripting.APIUpdating.MovedFromAttribute(true, null, "Assembly-CSharp")]
     [Icon("Quest")]
-    [ComponentMenu("Quest System/Has Quest Task")]
+    [ComponentMenu(LanguagesMacro.QUEST_SYSTEM + "/" + LanguagesMacro.HAS_QUEST_TASK)]
     [System.Serializable]
     public class HasQuestTask : Action, ICondition
     {
         [QuestPicker(true)]
         [SerializeField]
         protected Quest m_Quest;
+        [InspectorLabel(LanguagesMacro.TASK_NAME)]
         [SerializeField]
         protected string m_Task="";
+        [EnumLabel(LanguagesMacro.TASK_STATUS)]
         [SerializeField]
         protected Status m_Status = Status.Completed;
 

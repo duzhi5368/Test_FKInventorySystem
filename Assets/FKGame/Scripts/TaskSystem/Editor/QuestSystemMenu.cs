@@ -1,19 +1,17 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEditor;
+﻿using UnityEditor;
 using UnityEngine;
-
+//------------------------------------------------------------------------
 namespace FKGame.QuestSystem
 {
     public static class QuestSystemMenu
     {
-        [MenuItem("Tools/FKGame/Quest System/Editor", false, 0)]
+        [MenuItem("Tools/FKGame/任务系统/编辑器", false, 0)]
         private static void OpenEditor()
         {
             QuestSystemEditor.ShowWindow();
         }
 
-		[MenuItem("Tools/FKGame/Quest System/Create Quest Manager", false, 1)]
+		[MenuItem("Tools/FKGame/任务系统/创建任务管理器", false, 1)]
 		private static void CreateQuestManager()
 		{
 			GameObject go = new GameObject("Quest Manager");
@@ -21,7 +19,7 @@ namespace FKGame.QuestSystem
 			Selection.activeGameObject = go;
 		}
 
-		[MenuItem("Tools/FKGame/Quest System/Create Quest Manager", true)]
+		[MenuItem("Tools/FKGame/任务系统/创建任务管理器", true)]
 		static bool ValidateCreateQuestManager()
 		{
 			return GameObject.FindObjectOfType<QuestManager>() == null;

@@ -2,7 +2,7 @@
 //------------------------------------------------------------------------
 namespace FKGame.Graphs
 {
-    [CreateAssetMenu(fileName = "Formula", menuName = "FKGame/Graphs/Formula")]
+    [CreateAssetMenu(fileName = "Formula", menuName = "FKGame/图/公式图")]
     [System.Serializable]
     public class Formula : ScriptableObject, IGraphProvider
     {

@@ -1,12 +1,10 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
 using UnityEditor.AnimatedValues;
 using UnityEngine.Events;
 using System.Linq;
-using System;
-
+//------------------------------------------------------------------------
 namespace FKGame.InventorySystem.Configuration
 {
     [CustomEditor(typeof(SavingLoading))]
@@ -36,14 +34,12 @@ namespace FKGame.InventorySystem.Configuration
             this.m_Provider = serializedObject.FindProperty("provider");
             this.m_ShowMySQL = new AnimBool(this.m_Provider.enumValueIndex == 1);
             this.m_ShowMySQL.valueChanged.AddListener(new UnityAction(Repaint));
-            
 
             this.m_SavingKey = serializedObject.FindProperty("savingKey");
             this.m_SavingRate = serializedObject.FindProperty("savingRate");
             this.m_ServerAdress = serializedObject.FindProperty("serverAdress");
             this.m_SaveScript = serializedObject.FindProperty("saveScript");
             this.m_LoadScript = serializedObject.FindProperty("loadScript");
-
            // this.m_SavedData = JsonSerializer.Deserialize<InventoryManager.SaveData>(PlayerPrefs.GetString("InventorySystemData"), new List<UnityEngine.Object>());
         }
 
@@ -67,8 +63,6 @@ namespace FKGame.InventorySystem.Configuration
                 this.m_ShowMySQL.target = m_Provider.enumValueIndex == 1;
                 if (EditorGUILayout.BeginFadeGroup(this.m_ShowMySQL.faded))
                 {
-
-           
                     EditorGUILayout.PropertyField(this.m_ServerAdress);
                     EditorGUILayout.PropertyField(this.m_SaveScript);
                     EditorGUILayout.PropertyField(this.m_LoadScript);
@@ -84,16 +78,12 @@ namespace FKGame.InventorySystem.Configuration
             List<string> keys = PlayerPrefs.GetString("InventorySystemSavedKeys").Split(';').ToList();
             keys.RemoveAll(x => string.IsNullOrEmpty(x));
 
-
-
             if (EditorTools.Foldout("InventorySavedData", new GUIContent("Saved Data " + keys.Count)))
             {
                 EditorTools.BeginIndent(1,true);
                 if (keys.Count == 0){
                     GUILayout.Label("No data saved on this device!");
                 }
-
-
                 for (int i = 0; i < keys.Count; i++)
                 {
                     string key = keys[i];
@@ -105,9 +95,7 @@ namespace FKGame.InventorySystem.Configuration
                         allKeys.Remove(key);
                         PlayerPrefs.SetString("InventorySystemSavedKeys", string.Join(";", allKeys));
                     }
-
                     GenericMenu keyMenu = new GenericMenu();
-
                     keyMenu.AddItem(new GUIContent("Delete Key"), false, () => {
                         List<string> allKeys = new List<string>(keys);
                         allKeys.Remove(key);
@@ -127,7 +115,6 @@ namespace FKGame.InventorySystem.Configuration
                             uiMenu.AddItem(new GUIContent("Delete UI"), false, () => {
                                 PlayerPrefs.DeleteKey(key + ".UI");
                             });
-
                             if (EditorTools.Foldout(key + ".UI", new GUIContent("UI"), uiMenu)) {
                                 EditorTools.BeginIndent(1, true);
                                 GUILayout.Label(uiData, EditorStyles.wordWrappedLabel);
@@ -144,7 +131,6 @@ namespace FKGame.InventorySystem.Configuration
                                 scenes.RemoveAll(x => string.IsNullOrEmpty(x));
                                 PlayerPrefs.SetString(key+".Scenes",string.Join(";",allScenes));
                             });
-
                             if (EditorTools.Foldout(key + "." + scene, new GUIContent(scene), sceneMenu))
                             {
                                 EditorTools.BeginIndent(1, true);
@@ -157,8 +143,6 @@ namespace FKGame.InventorySystem.Configuration
                 }
                 EditorTools.EndIndent();
             }
-            
-
             serializedObject.ApplyModifiedProperties();
         }
     }

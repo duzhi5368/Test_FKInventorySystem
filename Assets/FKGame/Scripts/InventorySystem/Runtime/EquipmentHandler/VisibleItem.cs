@@ -1,14 +1,9 @@
-﻿using System.CodeDom;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.XR;
-
+﻿using UnityEngine;
+//------------------------------------------------------------------------
 namespace FKGame.InventorySystem
 {
     public abstract class VisibleItem : CallbackHandler
     {
-
         public override string[] Callbacks => new string[] { "OnEquip", "OnUnEquip" };
 
         public Item item;
@@ -23,9 +18,7 @@ namespace FKGame.InventorySystem
         protected EquipmentHandler m_Handler;
         protected Item m_CurrentEquipedItem;
 
-        protected virtual void Start() {
-          
-        }
+        protected virtual void Start() {}
 
         protected virtual void Awake(){
             this.m_Handler = GetComponent<EquipmentHandler>();
@@ -55,7 +48,8 @@ namespace FKGame.InventorySystem
             Execute("OnEquip", data);
         }
 
-        public virtual void OnItemUnEquip(Item item) {
+        public virtual void OnItemUnEquip(Item item)
+        {
             this.m_CurrentEquipedItem = null;
             enabled = false;
             foreach (Attachment att in attachments)
@@ -71,7 +65,8 @@ namespace FKGame.InventorySystem
             Execute("OnUnEquip", data);
         }
 
-        protected void IgnoreCollision(GameObject gameObject) {
+        protected void IgnoreCollision(GameObject gameObject)
+        {
             Collider collider = gameObject.GetComponent<Collider>();
             for (int i = 0; i < this.m_CharacterColliders.Length; i++) {
                 Physics.IgnoreCollision(this.m_CharacterColliders[i],collider);
@@ -93,7 +88,6 @@ namespace FKGame.InventorySystem
             public GameObject Instantiate(EquipmentHandler handler) {
                 gameObject = GameObject.Instantiate(prefab, handler.GetBone(region));
                 gameObject.SetActive(true);
-                //Calean prefab, not the best way, but keeps the project clean from duplicate prefabs.
                 Trigger trigger = gameObject.GetComponent<Trigger>();
                 if (trigger != null) {
                     Destroy(trigger);
@@ -106,7 +100,6 @@ namespace FKGame.InventorySystem
                 if (collection != null){
                     Destroy(collection);
                 }
-
                 Rigidbody rigidbody = gameObject.GetComponent<Rigidbody>();
                 if (rigidbody != null) {
                     Destroy(rigidbody);

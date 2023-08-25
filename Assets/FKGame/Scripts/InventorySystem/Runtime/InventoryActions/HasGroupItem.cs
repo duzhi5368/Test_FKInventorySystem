@@ -1,8 +1,5 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using FKGame.UIWidgets;
-using UnityEngine;
-
+﻿using UnityEngine;
+//------------------------------------------------------------------------
 namespace FKGame.InventorySystem
 {
     [UnityEngine.Scripting.APIUpdating.MovedFromAttribute(true, null, "Assembly-CSharp")]
@@ -13,8 +10,7 @@ namespace FKGame.InventorySystem
         [SerializeField]
         protected ItemGroup m_RequiredGroupItem;
         [SerializeField]
-        protected string m_Window="Equipment";
-
+        protected string m_Window = "Equipment";
 
         public override ActionStatus OnUpdate()
         {
@@ -25,7 +21,6 @@ namespace FKGame.InventorySystem
 
                     if (ItemContainer.HasItem(this.m_Window, item, 1))
                     {
-                        
                         return ActionStatus.Success;
                     }
                 }

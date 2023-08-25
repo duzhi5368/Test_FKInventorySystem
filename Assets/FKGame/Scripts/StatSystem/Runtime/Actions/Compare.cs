@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using FKGame.Macro;
+using UnityEngine;
 //------------------------------------------------------------------------
 namespace FKGame.StatSystem
 {
@@ -10,18 +11,20 @@ namespace FKGame.StatSystem
         [SerializeField]
         private TargetType m_Target = TargetType.Player;
 
-        [InspectorLabel("Stat")]
+        [InspectorLabel(LanguagesMacro.STAT)]
         [SerializeField]
         protected string m_StatName = "Health";
 
-        [InspectorLabel("Type")]
         [SerializeField]
+        [EnumLabel(LanguagesMacro.VALUE_TYPE)]
         protected ValueType m_ValueType = ValueType.CurrentValue;
 
         [SerializeField]
+        [EnumLabel(LanguagesMacro.COMPARE_CONDITION)]
         protected ConditionType m_Condition = ConditionType.Greater;
 
         [SerializeField]
+        [InspectorLabel(LanguagesMacro.VALUE)]
         protected float m_Value;
 
         private StatsHandler m_Handler;

@@ -1,16 +1,14 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using FKGame.Macro;
 using UnityEngine;
-
+//------------------------------------------------------------------------
 namespace FKGame.QuestSystem
 {
     [UnityEngine.Scripting.APIUpdating.MovedFromAttribute(true, null, "Assembly-CSharp")]
     [Icon("Quest")]
-    [ComponentMenu("Quest System/UpdateQuestIndicators")]
+    [ComponentMenu(LanguagesMacro.QUEST_SYSTEM + "/" + LanguagesMacro.UPDATE_QUEST_INDICATORS)]
     [System.Serializable]
     public class UpdateQuestIndicators : Action
     {
-
         public override ActionStatus OnUpdate()
         {
             QuestIndicator[] indicators = GameObject.FindObjectsOfType<QuestIndicator>();

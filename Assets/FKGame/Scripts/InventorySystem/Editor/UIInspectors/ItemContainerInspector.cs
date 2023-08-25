@@ -1,19 +1,16 @@
-﻿
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEditor;
 using UnityEditorInternal;
 using FKGame.UIWidgets;
 using UnityEditor.AnimatedValues;
 using UnityEngine.Events;
 using UnityEngine.UI;
-
-
+//------------------------------------------------------------------------
 namespace FKGame.InventorySystem
 {
    [CustomEditor(typeof(ItemContainer),true)]
     public class ItemContainerInspector : UIWidgetInspector
     {
-
         private SerializedProperty m_UseButton;
         private SerializedProperty m_DynamicContainer;
         private SerializedProperty m_SlotPrefab;
@@ -21,7 +18,6 @@ namespace FKGame.InventorySystem
         private AnimBool m_ShowDynamicContainer;
 
         private SerializedProperty m_UseReferences;
-
         private SerializedProperty m_MoveUsedItems;
         private SerializedProperty m_MoveItemConditions;
         private AnimBool m_ShowMoveUsedItems;
@@ -33,9 +29,7 @@ namespace FKGame.InventorySystem
         private AnimBool m_ShowContextMenu;
 
         private ReorderableList m_MoveItemConditionList;
-
         private SerializedProperty m_Restrictions;
-
         private string[] m_PropertiesToExcludeForDefaultInspector;
 
         protected override void OnEnable()
@@ -62,8 +56,6 @@ namespace FKGame.InventorySystem
             this.m_ShowDynamicContainer.valueChanged.AddListener(new UnityAction(this.Repaint));
 
             this.m_UseReferences = serializedObject.FindProperty("m_UseReferences");
-
-
             this.m_UseContextMenu = serializedObject.FindProperty("m_UseContextMenu");
             this.m_ContextMenuButton = serializedObject.FindProperty("m_ContextMenuButton");
             this.m_ContextMenuFunctions = serializedObject.FindProperty("m_ContextMenuFunctions");
@@ -74,7 +66,6 @@ namespace FKGame.InventorySystem
             this.m_ContextMenuFunctionList.drawHeaderCallback = (Rect rect) => {
                 EditorGUI.LabelField(rect, "Functions");
             };
-
             this.m_ContextMenuFunctionList.drawElementCallback = (Rect rect, int index, bool isActive, bool isFocused) => {
                 SerializedProperty element = this.m_ContextMenuFunctionList.serializedProperty.GetArrayElementAtIndex(index);
                 rect.y += 2;
@@ -109,7 +100,6 @@ namespace FKGame.InventorySystem
                 this.m_Restrictions.GetArrayElementAtIndex(i).objectReferenceValue.hideFlags = HideFlags.HideInInspector;
             }
 
-
             this.m_PropertiesToExcludeForDefaultInspector = new [] {
                 this.m_UseButton.propertyPath,
                 this.m_DynamicContainer.propertyPath,
@@ -132,7 +122,6 @@ namespace FKGame.InventorySystem
             }
         }
 
-
         private void DrawInspector()
         {
             EditorGUILayout.PropertyField(this.m_UseButton);
@@ -153,10 +142,8 @@ namespace FKGame.InventorySystem
                 this.m_UseReferences.boolValue = false;
             }
             EditorGUILayout.PropertyField(this.m_UseReferences);
-            
             EditorGUI.EndDisabledGroup();
 
-        
             DrawTypePropertiesExcluding(typeof(ItemContainer),this.m_PropertiesToExcludeForDefaultInspector);
 
             EditorGUILayout.PropertyField(this.m_UseContextMenu);
@@ -192,6 +179,5 @@ namespace FKGame.InventorySystem
                 AssetWindow.ShowWindow("Container Restrictions", this.m_Restrictions);
             }
         }
-
     }
 }

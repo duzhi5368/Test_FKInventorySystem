@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using FKGame.Macro;
+using System.Collections.Generic;
 using System.Linq;
 using TMPro;
 using UnityEditor;
@@ -10,12 +11,13 @@ namespace FKGame
 	public class TextToTextMeshPro : EditorWindow
 	{
 
-		[UnityEditor.MenuItem("Tools/FKGame/Internal/Update to TextMeshPro", false)]
+		[UnityEditor.MenuItem("Tools/FKGame/字体更新工具", false)]
 		public static void ShowWindow()
 		{
-			TextToTextMeshPro window = EditorWindow.GetWindow<TextToTextMeshPro>("Update to TextMeshPro");
+			TextToTextMeshPro window = EditorWindow.GetWindow<TextToTextMeshPro>(LanguagesMacro.FONT_UPDATE_EDITOR_TITLE);
 			Vector2 size = new Vector2(300f, 80f);
-			window.minSize = size;
+            window.titleContent = new GUIContent(LanguagesMacro.FONT_UPDATE_EDITOR_TITLE);
+            window.minSize = size;
 			window.wantsMouseMove = true;
 		}
 
@@ -36,8 +38,8 @@ namespace FKGame
 
         private void OnGUI()
         {
-			EditorGUILayout.LabelField("Font:", EditorStyles.boldLabel);
-			EditorGUILayout.HelpBox("Replace the Text Font with TextMeshPro FontAsset.", MessageType.Info);
+			EditorGUILayout.LabelField(LanguagesMacro.FONT, EditorStyles.boldLabel);
+			EditorGUILayout.HelpBox(LanguagesMacro.FONT_UPDATE_TIPS, MessageType.Info);
 			foreach (Font key in this.m_FontMap.Keys.ToList()) {
 				EditorGUILayout.BeginHorizontal();
 				EditorGUI.BeginDisabledGroup(true);
@@ -46,11 +48,11 @@ namespace FKGame
 				this.m_FontMap[key] = (TMP_FontAsset)EditorGUILayout.ObjectField(GUIContent.none, this.m_FontMap[key], typeof(TMP_FontAsset), false);
 				EditorGUILayout.EndHorizontal();
 			}
-			EditorGUILayout.LabelField("Effects:", EditorStyles.boldLabel);
-			outlineRatio = EditorGUILayout.FloatField("Outline Ratio",outlineRatio);
-			shadowRatio = EditorGUILayout.FloatField("Shadow Ratio", shadowRatio);
+			EditorGUILayout.LabelField(LanguagesMacro.FONT_EFFECTS, EditorStyles.boldLabel);
+			outlineRatio = EditorGUILayout.FloatField(LanguagesMacro.FONT_OUTLINE_RATIO, outlineRatio);
+			shadowRatio = EditorGUILayout.FloatField(LanguagesMacro.FONT_SHADOW_RATIO, shadowRatio);
 
-			if (GUILayout.Button("Update to TextMeshPro")) {
+			if (GUILayout.Button(LanguagesMacro.UPDATE_TO_TEXTMESHPRO)) {
 				for (int i = 0; i < this.m_Texts.Length; i++) {
 					UpdateToTextMeshPro(this.m_Texts[i]);
 				}
@@ -176,7 +178,6 @@ namespace FKGame
 			else {
 				material.DisableKeyword(ShaderUtilities.Keyword_Underlay);
 			}
-
 			textMeshPro.enabled = enabled;
 		}
     }

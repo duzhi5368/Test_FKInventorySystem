@@ -1,8 +1,7 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
-
+//------------------------------------------------------------------------
 namespace FKGame.QuestSystem
 {
     [System.Serializable]
@@ -40,7 +39,6 @@ namespace FKGame.QuestSystem
                 }
             }
             ResetChildEditors();
-
         }
 
         public void OnDisable()
@@ -71,7 +69,6 @@ namespace FKGame.QuestSystem
 
         public void OnGUI(Rect position)
         {
-
             DoToolbar();
 
             if (m_ChildEditors != null)
@@ -120,7 +117,6 @@ namespace FKGame.QuestSystem
 
         private void ResetChildEditors()
         {
-
             if (this.m_Database != null)
             {
                 this.m_ChildEditors = new List<ICollectionEditor>();

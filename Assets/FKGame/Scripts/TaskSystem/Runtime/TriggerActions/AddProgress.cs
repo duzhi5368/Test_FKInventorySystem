@@ -1,13 +1,11 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using FKGame.Macro;
 using System.Linq;
-using FKGame;
 using UnityEngine;
-
+//------------------------------------------------------------------------
 namespace FKGame.QuestSystem
 {
     [Icon("Quest")]
-    [ComponentMenu("Quest System/Show Window")]
+    [ComponentMenu(LanguagesMacro.QUEST_SYSTEM + "/" + LanguagesMacro.SHOW_WINDOW)]
     [System.Serializable]
     public class AddProgress : Action
     {
@@ -22,7 +20,6 @@ namespace FKGame.QuestSystem
 
         public override ActionStatus OnUpdate()
         {
-            Debug.Log("Add");
             Quest current = QuestManager.current.GetQuest(quest.Name);
 
             if (current != null && current.Status== Status.Active)
@@ -34,10 +31,7 @@ namespace FKGame.QuestSystem
                     return ActionStatus.Success;
                 }
             }
-            Debug.Log("Fail");
             return ActionStatus.Failure;
         }
-
-
     }
 }

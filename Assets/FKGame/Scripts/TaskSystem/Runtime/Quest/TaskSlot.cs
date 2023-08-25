@@ -1,8 +1,6 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
-
+//------------------------------------------------------------------------
 namespace FKGame.QuestSystem
 {
     public class TaskSlot : MonoBehaviour
@@ -13,7 +11,6 @@ namespace FKGame.QuestSystem
         protected Text m_TaskDescription;
         [SerializeField]
         protected Text m_RemainingTime;
-
         [SerializeField]
         protected Color m_DefaultColor = Color.white;
         [SerializeField]
@@ -23,38 +20,25 @@ namespace FKGame.QuestSystem
 
         private QuestTask m_LastTask;
 
-        
-
         public void Repaint(QuestTask task) {
-
-
-
             if (this.m_TaskProgress != null)
             {
                 this.m_TaskProgress.color = this.m_DefaultColor;
-
                 if(task.Status== Status.Completed)
                     this.m_TaskProgress.color = this.m_CompletedColor;
-
                 if (task.Status == Status.Failed)
                     this.m_TaskProgress.color = this.m_FailedColor;
-
                 this.m_TaskProgress.text = task.ProgressMessage;
             }
             if (this.m_TaskDescription != null)
             {
                 this.m_TaskDescription.color = this.m_DefaultColor;
-
                 if (task.Status == Status.Completed)
                     this.m_TaskDescription.color = this.m_CompletedColor;
-
                 if (task.Status == Status.Failed)
                     this.m_TaskDescription.color = this.m_FailedColor;
-
                 this.m_TaskDescription.text = task.Description;
             }
-
-
             this.m_LastTask = task;
         }
 

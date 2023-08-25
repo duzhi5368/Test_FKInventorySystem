@@ -1,9 +1,8 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
-
+//------------------------------------------------------------------------
 namespace FKGame.QuestSystem
 {
     public class QuestIndicator : MonoBehaviour
@@ -13,10 +12,7 @@ namespace FKGame.QuestSystem
         public GameObject questTask;
 
         public List<QuestTaskSet> taskSets;
-
         private QuestCollection m_QuestCollection;
-
-        
 
         private IEnumerator Start()
         {
@@ -27,7 +23,6 @@ namespace FKGame.QuestSystem
             QuestManager.current.OnTaskProgressChanged += OnTaskChanged;
             QuestManager.current.OnTaskStatusChanged += OnTaskChanged;
             UpdateQuestIndicator();
-           
         }
 
         private void OnTaskChanged(Quest quest, QuestTask task)
@@ -46,7 +41,6 @@ namespace FKGame.QuestSystem
             completeableQuest.SetActive(false);
             questTask.SetActive(false);
 
-
             for (int i = 0; i < taskSets.Count; i++)
             {
                 Quest quest = QuestManager.current.ActiveQuests.FirstOrDefault(x => x.Name == taskSets[i].quest.Name);
@@ -59,7 +53,6 @@ namespace FKGame.QuestSystem
                     }
                 }
             }
-
             if (this.m_QuestCollection != null)
             {
                 Quest combleteable = this.m_QuestCollection.FirstOrDefault(x => x.CanComplete());
@@ -68,14 +61,12 @@ namespace FKGame.QuestSystem
                     completeableQuest.SetActive(true);
                     return;
                 }
-
                 Quest available = this.m_QuestCollection.FirstOrDefault(x => x.CanActivate());
                 if (available != null)
                 {
                     availableQuest.SetActive(true);
                 }
             }
-
         }
 
         [System.Serializable]

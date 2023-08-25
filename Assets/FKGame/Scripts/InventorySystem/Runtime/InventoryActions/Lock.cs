@@ -1,8 +1,6 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using FKGame.UIWidgets;
+﻿using FKGame.UIWidgets;
 using UnityEngine;
-
+//------------------------------------------------------------------------
 namespace FKGame.InventorySystem
 {
     [UnityEngine.Scripting.APIUpdating.MovedFromAttribute(true, null, "Assembly-CSharp")]
@@ -29,9 +27,7 @@ namespace FKGame.InventorySystem
                 Debug.LogWarning("Missing window " + this.m_WindowName + " in scene!");
                 return ActionStatus.Failure;
             }
-
             this.m_ItemContainer.Lock(this.m_State);
-           
             return ActionStatus.Success;
         }
     }

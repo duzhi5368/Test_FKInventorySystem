@@ -1,11 +1,12 @@
-﻿using UnityEngine;
+﻿using FKGame.Macro;
+using UnityEngine;
 //------------------------------------------------------------------------
 // 通知面板中的单独一项通知
 //------------------------------------------------------------------------
 namespace FKGame.UIWidgets{
 	[System.Serializable]
 	public class NotificationOptions {
-		public string title = string.Empty;
+        public string title = string.Empty;
 		public string text = string.Empty;
 		public Color color = Color.white;
 		public Sprite icon;

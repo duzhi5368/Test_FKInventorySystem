@@ -1,19 +1,13 @@
 ﻿using UnityEngine;
 using UnityEditor;
-using System.Linq;
-using System.Collections.Generic;
-using UnityEngine.Events;
-
+//------------------------------------------------------------------------
 namespace FKGame.InventorySystem
 {
 	public class InventorySystemEditor : EditorWindow
 	{
-
 		private InventorySystemInspector m_InventorySystemInspector;
-
 		public static void ShowWindow ()
 		{
-	
 			InventorySystemEditor[] objArray = Resources.FindObjectsOfTypeAll<InventorySystemEditor> ();
 			InventorySystemEditor editor = (objArray.Length <= 0 ? ScriptableObject.CreateInstance<InventorySystemEditor> () : objArray [0]);
 
@@ -50,6 +44,5 @@ namespace FKGame.InventorySystem
 		{
 			this.m_InventorySystemInspector.OnGUI(position);
 		}
-
 	}
 }

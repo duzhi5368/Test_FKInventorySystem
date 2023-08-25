@@ -1,12 +1,10 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
-using FKGame;
 using UnityEditor.AnimatedValues;
 using UnityEngine.Events;
 using System.Linq;
-
+//------------------------------------------------------------------------
 namespace FKGame.QuestSystem
 {
     [CustomEditor(typeof(SavingLoading))]
@@ -59,15 +57,10 @@ namespace FKGame.QuestSystem
                 {
                     GUILayout.Label("No data saved on this device!");
                 }
-
-
                 for (int i = 0; i < keys.Count; i++)
                 {
                     string key = keys[i];
-                  
-  
                     GenericMenu keyMenu = new GenericMenu();
-
                     keyMenu.AddItem(new GUIContent("Delete Key"), false, () => {
                         List<string> allKeys = new List<string>(keys);
                         allKeys.Remove(key);
@@ -133,8 +126,6 @@ namespace FKGame.QuestSystem
                 }
                 EditorTools.EndIndent();
             }
-
-
             serializedObject.ApplyModifiedProperties();
         }
     }

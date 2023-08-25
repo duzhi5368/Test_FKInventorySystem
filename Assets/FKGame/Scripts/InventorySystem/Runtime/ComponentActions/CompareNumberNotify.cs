@@ -1,9 +1,8 @@
 ﻿using FKGame.UIWidgets;
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+//------------------------------------------------------------------------
 namespace FKGame.InventorySystem
 {
     [UnityEngine.Scripting.APIUpdating.MovedFromAttribute(true, null, "Assembly-CSharp")]
@@ -44,14 +43,12 @@ namespace FKGame.InventorySystem
                 Debug.LogWarning("Unable to invoke - type is null");
                 return ActionStatus.Failure;
             }
-
             var component = this.m_TargetObject.GetComponent(type);
             if (component == null)
             {
                 Debug.LogWarning("Unable to invoke with component " + m_ComponentName);
                 return ActionStatus.Failure;
             }
-
             List<object> parameterList = new List<object>();
             List<Type> typeList = new List<Type>();
             for (int i = 0; i < m_Arguments.Count; i++)
@@ -66,14 +63,11 @@ namespace FKGame.InventorySystem
             }
 
             var methodInfo = component.GetType().GetMethod(this.m_MethodName, typeList.ToArray());
-
             if (methodInfo == null)
             {
                 Debug.LogWarning("Unable to invoke method " + this.m_MethodName + " on component " + this.m_ComponentName);
                 return ActionStatus.Failure;
             }
-
-
             float result = System.Convert.ToSingle(methodInfo.Invoke(component, parameterList.ToArray()));
             if (this.m_Condition == Condition.Greater && result < this.m_Number || this.m_Condition == Condition.Less && result > this.m_Number) {
                 this.m_FailureNotification.Show();

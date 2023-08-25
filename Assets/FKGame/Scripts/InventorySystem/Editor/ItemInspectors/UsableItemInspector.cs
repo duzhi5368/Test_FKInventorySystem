@@ -2,13 +2,11 @@
 using UnityEditor;
 using UnityEngine;
 using System;
-using System.Linq;
 using System.Reflection;
 using UnityEditor.AnimatedValues;
 using UnityEngine.Events;
-using System.Collections.Generic;
 using FKGame.Macro;
-
+//------------------------------------------------------------------------
 namespace FKGame.InventorySystem
 {
     [CustomEditor(typeof(UsableItem), true)]
@@ -53,23 +51,14 @@ namespace FKGame.InventorySystem
                     this.m_FieldName = fields[i].Name;
             }
             m_Actions = serializedObject.FindProperty("actions");
-            /*
-             * I can't apply any changes to managedReferenceValue if it is null
-             * for (int i = 0; i < this.m_Actions.arraySize; i++) {
-                SerializedProperty element = this.m_Actions.GetArrayElementAtIndex(i);
-                if (element.GetValue() == null) {
-             
-                    element.managedReferenceValue = new MissingAction();
-                    serializedObject.ApplyModifiedPropertiesWithoutUndo();
-                }
-            }*/
+
             AssemblyReloadEvents.beforeAssemblyReload += OnBeforeAssemblyReload;
             AssemblyReloadEvents.afterAssemblyReload += OnAfterAssemblyReload;
             EditorApplication.playModeStateChanged += OnPlaymodeStateChange;
-
         }
 
-        protected override void OnDisable() {
+        protected override void OnDisable() 
+        {
             AssemblyReloadEvents.beforeAssemblyReload -= OnBeforeAssemblyReload;
             AssemblyReloadEvents.afterAssemblyReload -= OnAfterAssemblyReload;
             EditorApplication.playModeStateChanged -= OnPlaymodeStateChange;
@@ -91,7 +80,6 @@ namespace FKGame.InventorySystem
         }
 
         private void DrawInspector() {
-
             DrawCooldownGUI();
         }
 
@@ -107,11 +95,11 @@ namespace FKGame.InventorySystem
             EditorGUILayout.EndFadeGroup();
         }
 
-
-        protected void ActionGUI() {
-           
+        protected void ActionGUI() 
+        {
             GUILayout.Space(10f);
-            for (int i = 0; i < this.m_Actions.arraySize; i++) {
+            for (int i = 0; i < this.m_Actions.arraySize; i++) 
+            {
                 SerializedProperty action = this.m_Actions.GetArrayElementAtIndex(i);
 
                 object value = this.m_List[i];
@@ -137,13 +125,10 @@ namespace FKGame.InventorySystem
                     {
                         foreach (var child in action.EnumerateChildProperties())
                         {
-                            //Need to find a better way to disable TargetType on Item, it should be always Player   
-                           // EditorGUI.BeginDisabledGroup(child.name == "m_Target");
                             EditorGUILayout.PropertyField(
                                 child,
                                 includeChildren: true
                             );
-                           // EditorGUI.EndDisabledGroup();
                         }
                     }
                     EditorGUI.indentLevel -= 1;
@@ -155,7 +140,6 @@ namespace FKGame.InventorySystem
 
             DoAddButton();
             GUILayout.Space(10f);
-
         }
 
         private void Add(Type type)
@@ -167,23 +151,20 @@ namespace FKGame.InventorySystem
             serializedObject.ApplyModifiedProperties();
         }
 
-        private void CreateScript(string scriptName)
-        {
-          
-        }
+        private void CreateScript(string scriptName){}
 
         private void DoAddButton()
         {
             GUIStyle buttonStyle = new GUIStyle("AC Button");
             GUIContent buttonContent = new GUIContent("Add " + this.m_ElementType.Name);
-             Rect buttonRect = GUILayoutUtility.GetRect(buttonContent, buttonStyle, GUILayout.ExpandWidth(true));
-             buttonRect.x = buttonRect.width * 0.5f - buttonStyle.fixedWidth * 0.5f;
-             buttonRect.width = buttonStyle.fixedWidth;
+            Rect buttonRect = GUILayoutUtility.GetRect(buttonContent, buttonStyle, GUILayout.ExpandWidth(true));
+            buttonRect.x = buttonRect.width * 0.5f - buttonStyle.fixedWidth * 0.5f;
+            buttonRect.width = buttonStyle.fixedWidth;
 
-             if (GUI.Button(buttonRect, buttonContent, buttonStyle))
-             {
-                 AddObjectWindow.ShowWindow(buttonRect, this.m_ElementType, Add, CreateScript);
-             }
+            if (GUI.Button(buttonRect, buttonContent, buttonStyle))
+            {
+                AddObjectWindow.ShowWindow(buttonRect, this.m_ElementType, Add, CreateScript);
+            }
         }
 
         private void OnPlaymodeStateChange(PlayModeStateChange stateChange)
@@ -200,7 +181,6 @@ namespace FKGame.InventorySystem
             }
         }
 
-
         public void OnAfterAssemblyReload()
         {
             Reload();
@@ -208,7 +188,6 @@ namespace FKGame.InventorySystem
 
         private GenericMenu ElementContextMenu(IList list, int index)
         {
-           
             GenericMenu menu = new GenericMenu();
             if (list[index] == null) {
                 return menu;
@@ -311,7 +290,6 @@ namespace FKGame.InventorySystem
 
             this.m_ElementType = Utility.GetType(this.m_ElementTypeName);
             this.m_List = this.m_Target.GetType().GetSerializedField(this.m_FieldName).GetValue(this.m_Target) as IList;
-           
         }   
     }
 }

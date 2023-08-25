@@ -1,8 +1,7 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 using FKGame.UIWidgets;
-
+//------------------------------------------------------------------------
 namespace FKGame.InventorySystem
 {
     [UnityEngine.Scripting.APIUpdating.MovedFromAttribute(true, null, "Assembly-CSharp")]
@@ -33,7 +32,6 @@ namespace FKGame.InventorySystem
                     GameObject.Destroy(gameObject,0.1f);
                 }
             });
-
         }
 
         public override ActionStatus OnUpdate()
@@ -80,12 +78,10 @@ namespace FKGame.InventorySystem
                 }
                 else
                 {
-                    //Drop items to ground
                     DropItem(item);
                     this.m_ItemCollection.Remove(item);
                 }
             }
-
             return ActionStatus.Success;
         }
 

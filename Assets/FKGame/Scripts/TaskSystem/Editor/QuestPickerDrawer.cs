@@ -3,7 +3,7 @@ using UnityEditor;
 using System.Collections.Generic;
 using System.Linq;
 using System.Collections;
-
+//------------------------------------------------------------------------
 namespace FKGame.QuestSystem
 {
 	[CustomPropertyDrawer(typeof(QuestPickerAttribute), true)]
@@ -20,7 +20,6 @@ namespace FKGame.QuestSystem
 
 		protected virtual void DoSelection(Rect buttonRect, SerializedProperty property, GUIContent label, Quest current)
 		{
-
 			GUIStyle buttonStyle = EditorStyles.objectField;
 			GUIContent buttonContent = new GUIContent(current != null ? current.Name : "Null");
 			if (GUI.Button(buttonRect, buttonContent, buttonStyle))

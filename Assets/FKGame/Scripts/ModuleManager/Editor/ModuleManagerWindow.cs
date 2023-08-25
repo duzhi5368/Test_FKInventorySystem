@@ -29,7 +29,7 @@ namespace FKGame
 
         private int m_SelectedChangeLog;
 
-        [MenuItem("Tools/FKGame/Module Manager", false, -1000)]
+        [MenuItem("Tools/FKGame/模块管理器", false, -1000)]
         public static void ShowWindow()
         {
             ModuleManagerWindow window = EditorWindow.GetWindow<ModuleManagerWindow>(false, "Module Manager");

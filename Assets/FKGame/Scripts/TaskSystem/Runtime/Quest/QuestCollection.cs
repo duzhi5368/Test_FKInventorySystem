@@ -1,10 +1,10 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 using UnityEngine.Events;
-using UnityEngine.Serialization;
-
+//------------------------------------------------------------------------
+// 任务列表
+//------------------------------------------------------------------------
 namespace FKGame.QuestSystem
 {
     public class QuestCollection : MonoBehaviour, IEnumerable<Quest>
@@ -25,7 +25,8 @@ namespace FKGame.QuestSystem
 
         public void Initialize()
         {
-            if (this.m_Initialized) { return; }
+            if (this.m_Initialized)
+                return;
             for (int i = 0; i < this.m_Quests.Count; i++)
             {
                 Quest instance;
@@ -92,7 +93,6 @@ namespace FKGame.QuestSystem
             this.m_Quests.Add(item);
             if (onChange != null)
                 onChange.Invoke();
-
         }
 
         public bool Remove(Quest item)
@@ -125,14 +125,7 @@ namespace FKGame.QuestSystem
                 onChange.Invoke();
         }
 
-        public void GetObjectData(Dictionary<string, object> data)
-        {
-           
-        }
-
-        public void SetObjectData(Dictionary<string, object> data)
-        {
-        
-        }
+        public void GetObjectData(Dictionary<string, object> data){}
+        public void SetObjectData(Dictionary<string, object> data){}
     }
 }

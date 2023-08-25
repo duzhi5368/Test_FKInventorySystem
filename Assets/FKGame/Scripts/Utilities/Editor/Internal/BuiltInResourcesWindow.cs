@@ -1,16 +1,18 @@
 ﻿using UnityEditor;
 using UnityEngine;
 using System.Collections.Generic;
+using FKGame.Macro;
 //------------------------------------------------------------------------
 namespace FKGame
 {
 	public class BuiltInResourcesWindow : EditorWindow
 	{
-		[MenuItem("Tools/FKGame/Internal/Built-in styles and icons")]
+		[MenuItem("Tools/FKGame/内置风格和图标查看器")]
 		public static void ShowWindow()
 		{
 			BuiltInResourcesWindow w = (BuiltInResourcesWindow)EditorWindow.GetWindow<BuiltInResourcesWindow>();
-			w.Show();
+            w.titleContent = new GUIContent(LanguagesMacro.STYLE_ICON_VIEWER_TITLE);
+            w.Show();
 		}
 
 		private struct Drawing
@@ -21,7 +23,7 @@ namespace FKGame
 
 		private List<Drawing> Drawings;
 
-		private List<UnityEngine.Object> _objects;
+		private List<Object> _objects;
 		private float _scrollPos;
 		private float _maxY;
 		private Rect _oldPosition;
@@ -40,21 +42,18 @@ namespace FKGame
 			}
 
 			GUILayout.BeginHorizontal();
-
-			if (GUILayout.Toggle(_showingStyles, "Styles", EditorStyles.toolbarButton) != _showingStyles)
+			if (GUILayout.Toggle(_showingStyles, LanguagesMacro.INTERNAL_STYLES, EditorStyles.toolbarButton) != _showingStyles)
 			{
 				_showingStyles = !_showingStyles;
 				_showingIcons = !_showingStyles;
 				Drawings = null;
 			}
-
-			if (GUILayout.Toggle(_showingIcons, "Icons", EditorStyles.toolbarButton) != _showingIcons)
+			if (GUILayout.Toggle(_showingIcons, LanguagesMacro.INTERNAL_ICONS, EditorStyles.toolbarButton) != _showingIcons)
 			{
 				_showingIcons = !_showingIcons;
 				_showingStyles = !_showingIcons;
 				Drawings = null;
 			}
-
 			GUILayout.EndHorizontal();
 
 			string newSearch = GUILayout.TextField(_search);
@@ -65,19 +64,14 @@ namespace FKGame
 			}
 
 			float top = 36;
-
 			if (Drawings == null)
 			{
 				string lowerSearch = _search.ToLower();
-
 				Drawings = new List<Drawing>();
-
 				GUIContent inactiveText = new GUIContent("inactive");
 				GUIContent activeText = new GUIContent("active");
-
 				float x = 5.0f;
 				float y = 5.0f;
-
 				if (_showingStyles)
 				{
 					foreach (GUIStyle ss in GUI.skin.customStyles)
@@ -127,59 +121,46 @@ namespace FKGame
 				{
 					if (_objects == null)
 					{
-						_objects = new List<UnityEngine.Object>(Resources.FindObjectsOfTypeAll(typeof(Texture2D)));
+						_objects = new List<Object>(Resources.FindObjectsOfTypeAll(typeof(Texture2D)));
 						_objects.Sort((pA, pB) => System.String.Compare(pA.name, pB.name, System.StringComparison.OrdinalIgnoreCase));
 					}
 
 					float rowHeight = 0.0f;
-
-					foreach (UnityEngine.Object oo in _objects)
+					foreach (Object oo in _objects)
 					{
 						Texture2D texture = (Texture2D)oo;
-
 						if (texture.name == "")
 							continue;
-
 						if (lowerSearch != "" && !texture.name.ToLower().Contains(lowerSearch))
 							continue;
 
 						Drawing draw = new Drawing();
-
 						float width = Mathf.Max(
 							GUI.skin.button.CalcSize(new GUIContent(texture.name)).x,
 							texture.width
 							) + 8.0f;
-
 						float height = texture.height + GUI.skin.button.CalcSize(new GUIContent(texture.name)).y + 8.0f;
-
 						if (x + width > position.width - 32.0f)
 						{
 							x = 5.0f;
 							y += rowHeight + 8.0f;
 							rowHeight = 0.0f;
 						}
-
 						draw.Rect = new Rect(x, y, width, height);
-
 						rowHeight = Mathf.Max(rowHeight, height);
-
 						width -= 8.0f;
-
 						draw.Draw = () =>
 						{
+							// TODO: 分大小层级进行重绘
 							if (GUILayout.Button(texture.name, GUILayout.Width(width)))
 								CopyText("EditorGUIUtility.FindTexture( \"" + texture.name + "\" )");
-
 							Rect textureRect = GUILayoutUtility.GetRect(texture.width, texture.width, texture.height, texture.height, GUILayout.ExpandHeight(false), GUILayout.ExpandWidth(false));
 							EditorGUI.DrawTextureTransparent(textureRect, texture);
 						};
-
 						x += width + 8.0f;
-
 						Drawings.Add(draw);
 					}
 				}
-
 				_maxY = y;
 			}
 
@@ -200,17 +181,14 @@ namespace FKGame
 			{
 				Rect newRect = draw.Rect;
 				newRect.y -= _scrollPos;
-
 				if (newRect.y + newRect.height > 0 && newRect.y < areaHeight)
 				{
 					GUILayout.BeginArea(newRect, GUI.skin.textField);
 					draw.Draw();
 					GUILayout.EndArea();
-
 					count++;
 				}
 			}
-
 			GUILayout.EndArea();
 		}
 

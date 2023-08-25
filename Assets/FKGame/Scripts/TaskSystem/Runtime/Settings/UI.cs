@@ -1,10 +1,7 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using FKGame;
+﻿using FKGame.Macro;
 using FKGame.UIWidgets;
-using UnityEngine;
 using UnityEngine.Assertions;
-
+//------------------------------------------------------------------------
 namespace FKGame.QuestSystem
 {
     [System.Serializable]
@@ -18,13 +15,13 @@ namespace FKGame.QuestSystem
             }
         }
 
-        [InspectorLabel("Notification", "Name of Notification widget.")]
+        [InspectorLabel(LanguagesMacro.NOTIFICATION_WIDGET)]
         public string notificationName = "Notification";
-        [InspectorLabel("Dialog Box", "Name of the dialog box widget.")]
+        [InspectorLabel(LanguagesMacro.DIALOG_WIDGET)]
         public string dialogBoxName = "Dialog Box";
-        [InspectorLabel("Quest Window", "Name of the quest window widget.")]
+        [InspectorLabel(LanguagesMacro.QUEST_WINDOW_WIDGET)]
         public string questWindowName = "Quest";
-        [InspectorLabel("Quest Selection Window", "Name of the quest selection window widget.")]
+        [InspectorLabel(LanguagesMacro.QUEST_SELECTION_WINDOW_WIDGET)]
         public string questSelectionWindowName = "Quest Selection";
 
         private Notification m_Notification;

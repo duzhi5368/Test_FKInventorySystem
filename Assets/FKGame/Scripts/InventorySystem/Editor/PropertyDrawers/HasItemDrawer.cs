@@ -1,9 +1,8 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEditor;
 using UnityEditorInternal;
 using UnityEngine;
-
+//------------------------------------------------------------------------
 namespace FKGame.InventorySystem
 {
     [CustomPropertyDrawer(typeof(HasItem))]
@@ -14,11 +13,9 @@ namespace FKGame.InventorySystem
 
         public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
         {
-
             ReorderableList m_RequiredItemList = null;
             if (!this.m_ListMap.TryGetValue(property.propertyPath, out m_RequiredItemList))
             {
-          
                 m_RequiredItems = property.FindPropertyRelative("requiredItems");
                 m_RequiredItemList = new ReorderableList(property.serializedObject, this.m_RequiredItems, true, true, true, true);
                 m_RequiredItemList.drawElementCallback = (Rect rect, int index, bool isActive, bool isFocused) =>
@@ -32,10 +29,6 @@ namespace FKGame.InventorySystem
                     rect.x += rect.width + 5;
                     rect.width -= 5f;
                     SerializedProperty window = element.FindPropertyRelative("stringValue");
-                    /*if (InventorySystemEditor.Database == null || InventorySystemEditor.Database.items.Count == 0)
-                    {
-                        rect.y += (9 + EditorGUIUtility.singleLineHeight + 6);
-                    }*/
                     EditorGUI.PropertyField(rect, window, GUIContent.none);
                 };
                 m_RequiredItemList.drawHeaderCallback = (Rect rect) =>
@@ -44,7 +37,7 @@ namespace FKGame.InventorySystem
                 };
                 this.m_ListMap.Add(property.propertyPath, m_RequiredItemList);
             }
-          //  m_RequiredItemList.elementHeight = (InventorySystemEditor.Database != null && InventorySystemEditor.Database.items.Count > 0 || m_RequiredItemList.count == 0 ? 21 : (30 + EditorGUIUtility.singleLineHeight + 4));
+
             try
             {
                 m_RequiredItemList.DoLayoutList();
@@ -53,9 +46,7 @@ namespace FKGame.InventorySystem
                     this.m_ListMap.Remove(property.propertyPath);
             }
             EditorGUILayout.Space();
-
         }
-
 
         public override float GetPropertyHeight(SerializedProperty property, GUIContent label)
         {

@@ -1,16 +1,13 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEditor;
+﻿using UnityEditor;
 using UnityEditorInternal;
 using UnityEngine;
-
+//------------------------------------------------------------------------
 namespace FKGame.InventorySystem
 {
     [CustomEditor(typeof(Currency))]
     public class CurrencyInspector : ItemInspector
     {
         private SerializedProperty m_CurrencyConversions;
-
         private ReorderableList m_CurrencyConversionList;
 
         protected override void OnEnable()
@@ -42,7 +39,6 @@ namespace FKGame.InventorySystem
                 rect.width = width - size.x + 5f - 75f - 12f;
                 EditorGUI.PropertyField(rect, element.FindPropertyRelative("currency"), GUIContent.none);
             };
-
         }
 
         public override void OnInspectorGUI()

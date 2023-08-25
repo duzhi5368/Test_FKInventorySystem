@@ -22,7 +22,6 @@ namespace FKGame.InventorySystem.Configuration
     [System.Serializable]
     public class Notifications : Settings
     {
-
         public override string Name
         {
             get

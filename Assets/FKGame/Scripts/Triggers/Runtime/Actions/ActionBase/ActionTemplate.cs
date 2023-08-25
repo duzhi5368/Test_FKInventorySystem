@@ -3,7 +3,7 @@ using UnityEngine;
 //------------------------------------------------------------------------
 namespace FKGame
 {
-    [CreateAssetMenu(fileName = "ActionTemplate", menuName = "FKGame/Triggers/Action Template")]
+    [CreateAssetMenu(fileName = "ActionTemplate", menuName = "FKGame/触发器/行为组")]
     [System.Serializable]
     public class ActionTemplate : ScriptableObject
     {

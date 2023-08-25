@@ -1,14 +1,11 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-using FKGame;
+﻿using FKGame.Macro;
 using FKGame.UIWidgets;
 using UnityEngine;
-
+//------------------------------------------------------------------------
 namespace FKGame.QuestSystem
 {
     [Icon("Quest")]
-    [ComponentMenu("Quest System/Show Talk Window")]
+    [ComponentMenu(LanguagesMacro.QUEST_SYSTEM + "/" + LanguagesMacro.SHOW_TALK_WINDOW)]
     [System.Serializable]
     public class ShowTalkWindow : Action
     {
@@ -28,7 +25,6 @@ namespace FKGame.QuestSystem
 
         public override ActionStatus OnUpdate()
         {
-
             if (this.m_TalkQuestWindow == null)
             {
                 Debug.LogWarning("Missing window " + this.m_WindowName + " in scene!");
@@ -37,7 +33,5 @@ namespace FKGame.QuestSystem
             this.m_TalkQuestWindow.Show(this.m_Title, this.m_Text);
             return ActionStatus.Success;
         }
-
-
     }
 }

@@ -1,8 +1,7 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+//------------------------------------------------------------------------
 namespace FKGame.QuestSystem
 {
     public class QuestTracking : MonoBehaviour
@@ -29,9 +28,7 @@ namespace FKGame.QuestSystem
                 QuestSlot slot = GetOrCreateSlot(quests[i]);
                 slot.Repaint(quests[i]);
             }
-           
         }
-
 
         private void OnTaskStatusChanged(Quest quest, QuestTask task)
         {
@@ -41,16 +38,13 @@ namespace FKGame.QuestSystem
 
         private void OnQuestStatusChanged(Quest quest)
         {
-            
             if (quest.Status == Status.Active)
             {
                 QuestSlot slot = GetOrCreateSlot(quest);
                 slot.Repaint(quest);
             }else {
                 DestroySlot(quest);
-
             }
-
         }
 
         private void DestroySlot(Quest quest) {

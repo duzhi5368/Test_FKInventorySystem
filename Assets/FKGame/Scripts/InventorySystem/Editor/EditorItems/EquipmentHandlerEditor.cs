@@ -1,10 +1,7 @@
 ﻿using FKGame.Macro;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
 using UnityEditor;
 using UnityEngine;
-
+//------------------------------------------------------------------------
 namespace FKGame.InventorySystem
 {
     public class EquipmentHandlerEditor : EditorWindow
@@ -36,7 +33,6 @@ namespace FKGame.InventorySystem
             Repaint();
         }
 
-
         private void OnGUI()
         {
             if (serializedObject == null){
@@ -45,13 +41,10 @@ namespace FKGame.InventorySystem
             GUILayout.BeginVertical("grey_border");
             GUILayout.Space(6f);
             searchString = EditorTools.SearchField(searchString);
-            
 
             GUIStyle header = new GUIStyle("In BigTitle") {
                 font = EditorStyles.boldLabel.font,
                 stretchWidth = true,
-                
-                
             };
 
             SerializedProperty elements = serializedObject.FindProperty("items");
@@ -79,7 +72,6 @@ namespace FKGame.InventorySystem
             GUIStyle selectButton = new GUIStyle("MeTransitionSelectHead")
             {
                 alignment = TextAnchor.MiddleLeft
-                
             };
             selectButton.padding.left = 10;
    
@@ -113,7 +105,6 @@ namespace FKGame.InventorySystem
                     serializedObject.ApplyModifiedProperties();
                 }
                 GUILayout.EndHorizontal();
-
             }
          
             GUILayout.EndScrollView();
@@ -144,8 +135,6 @@ namespace FKGame.InventorySystem
             EditorGUILayout.PropertyField(property.FindPropertyRelative("m_TransitionDuration"), true);
             EditorGUILayout.PropertyField(property.FindPropertyRelative("m_State"), true);*/
         }
-
-      
 
         private bool MatchesSearch(Item item, string search) {
             return searchString == LanguagesMacro.RESEARCH || item != null && item.Name.ToLower().Contains(search.ToLower());

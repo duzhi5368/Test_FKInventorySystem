@@ -1,5 +1,5 @@
 ﻿using System;
-
+//------------------------------------------------------------------------
 namespace FKGame.InventorySystem
 {
     [AttributeUsage(AttributeTargets.Field)]

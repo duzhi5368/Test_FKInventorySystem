@@ -1,11 +1,9 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEditor;
+﻿using UnityEditor;
 using UnityEditor.AnimatedValues;
 using UnityEditorInternal;
 using UnityEngine;
 using UnityEngine.Events;
-
+//------------------------------------------------------------------------
 namespace FKGame.InventorySystem
 {
     [CustomEditor(typeof(PropertyModifier), true)]
@@ -42,7 +40,6 @@ namespace FKGame.InventorySystem
             };
             this.m_ModifierType = serializedObject.FindProperty("m_ModifierType");
             this.m_Range = serializedObject.FindProperty("m_Range");
-
         }
 
         public override void OnInspectorGUI()
@@ -50,7 +47,6 @@ namespace FKGame.InventorySystem
             serializedObject.Update();
             EditorGUILayout.PropertyField(this.m_ModifierType);
             EditorGUILayout.PropertyField(this.m_Range);
-
             EditorGUILayout.PropertyField(this.m_ApplyToAll);
             this.m_ApplyToAllOptions.target = !this.m_ApplyToAll.boolValue;
             if (EditorGUILayout.BeginFadeGroup(this.m_ApplyToAllOptions.faded))
@@ -61,6 +57,5 @@ namespace FKGame.InventorySystem
      
             serializedObject.ApplyModifiedProperties();
         }
-
     }
 }

@@ -1,17 +1,11 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection;
-using UnityEditor;
+﻿using UnityEditor;
 using UnityEngine;
-
+//------------------------------------------------------------------------
 namespace FKGame.InventorySystem
 {
     [CustomPropertyDrawer(typeof(VisibleItem.Attachment),true)]
     public class AttachmentPropertyDrawer : PropertyDrawer
     {
-
         public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
         {
             EditorGUI.PropertyField(position, property, label, true);
@@ -50,7 +44,6 @@ namespace FKGame.InventorySystem
 					rotation.vector3Value = transform.localEulerAngles;
 					scale.vector3Value = transform.localScale;
 				}
-              
             }
         }
 

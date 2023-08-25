@@ -54,7 +54,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5826a4882132c28429af5629eb5c4bf8, type: 3}
   m_Name: "\u65B0\u6548\u679C"
   m_EditorClassIdentifier: 
-  m_StatEffectName: "\u65B0\u6548\u679C"
+  m_StatEffectName: Poison
   m_Repeat: -1
   m_Actions: []
   references:
@@ -158,6 +158,8 @@ MonoBehaviour:
   - rid: 4260692786084053036
   - rid: 4260692786084053037
   - rid: 4260692786084053038
+  - rid: 4260692786084053039
+  - rid: 4260692786084053040
   references:
     version: 2
     RefIds:
@@ -190,6 +192,33 @@ MonoBehaviour:
         m_Type: FKGame.Wait
         m_Enabled: 1
         duration: 1
+    - rid: 4260692786084053039
+      type: {class: SendMessage, ns: FKGame, asm: Assembly-CSharp}
+      data:
+        m_Type: FKGame.SendMessage
+        m_Enabled: 1
+        m_Target: 0
+        methodName: SetControllerActive
+        m_Argument:
+          m_BoolValue: 0
+          m_IntValue: 0
+          m_FloatValue: 0
+          m_StringValue: 
+          m_Vector2Value: {x: 0, y: 0}
+          m_Vector3Value: {x: 0, y: 0, z: 0}
+          m_ColorValue: {r: 1, g: 1, b: 1, a: 1}
+          m_ObjectValue: {fileID: 11500000, guid: 14ab644239e83c442abb8a33b0a568c6, type: 3}
+          m_ArgumentType: 8
+        m_Options: 1
+    - rid: 4260692786084053040
+      type: {class: SetPositionToTarget, ns: FKGame, asm: Assembly-CSharp}
+      data:
+        m_Type: FKGame.SetPositionToTarget
+        m_Enabled: 1
+        m_Target: 0
+        m_Tag: Respawn
+        m_DefaultPosition: {x: 0, y: 0, z: 0}
+        m_SetCameraRelative: 1
 --- !u!114 &-511744558498960933
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -288,6 +317,7 @@ MonoBehaviour:
         m_Actions:
           actions:
           - rid: 4260692786084053031
+          - rid: 4260692786084053048
     - rid: 4260692786084053031
       type: {class: AddEffect, ns: FKGame.StatSystem, asm: Assembly-CSharp}
       data:
@@ -295,6 +325,16 @@ MonoBehaviour:
         m_Enabled: 1
         m_Target: 1
         m_Effect: {fileID: 0}
+    - rid: 4260692786084053048
+      type: {class: Compare, ns: FKGame.StatSystem, asm: Assembly-CSharp}
+      data:
+        m_Type: FKGame.StatSystem.Compare
+        m_Enabled: 1
+        m_Target: 1
+        m_StatName: Health
+        m_ValueType: 1
+        m_Condition: 0
+        m_Value: 0
 --- !u!114 &7078184980762383381
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -310,9 +350,9 @@ MonoBehaviour:
   m_StatName: Exp
   m_BaseValue: 0
   m_FormulaGraph:
-    serializationData: "{\n\t\"Nodes\":[{\n\t\t\"Type\":\"FKGame.Graphs.FormulaOutput\",\n\t\t\"id\":\"949037aa-04cf-432b-9fbb-b763778be792\",\n\t\t\"name\":\"Formula
-      Output\",\n\t\t\"position\":\"v2(396,-42)\",\n\t\t\"m_Ports\":{\n\t\t\t\"0\":{\n\t\t\t\t\"fieldName\":\"result\",\n\t\t\t\t\"drawPort\":true,\n\t\t\t\t\"label\":false,\n\t\t\t\t\"capacity\":\"Single\",\n\t\t\t\t\"direction\":\"Input\",\n\t\t\t\t\"m_Connections\":{\n\t\t\t\t\t\"0\":{\n\t\t\t\t\t\t\"nodeId\":\"153decd9-d033-44e2-b8e8-007589ef7564\",\n\t\t\t\t\t\t\"fieldName\":\"output\"\n\t\t\t\t\t}\n\t\t\t\t},\n\t\t\t\t\"m_FieldTypeName\":\"System.Single\"\n\t\t\t}\n\t\t},\n\t\t\"result\":0\n\t},{\n\t\t\"Type\":\"FKGame.Graphs.GetStatValue\",\n\t\t\"id\":\"9f9a9531-a90b-474e-a2c7-78785663b1a2\",\n\t\t\"name\":\"Get
-      Stat Value\",\n\t\t\"position\":\"v2(-265,-6)\",\n\t\t\"m_Ports\":{\n\t\t\t\"0\":{\n\t\t\t\t\"fieldName\":\"stat\",\n\t\t\t\t\"drawPort\":false,\n\t\t\t\t\"label\":true,\n\t\t\t\t\"capacity\":\"Single\",\n\t\t\t\t\"direction\":\"Input\",\n\t\t\t\t\"m_Connections\":{\n\t\t\t\t\t\n\t\t\t\t},\n\t\t\t\t\"m_FieldTypeName\":\"System.String\"\n\t\t\t},\n\t\t\t\"1\":{\n\t\t\t\t\"fieldName\":\"statValue\",\n\t\t\t\t\"drawPort\":true,\n\t\t\t\t\"label\":true,\n\t\t\t\t\"capacity\":\"Multiple\",\n\t\t\t\t\"direction\":\"Output\",\n\t\t\t\t\"m_Connections\":{\n\t\t\t\t\t\"0\":{\n\t\t\t\t\t\t\"nodeId\":\"0418168f-3bc0-4976-a50e-66b5d0e835c6\",\n\t\t\t\t\t\t\"fieldName\":\"a\"\n\t\t\t\t\t}\n\t\t\t\t},\n\t\t\t\t\"m_FieldTypeName\":\"FKGame.StatSystem.Stat\"\n\t\t\t}\n\t\t},\n\t\t\"stat\":\"Level\"\n\t},{\n\t\t\"Type\":\"FKGame.Graphs.Add\",\n\t\t\"id\":\"0418168f-3bc0-4976-a50e-66b5d0e835c6\",\n\t\t\"name\":\"Add\",\n\t\t\"position\":\"v2(-70,-4)\",\n\t\t\"m_Ports\":{\n\t\t\t\"0\":{\n\t\t\t\t\"fieldName\":\"a\",\n\t\t\t\t\"drawPort\":true,\n\t\t\t\t\"label\":false,\n\t\t\t\t\"capacity\":\"Single\",\n\t\t\t\t\"direction\":\"Input\",\n\t\t\t\t\"m_Connections\":{\n\t\t\t\t\t\"0\":{\n\t\t\t\t\t\t\"nodeId\":\"9f9a9531-a90b-474e-a2c7-78785663b1a2\",\n\t\t\t\t\t\t\"fieldName\":\"statValue\"\n\t\t\t\t\t}\n\t\t\t\t},\n\t\t\t\t\"m_FieldTypeName\":\"System.Single\"\n\t\t\t},\n\t\t\t\"1\":{\n\t\t\t\t\"fieldName\":\"b\",\n\t\t\t\t\"drawPort\":true,\n\t\t\t\t\"label\":false,\n\t\t\t\t\"capacity\":\"Single\",\n\t\t\t\t\"direction\":\"Input\",\n\t\t\t\t\"m_Connections\":{\n\t\t\t\t\t\n\t\t\t\t},\n\t\t\t\t\"m_FieldTypeName\":\"System.Single\"\n\t\t\t},\n\t\t\t\"2\":{\n\t\t\t\t\"fieldName\":\"output\",\n\t\t\t\t\"drawPort\":true,\n\t\t\t\t\"label\":true,\n\t\t\t\t\"capacity\":\"Multiple\",\n\t\t\t\t\"direction\":\"Output\",\n\t\t\t\t\"m_Connections\":{\n\t\t\t\t\t\"0\":{\n\t\t\t\t\t\t\"nodeId\":\"d3263094-8dff-4da5-8028-1387972312ed\",\n\t\t\t\t\t\t\"fieldName\":\"f\"\n\t\t\t\t\t},\n\t\t\t\t\t\"1\":{\n\t\t\t\t\t\t\"nodeId\":\"396cb802-fed6-43d5-b156-5bd7b3e5617d\",\n\t\t\t\t\t\t\"fieldName\":\"a\"\n\t\t\t\t\t}\n\t\t\t\t},\n\t\t\t\t\"m_FieldTypeName\":\"System.Single\"\n\t\t\t}\n\t\t},\n\t\t\"a\":0,\n\t\t\"b\":1,\n\t\t\"output\":0\n\t},{\n\t\t\"Type\":\"FKGame.Graphs.Pow\",\n\t\t\"id\":\"d3263094-8dff-4da5-8028-1387972312ed\",\n\t\t\"name\":\"Pow\",\n\t\t\"position\":\"v2(95,-98)\",\n\t\t\"m_Ports\":{\n\t\t\t\"0\":{\n\t\t\t\t\"fieldName\":\"f\",\n\t\t\t\t\"drawPort\":true,\n\t\t\t\t\"label\":false,\n\t\t\t\t\"capacity\":\"Single\",\n\t\t\t\t\"direction\":\"Input\",\n\t\t\t\t\"m_Connections\":{\n\t\t\t\t\t\"0\":{\n\t\t\t\t\t\t\"nodeId\":\"0418168f-3bc0-4976-a50e-66b5d0e835c6\",\n\t\t\t\t\t\t\"fieldName\":\"output\"\n\t\t\t\t\t}\n\t\t\t\t},\n\t\t\t\t\"m_FieldTypeName\":\"System.Single\"\n\t\t\t},\n\t\t\t\"1\":{\n\t\t\t\t\"fieldName\":\"p\",\n\t\t\t\t\"drawPort\":true,\n\t\t\t\t\"label\":false,\n\t\t\t\t\"capacity\":\"Single\",\n\t\t\t\t\"direction\":\"Input\",\n\t\t\t\t\"m_Connections\":{\n\t\t\t\t\t\n\t\t\t\t},\n\t\t\t\t\"m_FieldTypeName\":\"System.Single\"\n\t\t\t},\n\t\t\t\"2\":{\n\t\t\t\t\"fieldName\":\"output\",\n\t\t\t\t\"drawPort\":true,\n\t\t\t\t\"label\":true,\n\t\t\t\t\"capacity\":\"Multiple\",\n\t\t\t\t\"direction\":\"Output\",\n\t\t\t\t\"m_Connections\":{\n\t\t\t\t\t\"0\":{\n\t\t\t\t\t\t\"nodeId\":\"153decd9-d033-44e2-b8e8-007589ef7564\",\n\t\t\t\t\t\t\"fieldName\":\"a\"\n\t\t\t\t\t}\n\t\t\t\t},\n\t\t\t\t\"m_FieldTypeName\":\"System.Single\"\n\t\t\t}\n\t\t},\n\t\t\"f\":0,\n\t\t\"p\":2,\n\t\t\"output\":0\n\t},{\n\t\t\"Type\":\"FKGame.Graphs.Multiply\",\n\t\t\"id\":\"396cb802-fed6-43d5-b156-5bd7b3e5617d\",\n\t\t\"name\":\"Multiply\",\n\t\t\"position\":\"v2(92,82)\",\n\t\t\"m_Ports\":{\n\t\t\t\"0\":{\n\t\t\t\t\"fieldName\":\"a\",\n\t\t\t\t\"drawPort\":true,\n\t\t\t\t\"label\":false,\n\t\t\t\t\"capacity\":\"Single\",\n\t\t\t\t\"direction\":\"Input\",\n\t\t\t\t\"m_Connections\":{\n\t\t\t\t\t\"0\":{\n\t\t\t\t\t\t\"nodeId\":\"0418168f-3bc0-4976-a50e-66b5d0e835c6\",\n\t\t\t\t\t\t\"fieldName\":\"output\"\n\t\t\t\t\t}\n\t\t\t\t},\n\t\t\t\t\"m_FieldTypeName\":\"System.Single\"\n\t\t\t},\n\t\t\t\"1\":{\n\t\t\t\t\"fieldName\":\"b\",\n\t\t\t\t\"drawPort\":true,\n\t\t\t\t\"label\":false,\n\t\t\t\t\"capacity\":\"Single\",\n\t\t\t\t\"direction\":\"Input\",\n\t\t\t\t\"m_Connections\":{\n\t\t\t\t\t\n\t\t\t\t},\n\t\t\t\t\"m_FieldTypeName\":\"System.Single\"\n\t\t\t},\n\t\t\t\"2\":{\n\t\t\t\t\"fieldName\":\"output\",\n\t\t\t\t\"drawPort\":true,\n\t\t\t\t\"label\":true,\n\t\t\t\t\"capacity\":\"Multiple\",\n\t\t\t\t\"direction\":\"Output\",\n\t\t\t\t\"m_Connections\":{\n\t\t\t\t\t\"0\":{\n\t\t\t\t\t\t\"nodeId\":\"153decd9-d033-44e2-b8e8-007589ef7564\",\n\t\t\t\t\t\t\"fieldName\":\"b\"\n\t\t\t\t\t}\n\t\t\t\t},\n\t\t\t\t\"m_FieldTypeName\":\"System.Single\"\n\t\t\t}\n\t\t},\n\t\t\"a\":0,\n\t\t\"b\":500,\n\t\t\"output\":0\n\t},{\n\t\t\"Type\":\"FKGame.Graphs.Subtract\",\n\t\t\"id\":\"153decd9-d033-44e2-b8e8-007589ef7564\",\n\t\t\"name\":\"Subtract\",\n\t\t\"position\":\"v2(257,-5)\",\n\t\t\"m_Ports\":{\n\t\t\t\"0\":{\n\t\t\t\t\"fieldName\":\"a\",\n\t\t\t\t\"drawPort\":true,\n\t\t\t\t\"label\":false,\n\t\t\t\t\"capacity\":\"Single\",\n\t\t\t\t\"direction\":\"Input\",\n\t\t\t\t\"m_Connections\":{\n\t\t\t\t\t\"0\":{\n\t\t\t\t\t\t\"nodeId\":\"d3263094-8dff-4da5-8028-1387972312ed\",\n\t\t\t\t\t\t\"fieldName\":\"output\"\n\t\t\t\t\t}\n\t\t\t\t},\n\t\t\t\t\"m_FieldTypeName\":\"System.Single\"\n\t\t\t},\n\t\t\t\"1\":{\n\t\t\t\t\"fieldName\":\"b\",\n\t\t\t\t\"drawPort\":true,\n\t\t\t\t\"label\":false,\n\t\t\t\t\"capacity\":\"Single\",\n\t\t\t\t\"direction\":\"Input\",\n\t\t\t\t\"m_Connections\":{\n\t\t\t\t\t\"0\":{\n\t\t\t\t\t\t\"nodeId\":\"396cb802-fed6-43d5-b156-5bd7b3e5617d\",\n\t\t\t\t\t\t\"fieldName\":\"output\"\n\t\t\t\t\t}\n\t\t\t\t},\n\t\t\t\t\"m_FieldTypeName\":\"System.Single\"\n\t\t\t},\n\t\t\t\"2\":{\n\t\t\t\t\"fieldName\":\"output\",\n\t\t\t\t\"drawPort\":true,\n\t\t\t\t\"label\":true,\n\t\t\t\t\"capacity\":\"Multiple\",\n\t\t\t\t\"direction\":\"Output\",\n\t\t\t\t\"m_Connections\":{\n\t\t\t\t\t\"0\":{\n\t\t\t\t\t\t\"nodeId\":\"949037aa-04cf-432b-9fbb-b763778be792\",\n\t\t\t\t\t\t\"fieldName\":\"result\"\n\t\t\t\t\t}\n\t\t\t\t},\n\t\t\t\t\"m_FieldTypeName\":\"System.Single\"\n\t\t\t}\n\t\t},\n\t\t\"a\":0,\n\t\t\"b\":0,\n\t\t\"output\":0\n\t}]\n}"
+    serializationData: "{\n\t\"Nodes\":[{\n\t\t\"Type\":\"FKGame.Graphs.GetStatValue\",\n\t\t\"id\":\"9f9a9531-a90b-474e-a2c7-78785663b1a2\",\n\t\t\"name\":\"Get
+      Stat Value\",\n\t\t\"position\":\"v2(-265,-6)\",\n\t\t\"m_Ports\":{\n\t\t\t\"0\":{\n\t\t\t\t\"fieldName\":\"stat\",\n\t\t\t\t\"drawPort\":false,\n\t\t\t\t\"label\":true,\n\t\t\t\t\"capacity\":\"Single\",\n\t\t\t\t\"direction\":\"Input\",\n\t\t\t\t\"m_Connections\":{\n\t\t\t\t\t\n\t\t\t\t},\n\t\t\t\t\"m_FieldTypeName\":\"System.String\"\n\t\t\t},\n\t\t\t\"1\":{\n\t\t\t\t\"fieldName\":\"statValue\",\n\t\t\t\t\"drawPort\":true,\n\t\t\t\t\"label\":true,\n\t\t\t\t\"capacity\":\"Multiple\",\n\t\t\t\t\"direction\":\"Output\",\n\t\t\t\t\"m_Connections\":{\n\t\t\t\t\t\"0\":{\n\t\t\t\t\t\t\"nodeId\":\"0418168f-3bc0-4976-a50e-66b5d0e835c6\",\n\t\t\t\t\t\t\"fieldName\":\"a\"\n\t\t\t\t\t}\n\t\t\t\t},\n\t\t\t\t\"m_FieldTypeName\":\"FKGame.StatSystem.Stat\"\n\t\t\t}\n\t\t},\n\t\t\"stat\":\"Level\"\n\t},{\n\t\t\"Type\":\"FKGame.Graphs.Add\",\n\t\t\"id\":\"0418168f-3bc0-4976-a50e-66b5d0e835c6\",\n\t\t\"name\":\"Add\",\n\t\t\"position\":\"v2(-66,-3)\",\n\t\t\"m_Ports\":{\n\t\t\t\"0\":{\n\t\t\t\t\"fieldName\":\"a\",\n\t\t\t\t\"drawPort\":true,\n\t\t\t\t\"label\":false,\n\t\t\t\t\"capacity\":\"Single\",\n\t\t\t\t\"direction\":\"Input\",\n\t\t\t\t\"m_Connections\":{\n\t\t\t\t\t\"0\":{\n\t\t\t\t\t\t\"nodeId\":\"9f9a9531-a90b-474e-a2c7-78785663b1a2\",\n\t\t\t\t\t\t\"fieldName\":\"statValue\"\n\t\t\t\t\t}\n\t\t\t\t},\n\t\t\t\t\"m_FieldTypeName\":\"System.Single\"\n\t\t\t},\n\t\t\t\"1\":{\n\t\t\t\t\"fieldName\":\"b\",\n\t\t\t\t\"drawPort\":true,\n\t\t\t\t\"label\":false,\n\t\t\t\t\"capacity\":\"Single\",\n\t\t\t\t\"direction\":\"Input\",\n\t\t\t\t\"m_Connections\":{\n\t\t\t\t\t\n\t\t\t\t},\n\t\t\t\t\"m_FieldTypeName\":\"System.Single\"\n\t\t\t},\n\t\t\t\"2\":{\n\t\t\t\t\"fieldName\":\"output\",\n\t\t\t\t\"drawPort\":true,\n\t\t\t\t\"label\":true,\n\t\t\t\t\"capacity\":\"Multiple\",\n\t\t\t\t\"direction\":\"Output\",\n\t\t\t\t\"m_Connections\":{\n\t\t\t\t\t\"0\":{\n\t\t\t\t\t\t\"nodeId\":\"d3263094-8dff-4da5-8028-1387972312ed\",\n\t\t\t\t\t\t\"fieldName\":\"f\"\n\t\t\t\t\t},\n\t\t\t\t\t\"1\":{\n\t\t\t\t\t\t\"nodeId\":\"396cb802-fed6-43d5-b156-5bd7b3e5617d\",\n\t\t\t\t\t\t\"fieldName\":\"a\"\n\t\t\t\t\t}\n\t\t\t\t},\n\t\t\t\t\"m_FieldTypeName\":\"System.Single\"\n\t\t\t}\n\t\t},\n\t\t\"a\":0,\n\t\t\"b\":1,\n\t\t\"output\":0\n\t},{\n\t\t\"Type\":\"FKGame.Graphs.Pow\",\n\t\t\"id\":\"d3263094-8dff-4da5-8028-1387972312ed\",\n\t\t\"name\":\"Pow\",\n\t\t\"position\":\"v2(95,-98)\",\n\t\t\"m_Ports\":{\n\t\t\t\"0\":{\n\t\t\t\t\"fieldName\":\"f\",\n\t\t\t\t\"drawPort\":true,\n\t\t\t\t\"label\":false,\n\t\t\t\t\"capacity\":\"Single\",\n\t\t\t\t\"direction\":\"Input\",\n\t\t\t\t\"m_Connections\":{\n\t\t\t\t\t\"0\":{\n\t\t\t\t\t\t\"nodeId\":\"0418168f-3bc0-4976-a50e-66b5d0e835c6\",\n\t\t\t\t\t\t\"fieldName\":\"output\"\n\t\t\t\t\t}\n\t\t\t\t},\n\t\t\t\t\"m_FieldTypeName\":\"System.Single\"\n\t\t\t},\n\t\t\t\"1\":{\n\t\t\t\t\"fieldName\":\"p\",\n\t\t\t\t\"drawPort\":true,\n\t\t\t\t\"label\":false,\n\t\t\t\t\"capacity\":\"Single\",\n\t\t\t\t\"direction\":\"Input\",\n\t\t\t\t\"m_Connections\":{\n\t\t\t\t\t\n\t\t\t\t},\n\t\t\t\t\"m_FieldTypeName\":\"System.Single\"\n\t\t\t},\n\t\t\t\"2\":{\n\t\t\t\t\"fieldName\":\"output\",\n\t\t\t\t\"drawPort\":true,\n\t\t\t\t\"label\":true,\n\t\t\t\t\"capacity\":\"Multiple\",\n\t\t\t\t\"direction\":\"Output\",\n\t\t\t\t\"m_Connections\":{\n\t\t\t\t\t\"0\":{\n\t\t\t\t\t\t\"nodeId\":\"153decd9-d033-44e2-b8e8-007589ef7564\",\n\t\t\t\t\t\t\"fieldName\":\"a\"\n\t\t\t\t\t}\n\t\t\t\t},\n\t\t\t\t\"m_FieldTypeName\":\"System.Single\"\n\t\t\t}\n\t\t},\n\t\t\"f\":0,\n\t\t\"p\":2,\n\t\t\"output\":0\n\t},{\n\t\t\"Type\":\"FKGame.Graphs.Multiply\",\n\t\t\"id\":\"396cb802-fed6-43d5-b156-5bd7b3e5617d\",\n\t\t\"name\":\"Multiply\",\n\t\t\"position\":\"v2(92,82)\",\n\t\t\"m_Ports\":{\n\t\t\t\"0\":{\n\t\t\t\t\"fieldName\":\"a\",\n\t\t\t\t\"drawPort\":true,\n\t\t\t\t\"label\":false,\n\t\t\t\t\"capacity\":\"Single\",\n\t\t\t\t\"direction\":\"Input\",\n\t\t\t\t\"m_Connections\":{\n\t\t\t\t\t\"0\":{\n\t\t\t\t\t\t\"nodeId\":\"0418168f-3bc0-4976-a50e-66b5d0e835c6\",\n\t\t\t\t\t\t\"fieldName\":\"output\"\n\t\t\t\t\t}\n\t\t\t\t},\n\t\t\t\t\"m_FieldTypeName\":\"System.Single\"\n\t\t\t},\n\t\t\t\"1\":{\n\t\t\t\t\"fieldName\":\"b\",\n\t\t\t\t\"drawPort\":true,\n\t\t\t\t\"label\":false,\n\t\t\t\t\"capacity\":\"Single\",\n\t\t\t\t\"direction\":\"Input\",\n\t\t\t\t\"m_Connections\":{\n\t\t\t\t\t\n\t\t\t\t},\n\t\t\t\t\"m_FieldTypeName\":\"System.Single\"\n\t\t\t},\n\t\t\t\"2\":{\n\t\t\t\t\"fieldName\":\"output\",\n\t\t\t\t\"drawPort\":true,\n\t\t\t\t\"label\":true,\n\t\t\t\t\"capacity\":\"Multiple\",\n\t\t\t\t\"direction\":\"Output\",\n\t\t\t\t\"m_Connections\":{\n\t\t\t\t\t\"0\":{\n\t\t\t\t\t\t\"nodeId\":\"153decd9-d033-44e2-b8e8-007589ef7564\",\n\t\t\t\t\t\t\"fieldName\":\"b\"\n\t\t\t\t\t}\n\t\t\t\t},\n\t\t\t\t\"m_FieldTypeName\":\"System.Single\"\n\t\t\t}\n\t\t},\n\t\t\"a\":0,\n\t\t\"b\":500,\n\t\t\"output\":0\n\t},{\n\t\t\"Type\":\"FKGame.Graphs.Subtract\",\n\t\t\"id\":\"153decd9-d033-44e2-b8e8-007589ef7564\",\n\t\t\"name\":\"Subtract\",\n\t\t\"position\":\"v2(257,-5)\",\n\t\t\"m_Ports\":{\n\t\t\t\"0\":{\n\t\t\t\t\"fieldName\":\"a\",\n\t\t\t\t\"drawPort\":true,\n\t\t\t\t\"label\":false,\n\t\t\t\t\"capacity\":\"Single\",\n\t\t\t\t\"direction\":\"Input\",\n\t\t\t\t\"m_Connections\":{\n\t\t\t\t\t\"0\":{\n\t\t\t\t\t\t\"nodeId\":\"d3263094-8dff-4da5-8028-1387972312ed\",\n\t\t\t\t\t\t\"fieldName\":\"output\"\n\t\t\t\t\t}\n\t\t\t\t},\n\t\t\t\t\"m_FieldTypeName\":\"System.Single\"\n\t\t\t},\n\t\t\t\"1\":{\n\t\t\t\t\"fieldName\":\"b\",\n\t\t\t\t\"drawPort\":true,\n\t\t\t\t\"label\":false,\n\t\t\t\t\"capacity\":\"Single\",\n\t\t\t\t\"direction\":\"Input\",\n\t\t\t\t\"m_Connections\":{\n\t\t\t\t\t\"0\":{\n\t\t\t\t\t\t\"nodeId\":\"396cb802-fed6-43d5-b156-5bd7b3e5617d\",\n\t\t\t\t\t\t\"fieldName\":\"output\"\n\t\t\t\t\t}\n\t\t\t\t},\n\t\t\t\t\"m_FieldTypeName\":\"System.Single\"\n\t\t\t},\n\t\t\t\"2\":{\n\t\t\t\t\"fieldName\":\"output\",\n\t\t\t\t\"drawPort\":true,\n\t\t\t\t\"label\":true,\n\t\t\t\t\"capacity\":\"Multiple\",\n\t\t\t\t\"direction\":\"Output\",\n\t\t\t\t\"m_Connections\":{\n\t\t\t\t\t\"0\":{\n\t\t\t\t\t\t\"nodeId\":\"de0df689-cfda-4c24-81e9-721deeb7e426\",\n\t\t\t\t\t\t\"fieldName\":\"result\"\n\t\t\t\t\t}\n\t\t\t\t},\n\t\t\t\t\"m_FieldTypeName\":\"System.Single\"\n\t\t\t}\n\t\t},\n\t\t\"a\":0,\n\t\t\"b\":0,\n\t\t\"output\":0\n\t},{\n\t\t\"Type\":\"FKGame.Graphs.FormulaOutput\",\n\t\t\"id\":\"de0df689-cfda-4c24-81e9-721deeb7e426\",\n\t\t\"name\":\"Formula
+      Output\",\n\t\t\"position\":\"v2(418.6667,-40.66667)\",\n\t\t\"m_Ports\":{\n\t\t\t\"0\":{\n\t\t\t\t\"fieldName\":\"result\",\n\t\t\t\t\"drawPort\":true,\n\t\t\t\t\"label\":false,\n\t\t\t\t\"capacity\":\"Single\",\n\t\t\t\t\"direction\":\"Input\",\n\t\t\t\t\"m_Connections\":{\n\t\t\t\t\t\"0\":{\n\t\t\t\t\t\t\"nodeId\":\"153decd9-d033-44e2-b8e8-007589ef7564\",\n\t\t\t\t\t\t\"fieldName\":\"output\"\n\t\t\t\t\t}\n\t\t\t\t},\n\t\t\t\t\"m_FieldTypeName\":\"System.Single\"\n\t\t\t}\n\t\t},\n\t\t\"result\":0\n\t}]\n}"
     serializedObjects: []
   m_MaxValue: -1
   m_Callbacks: []

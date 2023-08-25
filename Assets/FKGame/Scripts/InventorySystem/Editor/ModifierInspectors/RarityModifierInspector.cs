@@ -1,10 +1,7 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEditor;
+﻿using UnityEditor;
 using UnityEditorInternal;
 using UnityEngine;
-
-
+//------------------------------------------------------------------------
 namespace FKGame.InventorySystem
 {
     [CustomEditor(typeof(RarityModifier),true)]
@@ -29,7 +26,6 @@ namespace FKGame.InventorySystem
                 SerializedProperty element = this.m_RarityList.serializedProperty.GetArrayElementAtIndex(index);
                 EditorGUI.PropertyField(rect, element, GUIContent.none, true);
             };
-
             this.m_RarityList.onRemoveCallback = (ReorderableList list) =>
             {
                 list.serializedProperty.GetArrayElementAtIndex(list.index).objectReferenceValue = null;
@@ -43,6 +39,5 @@ namespace FKGame.InventorySystem
             this.m_RarityList.DoLayoutList();
             serializedObject.ApplyModifiedProperties();
         }
-
     }
 }

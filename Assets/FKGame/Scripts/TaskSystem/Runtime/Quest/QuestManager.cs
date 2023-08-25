@@ -1,20 +1,14 @@
-﻿using FKGame;
-using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.Assertions;
-
+//------------------------------------------------------------------------
 namespace FKGame.QuestSystem
 {
     public class QuestManager : MonoBehaviour
     {
-
-
-        /// Don't destroy this object instance when loading new scenes.
-        /// </summary>
+        // 更换场景不要删除
         public bool dontDestroyOnLoad = true;
-
 
         public event Quest.StatusChanged OnQuestStatusChanged;
         public event Quest.TaskStatusChanged OnTaskStatusChanged;
@@ -22,34 +16,25 @@ namespace FKGame.QuestSystem
         public event Quest.TaskTimerTick OnTaskTimerTick;
 
         private static QuestManager m_Current;
-
-        /// <summary>
-        /// The InventoryManager singleton object. This object is set inside Awake()
-        /// </summary>
         public static QuestManager current
         {
             get
             {
-                Assert.IsNotNull(m_Current, "Requires a Quest Manager.Create one from Tools > FKGame > Quest System > Create Quest Manager!");
+                Assert.IsNotNull(m_Current, "需要一个任务管理器，请通过 Tools > FKGame > 任务系统 > 创建任务管理器 创建一个。");
                 return m_Current;
             }
         }
 
-
+        // 任务数据库
         [SerializeField]
         private QuestDatabase m_Database = null;
-
-        /// <summary>
-        /// Gets the item database. Configurate it inside the editor.
-        /// </summary>
-        /// <value>The database.</value>
         public static QuestDatabase Database
         {
             get
             {
                 if (QuestManager.current != null)
                 {
-                    Assert.IsNotNull(QuestManager.current.m_Database, "Please assign QuestDatabase to the Quest Manager!");
+                    Assert.IsNotNull(QuestManager.current.m_Database, "请先将 任务数据库 分配到 任务管理器中");
                     return QuestManager.current.m_Database;
                 }
                 return null;
@@ -142,24 +127,20 @@ namespace FKGame.QuestSystem
         private List<Quest> CompletedQuests = new List<Quest>();
         private List<Quest> FailedQuests = new List<Quest>();
 
-        /// <summary>
-        /// Awake is called when the script instance is being loaded.
-        /// </summary>
         private void Awake()
         {
-            if (QuestManager.m_Current != null)
+            if (m_Current != null)
             {
-               // Debug.Log("Multiple Character Manager in scene...this is not supported. Destroying instance!");
                 Destroy(gameObject);
                 return;
             }
             else
             {
-                QuestManager.m_Current = this;
+                m_Current = this;
                 if (dontDestroyOnLoad){
                     if (transform.parent != null)
                     {
-                        if (QuestManager.DefaultSettings.debugMessages)
+                        if (DefaultSettings.debugMessages)
                             Debug.Log("Quest Manager with DontDestroyOnLoad can't be a child transform. Unparent!");
                         transform.parent = null;
                     }
@@ -171,7 +152,6 @@ namespace FKGame.QuestSystem
                 Debug.Log("Quest Manager initialized.");
             }
         }
-
 
         public static void Save()
         {
@@ -196,10 +176,9 @@ namespace FKGame.QuestSystem
                 keys.Add(key);
             }
             PlayerPrefs.SetString("QuestSystemSavedKeys", string.Join(";", keys));
-
-            if (QuestManager.DefaultSettings.debugMessages)
+            if (DefaultSettings.debugMessages)
             {
-                Debug.Log("[Quest System] Quests Saved");
+                Debug.Log("[任务系统] 任务已保存");
             }
         }
 
@@ -219,16 +198,16 @@ namespace FKGame.QuestSystem
             LoadQuests(completedQuestData, ref QuestManager.current.CompletedQuests);
             LoadQuests(failedQuestData, ref QuestManager.current.FailedQuests);
 
-            if (QuestManager.DefaultSettings.debugMessages)
+            if (DefaultSettings.debugMessages)
             {
-                Debug.Log("[Quest System] Quests Loaded");
+                Debug.Log("[任务系统] 任务已加载");
             }
         }
 
         private static void LoadQuests(string json, ref List<Quest> quests, bool registerCallbacks = false)
         {
-            if (string.IsNullOrEmpty(json)) return;
-
+            if (string.IsNullOrEmpty(json)) 
+                return;
             List<object> list = MiniJSON.Deserialize(json) as List<object>;
             for (int i = 0; i < list.Count; i++)
             {
@@ -255,10 +234,9 @@ namespace FKGame.QuestSystem
                     Debug.LogWarning("Failed to laod quest "+name+". Quest is not present in Database.");
                 }
             }
-
             if (QuestManager.DefaultSettings.debugMessages)
             {
-                Debug.Log("[Quest System] Quests Loaded");
+                Debug.Log("[任务系统] 任务已加载");
             }
         }
 
@@ -286,9 +264,7 @@ namespace FKGame.QuestSystem
             if (quest.Status == Status.Completed && !this.CompletedQuests.Contains(quest)) {
                 this.CompletedQuests.Add(quest);
                 RemoveQuest(quest);
-                
             }
-
             if (quest.Status == Status.Failed && !this.FailedQuests.Contains(quest)) {
                 if (quest.RestartFailed){
                     quest.Reset();
@@ -297,18 +273,14 @@ namespace FKGame.QuestSystem
                     RemoveQuest(quest);
                 }
             }
-
             if (quest.Status == Status.Canceled)
             {
                 if (quest.RestartCanceled)
                 {
                     RemoveQuest(quest);
                     quest.Reset();
-                    
                 }
             }
-
-            //GameState.MarkDirty();
             if (QuestManager.SavingLoading.autoSave)
                 QuestManager.Save();
         }

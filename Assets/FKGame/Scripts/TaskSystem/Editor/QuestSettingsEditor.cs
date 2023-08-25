@@ -1,10 +1,8 @@
-﻿using UnityEngine;
-using UnityEditor;
-using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System;
 using System.Linq;
-
+using FKGame.Macro;
+//------------------------------------------------------------------------
 namespace FKGame.QuestSystem
 {
     [System.Serializable]
@@ -14,7 +12,7 @@ namespace FKGame.QuestSystem
         {
             get
             {
-                return "Settings";
+                return LanguagesMacro.SETTING;
             }
         }
 
@@ -38,10 +36,8 @@ namespace FKGame.QuestSystem
         {
             this.target = target;
             this.items = items;
-           
 
             Type[] types = AppDomain.CurrentDomain.GetAssemblies().SelectMany(assembly => assembly.GetTypes()).Where(type => typeof(Settings).IsAssignableFrom(type) && type.IsClass && !type.IsAbstract).ToArray();
-
             foreach (Type type in types)
             {
                 if (Items.Where(x => x.GetType() == type).FirstOrDefault() == null)

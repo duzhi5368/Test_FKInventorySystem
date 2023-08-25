@@ -1,10 +1,7 @@
-﻿using FKGame;
-using FKGame.UIWidgets;
-using System.Collections;
-using System.Collections.Generic;
+﻿using FKGame.UIWidgets;
 using UnityEngine;
 using UnityEngine.UI;
-
+//------------------------------------------------------------------------
 namespace FKGame.QuestSystem
 {
     public class QuestTalkWindow : UIWidget

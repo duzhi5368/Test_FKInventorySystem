@@ -1,8 +1,8 @@
-﻿using System.Collections;
+﻿using FKGame.Macro;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
-
+//------------------------------------------------------------------------
 namespace FKGame.QuestSystem
 {
     [System.Serializable]
@@ -18,18 +18,16 @@ namespace FKGame.QuestSystem
         public event TaskProgressChanged OnTaskProgressChanged;
         public event TaskTimerTick OnTaskTimerTick;
 
-
-        [HeaderLine("Default")]
-        [InspectorLabel("Name")]
+        [HeaderLine(LanguagesMacro.QUEST_DEFAULT_TITLE)]
+        [InspectorLabel(LanguagesMacro.QUEST_NAME)]
         [SerializeField]
         private string m_QuestName = string.Empty;
-
         public string Name
         {
             get { return this.m_QuestName; }
             set { this.m_QuestName = value; }
         }
-
+        [InspectorLabel(LanguagesMacro.QUEST_TITLE)]
         [SerializeField]
         protected string m_Title;
         public string Title
@@ -37,6 +35,7 @@ namespace FKGame.QuestSystem
             get { return this.m_Title; }
             set { this.m_Title = value; }
         }
+
         [TextArea(4, 4)]
         [SerializeField]
         protected string m_Description;
@@ -46,27 +45,28 @@ namespace FKGame.QuestSystem
             set { this.m_Description = value; }
         }
 
+        [InspectorLabel(LanguagesMacro.IS_AUTO_COMPLETE)]
         [SerializeField]
         protected bool m_AutoComplete = false;
         public bool AutoComplete
         {
             get { return this.m_AutoComplete; }
         }
-
+        [InspectorLabel(LanguagesMacro.IS_RESTART_FAILED)]
         [SerializeField]
         protected bool m_RestartFailed = true;
         public bool RestartFailed
         {
             get { return this.m_RestartFailed; }
         }
-
+        [InspectorLabel(LanguagesMacro.IS_RESTART_CANCELED)]
         [SerializeField]
         protected bool m_RestartCanceled = true;
         public bool RestartCanceled
         {
             get { return this.m_RestartCanceled; }
         }
-
+        [InspectorLabel(LanguagesMacro.IS_RESTART_COMPLETED)]
         [SerializeField]
         protected bool m_RestartCompleted = false;
         public bool RestartCompleted
@@ -77,22 +77,20 @@ namespace FKGame.QuestSystem
         [SerializeReference]
         public List<Reward> rewards = new List<Reward>();
 
-        [HeaderLine("Tasks")]
+        [HeaderLine(LanguagesMacro.TASKS)]
         [SerializeField]
+        [EnumLabel(LanguagesMacro.TASK_ORDER_RELATIONSHIP)]
         protected TaskExecution m_TaskExecution;
         public TaskExecution TaskExecution {
             get { return this.m_TaskExecution; }
         }
 
-
-
-        [HeaderLine("Conditions")]
+        [HeaderLine(LanguagesMacro.CONDITIONS)]
         [SerializeReference]
         public List<ICondition> conditions = new List<ICondition>();
 
         [SerializeReference]
         public List<QuestTask> tasks = new List<QuestTask>();
-
 
         protected Status m_Status= Status.Inactive;
         public Status Status {
@@ -113,7 +111,8 @@ namespace FKGame.QuestSystem
         }
 
         public void Activate() {
-            if (!CanActivate()) return;
+            if (!CanActivate()) 
+                return;
             QuestManager.current.AddQuest(this);
             Status = Status.Active;
             if (AutoComplete && CanComplete())
@@ -122,25 +121,26 @@ namespace FKGame.QuestSystem
 
         public void Cancel()
         {
-            if (!CanCancel()) return;
+            if (!CanCancel()) 
+                return;
             Status = Status.Canceled;
         }
 
         public void Decline()
         {
-            if (!CanDecline()) return;
-
+            if (!CanDecline()) 
+                return;
             Status = Status.Inactive;
         }
 
         public void Complete()
         {
-            if (!CanComplete()) return;
+            if (!CanComplete()) 
+                return;
             Status = Status.Completed;
         }
 
         public bool CanActivate() {
-          
             for (int i = 0; i < conditions.Count; i++) {
                 ICondition condition = conditions[i];
                 condition.Initialize(QuestManager.current.PlayerInfo.gameObject, QuestManager.current.PlayerInfo, QuestManager.current.PlayerInfo.gameObject.GetComponent<Blackboard>());
@@ -190,18 +190,13 @@ namespace FKGame.QuestSystem
                 QuestManager.Notifications.questCompleted.Show(quest.Title);
                 for (int i = 0; i < quest.tasks.Count; i++)
                     quest.tasks[i].OnQuestCompleted();
-
                 for (int i = 0; i < quest.rewards.Count; i++)
-                {
                     quest.rewards[i].GiveReward();
-                }
                 if (quest.RestartCompleted)
                 {
                     quest.Reset();
                 }
             }
-           
-
             if (quest.Status == Status.Failed)
                 QuestManager.Notifications.questFailed.Show(quest.Title);
         }
@@ -215,7 +210,6 @@ namespace FKGame.QuestSystem
                     next.Activate();
                 }
             }
-
             if (task.Status == Status.Failed) {
                 QuestManager.Notifications.taskFailed.Show(task.Description);
                 if (!task.Optional)
@@ -230,7 +224,6 @@ namespace FKGame.QuestSystem
                     }
                 }
             }
-
             if (AutoComplete && CanComplete())
                 Complete();
         }
@@ -274,7 +267,6 @@ namespace FKGame.QuestSystem
                     {
                         mTasks.Add(null);
                     }
-
                 }
                 data.Add("Tasks", mTasks);
             }
@@ -300,21 +292,27 @@ namespace FKGame.QuestSystem
                     }
                 }
             }
-
         }
     }
 
-    public enum TaskExecution { 
+    public enum TaskExecution {
+        [Header("线性任务")]
         Single,
+        [Header("并行任务")]
         Parallel
     }
 
     public enum Status:int
     {
-        Inactive=0,
-        Active=1,
-        Completed=2,
-        Failed=3,
-        Canceled=4
+        [Header("未进行")]
+        Inactive = 0,
+        [Header("进行中")]
+        Active = 1,
+        [Header("已完成")]
+        Completed = 2,
+        [Header("失败")]
+        Failed = 3,
+        [Header("已取消")]
+        Canceled = 4
     }
 }

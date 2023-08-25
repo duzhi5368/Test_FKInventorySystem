@@ -1,23 +1,20 @@
 ﻿using UnityEngine;
 using UnityEditor;
-
+using FKGame.Macro;
+//------------------------------------------------------------------------
 namespace FKGame.QuestSystem
 {
 	public class QuestSystemEditor : EditorWindow
 	{
-
 		private QuestSystemInspector m_QuestSystemInspector;
 
 		public static void ShowWindow()
 		{
-
 			QuestSystemEditor[] objArray = Resources.FindObjectsOfTypeAll<QuestSystemEditor>();
 			QuestSystemEditor editor = (objArray.Length <= 0 ? ScriptableObject.CreateInstance<QuestSystemEditor>() : objArray[0]);
-
 			editor.hideFlags = HideFlags.HideAndDontSave;
 			editor.minSize = new Vector2(690, 300);
-			editor.titleContent = new GUIContent("Quest System");
-
+			editor.titleContent = new GUIContent(LanguagesMacro.QUEST_SYSTEM_TITLE);
 			editor.Show();
 		}
 

@@ -1,12 +1,9 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using UnityEditor;
 using UnityEditorInternal;
 using UnityEngine;
-using UnityEngine.Assertions;
-using UnityEngine.XR;
-
+//------------------------------------------------------------------------
 namespace FKGame.InventorySystem
 {
     [CustomEditor(typeof(EquipmentHandler), true)]
@@ -48,7 +45,6 @@ namespace FKGame.InventorySystem
             EditorApplication.playModeStateChanged += PlayModeState;
         }
 
-
         private void OnDisable()
         {
             EditorApplication.playModeStateChanged -= PlayModeState;
@@ -81,17 +77,14 @@ namespace FKGame.InventorySystem
             serializedObject.Update();
             EditorGUILayout.PropertyField(this.m_WindowName);
             serializedObject.ApplyModifiedProperties();
-
             if (EditorTools.RightArrowButton(new GUIContent("Bones"), GUILayout.Height(24f)))
             {
                 ShowBoneMap();
             }
-
             if (EditorTools.RightArrowButton(new GUIContent("Items"), GUILayout.Height(24f)))
             {
                 VisibleItemsEditor.ShowWindow("Items", serializedObject.FindProperty("m_VisibleItems"));
             }
-
             if (EditorWindow.mouseOverWindow != null)
             {
                 EditorWindow.mouseOverWindow.Repaint();
@@ -102,7 +95,6 @@ namespace FKGame.InventorySystem
         {
             UtilityInstanceWindow.ShowWindow("Bones", delegate ()
             {
-
                 SelectDatabaseButton();
                 GUILayout.Space(3f);  
                 ItemDatabase database = this.m_Database.objectReferenceValue as ItemDatabase;

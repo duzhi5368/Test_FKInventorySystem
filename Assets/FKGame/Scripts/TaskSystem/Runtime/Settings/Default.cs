@@ -1,8 +1,5 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-
-using UnityEngine;
-
+﻿using FKGame.Macro;
+//------------------------------------------------------------------------
 namespace FKGame.QuestSystem
 {
     [System.Serializable]
@@ -12,13 +9,12 @@ namespace FKGame.QuestSystem
         {
             get
             {
-                return "Default";
+                return LanguagesMacro.DEFAULT;
             }
         }
-
+        [InspectorLabel(LanguagesMacro.PLAYER_TAG)]
         public string playerTag = "Player";
-
-        [Header("Debug")]
+        [InspectorLabel(LanguagesMacro.IS_SHOW_DEBUG_INFO)]
         public bool debugMessages = true;
     }
 }

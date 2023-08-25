@@ -8,7 +8,7 @@ using FKGame.UIWidgets;
 using FKGame.InventorySystem.Configuration;
 using UnityEngine.Assertions;
 using UnityEngine.EventSystems;
-
+//------------------------------------------------------------------------
 namespace FKGame.InventorySystem
 {
 	public class InventoryManager : MonoBehaviour

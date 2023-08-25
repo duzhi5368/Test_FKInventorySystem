@@ -14,7 +14,7 @@ namespace FKGame.StatSystem.Configuration
                 return LanguagesMacro.DEFAULT;
             }
         }
-        [InspectorLabel("显示DEBUG信息", "是否显示DEBUG信息")]
+        [InspectorLabel(LanguagesMacro.IS_SHOW_DEBUG_INFO)]
         public bool debugMessages = true;
     }
 }

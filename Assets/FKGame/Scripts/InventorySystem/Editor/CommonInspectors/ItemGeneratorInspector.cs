@@ -1,9 +1,7 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEditor;
 using UnityEditorInternal;
-
+//------------------------------------------------------------------------
 namespace FKGame.InventorySystem
 {
     [CustomEditor(typeof(ItemGenerator),true)]
@@ -14,7 +12,6 @@ namespace FKGame.InventorySystem
         private SerializedProperty m_Refill;
         private SerializedProperty m_ItemGeneratorData;
         private ReorderableList m_ItemGeneratorDataList;
-
         private ReorderableList m_ModifierList;
 
         protected virtual void OnEnable() {
@@ -29,8 +26,6 @@ namespace FKGame.InventorySystem
                 onSelectCallback = new ReorderableList.SelectCallbackDelegate(SelectGeneratorData),
                 onAddCallback = new ReorderableList.AddCallbackDelegate(AddGeneratorData),
             };
-
-
             int index = EditorPrefs.GetInt("GeneratorIndex" + target.GetInstanceID().ToString(), -1);
             if (this.m_ItemGeneratorDataList.count > index)
             {
@@ -39,12 +34,10 @@ namespace FKGame.InventorySystem
                if(index > -1)
                     CreateModifierList("Modifiers", serializedObject, this.m_ItemGeneratorData.GetArrayElementAtIndex(index).FindPropertyRelative("modifiers")) ;
             }
-
         }
 
         private void CreateModifierList(string title, SerializedObject serializedObject, SerializedProperty property)
         {
-
             this.m_ModifierList = new ReorderableList(serializedObject, property.FindPropertyRelative("modifiers"), true, true, true, true);
             this.m_ModifierList.drawHeaderCallback = (Rect rect) => {
                 EditorGUI.LabelField(rect, title);
@@ -57,7 +50,6 @@ namespace FKGame.InventorySystem
                 SerializedProperty element = this.m_ModifierList.serializedProperty.GetArrayElementAtIndex(index);
                 EditorGUI.PropertyField(rect, element, GUIContent.none, true);
             };
-
             this.m_ModifierList.onRemoveCallback = (ReorderableList list) =>
             {
                 list.serializedProperty.GetArrayElementAtIndex(list.index).objectReferenceValue = null;
@@ -78,7 +70,6 @@ namespace FKGame.InventorySystem
             }
             EditorGUI.BeginDisabledGroup(this.m_ItemGeneratorData.arraySize == 0);
             EditorGUILayout.PropertyField(this.m_MaxAmount);
-         
 
             if (this.m_MaxAmount.intValue > this.m_ItemGeneratorData.arraySize)
             {
@@ -98,7 +89,6 @@ namespace FKGame.InventorySystem
                 DrawSelectedGeneratorData(this.m_ItemGeneratorData.GetArrayElementAtIndex(this.m_ItemGeneratorDataList.index));
             }
             serializedObject.ApplyModifiedProperties();
-            
         }
 
         private void DrawGeneratorDataHeader(Rect rect)
@@ -120,7 +110,6 @@ namespace FKGame.InventorySystem
             else {
                 GUI.Label(rect, "Null");
             }
-          
         }
 
         private void AddGeneratorData(ReorderableList list)
@@ -141,10 +130,8 @@ namespace FKGame.InventorySystem
         private void DrawSelectedGeneratorData(SerializedProperty element)
         {
             EditorGUILayout.PropertyField(element.FindPropertyRelative("item"));
-
             SerializedProperty minStack = element.FindPropertyRelative("minStack");
             EditorGUILayout.PropertyField(minStack);
-
             if (minStack.intValue < 1) {
                 minStack.intValue = 1;
             }
@@ -154,11 +141,9 @@ namespace FKGame.InventorySystem
                 maxStack.intValue = 1;
             }
             EditorGUILayout.PropertyField(element.FindPropertyRelative("chance"));
-
             EditorGUILayout.Space();
             if (this.m_ModifierList != null)
                 this.m_ModifierList.DoLayoutList();
         }
-
     }
 }

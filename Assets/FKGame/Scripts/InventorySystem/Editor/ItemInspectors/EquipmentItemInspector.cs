@@ -1,9 +1,7 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEditor;
+﻿using UnityEditor;
 using UnityEngine;
 using UnityEditorInternal;
-
+//------------------------------------------------------------------------
 namespace FKGame.InventorySystem
 {
     [CustomEditor(typeof(EquipmentItem), true)]
@@ -30,7 +28,6 @@ namespace FKGame.InventorySystem
             };
         }
 
-
         private void DrawInspector() {
             GUILayout.Space(5f);
             GUILayout.Label("Equipment:", EditorStyles.boldLabel);
@@ -38,6 +35,5 @@ namespace FKGame.InventorySystem
             EditorGUILayout.HelpBox("The equipment region defines where the item should be equiped to. Use Left Hand and Right Hand for two-handed weapons.", MessageType.Info);
             regionList.DoLayoutList();
         }
-
     }
 }

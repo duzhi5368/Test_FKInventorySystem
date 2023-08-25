@@ -1,13 +1,12 @@
-﻿using UnityEngine;
-using UnityEditor;
+﻿using UnityEditor;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-
+//------------------------------------------------------------------------
 namespace FKGame.InventorySystem{
 	[CustomPropertyDrawer(typeof(Item),true)]
-	public class ItemPickerDrawer : PickerDrawer<Item> {
-
+	public class ItemPickerDrawer : PickerDrawer<Item> 
+	{
 		protected override List<Item> GetItems(ItemDatabase database)
 		{
 			System.Type type = fieldInfo.FieldType;

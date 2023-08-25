@@ -2,29 +2,24 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 using System.Reflection;
 using UnityEditor;
 using UnityEditor.SceneManagement;
-using UnityEditorInternal;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-
+//------------------------------------------------------------------------
 namespace FKGame.InventorySystem
 {
     public class ItemReferenceEditor : EditorWindow
     {
-
 		public static void ShowWindow()
 		{
-
 			ItemReferenceEditor window = EditorWindow.GetWindow<ItemReferenceEditor>(true, "Item Reference Updater");
 			Vector2 size = new Vector2(450f, 270f);
 			window.minSize = size;
 			window.wantsMouseMove = true;
 		}
 
-		
 		[SerializeField]
 		private List<SceneAsset> m_Scenes= new List<SceneAsset>();
 		private ItemDatabase m_Database;
@@ -77,15 +72,12 @@ namespace FKGame.InventorySystem
 			m_ChangedReferences = 0;
 			for (int i = 0; i < m_Scenes.Count; i++)
 			{
-				
 				List<GameObject> rootObjectsInScene = new List<GameObject>();
-				
 				string scenePath = AssetDatabase.GetAssetPath(this.m_Scenes[i]);
 				if (EditorPrefs.GetBool("ItemReference.Scene." + scenePath, true))
 				{
 					Scene scene = EditorSceneManager.GetSceneByPath(scenePath);
 					bool isLoaded = scene.isLoaded;
-
 					if (!isLoaded)
 					{
 						scene = EditorSceneManager.OpenScene(scenePath, OpenSceneMode.Additive);
@@ -106,21 +98,17 @@ namespace FKGame.InventorySystem
 				Component[] allComponents = gameObjects[j].GetComponentsInChildren<Component>(true);
 				for (int k = 0; k < allComponents.Length; k++)
 				{
-					//if (allComponents[k] is VisibleItem)
-						Debug.Log(allComponents[k]);
 					UpdateComponent(allComponents[k]);
 				}
 				EditorUtility.SetDirty(gameObjects[j]);
 			
 				if (EditorUtility.IsPersistent(gameObjects[j]))
 				{
-					
 					GameObject go = (GameObject)PrefabUtility.InstantiatePrefab(gameObjects[j]);
 					PrefabUtility.ApplyPrefabInstance(go, InteractionMode.AutomatedAction);
 					AssetDatabase.SaveAssets();
 					DestroyImmediate(go);
 				}
-				
 			}
 		}
 
@@ -132,7 +120,6 @@ namespace FKGame.InventorySystem
 			items.AddRange(this.m_Database.equipments);
 			items.AddRange(this.m_Database.currencies);
 			items.AddRange(this.m_Database.itemGroups);
-			//Debug.Log("Component Update: "+component.gameObject+" "+component.GetType());
 			UpdateReference(component, items);
 		}
 
@@ -142,7 +129,6 @@ namespace FKGame.InventorySystem
 			{
 				return;
 			}
-			
 			FieldInfo[] fields = source.GetType().GetAllSerializedFields();
 			for (int j = 0; j < fields.Length; j++)
 			{
@@ -151,16 +137,13 @@ namespace FKGame.InventorySystem
 				if (!string.IsNullOrEmpty(fieldInfo.FieldType.Namespace) && fieldInfo.FieldType.Namespace.Contains("UnityEngine")) {
 					continue;
 				}
-
 				if (typeof(IList).IsAssignableFrom(fieldInfo.FieldType))
 				{
 					System.Type elementType = Utility.GetElementType(fieldInfo.FieldType);
 					
 					if (ShouldReference(elementType))
 					{
-						//Debug.Log("INameable List: "+ source +" "+fieldInfo.Name + " (" + fieldInfo.FieldType + ")");
 						IList array = fieldInfo.GetValue(source) as IList;
-
 						System.Type targetType = typeof(List<>).MakeGenericType(Utility.GetElementType(fieldInfo.FieldType));
 						IList items = (IList)Activator.CreateInstance(targetType);
 						for (int i = 0; i < array.Count; i++)
@@ -190,7 +173,6 @@ namespace FKGame.InventorySystem
 					}
 					else
 					{
-					//	Debug.Log("Custom Class List: " + source  + " " + fieldInfo.Name + " (" + fieldInfo.FieldType.GetElementType() + ")");
 						IList list = fieldInfo.GetValue(source) as IList;
 						foreach (var o in list)
 						{
@@ -200,7 +182,6 @@ namespace FKGame.InventorySystem
 				}
 				else if (ShouldReference(fieldInfo.FieldType))
 				{
-					//Debug.Log("Direct INameable Field: " +source+" "+ fieldInfo.Name + " (" + fieldInfo.FieldType + ")");
 					INameable item = (INameable)fieldInfo.GetValue(source);
 					if (item != null)
 					{
@@ -217,7 +198,6 @@ namespace FKGame.InventorySystem
 				}
 				else
 				{
-				//	Debug.Log("Custom Class: "+ source  + " " + fieldInfo.Name + " (" + fieldInfo.FieldType + ")");
 					object subSource = fieldInfo.GetValue(source);
 					try
 					{
@@ -225,7 +205,6 @@ namespace FKGame.InventorySystem
 					}catch {
 						Debug.LogWarning("This should not happen. If it happens please contact me with setup details.");
 					};
-
 				}
 			}
 		}
@@ -244,7 +223,6 @@ namespace FKGame.InventorySystem
 			GUILayout.Label("Prefabs", GUILayout.Width(70f));
 			if (GUILayout.Button(string.IsNullOrEmpty(this.m_PrefabsPath) ? "Empty" : this.m_PrefabsPath, EditorStyles.objectField))
 			{
-
 				this.m_PrefabsPath = EditorUtility.OpenFolderPanel("Root Prfab Folder", Application.dataPath, "");
 				this.m_PrefabsPath = this.m_PrefabsPath.Substring(m_PrefabsPath.IndexOf("Assets/"));
 			}
@@ -281,11 +259,10 @@ namespace FKGame.InventorySystem
 				});
 			}
 			GUILayout.EndHorizontal();
-
 		}
 		
-		private void SceneSelection() {
-		
+		private void SceneSelection() 
+		{
 			EditorGUILayout.LabelField("Scenes To Update", EditorStyles.boldLabel);
 
 			Event evt = Event.current;
@@ -299,7 +276,6 @@ namespace FKGame.InventorySystem
 				if (state != flag) {
 					EditorPrefs.SetBool("ItemReference.Scene." + assetPath, flag);
 				}
-
 			}
 
 			switch (evt.type)
@@ -308,16 +284,12 @@ namespace FKGame.InventorySystem
 				case EventType.DragPerform:
 					if (!dropArea.Contains(evt.mousePosition))
 						return;
-
 					DragAndDrop.visualMode = DragAndDropVisualMode.Copy;
-
 					if (evt.type == EventType.DragPerform)
 					{
 						DragAndDrop.AcceptDrag();
-
 						foreach (UnityEngine.Object draggedObject in DragAndDrop.objectReferences)
 						{
-							// Do On Drag Stuff here
 							if (draggedObject.GetType() == typeof(SceneAsset)) {
 								m_Scenes.Add(draggedObject as SceneAsset);
 							}
@@ -328,17 +300,16 @@ namespace FKGame.InventorySystem
 	
 			EditorGUILayout.BeginHorizontal();
 			GUILayout.FlexibleSpace();
-			if (GUILayout.Button("Add Open Scenes")) {
-	
-					for (int i = 0; i < SceneManager.sceneCount; i++)
-					{
-						Scene scene = SceneManager.GetSceneAt(i);
-						SceneAsset sceneAsset=AssetDatabase.LoadAssetAtPath<SceneAsset>(scene.path);
-						if (sceneAsset != null && !m_Scenes.Contains(sceneAsset)) {
-							this.m_Scenes.Add(sceneAsset);
-						}
+			if (GUILayout.Button("Add Open Scenes")) 
+			{
+				for (int i = 0; i < SceneManager.sceneCount; i++)
+				{
+					Scene scene = SceneManager.GetSceneAt(i);
+					SceneAsset sceneAsset=AssetDatabase.LoadAssetAtPath<SceneAsset>(scene.path);
+					if (sceneAsset != null && !m_Scenes.Contains(sceneAsset)) {
+						this.m_Scenes.Add(sceneAsset);
 					}
-				
+				}
 			}
 			EditorGUILayout.EndHorizontal();
 		}

@@ -1,6 +1,4 @@
-﻿using FKGame.InventorySystem.ItemActions;
-using FKGame.InventorySystem.Restrictions;
-using FKGame.Macro;
+﻿using FKGame.Macro;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -9,12 +7,11 @@ using System.Reflection;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.Events;
-
+//------------------------------------------------------------------------
 namespace FKGame.InventorySystem
 {
 	public class MergeDatabaseEditor : EditorWindow
 	{
-
 		private ItemDatabase m_Source;
 		private ItemDatabase m_Destination;
 		public static void ShowWindow()
@@ -68,19 +65,16 @@ namespace FKGame.InventorySystem
 				Item item = this.m_Destination.items[i];
                 UpdateReference(item, items);
 			}
-
 			for (int i = 0; i < this.m_Destination.itemGroups.Count; i++)
 			{
 				ItemGroup group = this.m_Destination.itemGroups[i];
 				UpdateReference(group, items);
 			}
-
 			for (int i = 0; i < this.m_Destination.currencies.Count; i++)
 			{
 				Currency currency = this.m_Destination.currencies[i];
 				UpdateReference(currency, items);
 			}
-
 		}
 
 		private void UpdateReference(object source, List<INameable> destItems)
@@ -100,7 +94,6 @@ namespace FKGame.InventorySystem
 
 					if ( typeof(INameable).IsAssignableFrom(elementType) && typeof(ScriptableObject).IsAssignableFrom(elementType))
 					{
-						//Debug.Log("INameable List: "+(source as INameable).Name+" "+fieldInfo.Name + " (" + fieldInfo.FieldType + ")");
 						IList array = fieldInfo.GetValue(source) as IList;
 
                         System.Type targetType = typeof(List<>).MakeGenericType(Utility.GetElementType(fieldInfo.FieldType));
@@ -118,9 +111,9 @@ namespace FKGame.InventorySystem
 						}
 
 						fieldInfo.SetValue(source, items);
-					}else
+					}
+					else
 					{
-						//Debug.Log("Custom Class List: " + (source as INameable).Name + " " + fieldInfo.Name + " (" + fieldInfo.FieldType.GetElementType().ToString() + ")");
 						IList list = fieldInfo.GetValue(source) as IList;
 						foreach (var o in list)
 						{
@@ -130,7 +123,6 @@ namespace FKGame.InventorySystem
 				}
 				else if (typeof(INameable).IsAssignableFrom(fieldInfo.FieldType) && typeof(ScriptableObject).IsAssignableFrom(fieldInfo.FieldType))
 				{
-					//Debug.Log("Direct INameable Field: " +source.GetType()+" "+ fieldInfo.Name + " (" + fieldInfo.FieldType + ")");
 					INameable item = (INameable)fieldInfo.GetValue(source);
 					if (item != null)
 					{
@@ -140,10 +132,8 @@ namespace FKGame.InventorySystem
 				}
 				else 
 				{
-					//Debug.Log("Custom Class: "+ (source as INameable).Name + " " + fieldInfo.Name + " (" + fieldInfo.FieldType + ")");
 					object subSource = fieldInfo.GetValue(source);
 					UpdateReference(subSource, destItems);
-
 				}
 			}
 		}
@@ -169,9 +159,7 @@ namespace FKGame.InventorySystem
 						actions[j] = action;
 						EditorUtility.SetDirty(item);
 					}
-
 				}*/
-
 				EditorUtility.SetDirty(this.m_Destination);
 			}
 		}
@@ -188,8 +176,6 @@ namespace FKGame.InventorySystem
 				this.m_Destination.currencies.Add(item);
 				EditorUtility.SetDirty(this.m_Destination);
 			}
-
-
 		}
 
 		private void MergeRarities() {
@@ -250,7 +236,6 @@ namespace FKGame.InventorySystem
 			}
 		}
 
-
 		private ScriptableObject CreateAsset(ScriptableObject target, System.Type type) 
 		{
 
@@ -265,16 +250,13 @@ namespace FKGame.InventorySystem
 
 		private void SelectDatabase(ItemDatabase current,UnityAction<ItemDatabase> result)
 		{
-
 			if (GUILayout.Button(current != null ? current.name : "Null", EditorStyles.objectField))
 			{
 				string searchString = LanguagesMacro.RESEARCH;
 				ItemDatabase[] databases = EditorTools.FindAssets<ItemDatabase>();
-
 				UtilityInstanceWindow.ShowWindow("Select Database", delegate ()
 				{
 					searchString = EditorTools.SearchField(searchString);
-
 					for (int i = 0; i < databases.Length; i++)
 					{
 						if (!string.IsNullOrEmpty(searchString) && !searchString.Equals(LanguagesMacro.RESEARCH) && !databases[i].name.Contains(searchString))
@@ -292,8 +274,6 @@ namespace FKGame.InventorySystem
 					}
 				});
 			}
-
-
 		}
 	}
 }

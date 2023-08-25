@@ -1,13 +1,9 @@
-﻿using FKGame;
-using FKGame.UIWidgets;
-using System;
+﻿using FKGame.UIWidgets;
 using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
-using UnityEngine.Events;
 using UnityEngine.UI;
-
+//------------------------------------------------------------------------
 namespace FKGame.QuestSystem
 {
     public class QuestJournal : UIWidget
@@ -19,13 +15,10 @@ namespace FKGame.QuestSystem
         protected Button m_SelectButton;
         [SerializeField]
         protected QuestSlot m_QuestSlot;
-
-
         [SerializeField]
         protected Button m_CancelButton;
 
         private Dictionary<Quest, Button> m_QuestButtonMap;
-
         private Quest m_SelectedQuest;
 
         protected override void OnStart()
@@ -74,7 +67,6 @@ namespace FKGame.QuestSystem
 
         private void OnQuestStatusChanged(Quest quest)
         {
-
             Filter(this.m_Filter.value);
             if (quest.Status == Status.Active && !this.m_QuestButtonMap.ContainsKey(quest)) {
                 CreateQuestButton(quest);
@@ -140,11 +132,9 @@ namespace FKGame.QuestSystem
                                     break;
                             }
                         } ,"Yes", "No");
-    
                     });
                 }
             }
-
         }
     }
 }

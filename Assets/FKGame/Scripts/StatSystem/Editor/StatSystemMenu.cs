@@ -11,7 +11,7 @@ namespace FKGame.StatSystem
             StatSystemEditor.ShowWindow();
         }
 
-		[MenuItem("Tools/FKGame/属性系统/创建Stats Manager", false, 1)]
+		[MenuItem("Tools/FKGame/属性系统/创建属性管理器", false, 1)]
 		private static void CreateStatManager()
 		{
 			GameObject go = new GameObject("Stats Manager");

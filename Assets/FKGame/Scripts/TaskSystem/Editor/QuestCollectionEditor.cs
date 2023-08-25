@@ -1,19 +1,16 @@
-﻿using UnityEngine;
-using System.Collections;
+﻿using FKGame.Macro;
 using System.Collections.Generic;
-using UnityEditor;
-
+//------------------------------------------------------------------------
 namespace FKGame.QuestSystem
 {
 	[System.Serializable]
 	public class QuestCollectionEditor : ScriptableObjectCollectionEditor<Quest>
 	{
-
 		public override string ToolbarName
 		{
 			get
 			{
-				return "Quests";
+				return LanguagesMacro.QUESTS;
 			}
 		}
 

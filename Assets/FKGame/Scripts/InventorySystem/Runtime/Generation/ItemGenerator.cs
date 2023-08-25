@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
-
+//------------------------------------------------------------------------
 namespace FKGame.InventorySystem
 {
     [RequireComponent(typeof(ItemCollection))]
@@ -16,6 +16,7 @@ namespace FKGame.InventorySystem
         [SerializeField]
         private float m_Refill = -1;
 
+        private System.Random rng = new System.Random();
 
         private void Start()
         {
@@ -36,7 +37,8 @@ namespace FKGame.InventorySystem
             }
         }
 
-        private List<Item> GenerateItems() {
+        private List<Item> GenerateItems() 
+        {
             List<Item> generatedItems = new List<Item>();
             IEnumerable<int> indices = Enumerable.Range(0, this.m_ItemGeneratorData.Count).OrderBy(x=> rng.Next());
 
@@ -59,11 +61,5 @@ namespace FKGame.InventorySystem
             }
             return generatedItems;
         }
-
-        private System.Random rng = new System.Random();
-
-     
     }
-
-
 }

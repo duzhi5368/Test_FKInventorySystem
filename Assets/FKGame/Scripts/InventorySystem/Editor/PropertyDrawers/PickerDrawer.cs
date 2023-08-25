@@ -2,8 +2,7 @@
 using UnityEditor;
 using System.Collections.Generic;
 using System.Linq;
-using System.Collections;
-
+//------------------------------------------------------------------------
 namespace FKGame.InventorySystem
 {
 	//[CustomPropertyDrawer (typeof(PickerAttribute), true)]
@@ -20,7 +19,6 @@ namespace FKGame.InventorySystem
 
 		protected virtual void DoSelection (Rect buttonRect, SerializedProperty property, GUIContent label, T current)
 		{
-
 			GUIStyle buttonStyle = EditorStyles.objectField;
 			GUIContent buttonContent = new GUIContent(current != null ? current.Name : "Null");
 			if (GUI.Button(buttonRect, buttonContent, buttonStyle))
@@ -38,11 +36,9 @@ namespace FKGame.InventorySystem
 		}
 
 		protected abstract List<T> GetItems(ItemDatabase database);
-
 		protected Dictionary<UnityEngine.Object,List<UnityEngine.Object>> BuildSelectableObjects()
 		{
 			Dictionary<UnityEngine.Object,List<UnityEngine.Object>> selectableObjects = new Dictionary<UnityEngine.Object, List<UnityEngine.Object>>();
-
 			string[] guids = AssetDatabase.FindAssets("t:" + typeof(ItemDatabase).FullName);
 			for (int i = 0; i < guids.Length; i++)
 			{
