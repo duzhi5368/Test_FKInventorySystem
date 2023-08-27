@@ -1,8 +1,7 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
+﻿using FKGame.Macro;
+using System;
 using UnityEngine;
-
+//------------------------------------------------------------------------
 namespace FKGame.InventorySystem.Configuration
 {
     [System.Serializable]
@@ -12,7 +11,7 @@ namespace FKGame.InventorySystem.Configuration
         {
             get
             {
-                return "Input";
+                return LanguagesMacro.INPUT;
             }
         }
 
@@ -20,7 +19,7 @@ namespace FKGame.InventorySystem.Configuration
         [InspectorLabel("Event")]
         [EnumFlags]
         public UnstackInput unstackEvent = UnstackInput.OnClick | UnstackInput.OnDrag;
-        [InspectorLabel("Key Code")]
+        [InspectorLabel(LanguagesMacro.KEY_CODE)]
         public KeyCode unstackKeyCode = KeyCode.LeftShift;
 
         [Flags]

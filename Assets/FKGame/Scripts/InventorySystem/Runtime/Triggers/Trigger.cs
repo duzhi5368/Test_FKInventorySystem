@@ -1,11 +1,6 @@
-﻿
-using FKGame.UIWidgets;
-
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.EventSystems;
-
-
+//------------------------------------------------------------------------
 namespace FKGame.InventorySystem
 {
     [UnityEngine.Scripting.APIUpdating.MovedFromAttribute(true, null, "Assembly-CSharp")]
@@ -27,13 +22,10 @@ namespace FKGame.InventorySystem
         public static ItemContainer currentUsedWindow;
         protected delegate void ItemEventFunction<T>(T handler, Item item, GameObject player);
         protected delegate void FailureItemEventFunction<T>(T handler, Item item, GameObject player, FailureCause failureCause);
-
-        //Deprecate use SendMessage with Use
-        //used for UI Button reference
-        public void StartUse() {
+        public void StartUse() 
+        {
             Use();
         }
-
 
         public void StartUse(ItemContainer window)
         {
@@ -95,7 +87,6 @@ namespace FKGame.InventorySystem
                     func.Invoke((T)handler, item, InventoryManager.current.PlayerInfo.gameObject, failureCause);
                 }
             }
-
             string eventID = string.Empty;
             if (this.m_CallbackHandlers.TryGetValue(typeof(T), out eventID))
             {

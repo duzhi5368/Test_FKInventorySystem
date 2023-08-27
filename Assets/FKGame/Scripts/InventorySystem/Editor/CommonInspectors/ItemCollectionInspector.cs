@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityEditor;
 using UnityEditorInternal;
+using FKGame.Macro;
 //------------------------------------------------------------------------
 namespace FKGame.InventorySystem
 {
@@ -31,7 +32,7 @@ namespace FKGame.InventorySystem
         private void CreateItemList(SerializedObject serializedObject, SerializedProperty elements) {
             this.m_ItemList = new ReorderableList(serializedObject, elements, true, true, true, true);
             this.m_ItemList.drawHeaderCallback = (Rect rect) => {
-                EditorGUI.LabelField(rect, "Items (Item, Amount)");
+                EditorGUI.LabelField(rect, LanguagesMacro.ITEMS_TITLE);
             };
 
             this.m_ItemList.drawElementCallback = (Rect rect, int index, bool isActive, bool isFocused) => {

@@ -1,9 +1,6 @@
 ﻿using FKGame.UIWidgets;
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-
+//------------------------------------------------------------------------
 namespace FKGame.InventorySystem
 {
     [UnityEngine.Scripting.APIUpdating.MovedFromAttribute(true, null, "Assembly-CSharp")]

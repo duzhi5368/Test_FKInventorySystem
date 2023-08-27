@@ -1,10 +1,9 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
-
+//------------------------------------------------------------------------
 namespace FKGame.InventorySystem
 {
-    [CreateAssetMenu(fileName ="SimplePropertyModifier",menuName = "FKGame/Inventory System/Modifiers/Property")]
+    [CreateAssetMenu(fileName ="SimplePropertyModifier",menuName = "FKGame/物品系统/属性调整器")]
     [System.Serializable]
     public class PropertyModifier : ItemModifier
     {
@@ -30,7 +29,6 @@ namespace FKGame.InventorySystem
                         property = new ObjectProperty();
                         property.Name = this.m_Properties[i];
                         property.floatValue = 0f;
-
                     }
                     properties.Add(property);
                 }
@@ -40,7 +38,8 @@ namespace FKGame.InventorySystem
             {
                 ObjectProperty current = properties[i];
                 object value = current.GetValue();
-                if (!(UnityTools.IsNumeric(value) && current.show)) continue;
+                if (!(UnityTools.IsNumeric(value) && current.show)) 
+                    continue;
 
                 float currentValue = System.Convert.ToSingle(value);   
                 float newValue = currentValue;

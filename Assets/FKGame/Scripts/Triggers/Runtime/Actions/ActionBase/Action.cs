@@ -60,9 +60,12 @@ namespace FKGame
         }
     }
 
-    public enum TargetType { 
+    public enum TargetType {
+        [Header("自己")]
         Self,
+        [Header("玩家")]
         Player,
+        [Header("镜头")]
         Camera
     }
 }

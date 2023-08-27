@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System;
 using System.Linq;
+using FKGame.Macro;
 //------------------------------------------------------------------------
 namespace FKGame.InventorySystem.Configuration{
 	[System.Serializable]
@@ -10,7 +11,7 @@ namespace FKGame.InventorySystem.Configuration{
         {
             get
             {
-                return "Settings";
+                return LanguagesMacro.SETTING;
             }
         }
         protected override bool CanAdd => false;

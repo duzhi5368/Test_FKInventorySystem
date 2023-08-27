@@ -1,7 +1,6 @@
-﻿using System.Linq;
-using FKGame.UIWidgets;
+﻿using FKGame.UIWidgets;
 using UnityEngine;
-
+//------------------------------------------------------------------------
 namespace FKGame.InventorySystem
 {
     [Icon("Item")]

@@ -5,6 +5,8 @@ using System.Linq;
 using System;
 using FKGame.Macro;
 //------------------------------------------------------------------------
+// 物品系统编辑器 中的 物品编辑器
+//------------------------------------------------------------------------
 namespace FKGame.InventorySystem
 {
 	[System.Serializable]
@@ -19,11 +21,12 @@ namespace FKGame.InventorySystem
         {
             get
             {
-                return "Items";
+                return LanguagesMacro.ITEMS;
             }
         }
 
-        public ItemCollectionEditor (UnityEngine.Object target, List<Item> items, List<string> searchFilters) : base (target, items)
+        public ItemCollectionEditor (UnityEngine.Object target, List<Item> items, List<string> searchFilters) 
+			: base (target, items)
 		{
 			this.target = target;
 			this.items = items;
@@ -32,6 +35,7 @@ namespace FKGame.InventorySystem
             this.m_SearchString = "All";
         }
 
+		// 尝试创建物品对象
 		protected override void Create()
 		{
 			Type[] types = AppDomain.CurrentDomain.GetAssemblies().SelectMany(assembly => assembly.GetTypes()).Where(type => typeof(Item).IsAssignableFrom(type) && type.IsClass && !type.IsAbstract && !typeof(Currency).IsAssignableFrom(type)).ToArray();
@@ -113,7 +117,7 @@ namespace FKGame.InventorySystem
         protected override void AddContextItem(GenericMenu menu)
 		{
 			base.AddContextItem(menu);
-			menu.AddItem(new GUIContent("Sort/Category"), false, delegate {
+			menu.AddItem(new GUIContent("排序/物品类型排序"), false, delegate {
                 Item selected = selectedItem;
 				Items.Sort(delegate (Item a, Item b) {
 					return a.Category.Name.CompareTo(b.Category.Name); 

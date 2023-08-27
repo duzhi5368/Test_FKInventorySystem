@@ -1,7 +1,6 @@
-﻿using System.Linq;
-using FKGame.UIWidgets;
+﻿using FKGame.UIWidgets;
 using UnityEngine;
-
+//------------------------------------------------------------------------
 namespace FKGame.InventorySystem
 {
     [Icon("Item")]
@@ -10,9 +9,6 @@ namespace FKGame.InventorySystem
     {
         [SerializeField]
         private Skill m_Skill = null;
-        /*[Tooltip("The name of the skills window.")]
-        [SerializeField]
-        private string m_SkillWindow = "Skills";*/
         [SerializeField]
         private ConditionType m_Condition = ConditionType.Greater;
         [Range(0f,100f)]
@@ -31,13 +27,13 @@ namespace FKGame.InventorySystem
                     this.m_SuccessNotification.Show();
                 return ActionStatus.Success;
             }
-
             if (this.m_FailureNotification != null && !string.IsNullOrEmpty(this.m_FailureNotification.text))
                 this.m_FailureNotification.Show();
             return ActionStatus.Failure;
         }
 
-        private bool Compare(float value) {
+        private bool Compare(float value) 
+        {
             switch (this.m_Condition)
             {
                 case ConditionType.Greater:

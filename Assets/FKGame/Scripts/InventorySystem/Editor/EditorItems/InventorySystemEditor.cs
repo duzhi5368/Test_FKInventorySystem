@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEditor;
+using FKGame.Macro;
 //------------------------------------------------------------------------
 namespace FKGame.InventorySystem
 {
@@ -13,7 +14,7 @@ namespace FKGame.InventorySystem
 
 			editor.hideFlags = HideFlags.HideAndDontSave;
 			editor.minSize = new Vector2 (690, 300);
-			editor.titleContent = new GUIContent ("Inventory System");
+			editor.titleContent = new GUIContent (LanguagesMacro.INVENTORY_SYSTEM_EDITOR_TITLE);
 
 			editor.Show();
 		}

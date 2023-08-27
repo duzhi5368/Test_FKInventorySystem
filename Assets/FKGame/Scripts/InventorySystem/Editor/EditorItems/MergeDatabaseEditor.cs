@@ -16,28 +16,29 @@ namespace FKGame.InventorySystem
 		private ItemDatabase m_Destination;
 		public static void ShowWindow()
 		{
-			MergeDatabaseEditor window = EditorWindow.GetWindow<MergeDatabaseEditor>(true, "Merge Database");
+			MergeDatabaseEditor window = EditorWindow.GetWindow<MergeDatabaseEditor>(true, LanguagesMacro.MERGE_ITEM_DATABASE_TOOLS);
 			Vector2 size = new Vector2(380f, 72f);
 			window.minSize = size;
-			window.wantsMouseMove = true;
+			window.titleContent = new GUIContent(LanguagesMacro.MERGE_ITEM_DATABASE_TOOLS);
+            window.wantsMouseMove = true;
 		}
 
         private void OnGUI()
         {
 			EditorGUILayout.BeginVertical(EditorStyles.inspectorFullWidthMargins);
 			EditorGUILayout.BeginHorizontal();
-			GUILayout.Label("Source Database", GUILayout.Width(150f));
+			GUILayout.Label(LanguagesMacro.SOURCE_DATABASE, GUILayout.Width(150f));
 			SelectDatabase(this.m_Source,delegate(ItemDatabase db) { this.m_Source = db; });
 			EditorGUILayout.EndHorizontal();
 			EditorGUILayout.BeginHorizontal();
-			GUILayout.Label("Destination Database", GUILayout.Width(150f));
+			GUILayout.Label(LanguagesMacro.DEST_DATABASE, GUILayout.Width(150f));
 			SelectDatabase(this.m_Destination,delegate (ItemDatabase db) { this.m_Destination = db; });
 			EditorGUILayout.EndHorizontal();
 			GUILayout.Space(5);
 			EditorGUILayout.BeginHorizontal();
 			GUILayout.FlexibleSpace();
 			EditorGUI.BeginDisabledGroup(this.m_Source == null || this.m_Destination == null);
-			if (GUILayout.Button("Merge", GUILayout.Width(70))) {
+			if (GUILayout.Button(LanguagesMacro.MERGE, GUILayout.Width(70))) {
 				MergeItems();
 				MergeRarities();
 				MergeCategories();
@@ -254,7 +255,7 @@ namespace FKGame.InventorySystem
 			{
 				string searchString = LanguagesMacro.RESEARCH;
 				ItemDatabase[] databases = EditorTools.FindAssets<ItemDatabase>();
-				UtilityInstanceWindow.ShowWindow("Select Database", delegate ()
+				UtilityInstanceWindow.ShowWindow(LanguagesMacro.SELECT_DATABASE, delegate ()
 				{
 					searchString = EditorTools.SearchField(searchString);
 					for (int i = 0; i < databases.Length; i++)

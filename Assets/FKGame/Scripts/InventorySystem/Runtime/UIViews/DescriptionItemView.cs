@@ -1,15 +1,10 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
-
+//------------------------------------------------------------------------
 namespace FKGame.InventorySystem
 {
     public class DescriptionItemView : ItemView
     {
-        /// <summary>
-        /// The text reference to display item description.
-        /// </summary>
         [Tooltip("The text reference to display item description")]
         [SerializeField]
         protected Text m_Description;
@@ -20,7 +15,6 @@ namespace FKGame.InventorySystem
             {
                 this.m_Description.text = (item != null ? item.Description : string.Empty);
             }
-
         }
     }
 }

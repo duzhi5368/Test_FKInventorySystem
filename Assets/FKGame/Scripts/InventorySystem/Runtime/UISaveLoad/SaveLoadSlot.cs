@@ -6,7 +6,7 @@ using UnityEngine.UI;
 using System.Collections.Generic;
 using System.Linq;
 using System;
-
+//------------------------------------------------------------------------
 namespace FKGame.InventorySystem
 {
     public class SaveLoadSlot : MonoBehaviour, IPointerUpHandler
@@ -43,9 +43,6 @@ namespace FKGame.InventorySystem
                         InventoryManager.Delete(key);
                         DestroyImmediate(gameObject);
                     }, "Yes", "No");
-
-
-                 
                 });
                 menu.Show();
             }else {
@@ -53,7 +50,6 @@ namespace FKGame.InventorySystem
                     if (result != 0) return;
                     InventoryManager.Load(key);
                 }, "Yes", "No");
-               
             }
         }
     }

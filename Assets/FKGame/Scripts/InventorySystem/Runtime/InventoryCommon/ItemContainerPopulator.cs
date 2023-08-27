@@ -1,15 +1,13 @@
 ﻿using FKGame.UIWidgets;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+//------------------------------------------------------------------------
 namespace FKGame.InventorySystem
 {
     public class ItemContainerPopulator : MonoBehaviour
     {
         [SerializeField]
         protected List<Entry> m_Entries = new List<Entry>();
-
 
         protected virtual void Start() {
             if (!InventoryManager.HasSavedData()) {

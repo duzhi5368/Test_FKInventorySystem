@@ -1,6 +1,7 @@
 ﻿using UnityEditor;
 using UnityEngine;
 using UnityEditorInternal;
+using FKGame.Macro;
 //------------------------------------------------------------------------
 namespace FKGame.InventorySystem
 {
@@ -18,7 +19,7 @@ namespace FKGame.InventorySystem
 
             this.regionList = new ReorderableList(serializedObject, serializedObject.FindProperty("m_Region"), true, true, true, true);
             this.regionList.drawHeaderCallback = (Rect rect) => {
-                EditorGUI.LabelField(rect, "Equipment Region");
+                EditorGUI.LabelField(rect, LanguagesMacro.EQUIP_REGION);
             };
             this.regionList.drawElementCallback = (Rect rect, int index, bool isActive, bool isFocused) => {
                 SerializedProperty element = regionList.serializedProperty.GetArrayElementAtIndex(index);
@@ -30,9 +31,9 @@ namespace FKGame.InventorySystem
 
         private void DrawInspector() {
             GUILayout.Space(5f);
-            GUILayout.Label("Equipment:", EditorStyles.boldLabel);
+            GUILayout.Label(LanguagesMacro.EQUIPMENT, EditorStyles.boldLabel);
             EditorGUILayout.PropertyField(this.m_OverrideEquipPrefab);
-            EditorGUILayout.HelpBox("The equipment region defines where the item should be equiped to. Use Left Hand and Right Hand for two-handed weapons.", MessageType.Info);
+            EditorGUILayout.HelpBox(LanguagesMacro.EQUIPMENT_REGION_TIPS, MessageType.Info);
             regionList.DoLayoutList();
         }
     }

@@ -1,9 +1,6 @@
 ﻿using FKGame.UIWidgets;
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-
+//------------------------------------------------------------------------
 namespace FKGame.InventorySystem
 {
     [UnityEngine.Scripting.APIUpdating.MovedFromAttribute(true, null, "Assembly-CSharp")]
@@ -20,7 +17,6 @@ namespace FKGame.InventorySystem
         private float  m_Duration = 1f;
 
         private float m_Time = 0f;
-
         private Progressbar m_Widget;
 
         public override void OnStart()
@@ -37,12 +33,10 @@ namespace FKGame.InventorySystem
 
         public override ActionStatus OnUpdate()
         {
-
             if (this.m_Widget == null) {
                 Debug.LogWarning("Missing progressbar widget " + this.m_WidgetName + " in scene!");
                 return ActionStatus.Failure;
             }
-
             this.m_Time += Time.deltaTime;
             if (this.m_Time > this.m_Duration)
             {

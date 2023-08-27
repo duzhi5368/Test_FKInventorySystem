@@ -1,7 +1,7 @@
 ﻿using FKGame.UIWidgets;
 using UnityEngine;
 using UnityEngine.UI;
-
+//------------------------------------------------------------------------
 namespace FKGame.InventorySystem
 {
     [UnityEngine.Scripting.APIUpdating.MovedFromAttribute(true, null, "Assembly-CSharp")]
@@ -14,7 +14,6 @@ namespace FKGame.InventorySystem
         [SerializeField]
         protected NotificationOptions m_FailureNotification = null;
 
-
         public override ActionStatus OnUpdate()
         {
             if (DoRaycast()) {
@@ -26,6 +25,5 @@ namespace FKGame.InventorySystem
                 this.m_FailureNotification.Show();
             return ActionStatus.Failure;
         }
-
     }
 }

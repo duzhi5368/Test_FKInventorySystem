@@ -25,11 +25,13 @@ namespace FKGame
 		protected bool m_UseInspectorDefaultMargins = false;
         protected override bool UseInspectorDefaultMargins  => this.m_UseInspectorDefaultMargins;
 
-		public ScriptableObjectCollectionEditor(UnityEngine.Object target, List<T> items, bool useInspectorDefaultMargins = true):this(string.Empty, target, items, useInspectorDefaultMargins)
+		public ScriptableObjectCollectionEditor(UnityEngine.Object target, List<T> items, bool useInspectorDefaultMargins = true)
+			:this(string.Empty, target, items, useInspectorDefaultMargins)
 		{
 		}
 
-		public ScriptableObjectCollectionEditor (string title, UnityEngine.Object target, List<T> items, bool useInspectorDefaultMargins=true):base(title)
+		public ScriptableObjectCollectionEditor (string title, UnityEngine.Object target, List<T> items, bool useInspectorDefaultMargins = true)
+			:base(title)
 		{
 			this.target = target;
 			this.items = items;
@@ -43,7 +45,7 @@ namespace FKGame
 
 		protected override void Create ()
 		{
-			Type[] types = AppDomain.CurrentDomain.GetAssemblies ().SelectMany (assembly => assembly.GetTypes ()).Where (type => typeof(T).IsAssignableFrom (type) && type.IsClass && !type.IsAbstract).ToArray ();		
+			Type[] types = AppDomain.CurrentDomain.GetAssemblies().SelectMany (assembly => assembly.GetTypes ()).Where (type => typeof(T).IsAssignableFrom (type) && type.IsClass && !type.IsAbstract).ToArray ();		
 			if (types.Length > 1) {
 				GenericMenu menu = new GenericMenu ();
 				foreach (Type type in types) {

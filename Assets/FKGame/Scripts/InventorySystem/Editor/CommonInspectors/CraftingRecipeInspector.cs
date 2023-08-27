@@ -40,9 +40,9 @@ namespace FKGame.InventorySystem
 
             this.m_RemoveIngredientsWhenFailed = serializedObject.FindProperty("m_RemoveIngredientsWhenFailed");
             this.m_Ingredients = serializedObject.FindProperty("m_Ingredients");
-            this.m_IngredientList = CreateItemAmountList("Ingredients (Item, Amount)", serializedObject, this.m_Ingredients);
+            this.m_IngredientList = CreateItemAmountList(LanguagesMacro.INGREDIENTS_TITLE, serializedObject, this.m_Ingredients);
             this.m_CraftingModifier = serializedObject.FindProperty("m_CraftingModifier");
-            CreateModifierList("Crafting Item Modifers", serializedObject, this.m_CraftingModifier);
+            CreateModifierList(LanguagesMacro.CRAFTING_ITEM_MODIFERS, serializedObject, this.m_CraftingModifier);
             this.m_Conditions = serializedObject.FindProperty("conditions");
             this.m_Target = target;
             this.m_List = (target as CraftingRecipe).conditions;
@@ -65,7 +65,7 @@ namespace FKGame.InventorySystem
             EditorGUILayout.PropertyField(this.m_RemoveIngredientsWhenFailed);
             this.m_IngredientList.DoLayoutList();
             EditorGUILayout.Space();
-            EditorGUILayout.HelpBox("Crafting item modifiers can be used to randomize the item when crafting.", MessageType.Info);
+            EditorGUILayout.HelpBox(LanguagesMacro.CRAFTING_MODIFERS_TIPS, MessageType.Info);
             this.m_CraftingModifierList.DoLayoutList();
             ConditionGUI();
             serializedObject.ApplyModifiedProperties();

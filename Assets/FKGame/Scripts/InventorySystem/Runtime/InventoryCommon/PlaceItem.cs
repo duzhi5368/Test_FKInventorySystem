@@ -1,13 +1,10 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.Events;
-
+//------------------------------------------------------------------------
 namespace FKGame.InventorySystem
 {
     public class PlaceItem : MonoBehaviour
     {
-
 		public LayerMask mask;
 		public float maxHeightDiffrence = 1.0f;
 		public float maxDistance = 10;
@@ -19,12 +16,9 @@ namespace FKGame.InventorySystem
 		private bool m_CanPlaceChanged;
 		private int m_Layer;
 
-
 		private void Start()
 		{
-			
 			this.m_BoxCollider = GetComponent<BoxCollider>();
-
 			this.m_Player = InventoryManager.current.PlayerInfo.transform;
 			this.m_Layer = gameObject.layer;
 			gameObject.layer = 31;

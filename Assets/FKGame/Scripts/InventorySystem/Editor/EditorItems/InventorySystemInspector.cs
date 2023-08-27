@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using FKGame.Macro;
+using System.Collections.Generic;
 using System.Linq;
 using UnityEditor;
 using UnityEngine;
@@ -129,29 +130,29 @@ namespace FKGame.InventorySystem
             EditorUtility.SetDirty(database);
         }
 
-        private void ResetChildEditors() {
-
-            if (this.m_Database != null)
+        private void ResetChildEditors() 
+        {
+            if (this.m_Database == null)
             {
-                this.m_Database.RemoveNullReferences();
-                EditorUtility.SetDirty(this.m_Database);
+                return;
+            }
+            this.m_Database.RemoveNullReferences();
+            EditorUtility.SetDirty(this.m_Database);
 
-                this.m_ChildEditors = new List<ICollectionEditor>();
-                this.m_ChildEditors.Add(new ItemCollectionEditor(this.m_Database, this.m_Database.items, this.m_Database.categories.Select(x => x.Name).ToList()));
-                this.m_ChildEditors.Add(new ScriptableObjectCollectionEditor<Currency>(this.m_Database, this.m_Database.currencies));
-                this.m_ChildEditors.Add(new ScriptableObjectCollectionEditor<CraftingRecipe>(this.m_Database, this.m_Database.craftingRecipes));
+            m_ChildEditors = new List<ICollectionEditor>();
+            m_ChildEditors.Add(new ItemCollectionEditor(this.m_Database, this.m_Database.items, this.m_Database.categories.Select(x => x.Name).ToList()));
+            m_ChildEditors.Add(new ScriptableObjectCollectionEditor<Currency>(LanguagesMacro.CURRENCY, this.m_Database, this.m_Database.currencies));
+            m_ChildEditors.Add(new ScriptableObjectCollectionEditor<CraftingRecipe>(LanguagesMacro.CRAFTING_RECIPE, this.m_Database, this.m_Database.craftingRecipes));
+            m_ChildEditors.Add(new ScriptableObjectCollectionEditor<Rarity>(LanguagesMacro.RARITY, this.m_Database, this.m_Database.raritys));
+            m_ChildEditors.Add(new ScriptableObjectCollectionEditor<Category>(LanguagesMacro.CATEGORY, this.m_Database, this.m_Database.categories));
+            m_ChildEditors.Add(new ScriptableObjectCollectionEditor<EquipmentRegion>(LanguagesMacro.EQUIP_REGION, this.m_Database, this.m_Database.equipments));
+            m_ChildEditors.Add(new ScriptableObjectCollectionEditor<ItemGroup>(LanguagesMacro.ITEM_GROUP, this.m_Database, this.m_Database.itemGroups));
 
-                this.m_ChildEditors.Add(new ScriptableObjectCollectionEditor<Rarity>(this.m_Database, this.m_Database.raritys));
-                this.m_ChildEditors.Add(new ScriptableObjectCollectionEditor<Category>(this.m_Database, this.m_Database.categories));
-                this.m_ChildEditors.Add(new ScriptableObjectCollectionEditor<EquipmentRegion>(this.m_Database, this.m_Database.equipments));
-                this.m_ChildEditors.Add(new ScriptableObjectCollectionEditor<ItemGroup>(this.m_Database, this.m_Database.itemGroups));
+            m_ChildEditors.Add(new Configuration.ItemSettingsEditor(this.m_Database, this.m_Database.settings));
 
-                this.m_ChildEditors.Add(new Configuration.ItemSettingsEditor(this.m_Database, this.m_Database.settings));
-
-                for (int i = 0; i < this.m_ChildEditors.Count; i++)
-                {
-                    this.m_ChildEditors[i].OnEnable();
-                }
+            for (int i = 0; i < this.m_ChildEditors.Count; i++)
+            {
+                this.m_ChildEditors[i].OnEnable();
             }
         }
     }

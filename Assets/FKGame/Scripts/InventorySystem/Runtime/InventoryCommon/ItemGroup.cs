@@ -1,14 +1,14 @@
-﻿using System.Collections;
+﻿using FKGame.Macro;
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
-
+//------------------------------------------------------------------------
 namespace FKGame.InventorySystem
 {
     [System.Serializable]
     public class ItemGroup : ScriptableObject, INameable
     {
         [SerializeField]
+        [InspectorLabel(LanguagesMacro.ITEM_GROUP_NAME)]
         private string m_GroupName="New Group";
         public string Name
         {

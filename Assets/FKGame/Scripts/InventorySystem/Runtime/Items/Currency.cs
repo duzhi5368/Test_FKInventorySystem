@@ -1,8 +1,4 @@
-﻿using UnityEngine;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-
+﻿//------------------------------------------------------------------------
 namespace FKGame.InventorySystem
 {
     [System.Serializable]
@@ -14,7 +10,5 @@ namespace FKGame.InventorySystem
         }
 
         public CurrencyConversion[] currencyConversions;
-
-       
     }
 }

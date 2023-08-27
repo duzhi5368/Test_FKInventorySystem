@@ -3,7 +3,6 @@ using UnityEngine.Events;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using System;
 using FKGame.UIWidgets;
 using FKGame.InventorySystem.Configuration;
 using UnityEngine.Assertions;
@@ -13,19 +12,14 @@ namespace FKGame.InventorySystem
 {
 	public class InventoryManager : MonoBehaviour
 	{
-        /// <summary>
-		/// Don't destroy this object instance when loading new scenes.
-		/// </summary>
+        // 更换场景时不进行销毁
 		public bool dontDestroyOnLoad = true;
 
         private static InventoryManager m_Current;
-
-		/// <summary>
-		/// The InventoryManager singleton object. This object is set inside Awake()
-		/// </summary>
+		// 单例对象
 		public static InventoryManager current {
 			get {
-                Assert.IsNotNull(m_Current, "Requires an Inventory Manager.Create one from Tools > FKGame > Inventory System > Create Inventory Manager!");
+                Assert.IsNotNull(m_Current, "物品管理器为空。请先从 Tools > FKGame > 物品系统 > 创建物品管理器 创建一个。");
 				return m_Current;
 			}
 		}
@@ -33,12 +27,9 @@ namespace FKGame.InventorySystem
 
 		[SerializeField]
 		private ItemDatabase m_Database = null;
-
-		/// <summary>
-		/// Gets the item database. Configurate it inside the editor.
-		/// </summary>
-		/// <value>The database.</value>
-		public static ItemDatabase Database {
+		// 获取从物品数据库，需要从编辑器中创建
+		public static ItemDatabase Database 
+        {
 			get {
 				if (InventoryManager.current != null) {
                     Assert.IsNotNull(InventoryManager.current.m_Database, "Please assign ItemDatabase to the Inventory Manager!");
@@ -141,32 +132,27 @@ namespace FKGame.InventorySystem
         protected static bool m_IsLoaded = false;
         public static bool IsLoaded { get => m_IsLoaded; }
 
-
-        /// <summary>
-        /// Awake is called when the script instance is being loaded.
-        /// </summary>
         private void Awake ()
 		{
-			if (InventoryManager.m_Current != null) {
-                //if(InventoryManager.DefaultSettings.debugMessages)
-                  //  Debug.Log ("Multiple Inventory Manager in scene...this is not supported. Destroying instance!");
+			if (InventoryManager.m_Current != null) 
+            {
 				Destroy (gameObject);
 				return;
-			} else {
+			} 
+            else 
+            {
 				InventoryManager.m_Current = this;
                 if (EventSystem.current == null) {
                     if (InventoryManager.DefaultSettings.debugMessages)
                         Debug.Log("Missing EventSystem in scene. Auto creating!");
                         new GameObject("EventSystem", typeof(EventSystem), typeof(StandaloneInputModule));
                 }
-
                 if (Camera.main != null && Camera.main.GetComponent<PhysicsRaycaster>() == null) {
                     if (InventoryManager.DefaultSettings.debugMessages)
                         Debug.Log("Missing PhysicsRaycaster on Main Camera. Auto adding!");
                     PhysicsRaycaster physicsRaycaster = Camera.main.gameObject.AddComponent<PhysicsRaycaster>();
                     physicsRaycaster.eventMask = Physics.DefaultRaycastLayers;
                 }
-
                 this.m_Database = ScriptableObject.Instantiate(this.m_Database);
                 for (int i = 0; i < this.m_ChildDatabases.Length; i++) {
                     ItemDatabase child = this.m_ChildDatabases[i];
@@ -203,12 +189,7 @@ namespace FKGame.InventorySystem
             }
 		}
 
-        private void Start()
-        {
-            /*if (InventoryManager.SavingLoading.autoSave){
-                StartCoroutine(DelayedLoading(1f));
-            }*/
-        }
+        private void Start(){}
 
         private static void ChangedActiveScene(UnityEngine.SceneManagement.Scene current, UnityEngine.SceneManagement.Scene next)
         {
@@ -219,7 +200,7 @@ namespace FKGame.InventorySystem
             }
         }
  
-        //TODO move to utility
+        /*
         [Obsolete("InventoryManager.GetBounds is obsolete Use UnityUtility.GetBounds")]
         public Bounds GetBounds(GameObject obj)
         {
@@ -244,7 +225,7 @@ namespace FKGame.InventorySystem
             }
             return bounds;
         }
-
+        */
 
         private IEnumerator DelayedLoading(float seconds) {
             yield return new WaitForSecondsRealtime(seconds);
@@ -304,11 +285,9 @@ namespace FKGame.InventorySystem
             }
             PlayerPrefs.SetString("InventorySystemSavedKeys",string.Join(";",keys));
 
-
             if (InventoryManager.current != null && InventoryManager.current.onDataSaved != null){
                 InventoryManager.current.onDataSaved.Invoke();
             }
-         
             if (InventoryManager.DefaultSettings.debugMessages){
                 Debug.Log("[Inventory System] UI Saved: "+uiData);
                 Debug.Log("[Inventory System] Scene Saved: " + worldData);
@@ -318,11 +297,9 @@ namespace FKGame.InventorySystem
         public static void Serialize(ref string uiData, ref string sceneData) {
             List<MonoBehaviour> results = new List<MonoBehaviour>();
             UnityEngine.SceneManagement.SceneManager.GetActiveScene().GetRootGameObjects().ToList().ForEach(g => results.AddRange(g.GetComponentsInChildren<MonoBehaviour>(true)));
-            //DontDestroyOnLoad GameObjects
             SingleInstance.GetInstanceObjects().ForEach(g => results.AddRange(g.GetComponentsInChildren<MonoBehaviour>(true)));
 
             ItemCollection[] serializables = results.OfType<ItemCollection>().Where(x => x.saveable).ToArray();
-
             IJsonSerializable[] ui = serializables.Where(x => x.GetComponent<ItemContainer>() != null).ToArray();
             IJsonSerializable[] world = serializables.Except(ui).ToArray();
 
@@ -339,16 +316,12 @@ namespace FKGame.InventorySystem
             string currentScene = UnityEngine.SceneManagement.SceneManager.GetActiveScene().name;
             string uiData = PlayerPrefs.GetString(key + ".UI");
             string sceneData = PlayerPrefs.GetString(key + "." + currentScene);
-
             Load(uiData, sceneData);
         }
 
         public static void Load(string uiData, string sceneData) {
-            //Load UI
             LoadUI(uiData);
-            //Load Scene
             LoadScene(sceneData);
-
             if (InventoryManager.current != null && InventoryManager.current.onDataLoaded != null)
             {
                 InventoryManager.current.onDataLoaded.Invoke();
@@ -366,8 +339,8 @@ namespace FKGame.InventorySystem
 
         private static void LoadUI(string json)
         {
-            if (string.IsNullOrEmpty(json)) return;
-
+            if (string.IsNullOrEmpty(json)) 
+                return;
             List<object> list = MiniJSON.Deserialize(json) as List<object>;
             for (int i = 0; i < list.Count; i++)
             {
@@ -398,22 +371,17 @@ namespace FKGame.InventorySystem
             }
         }
 
-        private static void LoadScene(string json) {
-
-            if (string.IsNullOrEmpty(json)) return;
-           
+        private static void LoadScene(string json) 
+        {
+            if (string.IsNullOrEmpty(json)) 
+                return;
             ItemCollection[] itemCollections = FindObjectsOfType<ItemCollection>().Where(x=>x.saveable).ToArray();
             for (int i = 0; i < itemCollections.Length; i++)
             {
                 ItemCollection collection = itemCollections[i];
-
-                //Dont destroy ui game objects
                 if (collection.GetComponent<ItemContainer>() != null)
                     continue;
-
                 GameObject prefabForCollection = InventoryManager.GetPrefab(collection.name);
-
-                //Store real prefab to cache
                 if (prefabForCollection == null)
                 {
                     collection.transform.parent = InventoryManager.current.transform;
@@ -421,7 +389,6 @@ namespace FKGame.InventorySystem
                     collection.gameObject.SetActive(false);
                     continue;
                 }
-
                 Destroy(collection.gameObject);
             }
 
@@ -447,7 +414,6 @@ namespace FKGame.InventorySystem
                     ItemCollection itemCollection = collectionGameObject.GetComponent<ItemCollection>();
                     itemCollection.SetObjectData(mData);
                 }
-                
             }
 
             if (InventoryManager.DefaultSettings.debugMessages)
@@ -456,58 +422,43 @@ namespace FKGame.InventorySystem
             }
         }
 
-
-        private static GameObject GetPrefab(string prefabName) {
+        private static GameObject GetPrefab(string prefabName) 
+        {
             GameObject prefab = null;
-            //Return from cache
             if (InventoryManager.m_PrefabCache.TryGetValue(prefabName, out prefab)) {
                 return prefab;
             }
-            //Get from database
             prefab = InventoryManager.Database.GetItemPrefab(prefabName);
-
-            //Load from Resources
             if (prefab == null){
                 prefab = Resources.Load<GameObject>(prefabName);
             }
-            // Add to cache
             if (prefab != null) {
                 InventoryManager.m_PrefabCache.Add(prefabName, prefab);
             }
             return prefab;
-
         }
 
         private static GameObject CreateCollection(string prefabName, Vector3 position, Quaternion rotation)
         {
             GameObject prefab = InventoryManager.GetPrefab(prefabName);
-
             if (prefab != null)
             {
                 GameObject go = InventoryManager.Instantiate(prefab, position, rotation);
                 go.name = go.name.Replace("(Clone)","");
                 go.SetActive(true);
                 return go;
-
             }
             return null;
         }
 
-        public static GameObject Instantiate(GameObject original,Vector3 position, Quaternion rotation) {
-#if Proxy
-            return Proxy.Instantiate(original, position, rotation);
-#else
+        public static GameObject Instantiate(GameObject original,Vector3 position, Quaternion rotation) 
+        {
             return GameObject.Instantiate(original, position, rotation);
-#endif
         }
 
         public static void Destroy(GameObject gameObject)
         {
-#if Proxy
-            Proxy.Destroy(gameObject);
-#else
             GameObject.Destroy(gameObject);
-#endif
         }
 
         public static Item[] CreateInstances(ItemGroup group)
@@ -517,7 +468,6 @@ namespace FKGame.InventorySystem
             }
             return CreateInstances(group.Items, group.Amounts, group.Modifiers.ToArray());
         }
-
 
         public static Item CreateInstance(Item item)
         {
@@ -534,9 +484,9 @@ namespace FKGame.InventorySystem
             return CreateInstances(items, Enumerable.Repeat(1, items.Length).ToArray(), new ItemModifierList[items.Length]);
         }
 
-        public static Item[] CreateInstances(Item[] items, int[] amounts, ItemModifierList[] modifierLists) {
+        public static Item[] CreateInstances(Item[] items, int[] amounts, ItemModifierList[] modifierLists) 
+        {
             Item[] instances = new Item[items.Length];
-
             for (int i = 0; i < items.Length; i++)
             {
                 Item item = items[i];

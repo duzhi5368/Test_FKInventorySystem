@@ -1,7 +1,6 @@
 ﻿using FKGame.UIWidgets;
 using UnityEngine;
-
-
+//------------------------------------------------------------------------
 namespace FKGame.InventorySystem
 {
     public class DisplayTriggerTooltip : MonoBehaviour, ITriggerWentOutOfRange, ITriggerUsedHandler
@@ -14,7 +13,6 @@ namespace FKGame.InventorySystem
         protected TriggerTooltip m_Tooltip;
         protected BaseTrigger m_Trigger;
 
-
         private void Start()
         {
             m_Trigger = GetComponentInChildren<BaseTrigger>(true);
@@ -23,7 +21,6 @@ namespace FKGame.InventorySystem
 
         private void Update()
         {
-
             if (!this.m_Trigger.InUse && this.m_Trigger.InRange && InventoryManager.current.PlayerInfo.transform != null && this.m_Trigger.IsBestTrigger())
             {
                 DoDisplayTooltip(true);
@@ -32,8 +29,8 @@ namespace FKGame.InventorySystem
 
         protected virtual void DoDisplayTooltip(bool state)
         {
-            if (this.m_Tooltip == null) return;
-
+            if (this.m_Tooltip == null) 
+                return;
             if (state)
             {
                 this.m_Tooltip.Show(this.m_Title, this.m_Instruction);

@@ -1,8 +1,7 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using FKGame.Macro;
 using FKGame.UIWidgets;
 using UnityEngine;
-
+//------------------------------------------------------------------------
 namespace FKGame.InventorySystem
 {
     public static class NotificationExtension
@@ -26,7 +25,7 @@ namespace FKGame.InventorySystem.Configuration
         {
             get
             {
-                return "Notification";
+                return LanguagesMacro.NOTIFICATION;
             }
         }
         [Header("Container:")]

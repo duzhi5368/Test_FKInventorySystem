@@ -1,6 +1,5 @@
 using UnityEngine;
-using System.Collections;
-
+//------------------------------------------------------------------------
 namespace FKGame.InventorySystem.ItemActions{
     [UnityEngine.Scripting.APIUpdating.MovedFromAttribute(true, null, "Assembly-CSharp")]
     [Icon("Item")]
@@ -18,6 +17,5 @@ namespace FKGame.InventorySystem.ItemActions{
             item.Stack -= m_Amount;
 			return ActionStatus.Success;
 		}
-
 	}
 }

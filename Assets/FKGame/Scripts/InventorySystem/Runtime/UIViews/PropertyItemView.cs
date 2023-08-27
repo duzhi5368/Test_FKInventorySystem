@@ -1,15 +1,11 @@
 ﻿using FKGame.UIWidgets;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+//------------------------------------------------------------------------
 namespace FKGame.InventorySystem
 {
     public class PropertyItemView : ItemView
     {
-        /// <summary>
-        /// StringPairSlot prefab to display a string - string pair 
-        /// </summary>
         [SerializeField]
         protected StringPairSlot m_SlotPrefab;
 
@@ -33,7 +29,6 @@ namespace FKGame.InventorySystem
                         {
                             CreateSlot();
                         }
-
                         for (int i = 0; i < pairs.Count; i++)
                         {
                             StringPairSlot slot = this.m_SlotCache[i];

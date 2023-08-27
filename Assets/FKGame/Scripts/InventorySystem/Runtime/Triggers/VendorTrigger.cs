@@ -1,10 +1,7 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using FKGame.UIWidgets;
 using UnityEngine;
-using UnityEngine.Events;
-using UnityEngine.EventSystems;
-
+//------------------------------------------------------------------------
 namespace FKGame.InventorySystem
 {
     public class VendorTrigger : Trigger, ITriggerUnUsedHandler
@@ -109,11 +106,6 @@ namespace FKGame.InventorySystem
             }
             this.m_PurchasedStorageContainer= WidgetUtility.Find<ItemContainer>(this.m_PurchasedStorageWindow);
             this.m_PaymentContainer = WidgetUtility.Find<ItemContainer>(this.m_PaymentWindow);
-
-          /*  ItemCollection collection = GetComponent<ItemCollection>();
-            for (int i = 0; i < collection.Count; i++) {
-                collection[i].BuyPrice = Mathf.RoundToInt(m_BuyPriceFactor*collection[i].BuyPrice);
-            }*/
         }
 
         public override bool OverrideUse(Slot slot, Item item)
@@ -136,8 +128,8 @@ namespace FKGame.InventorySystem
             return true;
         }
 
-        public void BuyItem(Item item,int amount, bool showDialog = true) {
-           
+        public void BuyItem(Item item,int amount, bool showDialog = true) 
+        {
             if (showDialog)
             {
                 this.m_AmountSpinner.gameObject.SetActive(this.m_DisplaySpinner);
@@ -183,7 +175,6 @@ namespace FKGame.InventorySystem
                         int stack = instance.Stack;
                         Currency singlePrice = Instantiate(instance.BuyCurrency);
                         singlePrice.Stack = Mathf.RoundToInt(instance.BuyPrice*this.m_BuyPriceFactor);
-                       // singlePrice.Stack = Mathf.RoundToInt(this.m_BuyPriceFactor * singlePrice.Stack);
                         int purchasedStack = 0;
                         for (int i = 0; i < stack; i++)
                         {

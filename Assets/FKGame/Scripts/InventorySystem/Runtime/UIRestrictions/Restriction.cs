@@ -1,8 +1,5 @@
-﻿using FKGame.UIWidgets;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
+﻿using UnityEngine;
+//------------------------------------------------------------------------
 namespace FKGame.InventorySystem
 {
     public abstract class Restriction : MonoBehaviour

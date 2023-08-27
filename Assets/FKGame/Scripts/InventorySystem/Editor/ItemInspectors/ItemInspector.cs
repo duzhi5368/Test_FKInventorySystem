@@ -97,7 +97,7 @@ namespace FKGame.InventorySystem
             this.m_PropertyList = new ReorderableList (serializedObject,this.m_Properties, true, true, true, true);
 			this.m_PropertyList.elementHeight = (EditorGUIUtility.singleLineHeight + 4f) * 3;
 			this.m_PropertyList.drawHeaderCallback = (Rect rect) => {  
-				EditorGUI.LabelField (rect, "Item Properties");
+				EditorGUI.LabelField (rect, LanguagesMacro.ITEM_PROPERTIES);
 				Event ev = Event.current;
 				if (ev.type == EventType.MouseDown && ev.button == 1 && rect.Contains (ev.mousePosition)) {
 					GenericMenu menu = new GenericMenu ();
@@ -246,8 +246,8 @@ namespace FKGame.InventorySystem
             EditorGUILayout.PropertyField(this.m_Description);
 
             EditorGUILayout.Space();
-            EditorGUILayout.LabelField("Properties:", EditorStyles.boldLabel);
-            EditorGUILayout.HelpBox("Properties can be used to define item specific information like stats or any custom information you want to change and save at runtime.", MessageType.Info);
+            EditorGUILayout.LabelField(LanguagesMacro.ITEM_PROPERTIES, EditorStyles.boldLabel);
+            EditorGUILayout.HelpBox(LanguagesMacro.ITEM_PROPERTIES_TIPS, MessageType.Info);
             this.m_PropertyList.elementHeight = this.m_PropertyList.count == 0 ? (EditorGUIUtility.singleLineHeight + 4f) : (EditorGUIUtility.singleLineHeight + 4f) * 3;
             this.m_PropertyList.DoLayoutList();
 

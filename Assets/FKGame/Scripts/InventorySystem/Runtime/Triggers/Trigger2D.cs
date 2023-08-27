@@ -1,21 +1,16 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
+﻿using UnityEngine;
+//------------------------------------------------------------------------
 namespace FKGame.InventorySystem
 {
     public class Trigger2D : Trigger
     {
         public override bool CanUse()
         {
-            //Return false if the trigger is already used
             if (InUse || (Trigger.currentUsedTrigger != null && Trigger.currentUsedTrigger.InUse))
             {
                 InventoryManager.Notifications.inUse.Show();
                 return false;
             }
-
-            //Return false if the player is not in range
             if (!InRange)
             {
                 InventoryManager.Notifications.toFarAway.Show();
@@ -55,20 +50,16 @@ namespace FKGame.InventorySystem
 
         protected virtual void OnTriggerEnter2D(Collider2D other)
         {
-            //Check if the collider other is player 
             if (other.tag == InventoryManager.current.PlayerInfo.gameObject.tag)
             {
-                //Set that player is in range
                 InRange = true;
             }
         }
 
         protected virtual void OnTriggerExit2D(Collider2D other)
         {
-            //Check if the collider other is player
             if (other.tag == InventoryManager.current.PlayerInfo.gameObject.tag)
             {
-                //Set that player is out of range
                 InRange = false;
             }
         }

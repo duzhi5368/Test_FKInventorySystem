@@ -1,14 +1,9 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
+﻿using UnityEngine;
+//------------------------------------------------------------------------
 namespace FKGame.InventorySystem
 {
     public class PriceItemView : ItemView
     {
-        /// <summary>
-        /// Item Container that will show the price of item.
-        /// </summary>
         [Tooltip("ItemContainer reference to display the price.")]
         [SerializeField]
         protected ItemContainer m_Price;

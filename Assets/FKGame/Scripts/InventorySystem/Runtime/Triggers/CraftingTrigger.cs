@@ -1,9 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 using FKGame.UIWidgets;
 using UnityEngine;
-
+//------------------------------------------------------------------------
 namespace FKGame.InventorySystem
 {
     public class CraftingTrigger : Trigger
@@ -79,7 +78,6 @@ namespace FKGame.InventorySystem
 
         public override bool OverrideUse(Slot slot, Item item)
         {
-
             if (Trigger.currentUsedWindow == item.Container && !slot.MoveItem())
             {
                 this.m_AmountSpinner = Trigger.currentUsedWindow.GetComponentInChildren<Spinner>();
@@ -154,13 +152,13 @@ namespace FKGame.InventorySystem
                 Animator animator = InventoryManager.current.PlayerInfo.animator;
                 if (animator != null)
                     animator.CrossFadeInFixedTime(Animator.StringToHash(recipe.AnimatorState), 0.2f);
-
             }
             StartCoroutine(CraftItems(item, amount));
             ExecuteEvent<ITriggerCraftStart>(Execute, item);
         }
 
-        private bool HasIngredients(Item item) {
+        private bool HasIngredients(Item item) 
+        {
             CraftingRecipe recipe = GetCraftingRecipe(item);
             for (int i = 0; i < recipe.Ingredients.Count; i++)
             {
@@ -231,7 +229,6 @@ namespace FKGame.InventorySystem
                     }
                     yield break;
                 }
-
             }
 
             Item craftedItem = Instantiate(item);
@@ -252,7 +249,6 @@ namespace FKGame.InventorySystem
                 StopCrafting(item);
             }
         }
-
 
         protected virtual void NotifyAlreadyCrafting(Item item) {
             InventoryManager.Notifications.alreadyCrafting.Show();

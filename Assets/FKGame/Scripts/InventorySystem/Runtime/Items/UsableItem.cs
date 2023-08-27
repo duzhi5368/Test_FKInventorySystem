@@ -3,15 +3,19 @@ using System.Collections;
 using System.Collections.Generic;
 using FKGame.InventorySystem.ItemActions;
 using System.Linq;
-
+using FKGame.Macro;
+//------------------------------------------------------------------------
 namespace FKGame.InventorySystem
 {
     [System.Serializable]
 	public class UsableItem : Item
 	{
+        [Tooltip("类型公用冷却，例如多个药品，会有公用冷却CD。如不使用公用冷却，则可使用自身冷却")]
         [SerializeField]
+        [InspectorLabel(LanguagesMacro.IS_USE_CATEGORY_COOLDOWN)]
         private bool m_UseCategoryCooldown = true;
         [SerializeField]
+        [InspectorLabel(LanguagesMacro.ITEM_COOLDOWN)]
         private float m_Cooldown = 1f;
         public float Cooldown {
             get {
@@ -36,7 +40,6 @@ namespace FKGame.InventorySystem
                     action.item = this;
                 }
             }
-           
         }
 
         public override void Use()

@@ -1,18 +1,12 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
+﻿using UnityEngine;
+//------------------------------------------------------------------------
 namespace FKGame.InventorySystem
 {
     public class RecipeItemView : ItemView
     {
-        /// <summary>
-        /// Item container that will show crafting ingredients of the item
-        /// </summary>
         [Tooltip("ItemContainer that will show crafting ingredients of the item.")]
         [SerializeField]
         protected ItemContainer m_Ingredients;
-
         [Tooltip("What recipe should be displayed?")]
         [SerializeField]
         protected RecipeType m_RecipeType = RecipeType.Crafting;

@@ -1,8 +1,6 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
-
+//------------------------------------------------------------------------
 namespace FKGame.InventorySystem
 {
     public class SkillItemView : ItemView
@@ -14,7 +12,6 @@ namespace FKGame.InventorySystem
         public override void Repaint(Item item)
         {
             Skill skill = item as Skill;
-
             if (this.m_Value != null)
             {
                 this.m_Value.text = (skill != null ? skill.CurrentValue.ToString("F1") + "%" : string.Empty);

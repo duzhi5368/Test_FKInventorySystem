@@ -1,7 +1,6 @@
 ﻿using UnityEngine;
-using System.Collections;
 using System.Collections.Generic;
-
+//------------------------------------------------------------------------
 namespace FKGame.InventorySystem{
 	[System.Serializable]
 	public class EquipmentItem : UsableItem {

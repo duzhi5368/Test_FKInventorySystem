@@ -1,37 +1,12 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using FKGame.UIWidgets;
 using UnityEngine;
-using UnityEngine.EventSystems;
-using UnityEngine.UI;
 using System.Linq;
-
+//------------------------------------------------------------------------
 namespace FKGame.InventorySystem
 {
     public class Slot : CallbackHandler
     {
-       /* /// <summary>
-        /// The text to display item name.
-        /// </summary>
-        [SerializeField]
-        protected Text m_ItemName;
-        /// <summary>
-        /// Should the name be colored?
-        /// </summary>
-        [SerializeField]
-        protected bool m_UseRarityColor=false;
-
-        /// <summary>
-        /// The Image to display item icon.
-        /// </summary>
-        [SerializeField]
-        protected Image m_Ícon;
-        /// <summary>
-		/// The text to display item stack.
-		/// </summary>
-		[SerializeField]
-        protected Text m_Stack;*/
-
         //Actions to run when the trigger is used.
         [HideInInspector]
         public List<Restriction> restrictions = new List<Restriction>();
@@ -130,33 +105,6 @@ namespace FKGame.InventorySystem
             for (int i = 0; i < this.m_Views.Length; i++) {
                 this.m_Views[i].Repaint(ObservedItem);
             }
-
-           /* if (this.m_ItemName != null){
-                //Updates the text with item name and rarity color. If this slot is empty, sets the text to empty.
-                this.m_ItemName.text = (!IsEmpty ? (this.m_UseRarityColor?UnityTools.ColorString(ObservedItem.DisplayName, ObservedItem.Rarity.Color):ObservedItem.DisplayName) : string.Empty);
-            }
-
-            if (this.m_Ícon != null){
-                if (!IsEmpty){
-                    //Updates the icon and enables it.
-                    this.m_Ícon.overrideSprite = ObservedItem.Icon;
-                    this.m_Ícon.enabled = true;
-                }else {
-                    //If there is no item in this slot, disable icon
-                    this.m_Ícon.enabled = false;
-                }
-            }
-
-            if (this.m_Stack != null) {
-                if (!IsEmpty && ObservedItem.MaxStack > 1 ){
-                    //Updates the stack and enables it.
-                    this.m_Stack.text = ObservedItem.Stack.ToString();
-                    this.m_Stack.enabled = true;
-                }else{
-                    //If there is no item in this slot, disable stack field
-                    this.m_Stack.enabled = false;
-                }
-            }*/
         }
 
         protected virtual void Update()

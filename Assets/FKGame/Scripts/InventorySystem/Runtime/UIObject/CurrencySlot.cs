@@ -1,21 +1,11 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.UI;
-using System.Linq;
-
+﻿using UnityEngine;
+//------------------------------------------------------------------------
 namespace FKGame.InventorySystem
 {
     public class CurrencySlot : Slot
     {
-        /// <summary>
-        /// Currency this slot is holding
-        /// </summary>
         [SerializeField]
         protected Currency m_Currency;
-        /// <summary>
-        /// Hides the empty currency slot
-        /// </summary>
         [SerializeField]
         protected bool m_HideEmptySlot;
 
@@ -29,14 +19,10 @@ namespace FKGame.InventorySystem
         public override void Repaint()
         {
             base.Repaint();
-
             if (this.m_HideEmptySlot)
             {
-                
                 gameObject.SetActive(!(ObservedItem == null || ObservedItem.Stack == 0));
-
             }
-
         }
 
         public override bool CanAddItem(Item item )
@@ -48,6 +34,5 @@ namespace FKGame.InventorySystem
         {
             return false;
         }
-
     }
 }

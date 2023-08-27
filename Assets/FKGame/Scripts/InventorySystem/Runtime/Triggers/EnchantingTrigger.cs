@@ -1,13 +1,10 @@
-﻿using FKGame.UIWidgets;
-using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections;
 using UnityEngine;
-
+//------------------------------------------------------------------------
 namespace FKGame.InventorySystem
 {
     public class EnchantingTrigger : CraftingTrigger
     {
-
         public override bool OverrideUse(Slot slot, Item item)
         {
             if (!slot.MoveItem())
@@ -44,14 +41,11 @@ namespace FKGame.InventorySystem
                     }
                     yield break;
                 }
-
             }
-
             recipe.CraftingModifier.Modify(item);
             for (int i = 0; i < item.ReferencedSlots.Count; i++) {
                 item.ReferencedSlots[i].Repaint();
             }
-
             for (int i = 0; i < recipe.Ingredients.Count; i++)
             {
                 this.m_RequiredIngredientsContainer.RemoveItem(recipe.Ingredients[i].item, recipe.Ingredients[i].amount);
@@ -91,6 +85,5 @@ namespace FKGame.InventorySystem
                     break;
             }
         }
-
     }
 }

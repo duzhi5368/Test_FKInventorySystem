@@ -1,90 +1,84 @@
 ﻿using System;
-using System.Text;
-using System.Text.RegularExpressions;
 using UnityEngine;
 using System.Linq;
-using System.Collections;
 using System.Collections.Generic;
 using FKGame.UIWidgets;
-
+using FKGame.Macro;
+//------------------------------------------------------------------------
 namespace FKGame.InventorySystem
 {
-
 	[System.Serializable]
 	public class Item : ScriptableObject, INameable, IJsonSerializable
 	{
 		[SerializeField]
 		[HideInInspector]
 		private string m_Id;
-
 		public string Id {
 			get{ return this.m_Id; }
             set { this.m_Id = value; }
 		}
 
-        [Tooltip("Unique name of the item. It can be used to display the item name in UI.")]
+        [Tooltip("物品唯一名称，可以用来显示到UI上")]
 		[SerializeField]
-		private string m_ItemName = "New Item";
-
+        [InspectorLabel("物品名称")]
+		private string m_ItemName = LanguagesMacro.NEW_ITEM;
 		public string Name {
 			get{ return this.m_ItemName; }
 			set{ this.m_ItemName = value; }
 		}
 
-        [Tooltip("If set to true the Name setting will be used to display the items name in UI.")]
+        [Tooltip("是否使用物品名称作为UI上显示的名称")]
         [SerializeField]
+        [InspectorLabel("物品名称作为显示名称")]
         private bool m_UseItemNameAsDisplayName = true;
-        [Tooltip("Items name to display in UI.")]
+        [Tooltip("在UI上显示的物品名称")]
         [SerializeField]
+        [InspectorLabel("物品显示名称")]
         private string m_DisplayName = "New Item";
-
         public string DisplayName
         {
-            get {
+            get 
+            {
                 string displayName = m_UseItemNameAsDisplayName ? this.m_ItemName : this.m_DisplayName;
                 if (Rarity.UseAsNamePrefix)
                     displayName = Rarity.Name + " " + displayName;
                 return displayName; 
-            
             }
-            set {
+            set 
+            {
                 this.m_DisplayName = value; 
             }
         }
 
-        [Tooltip("The icon that can be shown in various places of the UI. Tooltip, vendor and many more. ")]
+        [Tooltip("物品图标")]
         [SerializeField]
-		private Sprite m_Icon;
-
+        [InspectorLabel("物品图标")]
+        private Sprite m_Icon;
 		public Sprite Icon {
 			get{ return this.m_Icon; }
 			set{ this.m_Icon = value; }
 		}
 
-        [Tooltip("The prefab to instantiate when an item is draged out of a container. This prefab is also used to place the item in scene, so the player can pickup the item.")]
+        [Tooltip("物品拖拽处容器后显示的模型，也可用于丢弃到地上的模型")]
 		[SerializeField]
 		private GameObject m_Prefab;
-
 		public GameObject Prefab {
 			get{ return m_Prefab; }
 			set{ this.m_Prefab = value; }
 		}
 
-        [Tooltip("Item description is used in the UI. Tooltip, vendor, spells, crafting...")]
+        [Tooltip("物品描述信息")]
 		[SerializeField]
 		[Multiline (4)]
-		private string m_Description = string.Empty;
-
+        private string m_Description = string.Empty;
 		public string Description {
 			get{ return this.m_Description; }
 		}
 
-
-        [Tooltip("The category the item belongs to. Used to sort the items collection in editor or also at runtime in the UI.")]
-		[Header ("Behaviour:")]
+        [Tooltip("物品所属类别，在排序和分类时使用")]
+		[Header (LanguagesMacro.BEHAVIOUR)]
         [SerializeField]
         private Category m_Category = null;
-
         public Category Category
         {
             get { return this.m_Category; }
@@ -95,7 +89,6 @@ namespace FKGame.InventorySystem
         private static Rarity DefaultRarity {
             get {
                 if (Item.m_DefaultRarity is null) {
-                    //TODO make not deletable in editor
                     Item.m_DefaultRarity = ScriptableObject.CreateInstance<Rarity>();
                     Item.m_DefaultRarity.Name = "None";
                     Item.m_DefaultRarity.Color = Color.grey;
@@ -117,67 +110,61 @@ namespace FKGame.InventorySystem
             set { this.m_Rarity = value; }
 		}
 
-        /*[SerializeField]
-        private List<Rarity> m_PossibleRarity=new List<Rarity>();
-        public List<Rarity> PossibleRarity {
-            get { return this.m_PossibleRarity; }
-            set { this.m_PossibleRarity = value; }
-        }*/
-
-        [Tooltip("Is this item sellable to a vendor? More options will appear if it is sellable.")]
+        [Tooltip(LanguagesMacro.IS_SELLABLE)]
         [SerializeField]
+        [InspectorLabel(LanguagesMacro.IS_SELLABLE)]
         private bool m_IsSellable = true;
         public bool IsSellable {
             get { return this.m_IsSellable; }
             set { this.m_IsSellable = true; }
         }
 
-        [Tooltip("Items buy price. This value will be multiplied with the rarities price multiplier.")]
+        [Tooltip(LanguagesMacro.BUY_PRICE)]
 		[SerializeField]
-		private int m_BuyPrice=0;
+        [InspectorLabel(LanguagesMacro.BUY_PRICE)]
+		private int m_BuyPrice = 0;
 
 		public int BuyPrice {
 			get{ return Mathf.RoundToInt(m_BuyPrice*Rarity.PriceMultiplier); }
-           // set { this.m_BuyPrice = value; }
+            set { this.m_BuyPrice = value; }
 		}
 
-        [Tooltip("If set to true, this item will be added to the vendors inventory and the player can buy it back.")]
+        [Tooltip(LanguagesMacro.IS_CAN_BUY_BACK)]
         [SerializeField]
+        [InspectorLabel(LanguagesMacro.IS_CAN_BUY_BACK)]
         private bool m_CanBuyBack = true;
         public bool CanBuyBack { get { return this.m_CanBuyBack; } }
 
-        [Tooltip("The buy currency. You can also use a lower currency, it will be auto converted. 120 Copper will be converted to 1 Silver and 20 Copper.")]
+        [Tooltip(LanguagesMacro.BUY_CURRENCY)]
         [SerializeField]
         private Currency m_BuyCurrency=null;
-
         public Currency BuyCurrency
         {
             get { return this.m_BuyCurrency; }
             set { this.m_BuyCurrency = value; }
         }
-        [Tooltip("Items sell price. This value will be multiplied with the rarities price multiplier.")]
-        [SerializeField]
-		private int m_SellPrice=0;
 
+        [Tooltip(LanguagesMacro.SELL_PRICE)]
+        [SerializeField]
+        [InspectorLabel(LanguagesMacro.SELL_PRICE)]
+        private int m_SellPrice=0;
 		public int SellPrice {
 			get{ return Mathf.RoundToInt(this.m_SellPrice*Rarity.PriceMultiplier); }
 		}
 
-        [Tooltip("The sell currency. You can also use a lower currency, it will be auto converted. 120 Copper will be converted to 1 Silver and 20 Copper.")]
+        [Tooltip(LanguagesMacro.SELL_CURRENCY)]
         [SerializeField]
         private Currency m_SellCurrency= null;
-
         public Currency SellCurrency
         {
             get { return this.m_SellCurrency; }
             set { this.m_SellCurrency = value; }
         }
 
-        [Tooltip("Items stack definition. New created items will have this stack. Use a stack modifier to randomize the stack.")]
+        [Tooltip(LanguagesMacro.STACK)]
         [SerializeField]
         [Range(1, 100)]
         private int m_Stack = 1;
-
         public virtual int Stack
         {
             get { return this.m_Stack; }
@@ -196,11 +183,11 @@ namespace FKGame.InventorySystem
             }
         }
 
-        [Tooltip("Maximum stack amount. Items stack can't be higher then this value. If the stack is bigger then the maximum stack, the item will be splitted into multiple stacks.")]
+        [Tooltip(LanguagesMacro.MAX_STACK)]
         [SerializeField]
 		[Range (0, 100)]
-		private int m_MaxStack = 1;
-
+        [InspectorLabel(LanguagesMacro.MAX_STACK)]
+        private int m_MaxStack = 1;
 		public virtual int MaxStack {
 			get{
                 if (this.m_MaxStack > 0){
@@ -210,23 +197,23 @@ namespace FKGame.InventorySystem
             }
 		}
 
-        [Tooltip("Can this item be destroyed?")]
+        [Tooltip(LanguagesMacro.IS_CAN_BE_DESTORYED)]
         [SerializeField]
+        [InspectorLabel(LanguagesMacro.IS_CAN_BE_DESTORYED)]
         private bool m_CanDestroy = true;
         public bool CanDestroy {
             get { return this.m_CanDestroy; }
         }
 
-
-        [Tooltip("If set to true, the item is droppable from a container to the scene.")]
+        [Tooltip(LanguagesMacro.IS_DROPPABLE)]
 		[SerializeField]
-		private bool m_IsDroppable = true;
-
+        [InspectorLabel(LanguagesMacro.IS_DROPPABLE)]
+        private bool m_IsDroppable = true;
 		public bool IsDroppable {
 			get{ return this.m_IsDroppable; }
 		}
 
-        [Tooltip("Sound that should be played when the item is dropped to the scene.")]
+        [Tooltip(LanguagesMacro.DROPPED_SOUND)]
 		[SerializeField]
 		private AudioClip m_DropSound = null;
 
@@ -234,18 +221,17 @@ namespace FKGame.InventorySystem
 			get{ return this.m_DropSound; }
 		}
 
-        [Tooltip("By default items prefab will be instantiated when dropped to the scene, you can override this option.")]
+        [Tooltip(LanguagesMacro.OVERRIDE_PERFAB_TIPS)]
         [SerializeField]
 		private GameObject m_OverridePrefab=null;
-
 		public GameObject OverridePrefab {
 			get{ return this.m_OverridePrefab; }
 		}
 
         [AcceptNull]
         [SerializeField]
+        [Tooltip(LanguagesMacro.CRAFTING_RECIPE)]
         private CraftingRecipe m_CraftingRecipe = null;
-        
         public CraftingRecipe CraftingRecipe {
             get { return this.m_CraftingRecipe; }
             set { this.m_CraftingRecipe = value; }
@@ -253,90 +239,13 @@ namespace FKGame.InventorySystem
 
         [AcceptNull]
         [SerializeField]
+        [Tooltip(LanguagesMacro.ENCHANTING_RECIPE)]
         private CraftingRecipe m_EnchantingRecipe = null;
-
         public CraftingRecipe EnchantingRecipe
         {
             get { return this.m_EnchantingRecipe; }
             set { this.m_EnchantingRecipe = value; }
         }
-
-        /*[Tooltip("Defines if the item is craftable.")]
-        //TODO Move all to CraftingData class
-        [SerializeField]
-        private bool m_IsCraftable=false;
-
-        public bool IsCraftable
-        {
-            get { return this.m_IsCraftable; }
-        }
-
-        [Tooltip("How long does it take to craft this item. This value is also used to display the progressbar in crafting UI.")]
-        [SerializeField]
-        private float m_CraftingDuration = 2f;
-
-        public float CraftingDuration
-        {
-            get { return this.m_CraftingDuration; }
-        }
-
-        [Tooltip("Should a skill be used when item is crafted?")]
-        [SerializeField]
-        private bool m_UseCraftingSkill = false;
-
-        public bool UseCraftingSkill {
-            get { return this.m_UseCraftingSkill; }
-        }
-
-        [Tooltip("Name of the skill window. It is required if use crafting skill is set to true to be able to find the skill. ")]
-        [SerializeField]
-        private string m_SkillWindow = "Skills";
-        public string SkillWindow {
-            get { return this.m_SkillWindow; }
-        }
-
-        [Tooltip("What skill should be used when crafting? The current players skill will be searched in skill window set above.")]
-        [ItemPicker]
-        [SerializeField]
-        private Skill m_CraftingSkill = null;
-        public Skill CraftingSkill {
-            get { return this.m_CraftingSkill; }
-        }
-
-        [Tooltip("Remove the ingredients when crafting fails.")]
-        [SerializeField]
-        private bool m_RemoveIngredientsWhenFailed = false;
-        public bool RemoveIngredientsWhenFailed {
-            get { return this.m_RemoveIngredientsWhenFailed; }
-        }
-
-        [Tooltip("Minimum required skill to craft this item. The player can only craft this item if his skill is high enough.")]
-        [Range(0f,100f)]
-        [SerializeField]
-        private float m_MinCraftingSkillValue=0f;
-
-        public float MinCraftingSkillValue {
-            get { return this.m_MinCraftingSkillValue; }
-        }
-
-        [Tooltip("Animation to play when this item is crafted. If you don't want to play any animation, delete this value.")]
-        [SerializeField]
-        private string m_CraftingAnimatorState= "Blacksmithy";
-
-        public string CraftingAnimatorState
-        {
-            get { return this.m_CraftingAnimatorState; }
-        }
-
-        [SerializeField]
-        private ItemModifierList m_CraftingModifier= new ItemModifierList();
-        public ItemModifierList CraftingModifier {
-            get { return this.m_CraftingModifier; }
-            set { this.m_CraftingModifier = value; }
-        }
-
-        public List<Ingredient> ingredients = new List<Ingredient>();*/
-
 
         public ItemContainer Container
         {
@@ -348,7 +257,6 @@ namespace FKGame.InventorySystem
             }
         }
 
-       // private Slot m_Slot;
 		public Slot Slot {
 			get{ 
                 if(Slots.Count > 0)
@@ -395,7 +303,6 @@ namespace FKGame.InventorySystem
             }
         }
 
-
         [SerializeField]
 		private List<ObjectProperty> properties = new List<ObjectProperty> ();
 
@@ -415,7 +322,6 @@ namespace FKGame.InventorySystem
 		{
 			return properties.FirstOrDefault (property => property.Name == name);
 		}
-
 
 		public ObjectProperty[] GetProperties ()
 		{
@@ -466,7 +372,6 @@ namespace FKGame.InventorySystem
         }
 
         public virtual void Use() { }
-
         public virtual void GetObjectData(Dictionary<string, object> data)
         {
             data.Add("Name", this.Name);
@@ -479,7 +384,6 @@ namespace FKGame.InventorySystem
             }
 
             List<object> objectProperties = new List<object>();
-
             foreach (ObjectProperty property in properties)
             {
                 Dictionary<string, object> propertyData = new Dictionary<string, object>();
@@ -541,7 +445,6 @@ namespace FKGame.InventorySystem
                         properties.Add(property);
                     }
                     property.SetValue(propertyValue);
-
                 }
             }
 

@@ -156,7 +156,7 @@ namespace FKGame.InventorySystem
         private void DoAddButton()
         {
             GUIStyle buttonStyle = new GUIStyle("AC Button");
-            GUIContent buttonContent = new GUIContent("Add " + this.m_ElementType.Name);
+            GUIContent buttonContent = new GUIContent(LanguagesMacro.ADD_ACTION + this.m_ElementType.Name);
             Rect buttonRect = GUILayoutUtility.GetRect(buttonContent, buttonStyle, GUILayout.ExpandWidth(true));
             buttonRect.x = buttonRect.width * 0.5f - buttonStyle.fixedWidth * 0.5f;
             buttonRect.width = buttonStyle.fixedWidth;
@@ -198,7 +198,7 @@ namespace FKGame.InventorySystem
                 EditorUtility.SetDirty(target);
             });
             menu.AddSeparator(string.Empty);
-            menu.AddItem(new GUIContent("Remove " + this.m_ElementType.Name), false, delegate { list.RemoveAt(index); EditorUtility.SetDirty(target); });
+            menu.AddItem(new GUIContent(LanguagesMacro.REMOVE + this.m_ElementType.Name), false, delegate { list.RemoveAt(index); EditorUtility.SetDirty(target); });
 
             if (index > 0)
             {
@@ -229,14 +229,14 @@ namespace FKGame.InventorySystem
                 menu.AddDisabledItem(new GUIContent(LanguagesMacro.MOVE_DOWN));
             }
 
-            menu.AddItem(new GUIContent("Copy " + this.m_ElementType.Name), false, delegate {
+            menu.AddItem(new GUIContent(LanguagesMacro.COPY + this.m_ElementType.Name), false, delegate {
                 object value = list[index];
                 m_ObjectToCopy = value;
             });
 
             if (m_ObjectToCopy != null)
             {
-                menu.AddItem(new GUIContent("Paste " + this.m_ElementType.Name + " As New"), false, delegate {
+                menu.AddItem(new GUIContent(LanguagesMacro.PASTE + this.m_ElementType.Name), false, delegate {
                     object instance = System.Activator.CreateInstance(m_ObjectToCopy.GetType());
                     FieldInfo[] fields = instance.GetType().GetSerializedFields();
                     for (int i = 0; i < fields.Length; i++)
@@ -250,7 +250,7 @@ namespace FKGame.InventorySystem
 
                 if (list[index].GetType() == m_ObjectToCopy.GetType())
                 {
-                    menu.AddItem(new GUIContent("Paste " + this.m_ElementType.Name + " Values"), false, delegate
+                    menu.AddItem(new GUIContent(LanguagesMacro.PASTE + this.m_ElementType.Name + LanguagesMacro.VALUES), false, delegate
                     {
                         object instance = list[index];
                         FieldInfo[] fields = instance.GetType().GetSerializedFields();
@@ -264,7 +264,7 @@ namespace FKGame.InventorySystem
                 }
                 else
                 {
-                    menu.AddDisabledItem(new GUIContent("Paste " + this.m_ElementType.Name + " Values"));
+                    menu.AddDisabledItem(new GUIContent(LanguagesMacro.PASTE + this.m_ElementType.Name + LanguagesMacro.VALUES));
                 }
             }
 

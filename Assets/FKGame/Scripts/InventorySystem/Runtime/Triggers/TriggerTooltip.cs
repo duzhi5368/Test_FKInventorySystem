@@ -1,7 +1,7 @@
 ﻿using FKGame.UIWidgets;
 using UnityEngine;
 using UnityEngine.UI;
-
+//------------------------------------------------------------------------
 namespace FKGame.InventorySystem
 {
     public class TriggerTooltip : UIWidget

@@ -1,8 +1,6 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
-
+//------------------------------------------------------------------------
 namespace FKGame.InventorySystem
 {
     public class SkillSlot : ItemSlot
@@ -13,9 +11,7 @@ namespace FKGame.InventorySystem
         public override void Repaint()
         {
             base.Repaint();
-
             Skill skill = ObservedItem as Skill;
-
             if (this.m_Value != null)
             {
                 this.m_Value.text = (skill != null ? skill.CurrentValue.ToString("F1")+"%" : string.Empty);

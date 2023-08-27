@@ -1,4 +1,5 @@
-﻿using FKGame.UIWidgets;
+﻿using FKGame.Macro;
+using FKGame.UIWidgets;
 using System.Collections.Generic;
 using UnityEngine;
 //------------------------------------------------------------------------
@@ -8,32 +9,33 @@ namespace FKGame.InventorySystem
     public class CraftingRecipe : ScriptableObject, INameable
     {
         [SerializeField]
-        private new string name = "New Crafting Recipe";
+        [InspectorLabel(LanguagesMacro.NAME)]
+        private new string name = LanguagesMacro.NEW_CRAFTING_RECIPE;
         public string Name
         {
             get { return this.name; }
             set { this.name = value; }
         }
 
-        [Tooltip("How long does it take to craft. This value is also used to display the progressbar in crafting UI.")]
+        [Tooltip("制作需要的时间，该值需要显示到UI上")]
         [SerializeField]
+        [InspectorLabel(LanguagesMacro.CRAFT_DURATION)]
         private float m_Duration = 2f;
-
         public float Duration
         {
             get { return this.m_Duration; }
         }
 
-        [Tooltip("State in animator controller to play when crafting. If you don't want to play any animation, delete this value.")]
+        [Tooltip("制造时，在动画控制器中播放的动画状态。如无需要播放的动画，则设为空")]
         [SerializeField]
-        private string m_AnimatorState = "Blacksmithy";
-
+        [InspectorLabel(LanguagesMacro.CRAFT_ANIMATOR_STATE)]
+        private string m_AnimatorState = "";
         public string AnimatorState
         {
             get { return this.m_AnimatorState; }
         }
 
-        [Tooltip("A skill is used to calculate fails.")]
+        [Tooltip("制造技能")]
         [AcceptNull]
         [SerializeField]
         private Skill m_Skill = null;
@@ -42,15 +44,16 @@ namespace FKGame.InventorySystem
             get { return this.m_Skill; }
         }
 
-        [Tooltip("Remove the ingredients when crafting fails.")]
+        [Tooltip("制造失败时是否移除原材料")]
         [SerializeField]
+        [InspectorLabel(LanguagesMacro.IS_REMOVE_INGREDIENTS)]
         private bool m_RemoveIngredientsWhenFailed = false;
         public bool RemoveIngredientsWhenFailed
         {
             get { return this.m_RemoveIngredientsWhenFailed; }
         }
 
-        [Tooltip("Required ingredients to craft.")]
+        [Tooltip("制作所需原材料")]
         [SerializeField]
         private List<ItemAmountDefinition> m_Ingredients = new List<ItemAmountDefinition>();
         public List<ItemAmountDefinition> Ingredients {
@@ -67,7 +70,6 @@ namespace FKGame.InventorySystem
 
         [SerializeReference]
         public List<ICondition> conditions = new List<ICondition>();
-
         public bool CheckConditions()
         {
             for (int i = 0; i < conditions.Count; i++)

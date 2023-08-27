@@ -14,11 +14,12 @@ namespace FKGame.InventorySystem
     {
 		public static void ShowWindow()
 		{
-			ItemReferenceEditor window = EditorWindow.GetWindow<ItemReferenceEditor>(true, "Item Reference Updater");
+			ItemReferenceEditor window = EditorWindow.GetWindow<ItemReferenceEditor>(true, LanguagesMacro.ITEM_REFERENCE_UPDATER);
 			Vector2 size = new Vector2(450f, 270f);
 			window.minSize = size;
 			window.wantsMouseMove = true;
-		}
+            window.titleContent = new GUIContent(LanguagesMacro.ITEM_REFERENCE_UPDATER);
+        }
 
 		[SerializeField]
 		private List<SceneAsset> m_Scenes= new List<SceneAsset>();
@@ -34,16 +35,14 @@ namespace FKGame.InventorySystem
 			SelectDatabase();
 			EditorGUILayout.Space(7);
 
-			GUILayout.Label("Changed References: "+ m_ChangedReferences);
+			GUILayout.Label(LanguagesMacro.CHANGE_REGERENCES + m_ChangedReferences);
 			GUILayout.BeginHorizontal();
 			GUILayout.FlexibleSpace();
 			EditorGUI.BeginDisabledGroup(this.m_Database == null);
-			if (GUILayout.Button("Update", "AC Button"))
+			if (GUILayout.Button(LanguagesMacro.AUTO_UPDATE, "AC Button"))
 			{
 				UpdateScenes();
-
 				UpdateGameObjects(GetPrefabs());
-
 			}
 			EditorGUI.EndDisabledGroup();
 			GUILayout.FlexibleSpace();
@@ -220,11 +219,15 @@ namespace FKGame.InventorySystem
 		private void SelectPrefabsFolder()
 		{
 			GUILayout.BeginHorizontal();
-			GUILayout.Label("Prefabs", GUILayout.Width(70f));
+			GUILayout.Label(LanguagesMacro.PREFABS, GUILayout.Width(70f));
 			if (GUILayout.Button(string.IsNullOrEmpty(this.m_PrefabsPath) ? "Empty" : this.m_PrefabsPath, EditorStyles.objectField))
 			{
 				this.m_PrefabsPath = EditorUtility.OpenFolderPanel("Root Prfab Folder", Application.dataPath, "");
-				this.m_PrefabsPath = this.m_PrefabsPath.Substring(m_PrefabsPath.IndexOf("Assets/"));
+				int startIndex = m_PrefabsPath.IndexOf("Assets/");
+				if (startIndex >= 0)
+				{
+					this.m_PrefabsPath = this.m_PrefabsPath.Substring(startIndex);
+				}
 			}
 			EditorGUILayout.EndHorizontal();
 		}
@@ -232,13 +235,13 @@ namespace FKGame.InventorySystem
 		private void SelectDatabase()
 		{
 			GUILayout.BeginHorizontal();
-			GUILayout.Label("Database", GUILayout.Width(70f));
+			GUILayout.Label(LanguagesMacro.ITEM_DATABASE, GUILayout.Width(70f));
 			if (GUILayout.Button(this.m_Database != null ? m_Database.name : "Null", EditorStyles.objectField))
 			{
 				string searchString = LanguagesMacro.RESEARCH;
 				ItemDatabase[] databases = EditorTools.FindAssets<ItemDatabase>();
 
-				UtilityInstanceWindow.ShowWindow("Select Database", delegate ()
+				UtilityInstanceWindow.ShowWindow(LanguagesMacro.SELECT_DATABASE, delegate ()
 				{
 					searchString = EditorTools.SearchField(searchString);
 
@@ -263,7 +266,7 @@ namespace FKGame.InventorySystem
 		
 		private void SceneSelection() 
 		{
-			EditorGUILayout.LabelField("Scenes To Update", EditorStyles.boldLabel);
+			EditorGUILayout.LabelField(LanguagesMacro.SCENES_TO_UPDATE, EditorStyles.boldLabel);
 
 			Event evt = Event.current;
 			Rect dropArea = GUILayoutUtility.GetRect(0.0f, 120.0f, GUILayout.ExpandWidth(true));

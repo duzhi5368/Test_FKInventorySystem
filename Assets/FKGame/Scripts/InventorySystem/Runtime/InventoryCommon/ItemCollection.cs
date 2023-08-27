@@ -4,7 +4,7 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.Serialization;
-
+//------------------------------------------------------------------------
 namespace FKGame.InventorySystem
 {
 	public class ItemCollection : MonoBehaviour, IEnumerable<Item>, IJsonSerializable
@@ -23,8 +23,6 @@ namespace FKGame.InventorySystem
         [HideInInspector]
 		public UnityEvent onChange;
 
-
-
         private bool m_Initialized;
 
         private void Awake()
@@ -34,9 +32,8 @@ namespace FKGame.InventorySystem
 
         public void Initialize()
         {
-            if (this.m_Initialized) { return; }
-
-            //Used to sync old items
+            if (this.m_Initialized)
+                return;
             if (this.m_Modifiers.Count < this.m_Items.Count)
             {
                 for (int i = m_Modifiers.Count; i < this.m_Items.Count; i++)
@@ -44,7 +41,6 @@ namespace FKGame.InventorySystem
                     m_Modifiers.Add(new ItemModifierList());
                 }
             }
-
             if (this.m_Amounts.Count < this.m_Items.Count) {
                 for (int i = this.m_Amounts.Count; i < this.m_Items.Count; i++)
                 {
@@ -54,13 +50,15 @@ namespace FKGame.InventorySystem
 
             m_Items = InventoryManager.CreateInstances(m_Items.ToArray(),this.m_Amounts.ToArray(), this.m_Modifiers.ToArray()).ToList();
           
-            for (int i = 0; i < m_Items.Count; i++) {
+            for (int i = 0; i < m_Items.Count; i++) 
+            {
                 Item current = m_Items[i];
-                if (current.Stack > current.MaxStack) {
-                    //Split in smaller stacks
+                if (current.Stack > current.MaxStack) 
+                {
                     int maxStacks = Mathf.FloorToInt((float)current.Stack / (float)current.MaxStack);
                     int restStack = current.Stack - (current.MaxStack * maxStacks);
-                    for (int j = 0; j < maxStacks; j++) {
+                    for (int j = 0; j < maxStacks; j++) 
+                    {
                         Item instance = InventoryManager.CreateInstance(current);
                         instance.Stack = instance.MaxStack;
                         Add(instance);
@@ -72,12 +70,10 @@ namespace FKGame.InventorySystem
                     else {
                         Remove(current);
                     }
-                   
                 }
             }
-            
 
-            //Stack same currencies
+            // 相同的货币进行堆叠
             CombineCurrencies();
             ItemCollectionPopulator populator = GetComponent<ItemCollectionPopulator>();
             if (populator != null && populator.enabled) {
@@ -85,10 +81,10 @@ namespace FKGame.InventorySystem
                 Add(groupItems);
             } 
             this.m_Initialized = true;
-
 		}
 
-		public Item this [int index] {
+		public Item this [int index] 
+        {
 			get { return this.m_Items [index]; }
 			set {
 				Insert (index, value);
@@ -136,15 +132,11 @@ namespace FKGame.InventorySystem
             this.m_Modifiers.Insert(index,new ItemModifierList());
             if(onChange != null)
 			    onChange.Invoke ();
-
 		}
-
-     
 
         public bool Remove (Item item)
 		{
             int index = m_Items.IndexOf(item);
-            
             bool result = this.m_Items.Remove (item);
             if (result) {
                 this.m_Amounts.RemoveAt(index);
@@ -175,7 +167,6 @@ namespace FKGame.InventorySystem
 
 		public void Clear ()
 		{
-            
             Item[] currencies = this.m_Items.Where(x => typeof(Currency).IsAssignableFrom(x.GetType())).ToArray();
             for (int i = 0; i < currencies.Length; i++) {
                 currencies[i].Stack = 0;
@@ -213,7 +204,6 @@ namespace FKGame.InventorySystem
                     {
                         mItems.Add(null);
                     }
-
                 }
                 data.Add("Items", mItems);
             }
@@ -243,13 +233,10 @@ namespace FKGame.InventorySystem
                         items.AddRange(InventoryManager.Database.currencies);
 
                         Item item = items.Find(x => x.Name == (string)itemData["Name"]);
-                        
                         if (item != null)
                         {
                             Item mItem = (Item)ScriptableObject.Instantiate(item);
                             mItem.SetObjectData(itemData);
-
-
                             Add(mItem);
 
                             this.m_Amounts[i] = 0;
@@ -267,8 +254,6 @@ namespace FKGame.InventorySystem
                                     }
                                 }
                             }
-
-                     
                         }
                     }
                 }
@@ -296,6 +281,5 @@ namespace FKGame.InventorySystem
                 m_Items.Remove(current);
             }
         }
-
     }
 }

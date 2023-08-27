@@ -1,7 +1,6 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
-
+//------------------------------------------------------------------------
 namespace FKGame.InventorySystem
 {
     [System.Serializable]
@@ -23,7 +22,6 @@ namespace FKGame.InventorySystem
                     if (Slot != null)
                         Slot.Repaint();
                 }
-            
             }
         }
 

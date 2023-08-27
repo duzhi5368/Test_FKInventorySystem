@@ -1,21 +1,15 @@
 ﻿using FKGame.UIWidgets;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.EventSystems;
-
+//------------------------------------------------------------------------
 namespace FKGame.InventorySystem
 {
     public class DisplayName : MonoBehaviour, ITriggerCameInRange, ITriggerUsedHandler, ITriggerUnUsedHandler, ITriggerWentOutOfRange
     {
-        //When to display name?
         [SerializeField]
         [EnumFlags]
         protected DisplayNameType m_DisplayType = DisplayNameType.Raycast;
-        //Color to display name
         [SerializeField]
         protected Color m_Color = Color.white;
-        //Name label offset
         [SerializeField]
         protected Vector3 m_Offset = Vector3.zero;
 
@@ -38,8 +32,6 @@ namespace FKGame.InventorySystem
             m_Trigger = GetComponent<BaseTrigger>();
             EventHandler.Register(gameObject, "OnPointerEnterTrigger", OnPointerEnterTrigger);
             EventHandler.Register(gameObject, "OnPointerExitTrigger", OnPointerExitTrigger);
-
-
             if (this.m_DisplayType.HasFlag<DisplayNameType>(DisplayNameType.Always))
                 DoDisplayName(true);
         }

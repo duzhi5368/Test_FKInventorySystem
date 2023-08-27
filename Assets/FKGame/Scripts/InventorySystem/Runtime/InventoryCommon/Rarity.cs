@@ -1,10 +1,11 @@
-﻿using UnityEngine;
-using System.Collections;
-
+﻿using FKGame.Macro;
+using UnityEngine;
+//------------------------------------------------------------------------
 namespace FKGame.InventorySystem{
 	[System.Serializable]
 	public class Rarity : ScriptableObject, INameable {
 		[SerializeField]
+		[InspectorLabel(LanguagesMacro.NAME)]
 		private new string name="";
 		public string Name{
 			get{return this.name;}
@@ -12,29 +13,30 @@ namespace FKGame.InventorySystem{
 		}
 
 		[SerializeField]
-		private bool m_UseAsNamePrefix = false;
+        [InspectorLabel(LanguagesMacro.IS_USE_NAME_PREFIX)]
+        private bool m_UseAsNamePrefix = false;
 		public bool UseAsNamePrefix {
 			get { return this.m_UseAsNamePrefix; }
 		}
 
-
 		[SerializeField]
-		private Color color=Color.white;
+        [InspectorLabel(LanguagesMacro.COLOR)]
+        private Color color=Color.white;
 		public Color Color{
 			get{return this.color;}
 			set{this.color = value;}
 		}
 
-		//Percent to get this rarity
 		[SerializeField]
-		private int chance = 100;
+        [InspectorLabel(LanguagesMacro.CHANCE)]
+        private int chance = 100;
 		public int Chance
 		{
 			get { return this.chance; }
 			set { this.chance = value; }
 		}
 
-		[InspectorLabel("Property Multiplier")]
+		[InspectorLabel(LanguagesMacro.PROPERTY_MULTIPLIER)]
 		[SerializeField]
 		private float multiplier = 1.0f;
 		public float Multiplier
@@ -43,7 +45,7 @@ namespace FKGame.InventorySystem{
 			set { this.multiplier = value; }
 		}
 
-		[InspectorLabel("Price Multiplier")]
+		[InspectorLabel(LanguagesMacro.PRICE_MULTIPLIER)]
 		[SerializeField]
 		private float m_PriceMultiplier = 1.0f;
 		public float PriceMultiplier

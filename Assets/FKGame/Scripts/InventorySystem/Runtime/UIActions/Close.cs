@@ -1,9 +1,6 @@
 ﻿using FKGame.UIWidgets;
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-
+//------------------------------------------------------------------------
 namespace FKGame.InventorySystem
 {
     [UnityEngine.Scripting.APIUpdating.MovedFromAttribute(true, null, "Assembly-CSharp")]
@@ -14,7 +11,6 @@ namespace FKGame.InventorySystem
     {
         [SerializeField]
         private string m_WidgetName = "General Progressbar";
-
 
         public override ActionStatus OnUpdate()
         {

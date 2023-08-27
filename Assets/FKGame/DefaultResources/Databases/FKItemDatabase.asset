@@ -1,0 +1,895 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-5615609656032592432
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 95b3f53e13350c940b9b3aadd93f2c76, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  containerFull:
+    title: 
+    text: '{0} is full!'
+    color: {r: 1, g: 1, b: 1, a: 1}
+    icon: {fileID: 0}
+    delay: 2
+    duration: 2
+    ignoreTimeScale: 1
+  failedRestriction:
+    title: 
+    text: '{0} can''t be added to {1}.'
+    color: {r: 1, g: 1, b: 1, a: 1}
+    icon: {fileID: 0}
+    delay: 2
+    duration: 2
+    ignoreTimeScale: 1
+  missingItem:
+    title: 
+    text: This action requires {0}.
+    color: {r: 1, g: 1, b: 1, a: 1}
+    icon: {fileID: 0}
+    delay: 2
+    duration: 2
+    ignoreTimeScale: 1
+  missingCategoryItem:
+    title: 
+    text: This action requires {0}.
+    color: {r: 1, g: 1, b: 1, a: 1}
+    icon: {fileID: 0}
+    delay: 2
+    duration: 2
+    ignoreTimeScale: 1
+  inCooldown:
+    title: 
+    text: '{0} is in cooldown for {1} seconds!'
+    color: {r: 1, g: 1, b: 1, a: 1}
+    icon: {fileID: 0}
+    delay: 2
+    duration: 2
+    ignoreTimeScale: 1
+  selectItem:
+    title: 
+    text: You need to select an item first.
+    color: {r: 1, g: 1, b: 1, a: 1}
+    icon: {fileID: 0}
+    delay: 2
+    duration: 2
+    ignoreTimeScale: 1
+  alreadyCrafting:
+    title: 
+    text: You are already crafting.
+    color: {r: 1, g: 1, b: 1, a: 1}
+    icon: {fileID: 0}
+    delay: 2
+    duration: 2
+    ignoreTimeScale: 1
+  craftedItem:
+    title: 
+    text: Successfully crafted {0}
+    color: {r: 1, g: 1, b: 1, a: 1}
+    icon: {fileID: 0}
+    delay: 2
+    duration: 2
+    ignoreTimeScale: 1
+  missingIngredient:
+    title: 
+    text: You don't have all ingredients to craft this item!
+    color: {r: 1, g: 1, b: 1, a: 1}
+    icon: {fileID: 0}
+    delay: 2
+    duration: 2
+    ignoreTimeScale: 1
+  failedToCraft:
+    title: 
+    text: You failed to craft {0}.
+    color: {r: 1, g: 1, b: 1, a: 1}
+    icon: {fileID: 0}
+    delay: 2
+    duration: 2
+    ignoreTimeScale: 1
+  alreadyEnchanting:
+    title: 
+    text: You are already enchating.
+    color: {r: 1, g: 1, b: 1, a: 1}
+    icon: {fileID: 0}
+    delay: 2
+    duration: 2
+    ignoreTimeScale: 1
+  enchantedItem:
+    title: 
+    text: Successfully enchanted {0}.
+    color: {r: 1, g: 1, b: 1, a: 1}
+    icon: {fileID: 0}
+    delay: 2
+    duration: 2
+    ignoreTimeScale: 1
+  missingMaterials:
+    title: 
+    text: You don't have all materials to enchant this item!
+    color: {r: 1, g: 1, b: 1, a: 1}
+    icon: {fileID: 0}
+    delay: 2
+    duration: 2
+    ignoreTimeScale: 1
+  failedToEnchant:
+    title: 
+    text: You failed to enchant {0}.
+    color: {r: 1, g: 1, b: 1, a: 1}
+    icon: {fileID: 0}
+    delay: 2
+    duration: 2
+    ignoreTimeScale: 1
+  soldItem:
+    title: 
+    text: Sold {0} for {1}.
+    color: {r: 1, g: 1, b: 1, a: 1}
+    icon: {fileID: 0}
+    delay: 2
+    duration: 2
+    ignoreTimeScale: 1
+  boughtItem:
+    title: 
+    text: Bought {0} for {1}.
+    color: {r: 1, g: 1, b: 1, a: 1}
+    icon: {fileID: 0}
+    delay: 2
+    duration: 2
+    ignoreTimeScale: 1
+  noCurrencyToBuy:
+    title: 
+    text: You don't have enough coins.
+    color: {r: 1, g: 1, b: 1, a: 1}
+    icon: {fileID: 0}
+    delay: 2
+    duration: 2
+    ignoreTimeScale: 1
+  cantSellItem:
+    title: 
+    text: You can't sell this {0}!
+    color: {r: 1, g: 1, b: 1, a: 1}
+    icon: {fileID: 0}
+    delay: 2
+    duration: 2
+    ignoreTimeScale: 1
+  toFarAway:
+    title: 
+    text: This is to far away!
+    color: {r: 1, g: 1, b: 1, a: 1}
+    icon: {fileID: 0}
+    delay: 2
+    duration: 2
+    ignoreTimeScale: 1
+  inUse:
+    title: 
+    text: My life is already fairly busy.
+    color: {r: 1, g: 1, b: 1, a: 1}
+    icon: {fileID: 0}
+    delay: 2
+    duration: 2
+    ignoreTimeScale: 1
+  empty:
+    title: 
+    text: There is nothing to be found here.
+    color: {r: 1, g: 1, b: 1, a: 1}
+    icon: {fileID: 0}
+    delay: 2
+    duration: 2
+    ignoreTimeScale: 1
+  skillGain:
+    title: 
+    text: Your {0} increased by {1}% to {2}%.
+    color: {r: 1, g: 1, b: 1, a: 1}
+    icon: {fileID: 0}
+    delay: 2
+    duration: 2
+    ignoreTimeScale: 1
+--- !u!114 &-4859203413129413416
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4397c4b96d02226449850528ae00926a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  name: "\u86EE\u725B\u7684"
+  m_UseAsNamePrefix: 1
+  color: {r: 1, g: 0, b: 0, a: 1}
+  chance: 20
+  multiplier: 1
+  m_PriceMultiplier: 1
+--- !u!114 &-4828483059696526248
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ec453533555a4f4497fec4c4e0b926b, type: 3}
+  m_Name: "\u5934\u90E8"
+  m_EditorClassIdentifier: 
+  name: "\u5934\u90E8"
+--- !u!114 &-3208628164377861440
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1844f32251466a54ebc8e84d75e31778, type: 3}
+  m_Name: "\u91D1\u5E01"
+  m_EditorClassIdentifier: 
+  m_Id: 7a4c1d03-b19a-4b44-a16b-c29b2a906b30
+  m_ItemName: "\u91D1\u5E01"
+  m_UseItemNameAsDisplayName: 1
+  m_DisplayName: New Item
+  m_Icon: {fileID: 21300000, guid: 4a247a8469e5a84418413b8a2be9e9f7, type: 3}
+  m_Prefab: {fileID: 0}
+  m_Description: 
+  m_Category: {fileID: 0}
+  m_IsSellable: 1
+  m_BuyPrice: 0
+  m_CanBuyBack: 1
+  m_BuyCurrency: {fileID: 0}
+  m_SellPrice: 0
+  m_SellCurrency: {fileID: 0}
+  m_Stack: 1
+  m_MaxStack: 1
+  m_CanDestroy: 1
+  m_IsDroppable: 1
+  m_DropSound: {fileID: 0}
+  m_OverridePrefab: {fileID: 0}
+  m_CraftingRecipe: {fileID: 0}
+  m_EnchantingRecipe: {fileID: 0}
+  properties: []
+  currencyConversions:
+  - factor: 100
+    currency: {fileID: 4490365734760325680}
+--- !u!114 &-2024883559035731908
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1844f32251466a54ebc8e84d75e31778, type: 3}
+  m_Name: "\u94DC\u5E01"
+  m_EditorClassIdentifier: 
+  m_Id: 2066d454-b708-4feb-b945-6bda34bed78b
+  m_ItemName: "\u94DC\u5E01"
+  m_UseItemNameAsDisplayName: 1
+  m_DisplayName: New Item
+  m_Icon: {fileID: 21300000, guid: 9fde7cd11192c4640a21b00d70d4e30c, type: 3}
+  m_Prefab: {fileID: 0}
+  m_Description: 
+  m_Category: {fileID: 0}
+  m_IsSellable: 1
+  m_BuyPrice: 0
+  m_CanBuyBack: 1
+  m_BuyCurrency: {fileID: 0}
+  m_SellPrice: 0
+  m_SellCurrency: {fileID: 0}
+  m_Stack: 1
+  m_MaxStack: 1
+  m_CanDestroy: 1
+  m_IsDroppable: 1
+  m_DropSound: {fileID: 0}
+  m_OverridePrefab: {fileID: 0}
+  m_CraftingRecipe: {fileID: 0}
+  m_EnchantingRecipe: {fileID: 0}
+  properties: []
+  currencyConversions: []
+--- !u!114 &-1932190680053508465
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4397c4b96d02226449850528ae00926a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  name: "\u51F6\u6B8B\u7684"
+  m_UseAsNamePrefix: 1
+  color: {r: 0, g: 0.21875858, b: 1, a: 1}
+  chance: 12
+  multiplier: 1
+  m_PriceMultiplier: 1
+--- !u!114 &-1785432961974062960
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ec453533555a4f4497fec4c4e0b926b, type: 3}
+  m_Name: "\u8EAB\u4F53"
+  m_EditorClassIdentifier: 
+  name: "\u8EAB\u4F53"
+--- !u!114 &-1376064841012014858
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 239a89d25e18d5c438878ba24effa1d5, type: 3}
+  m_Name: Sword
+  m_EditorClassIdentifier: 
+  m_Id: 67471ae4-8098-4786-bcaf-9ea60b9d4331
+  m_ItemName: Sword
+  m_UseItemNameAsDisplayName: 0
+  m_DisplayName: "\u5355\u624B\u5251"
+  m_Icon: {fileID: 21300000, guid: c5e7c360acbdae8419655603b3d1d0f9, type: 3}
+  m_Prefab: {fileID: 0}
+  m_Description: "\u8FD9\u662F\u4E00\u4E2A\u5E73\u5E73\u65E0\u5947\u7684\u5355\u624B\u5251"
+  m_Category: {fileID: 4341451067663683602}
+  m_IsSellable: 1
+  m_BuyPrice: 0
+  m_CanBuyBack: 1
+  m_BuyCurrency: {fileID: 781616137605068398}
+  m_SellPrice: 0
+  m_SellCurrency: {fileID: -3208628164377861440}
+  m_Stack: 1
+  m_MaxStack: 1
+  m_CanDestroy: 1
+  m_IsDroppable: 1
+  m_DropSound: {fileID: 0}
+  m_OverridePrefab: {fileID: 0}
+  m_CraftingRecipe: {fileID: 3383730039096186202}
+  m_EnchantingRecipe: {fileID: 1129039798279701203}
+  properties: []
+--- !u!114 &-1147272937706230451
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ec453533555a4f4497fec4c4e0b926b, type: 3}
+  m_Name: "\u53F3\u624B"
+  m_EditorClassIdentifier: 
+  name: "\u53F3\u624B"
+--- !u!114 &-1039073396501237384
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 39b5287fd306425469e0a79604d01f18, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  unstackEvent: 3
+  unstackKeyCode: 304
+--- !u!114 &-903928444365677038
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 06d35cd237601a0409ef62e49aee7b95, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  contextMenuName: ContextMenu
+  tooltipName: Tooltip
+  sellPriceTooltipName: Sell Price Tooltip
+  stackName: Stack
+  notificationName: Notification
+  dialogBoxName: Dialog Box
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 10166c75065e62040bcb84677ab0e15a, type: 3}
+  m_Name: FKItemDatabase
+  m_EditorClassIdentifier: 
+  items:
+  - {fileID: 6577012203190122314}
+  - {fileID: -1376064841012014858}
+  - {fileID: 8216421669527572145}
+  - {fileID: 3990118740686234269}
+  currencies:
+  - {fileID: 7070036473603972864}
+  - {fileID: 781616137605068398}
+  - {fileID: -3208628164377861440}
+  - {fileID: 4490365734760325680}
+  - {fileID: -2024883559035731908}
+  craftingRecipes:
+  - {fileID: 3383730039096186202}
+  - {fileID: 1129039798279701203}
+  raritys:
+  - {fileID: -4859203413129413416}
+  - {fileID: -1932190680053508465}
+  categories:
+  - {fileID: 2559094416175478383}
+  - {fileID: 4341451067663683602}
+  - {fileID: 3410330480550100845}
+  - {fileID: 4770366081136717516}
+  equipments:
+  - {fileID: 2163108619502066523}
+  - {fileID: -1147272937706230451}
+  - {fileID: -1785432961974062960}
+  - {fileID: -4828483059696526248}
+  itemGroups:
+  - {fileID: 5300183597253860533}
+  - {fileID: 7921663228927098850}
+  settings:
+  - {fileID: 5251163198954849802}
+  - {fileID: -1039073396501237384}
+  - {fileID: -5615609656032592432}
+  - {fileID: 1537397568761502058}
+  - {fileID: -903928444365677038}
+--- !u!114 &781616137605068398
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1844f32251466a54ebc8e84d75e31778, type: 3}
+  m_Name: "\u767D\u91D1\u5E01"
+  m_EditorClassIdentifier: 
+  m_Id: 66dd52ee-a553-411b-8d18-48f732ef0c61
+  m_ItemName: "\u767D\u91D1\u5E01"
+  m_UseItemNameAsDisplayName: 1
+  m_DisplayName: New Item
+  m_Icon: {fileID: 21300000, guid: d05d245a27bde6445a784ac5ec9d1cb0, type: 3}
+  m_Prefab: {fileID: 0}
+  m_Description: 
+  m_Category: {fileID: 0}
+  m_IsSellable: 1
+  m_BuyPrice: 0
+  m_CanBuyBack: 1
+  m_BuyCurrency: {fileID: 0}
+  m_SellPrice: 0
+  m_SellCurrency: {fileID: 0}
+  m_Stack: 1
+  m_MaxStack: 1
+  m_CanDestroy: 1
+  m_IsDroppable: 1
+  m_DropSound: {fileID: 0}
+  m_OverridePrefab: {fileID: 0}
+  m_CraftingRecipe: {fileID: 0}
+  m_EnchantingRecipe: {fileID: 0}
+  properties: []
+  currencyConversions:
+  - factor: 100
+    currency: {fileID: -3208628164377861440}
+--- !u!114 &1129039798279701203
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f3dab25464dc16641ba2d1eb6f62d0da, type: 3}
+  m_Name: "\u9644\u9B54\u914D\u65B9"
+  m_EditorClassIdentifier: 
+  name: "\u9644\u9B54\u914D\u65B9"
+  m_Duration: 1
+  m_AnimatorState: 
+  m_Skill: {fileID: 0}
+  m_RemoveIngredientsWhenFailed: 0
+  m_Ingredients:
+  - item: {fileID: 3990118740686234269}
+    amount: 1
+  m_CraftingModifier:
+    modifiers:
+    - {fileID: 0}
+  conditions: []
+  references:
+    version: 2
+    RefIds: []
+--- !u!114 &1537397568761502058
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cfb4beb5fbde1244ea5e136561a706b7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  autoSave: 1
+  savingKey: Player
+  savingRate: 60
+  provider: 0
+--- !u!114 &2163108619502066523
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ec453533555a4f4497fec4c4e0b926b, type: 3}
+  m_Name: "\u5DE6\u624B"
+  m_EditorClassIdentifier: 
+  name: "\u5DE6\u624B"
+--- !u!114 &2559094416175478383
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8484a9ae8c79f27468bb9f1834e52e5e, type: 3}
+  m_Name: "\u836F\u54C1"
+  m_EditorClassIdentifier: 
+  m_Parent: {fileID: 0}
+  name: "\u836F\u54C1"
+  m_EditorColor: {r: 0.990566, g: 0, b: 0, a: 0}
+  m_Cooldown: 1
+--- !u!114 &3383730039096186202
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f3dab25464dc16641ba2d1eb6f62d0da, type: 3}
+  m_Name: "\u6B66\u5668\u5236\u4F5C"
+  m_EditorClassIdentifier: 
+  name: "\u6B66\u5668\u5236\u4F5C"
+  m_Duration: 2
+  m_AnimatorState: 
+  m_Skill: {fileID: 0}
+  m_RemoveIngredientsWhenFailed: 1
+  m_Ingredients:
+  - item: {fileID: 6577012203190122314}
+    amount: 1
+  m_CraftingModifier:
+    modifiers: []
+  conditions: []
+  references:
+    version: 2
+    RefIds: []
+--- !u!114 &3410330480550100845
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8484a9ae8c79f27468bb9f1834e52e5e, type: 3}
+  m_Name: "\u6742\u7269"
+  m_EditorClassIdentifier: 
+  m_Parent: {fileID: 0}
+  name: "\u6742\u7269"
+  m_EditorColor: {r: 1, g: 0.62911344, b: 0, a: 0}
+  m_Cooldown: 0
+--- !u!114 &3990118740686234269
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 553ec6ced298d2c4f97c6810d68d3460, type: 3}
+  m_Name: "\u9644\u9B54\u5377\u8F74"
+  m_EditorClassIdentifier: 
+  m_Id: 424ad85c-f663-433b-b729-dac2116631be
+  m_ItemName: "\u9644\u9B54\u5377\u8F74"
+  m_UseItemNameAsDisplayName: 1
+  m_DisplayName: New Item
+  m_Icon: {fileID: 21300000, guid: 804dd4c5ed14eff4e8b33495d3132bb8, type: 3}
+  m_Prefab: {fileID: 0}
+  m_Description: "\u53EF\u4EE5\u7528\u4E8E\u9644\u9B54"
+  m_Category: {fileID: 3410330480550100845}
+  m_IsSellable: 0
+  m_BuyPrice: 0
+  m_CanBuyBack: 1
+  m_BuyCurrency: {fileID: 7070036473603972864}
+  m_SellPrice: 0
+  m_SellCurrency: {fileID: 7070036473603972864}
+  m_Stack: 1
+  m_MaxStack: 1
+  m_CanDestroy: 1
+  m_IsDroppable: 1
+  m_DropSound: {fileID: 0}
+  m_OverridePrefab: {fileID: 0}
+  m_CraftingRecipe: {fileID: 0}
+  m_EnchantingRecipe: {fileID: 0}
+  properties: []
+  m_UseCategoryCooldown: 0
+  m_Cooldown: 1
+  actions: []
+  m_OverrideEquipPrefab: {fileID: 0}
+  m_Region: []
+  references:
+    version: 2
+    RefIds: []
+--- !u!114 &4341451067663683602
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8484a9ae8c79f27468bb9f1834e52e5e, type: 3}
+  m_Name: "\u5355\u624B\u5251"
+  m_EditorClassIdentifier: 
+  m_Parent: {fileID: 4770366081136717516}
+  name: "\u5355\u624B\u5251"
+  m_EditorColor: {r: 0, g: 0.012152195, b: 1, a: 0}
+  m_Cooldown: 0
+--- !u!114 &4490365734760325680
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1844f32251466a54ebc8e84d75e31778, type: 3}
+  m_Name: "\u94F6\u5E01"
+  m_EditorClassIdentifier: 
+  m_Id: 4a37e0a1-b2f1-4665-b210-272ba34e1306
+  m_ItemName: "\u94F6\u5E01"
+  m_UseItemNameAsDisplayName: 1
+  m_DisplayName: New Item
+  m_Icon: {fileID: 21300000, guid: 0ad2cdbc6c6696b468cef7c977efaf76, type: 3}
+  m_Prefab: {fileID: 0}
+  m_Description: 
+  m_Category: {fileID: 0}
+  m_IsSellable: 1
+  m_BuyPrice: 0
+  m_CanBuyBack: 1
+  m_BuyCurrency: {fileID: 0}
+  m_SellPrice: 0
+  m_SellCurrency: {fileID: 0}
+  m_Stack: 1
+  m_MaxStack: 1
+  m_CanDestroy: 1
+  m_IsDroppable: 1
+  m_DropSound: {fileID: 0}
+  m_OverridePrefab: {fileID: 0}
+  m_CraftingRecipe: {fileID: 0}
+  m_EnchantingRecipe: {fileID: 0}
+  properties: []
+  currencyConversions:
+  - factor: 100
+    currency: {fileID: -2024883559035731908}
+--- !u!114 &4770366081136717516
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8484a9ae8c79f27468bb9f1834e52e5e, type: 3}
+  m_Name: "\u6B66\u5668"
+  m_EditorClassIdentifier: 
+  m_Parent: {fileID: 0}
+  name: "\u6B66\u5668"
+  m_EditorColor: {r: 0.9622642, g: 0, b: 0, a: 0}
+  m_Cooldown: 0
+--- !u!114 &5251163198954849802
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae7963c05be81fb4db371fec69009000, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerTag: Player
+  maxDropDistance: 3
+  queriesHitTriggers: 0
+  debugMessages: 1
+  showAllComponents: 0
+--- !u!114 &5300183597253860533
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 27b212a6bd725d844a9c8f1c04a590dd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_GroupName: "\u94C1\u5320\u51FA\u552E\u51FA\u54C1\u7EC4"
+  m_Items:
+  - {fileID: 6577012203190122314}
+  - {fileID: 8216421669527572145}
+  - {fileID: -1376064841012014858}
+  - {fileID: 607665969784298798, guid: c3c7b591751330048b8ed3090ae85f86, type: 2}
+  - {fileID: 852945505981120044, guid: b38a0453d82aba24fa92f97f2ac286de, type: 2}
+  m_Amounts: 1400000001000000010000000100000001000000
+  m_Modifiers:
+  - modifiers: []
+  - modifiers: []
+  - modifiers: []
+  - modifiers: []
+  - modifiers: []
+--- !u!114 &6577012203190122314
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 239a89d25e18d5c438878ba24effa1d5, type: 3}
+  m_Name: "\u94C1\u5757"
+  m_EditorClassIdentifier: 
+  m_Id: 339d5962-adb6-492e-a74a-acdf2a351341
+  m_ItemName: "\u94C1\u5757"
+  m_UseItemNameAsDisplayName: 1
+  m_DisplayName: New Item
+  m_Icon: {fileID: 21300000, guid: e25642457ee756c41b4c1a348d4b2230, type: 3}
+  m_Prefab: {fileID: 0}
+  m_Description: "\u8FD9\u662F\u4E00\u4E2A\u94C1\u5757"
+  m_Category: {fileID: 3410330480550100845}
+  m_IsSellable: 1
+  m_BuyPrice: 10
+  m_CanBuyBack: 1
+  m_BuyCurrency: {fileID: 4490365734760325680}
+  m_SellPrice: 20
+  m_SellCurrency: {fileID: -2024883559035731908}
+  m_Stack: 1
+  m_MaxStack: 20
+  m_CanDestroy: 1
+  m_IsDroppable: 1
+  m_DropSound: {fileID: 0}
+  m_OverridePrefab: {fileID: 0}
+  m_CraftingRecipe: {fileID: 3383730039096186202}
+  m_EnchantingRecipe: {fileID: 3383730039096186202}
+  properties: []
+--- !u!114 &7070036473603972864
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1844f32251466a54ebc8e84d75e31778, type: 3}
+  m_Name: "\u9B54\u77F3"
+  m_EditorClassIdentifier: 
+  m_Id: f60401b8-d56d-4a98-9a29-0a57cfba2ed2
+  m_ItemName: "\u9B54\u77F3"
+  m_UseItemNameAsDisplayName: 1
+  m_DisplayName: New Item
+  m_Icon: {fileID: 21300000, guid: 088d4bbbde8ff7249b9430a08c57a3cc, type: 3}
+  m_Prefab: {fileID: 0}
+  m_Description: 
+  m_Category: {fileID: 0}
+  m_IsSellable: 1
+  m_BuyPrice: 0
+  m_CanBuyBack: 1
+  m_BuyCurrency: {fileID: 0}
+  m_SellPrice: 0
+  m_SellCurrency: {fileID: 0}
+  m_Stack: 1
+  m_MaxStack: 1
+  m_CanDestroy: 1
+  m_IsDroppable: 1
+  m_DropSound: {fileID: 0}
+  m_OverridePrefab: {fileID: 0}
+  m_CraftingRecipe: {fileID: 0}
+  m_EnchantingRecipe: {fileID: 0}
+  properties: []
+  currencyConversions: []
+--- !u!114 &7921663228927098850
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 27b212a6bd725d844a9c8f1c04a590dd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_GroupName: "\u53A8\u5E08\u51FA\u552E\u7269\u54C1\u7EC4"
+  m_Items:
+  - {fileID: 3990118740686234269}
+  m_Amounts: 14000000
+  m_Modifiers:
+  - modifiers: []
+--- !u!114 &8216421669527572145
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 553ec6ced298d2c4f97c6810d68d3460, type: 3}
+  m_Name: Long sword
+  m_EditorClassIdentifier: 
+  m_Id: 33f73712-db2e-4379-86ac-191b94e10128
+  m_ItemName: Long sword
+  m_UseItemNameAsDisplayName: 0
+  m_DisplayName: "\u957F\u5251"
+  m_Icon: {fileID: 21300000, guid: c5e7c360acbdae8419655603b3d1d0f9, type: 3}
+  m_Prefab: {fileID: 0}
+  m_Description: "\u8FD9\u662F\u4E00\u4E2A\u5E73\u5E73\u65E0\u5947\u7684\u5355\u624B\u957F\u5251"
+  m_Category: {fileID: 4341451067663683602}
+  m_IsSellable: 1
+  m_BuyPrice: 2
+  m_CanBuyBack: 1
+  m_BuyCurrency: {fileID: -3208628164377861440}
+  m_SellPrice: 30
+  m_SellCurrency: {fileID: 4490365734760325680}
+  m_Stack: 1
+  m_MaxStack: 1
+  m_CanDestroy: 1
+  m_IsDroppable: 1
+  m_DropSound: {fileID: 0}
+  m_OverridePrefab: {fileID: 0}
+  m_CraftingRecipe: {fileID: 3383730039096186202}
+  m_EnchantingRecipe: {fileID: 1129039798279701203}
+  properties: []
+  m_UseCategoryCooldown: 0
+  m_Cooldown: 0
+  actions: []
+  m_OverrideEquipPrefab: {fileID: 0}
+  m_Region:
+  - {fileID: -1147272937706230451}
+  references:
+    version: 2
+    RefIds: []

@@ -1,68 +1,18 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using FKGame.UIWidgets;
-using System.Linq;
-using UnityEngine.Events;
-
+//------------------------------------------------------------------------
 namespace FKGame.InventorySystem
 {
-    public class ItemSlot : Slot, IBeginDragHandler, IDragHandler, IEndDragHandler, IDropHandler, IPointerDownHandler, IPointerUpHandler, IPointerEnterHandler, IPointerExitHandler
+    public class ItemSlot : Slot, IBeginDragHandler, IDragHandler, IEndDragHandler, IDropHandler, 
+        IPointerDownHandler, IPointerUpHandler, IPointerEnterHandler, IPointerExitHandler
     {
-        /// Key to use item.
-		/// </summary>
+        // 使用物品热键
 		[SerializeField]
         protected KeyCode m_UseKey;
-       /* /// <summary>
-        /// Key text to display the use key
-        /// </summary>
-        [SerializeField]
-        protected Text m_Key;
-        /// <summary>
-		/// The image to display cooldown.
-		/// </summary>
-		[SerializeField]
-        protected Image m_CooldownOverlay;
-        /// <summary>
-        /// The image to display cooldown.
-        /// </summary>
-        [SerializeField]
-        protected Text m_Cooldown;
-        /// <summary>
-		/// The text to display item description.
-		/// </summary>
-		[SerializeField]
-        protected Text m_Description;
-        /// <summary>
-        /// Item container that will show ingredients of the item
-        /// </summary>
-        [SerializeField]
-        protected ItemContainer m_Ingredients;
-        /// <summary>
-        /// Item container that will show enchanting materials of the item
-        /// </summary>
-        [SerializeField]
-        protected ItemContainer m_EnchantingMaterials;
-        /// <summary>
-        /// Item container that will show the buy price of item.
-        /// </summary>
-        [SerializeField]
-        protected ItemContainer m_BuyPrice;
-        /// <summary>
-        /// StringPairSlot prefab to display a string - string pair 
-        /// </summary>
-        [SerializeField]
-        protected StringPairSlot m_SlotPrefab;
 
-        protected List<StringPairSlot> m_SlotCache= new List<StringPairSlot>();*/
-
-      /*  private bool m_IsCooldown;*/
-        /// <summary>
-        /// Gets a value indicating whether this slot is in cooldown.
-        /// </summary>
-        /// <value><c>true</c> if this slot is in cooldown; otherwise, <c>false</c>.</value>
         public bool IsCooldown
         {
             get
@@ -70,22 +20,18 @@ namespace FKGame.InventorySystem
                 return !IsEmpty && ObservedItem.IsInCooldown;
             }
         }
-        //protected float cooldownDuration;
-        //protected float cooldownInitTime;
 
         private static DragObject m_DragObject;
         public static DragObject dragObject {
             get {return m_DragObject;}
             set{
                 m_DragObject = value;
-                //Set the dragging icon
                 if (m_DragObject != null && m_DragObject.item != null)
                 {
                     UICursor.Set(m_DragObject.item.Icon);
                 }
                 else
                 {
-                    //if value is null, remove the dragging icon
                     UICursor.Clear();
                 }
             }
@@ -94,7 +40,6 @@ namespace FKGame.InventorySystem
         protected ScrollRect m_ParentScrollRect;
         protected bool m_IsMouseKey;
 
-
         protected override void Start()
         {
             base.Start();
@@ -102,9 +47,6 @@ namespace FKGame.InventorySystem
             this.m_IsMouseKey = m_UseKey == KeyCode.Mouse0 || m_UseKey == KeyCode.Mouse1 || m_UseKey == KeyCode.Mouse2;
         }
 
-        /// <summary>
-		/// Update is called every frame, if the MonoBehaviour is enabled.
-		/// </summary>
 		protected override void Update()
         {
             base.Update();
@@ -113,87 +55,7 @@ namespace FKGame.InventorySystem
                 if(!(this.m_IsMouseKey && TriggerRaycaster.IsPointerOverTrigger()))
                     Use();
             }
-          /*  if (Container != null && Container.IsVisible)
-            {
-                UpdateCooldown();
-            }*/
         }
-
-      /*  public override void Repaint()
-        {
-            base.Repaint();
-
-            if (this.m_Description != null)
-            {
-                this.m_Description.text = (ObservedItem != null ? ObservedItem.Description : string.Empty);
-            }
-
-            if (this.m_Ingredients != null)
-            {
-                this.m_Ingredients.RemoveItems();
-                if (!IsEmpty && ObservedItem.CraftingRecipe != null) { 
-                    for (int i = 0; i < ObservedItem.CraftingRecipe.Ingredients.Count; i++)
-                    {
-                        Item ingredient = Instantiate(ObservedItem.CraftingRecipe.Ingredients[i].item);
-                        ingredient.Stack = ObservedItem.CraftingRecipe.Ingredients[i].amount;
-                        this.m_Ingredients.StackOrAdd(ingredient);
-                    }
-                }
-            }
-
-            if (this.m_EnchantingMaterials != null)
-            {
-                this.m_EnchantingMaterials.RemoveItems();
-                if (!IsEmpty && ObservedItem.EnchantingRecipe != null)
-                {
-                    for (int i = 0; i < ObservedItem.EnchantingRecipe.Ingredients.Count; i++)
-                    {
-                        Item ingredient = Instantiate(ObservedItem.EnchantingRecipe.Ingredients[i].item);
-                        ingredient.Stack = ObservedItem.EnchantingRecipe.Ingredients[i].amount;
-                        this.m_EnchantingMaterials.StackOrAdd(ingredient);
-                    }
-                }
-            }
-
-            if (this.m_SlotPrefab != null)
-            {
-                for (int i = 0; i < this.m_SlotCache.Count; i++)
-                {
-                    this.m_SlotCache[i].gameObject.SetActive(false);
-                }
-                if (!IsEmpty)
-                {
-                    List<KeyValuePair<string, string>> pairs = ObservedItem.GetPropertyInfo();
-
-                    if (pairs != null && pairs.Count > 0)
-                    {
-                        while (pairs.Count > this.m_SlotCache.Count)
-                        {
-                            CreateSlot();
-                        }
-
-                        for (int i = 0; i < pairs.Count; i++)
-                        {
-                            StringPairSlot slot = this.m_SlotCache[i];
-                            slot.gameObject.SetActive(true);
-                            slot.Target = pairs[i];
-                        }
-                        this.m_SlotPrefab.transform.parent.gameObject.SetActive(true);
-                    }
-                }
-            }
-
-            if (this.m_BuyPrice != null)
-            {
-                this.m_BuyPrice.RemoveItems();
-                if (!IsEmpty)
-                {
-                    Currency price = Instantiate(ObservedItem.BuyCurrency);
-                    price.Stack = Mathf.RoundToInt(ObservedItem.BuyPrice);
-                    this.m_BuyPrice.StackOrAdd(price);
-                }
-            }
-        }*/
 
         public void OnPointerEnter(PointerEventData eventData)
         {
@@ -229,7 +91,8 @@ namespace FKGame.InventorySystem
             CloseTooltip();
         }
 
-        private void ShowTooltip() {
+        private void ShowTooltip() 
+        {
             if (Container.ShowTooltips && this.isActiveAndEnabled && dragObject == null && ObservedItem != null)
             {
                 if (this.m_DelayTooltipCoroutine != null)
@@ -240,7 +103,8 @@ namespace FKGame.InventorySystem
             }
         }
 
-        private void CloseTooltip() {
+        private void CloseTooltip() 
+        {
             if (Container.ShowTooltips && InventoryManager.UI.tooltip != null)
             {
                 InventoryManager.UI.tooltip.Close();
@@ -266,33 +130,28 @@ namespace FKGame.InventorySystem
             if (!eventData.dragging)
             {
                 Stack stack = InventoryManager.UI.stack;
-
                 bool isUnstacking = stack != null && stack.item != null;
-
                 if (!isUnstacking && InventoryManager.Input.unstackEvent.HasFlag<Configuration.Input.UnstackInput>(Configuration.Input.UnstackInput.OnClick) && Input.GetKey(InventoryManager.Input.unstackKeyCode) && ObservedItem.Stack > 1)
                 {
                     Unstack();
                     return;
                 }
-               
                 //Check if we are currently unstacking the item
-                if (isUnstacking && Container.StackOrAdd(this, stack.item) ){
-                    
+                if (isUnstacking && Container.StackOrAdd(this, stack.item) )
+                {
                     stack.item = null;
                     UICursor.Clear();
-         
                 }
-
                 if (isUnstacking)
                     return;
-
                 if (ObservedItem == null)
                     return;
-
                 if (Container.useButton.HasFlag((InputButton)Mathf.Clamp(((int)eventData.button * 2), 1, int.MaxValue)))
                 {
                     Use();
-                } else if (Container.UseContextMenu && Container.ContextMenuButton.HasFlag((InputButton)Mathf.Clamp(((int)eventData.button * 2), 1, int.MaxValue))) {
+                } 
+                else if (Container.UseContextMenu && Container.ContextMenuButton.HasFlag((InputButton)Mathf.Clamp(((int)eventData.button * 2), 1, int.MaxValue))) 
+                {
                     UIWidgets.ContextMenu menu = InventoryManager.UI.contextMenu;
                     if (menu == null) { return; }
                     menu.Clear();
@@ -315,27 +174,25 @@ namespace FKGame.InventorySystem
 
                     if (ObservedItem.EnchantingRecipe != null)
                     {
-                        menu.AddMenuItem("Enchant", delegate () { 
+                        menu.AddMenuItem("Enchant", delegate () 
+                        { 
                             ItemContainer container = WidgetUtility.Find<ItemContainer>("Enchanting");
                             container.Show();
-
                             container.ReplaceItem(0,ObservedItem);
-
                         });
                     }
 
                     if(ObservedItem.CanDestroy)
                         menu.AddMenuItem("Destroy", DestroyItem);
 
-                    for (int i = 0; i < Container.ContextMenuFunctions.Count; i++) {
+                    for (int i = 0; i < Container.ContextMenuFunctions.Count; i++) 
+                    {
                         int cnt = i;
                         if (!string.IsNullOrEmpty(Container.ContextMenuFunctions[cnt]))
                         {
-                        
                             menu.AddMenuItem(Container.ContextMenuFunctions[cnt], () => { Container.gameObject.SendMessage(Container.ContextMenuFunctions[cnt], ObservedItem, SendMessageOptions.DontRequireReceiver); });
                         }
                     }
-
                     menu.Show();
                 }
             }

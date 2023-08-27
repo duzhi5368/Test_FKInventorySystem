@@ -1,8 +1,6 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using System.Linq;
-
+//------------------------------------------------------------------------
 namespace FKGame.InventorySystem
 {
     public class Projectile : MonoBehaviour
@@ -74,22 +72,17 @@ namespace FKGame.InventorySystem
             }
         }
 
-
-
-
         private void FixedUpdate()
         {
             this.m_Rigidbody.velocity = transform.forward * m_Speed;
-
-            if (!this.m_FollowTarget) return;
-
+            if (!this.m_FollowTarget) 
+                return;
             if (this.m_Target != null)
             {
                 Vector3 targetPosition = UnityTools.GetBounds(this.m_Target.gameObject).center;
                 if (this.m_TurnSpeed < 0f)
                 {
                     transform.LookAt(targetPosition);
-
                 }
                 else
                 {
@@ -130,11 +123,11 @@ namespace FKGame.InventorySystem
                 }
                 return bestTarget;
             }
-
             return null;
         }
 
-        private void SetStartDirection(Vector3 direction) {
+        private void SetStartDirection(Vector3 direction) 
+        {
             if (direction.sqrMagnitude != 0.0f)
             {
                 direction.Normalize();
@@ -144,16 +137,12 @@ namespace FKGame.InventorySystem
 
         protected virtual bool CheckFieldOfView(GameObject from, GameObject target, float fieldOfView)
         {
-            if (target == null) return false;
-
-            // Get direction to target
+            if (target == null) 
+                return false;
             Vector3 directionToTarget = target.transform.position - from.transform.position;
-            // Get angle between forward and look direction
             float angle = Vector3.Angle(from.transform.forward, directionToTarget);
-            // Is target within field of view?
             if (angle <= fieldOfView * 0.5f)
                 return true;
-            // Not within view
             return false;
         }
 

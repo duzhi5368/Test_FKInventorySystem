@@ -6,12 +6,9 @@ using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using System.Collections.ObjectModel;
 using System;
-
+//------------------------------------------------------------------------
 namespace FKGame.InventorySystem
 {
-    /// <summary>
-    /// Helper enum definition for multiple selection of PointerEventData.InputButton
-    /// </summary>
     [System.Flags]
     public enum InputButton {
         Left = 1,
@@ -37,7 +34,7 @@ namespace FKGame.InventorySystem
                 return callbacks.ToArray();
             }
         }
-        #region Delegates
+
         public delegate void AddItemDelegate(Item item, Slot slot);
         /// <summary>
         /// Called when an item is added to the container.
@@ -78,7 +75,6 @@ namespace FKGame.InventorySystem
         /// </summary>
         public event DropItemDelegate OnDropItem;
 
-        #endregion
 
         /// <summary>
         /// The button to use item in slot

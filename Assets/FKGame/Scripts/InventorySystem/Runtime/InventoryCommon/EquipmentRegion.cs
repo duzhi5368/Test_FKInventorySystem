@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using FKGame.Macro;
+using UnityEngine;
 //------------------------------------------------------------------------
 namespace FKGame.InventorySystem
 {
@@ -6,6 +7,7 @@ namespace FKGame.InventorySystem
 	public class EquipmentRegion : ScriptableObject, INameable
 	{
 		[SerializeField]
+		[InspectorLabel(LanguagesMacro.EQUIP_REGION)]
 		private new string name="";
 		public string Name{
 			get{return this.name;}

@@ -1,10 +1,9 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
-
+//------------------------------------------------------------------------
 namespace FKGame.InventorySystem
 {
-    [CreateAssetMenu(fileName ="SimpleRarityModifier",menuName = "FKGame/Inventory System/Modifiers/Rarity")]
+    [CreateAssetMenu(fileName ="SimpleRarityModifier",menuName = "FKGame/物品系统/稀有性调整器")]
     [System.Serializable]
     public class RarityModifier : ItemModifier
     {
@@ -18,7 +17,6 @@ namespace FKGame.InventorySystem
         {
             item.Rarity = SelectRarity(this.m_Rarities);
             ApplyPropertyMultiplier(item, item.Rarity.Multiplier);
-            
         }
 
         protected virtual void ApplyPropertyMultiplier(Item item, float multiplier) {

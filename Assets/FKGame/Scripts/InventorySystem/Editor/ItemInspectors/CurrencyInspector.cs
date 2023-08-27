@@ -1,4 +1,5 @@
-﻿using UnityEditor;
+﻿using FKGame.Macro;
+using UnityEditor;
 using UnityEditorInternal;
 using UnityEngine;
 //------------------------------------------------------------------------
@@ -20,7 +21,7 @@ namespace FKGame.InventorySystem
             this.m_CurrencyConversionList = new ReorderableList(serializedObject, this.m_CurrencyConversions, true, true, true, true);
             this.m_CurrencyConversionList.drawHeaderCallback = (Rect rect) =>
             {
-                EditorGUI.LabelField(rect, "Conversions");
+                EditorGUI.LabelField(rect, LanguagesMacro.CURRENCY_CONVERSIONS);
             };
                
             this.m_CurrencyConversionList.drawElementCallback = (Rect rect, int index, bool isActive, bool isFocused) =>
@@ -29,9 +30,9 @@ namespace FKGame.InventorySystem
                 float width = rect.width;
                 rect.y += 2f;
                 rect.height = 17f;
-                Vector2 size=EditorStyles.label.CalcSize(new GUIContent("1 " + this.m_ItemName.stringValue + " to"));
+                Vector2 size=EditorStyles.label.CalcSize(new GUIContent("1 " + this.m_ItemName.stringValue + " 可换为"));
                 rect.width = size.x+5f;
-                GUI.Label(rect, "1 " + this.m_ItemName.stringValue + " to");
+                GUI.Label(rect, "1 " + this.m_ItemName.stringValue + " 可换为");
                 rect.x += rect.width+2f;
                 rect.width = 75f;
                 EditorGUI.PropertyField(rect,element.FindPropertyRelative("factor"),GUIContent.none);

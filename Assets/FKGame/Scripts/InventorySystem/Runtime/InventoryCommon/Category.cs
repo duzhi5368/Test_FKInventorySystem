@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using FKGame.Macro;
+using UnityEngine;
 //------------------------------------------------------------------------
 namespace FKGame.InventorySystem{
 	[System.Serializable]
@@ -6,7 +7,6 @@ namespace FKGame.InventorySystem{
 		[AcceptNull]
 		[SerializeField]
 		protected Category m_Parent;
-
 		public Category Parent
         {
 			get { return this.m_Parent; }
@@ -14,6 +14,7 @@ namespace FKGame.InventorySystem{
         }
 
 		[SerializeField]
+		[InspectorLabel(LanguagesMacro.NAME)]
 		private new string name="";
 		public string Name{
 			get{return this.name;}
@@ -21,12 +22,15 @@ namespace FKGame.InventorySystem{
 		}
 
 		[SerializeField]
-		protected Color m_EditorColor = Color.clear;
+        [InspectorLabel(LanguagesMacro.COLOR)]
+        protected Color m_EditorColor = Color.clear;
 		public Color EditorColor {
 			get { return this.m_EditorColor; }
 		}
 
+		[Tooltip("类型公用冷却，例如多个药品，会有公用冷却CD")]
         [SerializeField]
+        [InspectorLabel(LanguagesMacro.CATEGORY_COOLDOWN)]
         protected float m_Cooldown = 1f;
         public float Cooldown {
             get { return this.m_Cooldown; }

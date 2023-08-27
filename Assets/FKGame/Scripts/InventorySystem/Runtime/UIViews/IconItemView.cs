@@ -1,15 +1,10 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
-
+//------------------------------------------------------------------------
 namespace FKGame.InventorySystem
 {
     public class IconItemView : ItemView
     {
-        /// <summary>
-        /// The Image to display item icon.
-        /// </summary>
         [Tooltip("Image reference to display the icon.")]
         [SerializeField]
         protected Image m_Ícon;
@@ -20,13 +15,11 @@ namespace FKGame.InventorySystem
             {
                 if (item != null)
                 {
-                    //Updates the icon and enables it.
                     this.m_Ícon.overrideSprite = item.Icon;
                     this.m_Ícon.enabled = true;
                 }
                 else
                 {
-                    //If there is no item in this slot, disable icon
                     this.m_Ícon.enabled = false;
                 }
             }

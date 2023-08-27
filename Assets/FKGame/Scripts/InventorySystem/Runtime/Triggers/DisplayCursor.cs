@@ -1,20 +1,15 @@
 ﻿using FKGame.UIWidgets;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
-
+//------------------------------------------------------------------------
 namespace FKGame.InventorySystem
 {
     public class DisplayCursor : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     {
-        //Cursor image to show
         [SerializeField]
         protected Sprite m_Sprite;
-        //Size of the imgae
         [SerializeField]
         protected Vector2 m_Size = new Vector2(32f, 32f);
-        //Cursor animation, leave empty for none, 
         [SerializeField]
         protected string m_AnimatorState = "Cursor";
 
@@ -45,7 +40,5 @@ namespace FKGame.InventorySystem
                 DoDisplayCursor(false);
             }
         }
-
-
     }
 }

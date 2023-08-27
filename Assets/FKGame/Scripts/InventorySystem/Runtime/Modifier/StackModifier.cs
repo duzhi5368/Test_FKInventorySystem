@@ -1,10 +1,8 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
+﻿using UnityEngine;
+//------------------------------------------------------------------------
 namespace FKGame.InventorySystem
 {
-    [CreateAssetMenu(fileName = "SimpleStackModifier", menuName = "FKGame/Inventory System/Modifiers/Stack")]
+    [CreateAssetMenu(fileName = "SimpleStackModifier", menuName = "FKGame/物品系统/随机数量调整器")]
     [System.Serializable]
     public class StackModifier : ItemModifier
     {

@@ -1,7 +1,6 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using FKGame.Macro;
 using UnityEngine;
-
+//------------------------------------------------------------------------
 namespace FKGame.InventorySystem.Configuration
 {
     [System.Serializable]
@@ -11,19 +10,23 @@ namespace FKGame.InventorySystem.Configuration
         {
             get
             {
-                return "Default";
+                return LanguagesMacro.DEFAULT;
             }
         }
-
-
+        [InspectorLabel(LanguagesMacro.PLAYER_TAG)]
         public string playerTag = "Player";
+
+        [InspectorLabel(LanguagesMacro.MAX_DROP_DISTANCE)]
         public float maxDropDistance = 3f;
 
-        [Header("Physics")]
+        [Header(LanguagesMacro.PHYSICS)]
+        [InspectorLabel(LanguagesMacro.QUERIES_HIT_TRIGGERS)]
         public bool queriesHitTriggers = false;
 
-        [Header("Debug")]
+        [Header(LanguagesMacro.DEBUG)]
+        [InspectorLabel(LanguagesMacro.IS_SHOW_DEBUG_INFO)]
         public bool debugMessages = true;
+        [InspectorLabel(LanguagesMacro.IS_SHOW_ALL_COMPONENTS)]
         public bool showAllComponents = false;
     }
 }

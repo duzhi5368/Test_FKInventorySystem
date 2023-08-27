@@ -1,6 +1,5 @@
-﻿using FKGame.UIWidgets;
-using UnityEngine;
-
+﻿using UnityEngine;
+//------------------------------------------------------------------------
 namespace FKGame.InventorySystem.Restrictions
 {
     public class Profession : Restriction
@@ -9,13 +8,13 @@ namespace FKGame.InventorySystem.Restrictions
         {
             string profession = PlayerPrefs.GetString("Profession");
 
-            if (item == null || !(item is EquipmentItem equipmentItem)) { return false; }
-
-            if (string.IsNullOrEmpty(profession)) return true;
-
+            if (item == null || !(item is EquipmentItem equipmentItem))
+                return false; 
+            if (string.IsNullOrEmpty(profession)) 
+                return true;
             ObjectProperty property = item.FindProperty("Profession");
-            if (property == null) return true;
-
+            if (property == null) 
+                return true;
             string[] professions = property.stringValue.Split(';');
             for (int i = 0; i < professions.Length; i++) {
                 if (PlayerPrefs.GetString("Profession") == professions[i]) {
