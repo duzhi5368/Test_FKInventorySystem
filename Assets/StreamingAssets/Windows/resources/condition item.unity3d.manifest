@@ -1,0 +1,19 @@
+ManifestFileVersion: 0
+CRC: 257839815
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 5c47201f7144ad2f321db2a52a9d451b
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 2d8df09e698f722ada1caa03d3413830
+HashAppended: 0
+ClassTypes:
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 213
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers: []
+Assets:
+- Assets/FKGame/Resources/Condition Item.png
+Dependencies: []

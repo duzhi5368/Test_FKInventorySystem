@@ -1,0 +1,67 @@
+ManifestFileVersion: 0
+CRC: 3794857432
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: ac7ad182002872c32854dbd203cd2996
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: a3a23ea3ff80291849d88dc5cb9fcdd6
+HashAppended: 0
+ClassTypes:
+- Class: 21
+  Script: {instanceID: 0}
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 48
+  Script: {instanceID: 0}
+- Class: 114
+  Script: {fileID: 12001, guid: 0000000000000000e000000000000000, type: 0}
+- Class: 115
+  Script: {instanceID: 0}
+- Class: 128
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers:
+- AssemblyName: UnityEngine.IMGUIModule
+  ClassName: UnityEngine.GUISettings
+- AssemblyName: UnityEngine.IMGUIModule
+  ClassName: UnityEngine.GUIStyle
+Assets:
+- Assets/FKGame/Resources/EditorSkin.guiskin
+Dependencies:
+- D:/Github/UnityProject/Test_FKInventorySystem/Assets/StreamingAssets/Windows/resources/editor
+  skin/button/button active.unity3d
+- D:/Github/UnityProject/Test_FKInventorySystem/Assets/StreamingAssets/Windows/resources/editor
+  skin/button/button hover.unity3d
+- D:/Github/UnityProject/Test_FKInventorySystem/Assets/StreamingAssets/Windows/resources/editor
+  skin/button/button normal.unity3d
+- D:/Github/UnityProject/Test_FKInventorySystem/Assets/StreamingAssets/Windows/resources/editor
+  skin/center pane dark.unity3d
+- D:/Github/UnityProject/Test_FKInventorySystem/Assets/StreamingAssets/Windows/resources/editor
+  skin/center pane.unity3d
+- D:/Github/UnityProject/Test_FKInventorySystem/Assets/StreamingAssets/Windows/resources/editor
+  skin/left pane dark.unity3d
+- D:/Github/UnityProject/Test_FKInventorySystem/Assets/StreamingAssets/Windows/resources/editor
+  skin/left pane.unity3d
+- D:/Github/UnityProject/Test_FKInventorySystem/Assets/StreamingAssets/Windows/resources/editor
+  skin/node active.unity3d
+- D:/Github/UnityProject/Test_FKInventorySystem/Assets/StreamingAssets/Windows/resources/editor
+  skin/node hover.unity3d
+- D:/Github/UnityProject/Test_FKInventorySystem/Assets/StreamingAssets/Windows/resources/editor
+  skin/node normal.unity3d
+- D:/Github/UnityProject/Test_FKInventorySystem/Assets/StreamingAssets/Windows/resources/editor
+  skin/node selected.unity3d
+- D:/Github/UnityProject/Test_FKInventorySystem/Assets/StreamingAssets/Windows/resources/editor
+  skin/pin connected.unity3d
+- D:/Github/UnityProject/Test_FKInventorySystem/Assets/StreamingAssets/Windows/resources/editor
+  skin/pin empty.unity3d
+- D:/Github/UnityProject/Test_FKInventorySystem/Assets/StreamingAssets/Windows/resources/editor
+  skin/right arrow.unity3d
+- D:/Github/UnityProject/Test_FKInventorySystem/Assets/StreamingAssets/Windows/resources/editor
+  skin/round button active.unity3d
+- D:/Github/UnityProject/Test_FKInventorySystem/Assets/StreamingAssets/Windows/resources/editor
+  skin/round button hover.unity3d
+- D:/Github/UnityProject/Test_FKInventorySystem/Assets/StreamingAssets/Windows/resources/editor
+  skin/round button.unity3d
+- D:/Github/UnityProject/Test_FKInventorySystem/Assets/StreamingAssets/Windows/resources/editor
+  skin/seperator.unity3d

@@ -1,0 +1,17 @@
+ManifestFileVersion: 0
+CRC: 2004776791
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 2423b3b004d3eb58e0fccdcaecb25491
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 2612ac43db082a73502ee80f2eceb73f
+HashAppended: 0
+ClassTypes:
+- Class: 28
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers: []
+Assets:
+- Assets/FKGame/Resources/Editor Skin/Center Pane.png
+Dependencies: []

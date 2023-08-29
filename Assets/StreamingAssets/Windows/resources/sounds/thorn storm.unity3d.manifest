@@ -1,0 +1,17 @@
+ManifestFileVersion: 0
+CRC: 10815230
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: abae6a9a766eb33cd4a53f4c19203a89
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 9a2ca7bdbd1871f7131daf57de908e0c
+HashAppended: 0
+ClassTypes:
+- Class: 83
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers: []
+Assets:
+- Assets/FKGame/Resources/Sounds/Thorn Storm.ogg
+Dependencies: []

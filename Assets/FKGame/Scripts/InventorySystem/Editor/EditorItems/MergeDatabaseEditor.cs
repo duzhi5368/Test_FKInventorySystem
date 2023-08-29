@@ -255,7 +255,7 @@ namespace FKGame.InventorySystem
 			{
 				string searchString = LanguagesMacro.RESEARCH;
 				ItemDatabase[] databases = EditorTools.FindAssets<ItemDatabase>();
-				UtilityInstanceWindow.ShowWindow(LanguagesMacro.SELECT_DATABASE, delegate ()
+                UtilityInstanceWindow.ShowWindow(LanguagesMacro.SELECT_DATABASE, delegate ()
 				{
 					searchString = EditorTools.SearchField(searchString);
 					for (int i = 0; i < databases.Length; i++)
@@ -274,7 +274,7 @@ namespace FKGame.InventorySystem
 						}
 					}
 				});
-			}
-		}
+            }
+        }
 	}
 }

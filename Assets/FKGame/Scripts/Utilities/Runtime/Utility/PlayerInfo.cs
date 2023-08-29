@@ -42,19 +42,6 @@ namespace FKGame
             }
         }
 
-        private Collider m_Collider;
-        public Collider collider
-        {
-            get
-            {
-                if (this.m_Collider == null && this.gameObject != null)
-                {
-                    this.m_Collider = this.gameObject.GetComponent<Collider>();
-                }
-                return this.m_Collider;
-            }
-        }
-
         private Collider2D m_Collider2D;
         public Collider2D collider2D
         {

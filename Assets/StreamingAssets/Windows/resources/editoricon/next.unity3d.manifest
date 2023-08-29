@@ -1,0 +1,19 @@
+ManifestFileVersion: 0
+CRC: 2340298231
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 8e6a22cf8748a6e9074ece63f4ac2f05
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 2d8df09e698f722ada1caa03d3413830
+HashAppended: 0
+ClassTypes:
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 213
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers: []
+Assets:
+- Assets/FKGame/Resources/EditorIcon/Next.png
+Dependencies: []

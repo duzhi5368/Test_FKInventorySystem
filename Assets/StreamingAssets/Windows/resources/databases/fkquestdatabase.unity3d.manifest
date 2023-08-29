@@ -1,0 +1,33 @@
+ManifestFileVersion: 0
+CRC: 3935790258
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: f0a3849fee19d3cc5caf7c19c730b835
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 3a9070be89d51dca1555f9759004d6cb
+HashAppended: 0
+ClassTypes:
+- Class: 114
+  Script: {fileID: 11500000, guid: 8170ddfc90812fb4090f1de3b4094aa6, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 153f1d3166d57644da10aecdfbda851e, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 48161a9549fdb4f4ab4aeb44f29c9892, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 96aa16022cc1d94479e594e01eafe712, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 0aa5c3281793f2340b64d962e7c71149, type: 3}
+- Class: 115
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers:
+- AssemblyName: Assembly-CSharp
+  ClassName: FKGame.QuestSystem.HasQuest
+- AssemblyName: Assembly-CSharp
+  ClassName: FKGame.QuestSystem.HasQuestTask
+- AssemblyName: Assembly-CSharp
+  ClassName: FKGame.QuestSystem.QuestTask
+Assets:
+- Assets/FKGame/Resources/Databases/FKQuestDatabase.asset
+Dependencies: []

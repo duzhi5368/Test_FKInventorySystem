@@ -1,0 +1,46 @@
+ManifestFileVersion: 0
+CRC: 3628269565
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 4b2957bdb651d972f749b2643b13bd46
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: fc28fef5af93ec027ecbd7a251130d31
+HashAppended: 0
+ClassTypes:
+- Class: 114
+  Script: {fileID: 11500000, guid: 06d35cd237601a0409ef62e49aee7b95, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: cfb4beb5fbde1244ea5e136561a706b7, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 39b5287fd306425469e0a79604d01f18, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 1844f32251466a54ebc8e84d75e31778, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 10166c75065e62040bcb84677ab0e15a, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: ae7963c05be81fb4db371fec69009000, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 14ab644239e83c442abb8a33b0a568c6, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 8484a9ae8c79f27468bb9f1834e52e5e, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 95b3f53e13350c940b9b3aadd93f2c76, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 27b212a6bd725d844a9c8f1c04a590dd, type: 3}
+- Class: 115
+  Script: {instanceID: 0}
+- Class: 213
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers:
+- AssemblyName: Assembly-CSharp
+  ClassName: FKGame.InventorySystem.ItemModifierList
+- AssemblyName: Assembly-CSharp
+  ClassName: FKGame.UIWidgets.NotificationOptions
+Assets:
+- Assets/FKGame/Resources/Databases/FKSkillDatabase.asset
+Dependencies:
+- D:/Github/UnityProject/Test_FKInventorySystem/Assets/StreamingAssets/Windows/resources/databases/fkitemdatabase.unity3d
+- D:/Github/UnityProject/Test_FKInventorySystem/Assets/StreamingAssets/Windows/resources/gameicon/itemicon/axe.unity3d
+- D:/Github/UnityProject/Test_FKInventorySystem/Assets/StreamingAssets/Windows/resources/gameicon/itemicon/pickaxe.unity3d

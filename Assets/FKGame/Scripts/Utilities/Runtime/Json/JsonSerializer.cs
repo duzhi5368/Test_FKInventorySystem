@@ -36,7 +36,6 @@ namespace FKGame
 			if(string.IsNullOrEmpty(json)){
 				return result;
 			}
-
 			List<object> list = MiniJSON.Deserialize (json) as List<object>;
 			if (list != null) {
 				for (int i = 0; i < list.Count; i++) {
@@ -53,7 +52,6 @@ namespace FKGame
 			}
 			return result;
 		}
-
 
 		public static string Serialize(IJsonSerializable obj){
 			Dictionary<string,object> data = new Dictionary<string, object> ();

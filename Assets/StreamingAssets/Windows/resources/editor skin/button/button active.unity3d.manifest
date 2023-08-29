@@ -1,0 +1,17 @@
+ManifestFileVersion: 0
+CRC: 4075706670
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: ebade6c88c0236f2bffde5cbe0a6e1f9
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 2612ac43db082a73502ee80f2eceb73f
+HashAppended: 0
+ClassTypes:
+- Class: 28
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers: []
+Assets:
+- Assets/FKGame/Resources/Editor Skin/Button/Button Active.png
+Dependencies: []

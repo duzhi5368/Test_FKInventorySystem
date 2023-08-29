@@ -1,0 +1,17 @@
+ManifestFileVersion: 0
+CRC: 1485375367
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: ba00a2d98b088d774b0d445b46fb0f99
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 2612ac43db082a73502ee80f2eceb73f
+HashAppended: 0
+ClassTypes:
+- Class: 28
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers: []
+Assets:
+- Assets/FKGame/Resources/Editor Skin/Round Button.png
+Dependencies: []

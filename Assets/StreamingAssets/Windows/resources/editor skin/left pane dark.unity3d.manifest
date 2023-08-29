@@ -1,0 +1,17 @@
+ManifestFileVersion: 0
+CRC: 1545588227
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 63d6155ee50be2b330ee94481f0a3a4e
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 2612ac43db082a73502ee80f2eceb73f
+HashAppended: 0
+ClassTypes:
+- Class: 28
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers: []
+Assets:
+- Assets/FKGame/Resources/Editor Skin/Left Pane Dark.png
+Dependencies: []

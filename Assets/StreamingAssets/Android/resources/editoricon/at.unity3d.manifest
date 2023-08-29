@@ -1,0 +1,19 @@
+ManifestFileVersion: 0
+CRC: 1612398681
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 96062dd346a154d26a2e9bb9ed9f54f5
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 2d8df09e698f722ada1caa03d3413830
+HashAppended: 0
+ClassTypes:
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 213
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers: []
+Assets:
+- Assets/FKGame/Resources/EditorIcon/At.png
+Dependencies: []

@@ -1,0 +1,19 @@
+ManifestFileVersion: 0
+CRC: 1162932940
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 71dcc0dc4e89ae707990ef601d8814c9
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 2d8df09e698f722ada1caa03d3413830
+HashAppended: 0
+ClassTypes:
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 213
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers: []
+Assets:
+- Assets/FKGame/Resources/Editor Skin/Pin Connected.png
+Dependencies: []

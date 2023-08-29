@@ -1,0 +1,17 @@
+ManifestFileVersion: 0
+CRC: 4030432135
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 2eb1a63b545cfca178ab6755a71437af
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 9a2ca7bdbd1871f7131daf57de908e0c
+HashAppended: 0
+ClassTypes:
+- Class: 83
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers: []
+Assets:
+- Assets/FKGame/Resources/Sounds/Click.wav
+Dependencies: []

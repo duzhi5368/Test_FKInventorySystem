@@ -1,0 +1,19 @@
+ManifestFileVersion: 0
+CRC: 1419855239
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 7791766c0e099d9f5c5cacf882234fcd
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 2d8df09e698f722ada1caa03d3413830
+HashAppended: 0
+ClassTypes:
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 213
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers: []
+Assets:
+- Assets/FKGame/Resources/GameIcon/ItemIcon/Pickaxe.png
+Dependencies: []

@@ -1,5 +1,8 @@
-﻿using UnityEditor;
+﻿using FKGame.Macro;
+using UnityEditor;
 using UnityEngine;
+//------------------------------------------------------------------------
+// 绘制 物品格Slot 组件的检查器
 //------------------------------------------------------------------------
 namespace FKGame.InventorySystem
 {
@@ -15,9 +18,9 @@ namespace FKGame.InventorySystem
                 this.m_DrawInspectors[i].Invoke();
             }
             DrawPropertiesExcluding(serializedObject, this.m_PropertiesToExcludeForChildClasses);
-            if (EditorTools.RightArrowButton(new GUIContent("Restrictions", "Slot restrictions")))
+            if (EditorTools.RightArrowButton(new GUIContent(LanguagesMacro.RESTRICTIONS, LanguagesMacro.SLOT_RESTRICTIONS)))
             {
-                AssetWindow.ShowWindow("Slot Restrictions", serializedObject.FindProperty("restrictions"));
+                AssetWindow.ShowWindow(LanguagesMacro.SLOT_RESTRICTIONS, serializedObject.FindProperty("restrictions"));
             }
             TriggerGUI();
             serializedObject.ApplyModifiedProperties();

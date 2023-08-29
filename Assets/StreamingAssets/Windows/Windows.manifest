@@ -1,0 +1,591 @@
+ManifestFileVersion: 0
+CRC: 1876123052
+AssetBundleManifest:
+  AssetBundleInfos:
+    Info_0:
+      Name: resources/colorfultextures/swatchmauvealbedo.unity3d
+      Dependencies: {}
+    Info_1:
+      Name: resources/colorfultextures/swatchnavyalbedo.unity3d
+      Dependencies: {}
+    Info_2:
+      Name: resources/colorfultextures/swatchnavydarkalbedo.unity3d
+      Dependencies: {}
+    Info_3:
+      Name: resources/colorfultextures/swatchorangealbedo.unity3d
+      Dependencies: {}
+    Info_4:
+      Name: resources/colorfultextures/swatchpinkdalbedo.unity3d
+      Dependencies: {}
+    Info_5:
+      Name: resources/colorfultextures/swatchtealalbedo.unity3d
+      Dependencies: {}
+    Info_6:
+      Name: resources/colorfultextures/swatchturquoisealbedo.unity3d
+      Dependencies: {}
+    Info_7:
+      Name: resources/colorfultextures/swatchwhitealbedo.unity3d
+      Dependencies: {}
+    Info_8:
+      Name: resources/colorfultextures/swatchyellowalbedo.unity3d
+      Dependencies: {}
+    Info_9:
+      Name: resources/component.unity3d
+      Dependencies: {}
+    Info_10:
+      Name: resources/condition item.unity3d
+      Dependencies: {}
+    Info_11:
+      Name: resources/databases/fkitemdatabase.unity3d
+      Dependencies:
+        Dependency_0: resources/databases/fkskilldatabase.unity3d
+        Dependency_1: resources/databases/fkspelldatabase.unity3d
+        Dependency_2: resources/gameicon/itemicon/copper.unity3d
+        Dependency_3: resources/gameicon/itemicon/gold.unity3d
+        Dependency_4: resources/gameicon/itemicon/iron.unity3d
+        Dependency_5: resources/gameicon/itemicon/magicstone.unity3d
+        Dependency_6: resources/gameicon/itemicon/platinum.unity3d
+        Dependency_7: resources/gameicon/itemicon/rusty sword.unity3d
+        Dependency_8: resources/gameicon/itemicon/scroll.unity3d
+        Dependency_9: resources/gameicon/itemicon/silver.unity3d
+    Info_12:
+      Name: resources/databases/fkquestdatabase.unity3d
+      Dependencies: {}
+    Info_13:
+      Name: resources/databases/fkskilldatabase.unity3d
+      Dependencies:
+        Dependency_0: resources/databases/fkitemdatabase.unity3d
+        Dependency_1: resources/gameicon/itemicon/axe.unity3d
+        Dependency_2: resources/gameicon/itemicon/pickaxe.unity3d
+    Info_14:
+      Name: resources/databases/fkspelldatabase.unity3d
+      Dependencies:
+        Dependency_0: resources/databases/fkitemdatabase.unity3d
+        Dependency_1: resources/gameicon/skillicon/critikal strike.unity3d
+        Dependency_2: resources/gameicon/skillicon/healing.unity3d
+        Dependency_3: resources/sounds/battle.unity3d
+    Info_15:
+      Name: resources/databases/fkstatdatabase.unity3d
+      Dependencies: {}
+    Info_16:
+      Name: resources/editor skin/button/button active.unity3d
+      Dependencies: {}
+    Info_17:
+      Name: resources/editor skin/button/button hover.unity3d
+      Dependencies: {}
+    Info_18:
+      Name: resources/editor skin/button/button normal.unity3d
+      Dependencies: {}
+    Info_19:
+      Name: resources/editor skin/center pane dark.unity3d
+      Dependencies: {}
+    Info_20:
+      Name: resources/editor skin/center pane.unity3d
+      Dependencies: {}
+    Info_21:
+      Name: resources/editor skin/left pane dark.unity3d
+      Dependencies: {}
+    Info_22:
+      Name: resources/editor skin/left pane.unity3d
+      Dependencies: {}
+    Info_23:
+      Name: resources/editor skin/node active.unity3d
+      Dependencies: {}
+    Info_24:
+      Name: resources/editor skin/node hover.unity3d
+      Dependencies: {}
+    Info_25:
+      Name: resources/editor skin/node normal.unity3d
+      Dependencies: {}
+    Info_26:
+      Name: resources/editor skin/node selected.unity3d
+      Dependencies: {}
+    Info_27:
+      Name: resources/editor skin/pin connected.unity3d
+      Dependencies: {}
+    Info_28:
+      Name: resources/editor skin/pin empty.unity3d
+      Dependencies: {}
+    Info_29:
+      Name: resources/editor skin/right arrow.unity3d
+      Dependencies: {}
+    Info_30:
+      Name: resources/editor skin/right pane dark.unity3d
+      Dependencies: {}
+    Info_31:
+      Name: resources/editor skin/right pane.unity3d
+      Dependencies: {}
+    Info_32:
+      Name: resources/editor skin/round button active.unity3d
+      Dependencies: {}
+    Info_33:
+      Name: resources/editor skin/round button hover.unity3d
+      Dependencies: {}
+    Info_34:
+      Name: resources/editor skin/round button.unity3d
+      Dependencies: {}
+    Info_35:
+      Name: resources/editor skin/seperator.unity3d
+      Dependencies: {}
+    Info_36:
+      Name: resources/editoricon/arrow down.unity3d
+      Dependencies: {}
+    Info_37:
+      Name: resources/editoricon/at.unity3d
+      Dependencies: {}
+    Info_38:
+      Name: resources/editoricon/audio.unity3d
+      Dependencies: {}
+    Info_39:
+      Name: resources/editoricon/back.unity3d
+      Dependencies: {}
+    Info_40:
+      Name: resources/editoricon/book.unity3d
+      Dependencies: {}
+    Info_41:
+      Name: resources/editoricon/cancel.unity3d
+      Dependencies: {}
+    Info_42:
+      Name: resources/editoricon/comments.unity3d
+      Dependencies: {}
+    Info_43:
+      Name: resources/editoricon/compas.unity3d
+      Dependencies: {}
+    Info_44:
+      Name: resources/editoricon/delete.unity3d
+      Dependencies: {}
+    Info_45:
+      Name: resources/editoricon/download.unity3d
+      Dependencies: {}
+    Info_46:
+      Name: resources/editoricon/earth.unity3d
+      Dependencies: {}
+    Info_47:
+      Name: resources/editoricon/edit.unity3d
+      Dependencies: {}
+    Info_48:
+      Name: resources/editoricon/emote.unity3d
+      Dependencies: {}
+    Info_49:
+      Name: resources/editoricon/exit.unity3d
+      Dependencies: {}
+    Info_50:
+      Name: resources/editoricon/feedback.unity3d
+      Dependencies: {}
+    Info_51:
+      Name: resources/editoricon/file.unity3d
+      Dependencies: {}
+    Info_52:
+      Name: resources/editoricon/followers.unity3d
+      Dependencies: {}
+    Info_53:
+      Name: resources/editoricon/following.unity3d
+      Dependencies: {}
+    Info_54:
+      Name: resources/editoricon/font.unity3d
+      Dependencies: {}
+    Info_55:
+      Name: resources/editoricon/forward.unity3d
+      Dependencies: {}
+    Info_56:
+      Name: resources/editoricon/friends.unity3d
+      Dependencies: {}
+    Info_57:
+      Name: resources/editoricon/front.unity3d
+      Dependencies: {}
+    Info_58:
+      Name: resources/editoricon/good.unity3d
+      Dependencies: {}
+    Info_59:
+      Name: resources/editoricon/grade.unity3d
+      Dependencies: {}
+    Info_60:
+      Name: resources/editoricon/hide.unity3d
+      Dependencies: {}
+    Info_61:
+      Name: resources/editoricon/home.unity3d
+      Dependencies: {}
+    Info_62:
+      Name: resources/editoricon/info.unity3d
+      Dependencies: {}
+    Info_63:
+      Name: resources/editoricon/link.unity3d
+      Dependencies: {}
+    Info_64:
+      Name: resources/editoricon/list.unity3d
+      Dependencies: {}
+    Info_65:
+      Name: resources/editoricon/location.unity3d
+      Dependencies: {}
+    Info_66:
+      Name: resources/editoricon/locked.unity3d
+      Dependencies: {}
+    Info_67:
+      Name: resources/editoricon/mark.unity3d
+      Dependencies: {}
+    Info_68:
+      Name: resources/editoricon/message.unity3d
+      Dependencies: {}
+    Info_69:
+      Name: resources/editoricon/minus.unity3d
+      Dependencies: {}
+    Info_70:
+      Name: resources/editoricon/more.unity3d
+      Dependencies: {}
+    Info_71:
+      Name: resources/editoricon/navigation.unity3d
+      Dependencies: {}
+    Info_72:
+      Name: resources/editoricon/next.unity3d
+      Dependencies: {}
+    Info_73:
+      Name: resources/editoricon/ok.unity3d
+      Dependencies: {}
+    Info_74:
+      Name: resources/editoricon/person.unity3d
+      Dependencies: {}
+    Info_75:
+      Name: resources/editoricon/plus.unity3d
+      Dependencies: {}
+    Info_76:
+      Name: resources/editoricon/ranking.unity3d
+      Dependencies: {}
+    Info_77:
+      Name: resources/editoricon/refresh.unity3d
+      Dependencies: {}
+    Info_78:
+      Name: resources/editoricon/save.unity3d
+      Dependencies: {}
+    Info_79:
+      Name: resources/editoricon/search.unity3d
+      Dependencies: {}
+    Info_80:
+      Name: resources/editoricon/setting.unity3d
+      Dependencies: {}
+    Info_81:
+      Name: resources/editoricon/share.unity3d
+      Dependencies: {}
+    Info_82:
+      Name: resources/editoricon/shield.unity3d
+      Dependencies: {}
+    Info_83:
+      Name: resources/editoricon/sound.unity3d
+      Dependencies: {}
+    Info_84:
+      Name: resources/editoricon/star.unity3d
+      Dependencies: {}
+    Info_85:
+      Name: resources/editoricon/update.unity3d
+      Dependencies: {}
+    Info_86:
+      Name: resources/editoricon/view.unity3d
+      Dependencies: {}
+    Info_87:
+      Name: resources/editorskin.unity3d
+      Dependencies:
+        Dependency_0: resources/editor skin/button/button active.unity3d
+        Dependency_1: resources/editor skin/button/button hover.unity3d
+        Dependency_2: resources/editor skin/button/button normal.unity3d
+        Dependency_3: resources/editor skin/center pane dark.unity3d
+        Dependency_4: resources/editor skin/center pane.unity3d
+        Dependency_5: resources/editor skin/left pane dark.unity3d
+        Dependency_6: resources/editor skin/left pane.unity3d
+        Dependency_7: resources/editor skin/node active.unity3d
+        Dependency_8: resources/editor skin/node hover.unity3d
+        Dependency_9: resources/editor skin/node normal.unity3d
+        Dependency_10: resources/editor skin/node selected.unity3d
+        Dependency_11: resources/editor skin/pin connected.unity3d
+        Dependency_12: resources/editor skin/pin empty.unity3d
+        Dependency_13: resources/editor skin/right arrow.unity3d
+        Dependency_14: resources/editor skin/round button active.unity3d
+        Dependency_15: resources/editor skin/round button hover.unity3d
+        Dependency_16: resources/editor skin/round button.unity3d
+        Dependency_17: resources/editor skin/seperator.unity3d
+    Info_88:
+      Name: resources/gameicon/equipmenticon/amulet.unity3d
+      Dependencies: {}
+    Info_89:
+      Name: resources/gameicon/equipmenticon/feet.unity3d
+      Dependencies: {}
+    Info_90:
+      Name: resources/gameicon/equipmenticon/head.unity3d
+      Dependencies: {}
+    Info_91:
+      Name: resources/gameicon/equipmenticon/legs.unity3d
+      Dependencies: {}
+    Info_92:
+      Name: resources/gameicon/equipmenticon/shield.unity3d
+      Dependencies: {}
+    Info_93:
+      Name: resources/gameicon/equipmenticon/shoulders.unity3d
+      Dependencies: {}
+    Info_94:
+      Name: resources/gameicon/equipmenticon/sword.unity3d
+      Dependencies: {}
+    Info_95:
+      Name: resources/gameicon/equipmenticon/torso.unity3d
+      Dependencies: {}
+    Info_96:
+      Name: resources/gameicon/itemicon/arrow.unity3d
+      Dependencies: {}
+    Info_97:
+      Name: resources/gameicon/itemicon/axe.unity3d
+      Dependencies: {}
+    Info_98:
+      Name: resources/gameicon/itemicon/bow.unity3d
+      Dependencies: {}
+    Info_99:
+      Name: resources/gameicon/itemicon/bowl.unity3d
+      Dependencies: {}
+    Info_100:
+      Name: resources/gameicon/itemicon/bread.unity3d
+      Dependencies: {}
+    Info_101:
+      Name: resources/gameicon/itemicon/campfire.unity3d
+      Dependencies: {}
+    Info_102:
+      Name: resources/gameicon/itemicon/cooked fish.unity3d
+      Dependencies: {}
+    Info_103:
+      Name: resources/gameicon/itemicon/copper.unity3d
+      Dependencies: {}
+    Info_104:
+      Name: resources/gameicon/itemicon/fence.unity3d
+      Dependencies: {}
+    Info_105:
+      Name: resources/gameicon/itemicon/fishing rod.unity3d
+      Dependencies: {}
+    Info_106:
+      Name: resources/gameicon/itemicon/gold.unity3d
+      Dependencies: {}
+    Info_107:
+      Name: resources/gameicon/itemicon/hammer.unity3d
+      Dependencies: {}
+    Info_108:
+      Name: resources/gameicon/itemicon/health potion.unity3d
+      Dependencies: {}
+    Info_109:
+      Name: resources/gameicon/itemicon/iron.unity3d
+      Dependencies: {}
+    Info_110:
+      Name: resources/gameicon/itemicon/magicstone.unity3d
+      Dependencies: {}
+    Info_111:
+      Name: resources/gameicon/itemicon/nail.unity3d
+      Dependencies: {}
+    Info_112:
+      Name: resources/gameicon/itemicon/pickaxe.unity3d
+      Dependencies: {}
+    Info_113:
+      Name: resources/gameicon/itemicon/platinum.unity3d
+      Dependencies: {}
+    Info_114:
+      Name: resources/gameicon/itemicon/raw fish.unity3d
+      Dependencies: {}
+    Info_115:
+      Name: resources/gameicon/itemicon/rune.unity3d
+      Dependencies: {}
+    Info_116:
+      Name: resources/gameicon/itemicon/rusty sword.unity3d
+      Dependencies: {}
+    Info_117:
+      Name: resources/gameicon/itemicon/scoparius.unity3d
+      Dependencies: {}
+    Info_118:
+      Name: resources/gameicon/itemicon/scroll.unity3d
+      Dependencies: {}
+    Info_119:
+      Name: resources/gameicon/itemicon/shield.unity3d
+      Dependencies: {}
+    Info_120:
+      Name: resources/gameicon/itemicon/silver.unity3d
+      Dependencies: {}
+    Info_121:
+      Name: resources/gameicon/itemicon/spade.unity3d
+      Dependencies: {}
+    Info_122:
+      Name: resources/gameicon/itemicon/wood.unity3d
+      Dependencies: {}
+    Info_123:
+      Name: resources/gameicon/menuicon/bag.unity3d
+      Dependencies: {}
+    Info_124:
+      Name: resources/gameicon/menuicon/hammer.unity3d
+      Dependencies: {}
+    Info_125:
+      Name: resources/gameicon/menuicon/map.unity3d
+      Dependencies: {}
+    Info_126:
+      Name: resources/gameicon/menuicon/person.unity3d
+      Dependencies: {}
+    Info_127:
+      Name: resources/gameicon/menuicon/settings.unity3d
+      Dependencies: {}
+    Info_128:
+      Name: resources/gameicon/menuicon/skills.unity3d
+      Dependencies: {}
+    Info_129:
+      Name: resources/gameicon/menuicon/spells.unity3d
+      Dependencies: {}
+    Info_130:
+      Name: resources/gameicon/skillicon/air burst.unity3d
+      Dependencies: {}
+    Info_131:
+      Name: resources/gameicon/skillicon/arcane ball.unity3d
+      Dependencies: {}
+    Info_132:
+      Name: resources/gameicon/skillicon/cleave.unity3d
+      Dependencies: {}
+    Info_133:
+      Name: resources/gameicon/skillicon/critikal strike.unity3d
+      Dependencies: {}
+    Info_134:
+      Name: resources/gameicon/skillicon/damage buff.unity3d
+      Dependencies: {}
+    Info_135:
+      Name: resources/gameicon/skillicon/healing.unity3d
+      Dependencies: {}
+    Info_136:
+      Name: resources/gameicon/skillicon/holy sword.unity3d
+      Dependencies: {}
+    Info_137:
+      Name: resources/gameicon/skillicon/horse.unity3d
+      Dependencies: {}
+    Info_138:
+      Name: resources/gameicon/skillicon/mortal strike.unity3d
+      Dependencies: {}
+    Info_139:
+      Name: resources/gameicon/skillicon/slash.unity3d
+      Dependencies: {}
+    Info_140:
+      Name: resources/gameicon/skillicon/thorn storm.unity3d
+      Dependencies: {}
+    Info_141:
+      Name: resources/gameicon/skillicon/whirl wind.unity3d
+      Dependencies: {}
+    Info_142:
+      Name: resources/graphicons/add.unity3d
+      Dependencies: {}
+    Info_143:
+      Name: resources/graphicons/divide.unity3d
+      Dependencies: {}
+    Info_144:
+      Name: resources/graphicons/multiply.unity3d
+      Dependencies: {}
+    Info_145:
+      Name: resources/graphicons/pow.unity3d
+      Dependencies: {}
+    Info_146:
+      Name: resources/graphicons/round.unity3d
+      Dependencies: {}
+    Info_147:
+      Name: resources/graphicons/sqrt.unity3d
+      Dependencies: {}
+    Info_148:
+      Name: resources/graphicons/subtract.unity3d
+      Dependencies: {}
+    Info_149:
+      Name: resources/item.unity3d
+      Dependencies: {}
+    Info_150:
+      Name: resources/player/player.unity3d
+      Dependencies: {}
+    Info_151:
+      Name: resources/quest.unity3d
+      Dependencies: {}
+    Info_152:
+      Name: resources/sounds/air burst.unity3d
+      Dependencies: {}
+    Info_153:
+      Name: resources/sounds/battle.unity3d
+      Dependencies: {}
+    Info_154:
+      Name: resources/sounds/click.unity3d
+      Dependencies: {}
+    Info_155:
+      Name: resources/sounds/fantasy background.unity3d
+      Dependencies: {}
+    Info_156:
+      Name: resources/sounds/fire ignite.unity3d
+      Dependencies: {}
+    Info_157:
+      Name: resources/sounds/fire loop.unity3d
+      Dependencies: {}
+    Info_158:
+      Name: resources/sounds/metal drop.unity3d
+      Dependencies: {}
+    Info_159:
+      Name: resources/sounds/open chest.unity3d
+      Dependencies: {}
+    Info_160:
+      Name: resources/sounds/thorn storm.unity3d
+      Dependencies: {}
+    Info_161:
+      Name: resources/stats.unity3d
+      Dependencies: {}
+    Info_162:
+      Name: resources/time.unity3d
+      Dependencies: {}
+    Info_163:
+      Name: resources/uiresource/arrow.unity3d
+      Dependencies: {}
+    Info_164:
+      Name: resources/uiresource/circle big.unity3d
+      Dependencies: {}
+    Info_165:
+      Name: resources/uiresource/circle inner glow big.unity3d
+      Dependencies: {}
+    Info_166:
+      Name: resources/uiresource/circle outline big.unity3d
+      Dependencies: {}
+    Info_167:
+      Name: resources/uiresource/circle outline.unity3d
+      Dependencies: {}
+    Info_168:
+      Name: resources/uiresource/circle.unity3d
+      Dependencies: {}
+    Info_169:
+      Name: resources/uiresource/compass.unity3d
+      Dependencies: {}
+    Info_170:
+      Name: resources/uiresource/compassbackground.unity3d
+      Dependencies: {}
+    Info_171:
+      Name: resources/uiresource/compassline.unity3d
+      Dependencies: {}
+    Info_172:
+      Name: resources/uiresource/crosshair.unity3d
+      Dependencies: {}
+    Info_173:
+      Name: resources/uiresource/header.unity3d
+      Dependencies: {}
+    Info_174:
+      Name: resources/uiresource/rounded square dotted outline.unity3d
+      Dependencies: {}
+    Info_175:
+      Name: resources/uiresource/rounded square outline.unity3d
+      Dependencies: {}
+    Info_176:
+      Name: resources/uiresource/rounded square.unity3d
+      Dependencies: {}
+    Info_177:
+      Name: resources/uiresource/selection dot.unity3d
+      Dependencies: {}
+    Info_178:
+      Name: resources/uiresource/selection line.unity3d
+      Dependencies: {}
+    Info_179:
+      Name: resources/uiresource/square dotted outline.unity3d
+      Dependencies: {}
+    Info_180:
+      Name: resources/uiresource/square outline.unity3d
+      Dependencies: {}
+    Info_181:
+      Name: resources/uiresource/square shadow.unity3d
+      Dependencies: {}
+    Info_182:
+      Name: resources/uiresource/square shadowed.unity3d
+      Dependencies: {}
+    Info_183:
+      Name: resources/uiresource/square.unity3d
+      Dependencies: {}

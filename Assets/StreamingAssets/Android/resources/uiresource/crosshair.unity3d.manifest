@@ -1,0 +1,19 @@
+ManifestFileVersion: 0
+CRC: 560668966
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: cdd1bd0df1aa4f5053e820d26aace8ab
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 2d8df09e698f722ada1caa03d3413830
+HashAppended: 0
+ClassTypes:
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 213
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers: []
+Assets:
+- Assets/FKGame/Resources/UIResource/Crosshair.png
+Dependencies: []

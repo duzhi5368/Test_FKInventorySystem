@@ -1,0 +1,19 @@
+ManifestFileVersion: 0
+CRC: 393841721
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 63df87e76d757cd5507a4361565a6085
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 2d8df09e698f722ada1caa03d3413830
+HashAppended: 0
+ClassTypes:
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 213
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers: []
+Assets:
+- Assets/FKGame/Resources/GameIcon/MenuIcon/Skills.png
+Dependencies: []

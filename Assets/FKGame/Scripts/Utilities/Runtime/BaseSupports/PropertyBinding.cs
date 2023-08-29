@@ -3,6 +3,8 @@ using System.Collections;
 using System.Reflection;
 using System;
 //------------------------------------------------------------------------
+//  组件属性绑定 组件
+//------------------------------------------------------------------------
 namespace FKGame
 {
 	public class PropertyBinding : MonoBehaviour
@@ -14,7 +16,7 @@ namespace FKGame
 		[SerializeField]
 		private Execution m_Execution = Execution.Update;
 		[SerializeField]
-		private float m_Interval = 0.3f;
+        private float m_Interval = 0.3f;
 		
 		private void Start(){
 			if (m_Execution == Execution.Start) {
@@ -52,7 +54,7 @@ namespace FKGame
 		
 		public void UpdateTarget ()
 		{
-			m_Target.SetValue (m_Source.GetValue ());
+			m_Target.SetValue(m_Source.GetValue());
 		}
 		
 		public enum Execution{
@@ -77,7 +79,7 @@ namespace FKGame
 			private PropertyInfo m_Property;
 			
 			[SerializeField]
-			private string m_PropertyPath=string.Empty;
+			private string m_PropertyPath = string.Empty;
 			public string propertyPath
 			{
 				get

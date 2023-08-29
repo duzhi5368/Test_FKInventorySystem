@@ -1,0 +1,62 @@
+ManifestFileVersion: 0
+CRC: 3050458734
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: ab1526cc0625f4204aa02e5dbaef211c
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 62715ec8ce3940e2cef02f9009e0551d
+HashAppended: 0
+ClassTypes:
+- Class: 83
+  Script: {instanceID: 0}
+- Class: 114
+  Script: {fileID: 11500000, guid: 06d35cd237601a0409ef62e49aee7b95, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: cfb4beb5fbde1244ea5e136561a706b7, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 39b5287fd306425469e0a79604d01f18, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 10166c75065e62040bcb84677ab0e15a, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: ae7963c05be81fb4db371fec69009000, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 8484a9ae8c79f27468bb9f1834e52e5e, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 95b3f53e13350c940b9b3aadd93f2c76, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 0b3167ef1af6b6b45a23d4e158c46097, type: 3}
+- Class: 115
+  Script: {instanceID: 0}
+- Class: 213
+  Script: {instanceID: 0}
+- Class: 241
+  Script: {instanceID: 0}
+- Class: 243
+  Script: {instanceID: 0}
+- Class: 245
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers:
+- AssemblyName: Assembly-CSharp
+  ClassName: FKGame.CrossFade
+- AssemblyName: Assembly-CSharp
+  ClassName: FKGame.InventorySystem.HasCategoryItem
+- AssemblyName: Assembly-CSharp
+  ClassName: FKGame.InventorySystem.ItemActions.Cooldown
+- AssemblyName: Assembly-CSharp
+  ClassName: FKGame.Invoke
+- AssemblyName: Assembly-CSharp
+  ClassName: FKGame.LookForward
+- AssemblyName: Assembly-CSharp
+  ClassName: FKGame.Play
+- AssemblyName: Assembly-CSharp
+  ClassName: FKGame.UIWidgets.NotificationOptions
+Assets:
+- Assets/FKGame/Resources/Databases/FKSpellDatabase.asset
+Dependencies:
+- D:/Github/UnityProject/Test_FKInventorySystem/Assets/StreamingAssets/Windows/resources/databases/fkitemdatabase.unity3d
+- D:/Github/UnityProject/Test_FKInventorySystem/Assets/StreamingAssets/Windows/resources/gameicon/skillicon/critikal
+  strike.unity3d
+- D:/Github/UnityProject/Test_FKInventorySystem/Assets/StreamingAssets/Windows/resources/gameicon/skillicon/healing.unity3d
+- D:/Github/UnityProject/Test_FKInventorySystem/Assets/StreamingAssets/Windows/resources/sounds/battle.unity3d

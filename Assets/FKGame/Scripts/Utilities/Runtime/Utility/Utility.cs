@@ -206,7 +206,5 @@ namespace FKGame
 		{
 			return AppDomain.CurrentDomain.GetAssemblies();
 		}
-
-		
 	}
 }

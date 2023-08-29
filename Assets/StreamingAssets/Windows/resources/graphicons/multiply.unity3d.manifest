@@ -1,0 +1,19 @@
+ManifestFileVersion: 0
+CRC: 3004855320
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 35d35f3e2032ba2a6b614582369a7536
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 2d8df09e698f722ada1caa03d3413830
+HashAppended: 0
+ClassTypes:
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 213
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers: []
+Assets:
+- Assets/FKGame/Resources/GraphIcons/Multiply.png
+Dependencies: []

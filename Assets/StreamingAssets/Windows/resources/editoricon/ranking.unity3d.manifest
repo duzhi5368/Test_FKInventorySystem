@@ -1,0 +1,19 @@
+ManifestFileVersion: 0
+CRC: 2006892042
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 0f8cd1b3c62a16d42165c721e6db2475
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 2d8df09e698f722ada1caa03d3413830
+HashAppended: 0
+ClassTypes:
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 213
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers: []
+Assets:
+- Assets/FKGame/Resources/EditorIcon/Ranking.png
+Dependencies: []

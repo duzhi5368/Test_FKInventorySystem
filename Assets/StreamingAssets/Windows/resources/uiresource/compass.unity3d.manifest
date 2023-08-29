@@ -1,0 +1,19 @@
+ManifestFileVersion: 0
+CRC: 3959390600
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 6933cd13684ca14f384b95e206df00d4
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 2d8df09e698f722ada1caa03d3413830
+HashAppended: 0
+ClassTypes:
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 213
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers: []
+Assets:
+- Assets/FKGame/Resources/UIResource/Compass.png
+Dependencies: []

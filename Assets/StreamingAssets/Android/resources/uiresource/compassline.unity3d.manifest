@@ -1,0 +1,19 @@
+ManifestFileVersion: 0
+CRC: 2218382462
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 75ca6042b39224ad1bcc9735011390f3
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 2d8df09e698f722ada1caa03d3413830
+HashAppended: 0
+ClassTypes:
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 213
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers: []
+Assets:
+- Assets/FKGame/Resources/UIResource/CompassLine.png
+Dependencies: []

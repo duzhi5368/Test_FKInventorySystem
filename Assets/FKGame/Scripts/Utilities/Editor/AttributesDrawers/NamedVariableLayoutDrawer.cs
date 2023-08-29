@@ -12,7 +12,6 @@ namespace FKGame
             EditorGUILayout.TextField("Name", variable.Name);
             variable.VariableType = (NamedVariableType)EditorGUILayout.Popup((int)variable.VariableType, variable.VariableTypeNames);
             variable.SetValue(EditorTools.DrawFields(variable.GetValue()));
-
         }
     }
 }

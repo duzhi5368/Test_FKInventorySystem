@@ -1,0 +1,19 @@
+ManifestFileVersion: 0
+CRC: 2473241762
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: fc3cb414c74c83078a5ed18c9904f8c7
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 2d8df09e698f722ada1caa03d3413830
+HashAppended: 0
+ClassTypes:
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 213
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers: []
+Assets:
+- Assets/FKGame/Resources/EditorIcon/Home.png
+Dependencies: []

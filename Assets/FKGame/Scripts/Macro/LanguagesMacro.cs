@@ -203,5 +203,17 @@ namespace FKGame.Macro
         public const string ADD_OPEN_SCENES = "添加当前打开场景";
         public const string ITEM_DATABASE = "物品数据库";
         public const string PREFABS = "预设体";
+        public const string NEW_AUDIO_GROUP = "创建新音效组";
+        public const string NEW_ADUIO_GROUP_NAME = "新音效组名称";
+        public const string ENTER_A_GROUP_NAME = "请先输入一个音效组名";
+        public const string EXISTED_GROUP_NAME = "已存在的音效组名";
+        public const string NEW_VARIABLE = "创建新变量";
+        public const string NEW_VARIABLE_NAME = "新变量名称";
+        public const string ENTER_A_VARIABLE_NAME = "请先输入一个变量名";
+        public const string EXISTED_VARIABLE_NAME = "已存在的变量名";
+        public const string RESTRICTIONS = "限制器";
+        public const string SLOT_RESTRICTIONS = "格子限制器";
+        public const string ADD_NEW_CALLBACK = "添加新回调事件";
+        public const string MULTIPLE_INSTANCE = "场景中有多个单例对象，请注意检查: ";
     }
 }

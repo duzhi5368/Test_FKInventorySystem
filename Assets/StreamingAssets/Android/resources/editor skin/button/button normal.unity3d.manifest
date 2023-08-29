@@ -1,0 +1,17 @@
+ManifestFileVersion: 0
+CRC: 1693537878
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 7e2b10b7b57639bdbbe27750dbb66727
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 2612ac43db082a73502ee80f2eceb73f
+HashAppended: 0
+ClassTypes:
+- Class: 28
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers: []
+Assets:
+- Assets/FKGame/Resources/Editor Skin/Button/Button Normal.png
+Dependencies: []

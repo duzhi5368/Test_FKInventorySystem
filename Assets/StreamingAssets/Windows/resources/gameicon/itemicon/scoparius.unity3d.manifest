@@ -1,0 +1,19 @@
+ManifestFileVersion: 0
+CRC: 2882750930
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 380fca9c4749cd7db8eb7a803b66eb4b
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 2d8df09e698f722ada1caa03d3413830
+HashAppended: 0
+ClassTypes:
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 213
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers: []
+Assets:
+- Assets/FKGame/Resources/GameIcon/ItemIcon/Scoparius.png
+Dependencies: []

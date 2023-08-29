@@ -1,0 +1,330 @@
+ManifestFileVersion: 0
+CRC: 4166304687
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 131266f657ee0c2437e8c70b575ac562
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: a09a1badf9f25c55bc56fdcdcdb5c100
+HashAppended: 0
+ClassTypes:
+- Class: 21
+  Script: {instanceID: 0}
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 48
+  Script: {instanceID: 0}
+- Class: 83
+  Script: {instanceID: 0}
+- Class: 114
+  Script: {fileID: 12001, guid: 0000000000000000e000000000000000, type: 0}
+- Class: 114
+  Script: {fileID: 11500000, guid: 5826a4882132c28429af5629eb5c4bf8, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 06d35cd237601a0409ef62e49aee7b95, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: cfb4beb5fbde1244ea5e136561a706b7, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 39b5287fd306425469e0a79604d01f18, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 8170ddfc90812fb4090f1de3b4094aa6, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 9ec453533555a4f4497fec4c4e0b926b, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 421238e48545b024a88c04396ed4c0d5, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 553ec6ced298d2c4f97c6810d68d3460, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 153f1d3166d57644da10aecdfbda851e, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: f3dab25464dc16641ba2d1eb6f62d0da, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 1844f32251466a54ebc8e84d75e31778, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 10166c75065e62040bcb84677ab0e15a, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: ae7963c05be81fb4db371fec69009000, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 6df9a84fd50ce304d80dbfd5a57d25ee, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 14ab644239e83c442abb8a33b0a568c6, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 8484a9ae8c79f27468bb9f1834e52e5e, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 239a89d25e18d5c438878ba24effa1d5, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 48161a9549fdb4f4ab4aeb44f29c9892, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 95b3f53e13350c940b9b3aadd93f2c76, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 96aa16022cc1d94479e594e01eafe712, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 0aa5c3281793f2340b64d962e7c71149, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 4397c4b96d02226449850528ae00926a, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 9d7944407f17bfd469ddd4c5016d13e3, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 19adef0a3fc75da48819642023c62695, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 0b3167ef1af6b6b45a23d4e158c46097, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: e9d3186b941fc1846b5e852e1cdaa31d, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 03b934f32298ed64c9089f40610b76f0, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: a2d0bedfe2fc165409816c979efa47a1, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 51ddaae4212e1284cbb59fa4f1b98438, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 27b212a6bd725d844a9c8f1c04a590dd, type: 3}
+- Class: 115
+  Script: {instanceID: 0}
+- Class: 128
+  Script: {instanceID: 0}
+- Class: 213
+  Script: {instanceID: 0}
+- Class: 241
+  Script: {instanceID: 0}
+- Class: 243
+  Script: {instanceID: 0}
+- Class: 245
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers:
+- AssemblyName: Assembly-CSharp
+  ClassName: FKGame.CompareTag
+- AssemblyName: Assembly-CSharp
+  ClassName: FKGame.CrossFade
+- AssemblyName: Assembly-CSharp
+  ClassName: FKGame.Graphs.FormulaGraph
+- AssemblyName: Assembly-CSharp
+  ClassName: FKGame.InventorySystem.CraftingRecipe/ItemAmountDefinition
+- AssemblyName: Assembly-CSharp
+  ClassName: FKGame.InventorySystem.CurrencyConversion
+- AssemblyName: Assembly-CSharp
+  ClassName: FKGame.InventorySystem.HasCategoryItem
+- AssemblyName: Assembly-CSharp
+  ClassName: FKGame.InventorySystem.ItemActions.Cooldown
+- AssemblyName: Assembly-CSharp
+  ClassName: FKGame.InventorySystem.ItemModifierList
+- AssemblyName: Assembly-CSharp
+  ClassName: FKGame.Invoke
+- AssemblyName: Assembly-CSharp
+  ClassName: FKGame.LookForward
+- AssemblyName: Assembly-CSharp
+  ClassName: FKGame.Play
+- AssemblyName: Assembly-CSharp
+  ClassName: FKGame.QuestSystem.HasQuest
+- AssemblyName: Assembly-CSharp
+  ClassName: FKGame.QuestSystem.HasQuestTask
+- AssemblyName: Assembly-CSharp
+  ClassName: FKGame.QuestSystem.QuestTask
+- AssemblyName: Assembly-CSharp
+  ClassName: FKGame.SendMessage
+- AssemblyName: Assembly-CSharp
+  ClassName: FKGame.SetEnabled
+- AssemblyName: Assembly-CSharp
+  ClassName: FKGame.SetPositionToTarget
+- AssemblyName: Assembly-CSharp
+  ClassName: FKGame.StatSystem.AddEffect
+- AssemblyName: Assembly-CSharp
+  ClassName: FKGame.StatSystem.AddValue
+- AssemblyName: Assembly-CSharp
+  ClassName: FKGame.StatSystem.Compare
+- AssemblyName: Assembly-CSharp
+  ClassName: FKGame.StatSystem.StatCallback
+- AssemblyName: Assembly-CSharp
+  ClassName: FKGame.UIWidgets.NotificationOptions
+- AssemblyName: Assembly-CSharp
+  ClassName: FKGame.Wait
+- AssemblyName: UnityEngine.IMGUIModule
+  ClassName: UnityEngine.GUISettings
+- AssemblyName: UnityEngine.IMGUIModule
+  ClassName: UnityEngine.GUIStyle
+Assets:
+- Assets/FKGame/Resources/GameIcon/ItemIcon/Gold.png
+- Assets/FKGame/Resources/GraphIcons/Multiply.png
+- Assets/FKGame/Resources/Editor Skin/Round Button.png
+- Assets/FKGame/Resources/GameIcon/SkillIcon/Arcane Ball.png
+- Assets/FKGame/Resources/EditorIcon/Star.png
+- Assets/FKGame/Resources/EditorIcon/Mark.png
+- Assets/FKGame/Resources/ColorfulTextures/SwatchTealAlbedo.png
+- Assets/FKGame/Resources/EditorIcon/Ok.png
+- Assets/FKGame/Resources/GameIcon/ItemIcon/Scoparius.png
+- Assets/FKGame/Resources/UIResource/Circle Big.png
+- Assets/FKGame/Resources/Editor Skin/Button/Button Normal.png
+- Assets/FKGame/Resources/EditorIcon/Edit.png
+- Assets/FKGame/Resources/GameIcon/EquipmentIcon/Feet.png
+- Assets/FKGame/Resources/Sounds/Fantasy Background.mp3
+- Assets/FKGame/Resources/GameIcon/ItemIcon/Bowl.png
+- Assets/FKGame/Resources/UIResource/Arrow.png
+- Assets/FKGame/Resources/Editor Skin/Node Selected.png
+- Assets/FKGame/Resources/GameIcon/SkillIcon/Air Burst.png
+- Assets/FKGame/Resources/GameIcon/MenuIcon/Skills.png
+- Assets/FKGame/Resources/GameIcon/ItemIcon/Spade.png
+- Assets/FKGame/Resources/Player/Player.png
+- Assets/FKGame/Resources/UIResource/Square.png
+- Assets/FKGame/Resources/UIResource/Circle Outline.png
+- Assets/FKGame/Resources/EditorIcon/Message.png
+- Assets/FKGame/Resources/Time.png
+- Assets/FKGame/Resources/EditorIcon/Book.png
+- Assets/FKGame/Resources/GraphIcons/Add.png
+- Assets/FKGame/Resources/GameIcon/SkillIcon/Slash.png
+- Assets/FKGame/Resources/Editor Skin/Seperator.png
+- Assets/FKGame/Resources/EditorSkin.guiskin
+- Assets/FKGame/Resources/Editor Skin/Left Pane Dark.png
+- Assets/FKGame/Resources/Sounds/Fire Loop.ogg
+- Assets/FKGame/Resources/EditorIcon/List.png
+- Assets/FKGame/Resources/GameIcon/ItemIcon/Wood.png
+- Assets/FKGame/Resources/Sounds/Click.wav
+- Assets/FKGame/Resources/Editor Skin/Left Pane.png
+- Assets/FKGame/Resources/EditorIcon/Plus.png
+- Assets/FKGame/Resources/EditorIcon/More.png
+- Assets/FKGame/Resources/EditorIcon/Refresh.png
+- Assets/FKGame/Resources/GameIcon/ItemIcon/Bread.png
+- Assets/FKGame/Resources/EditorIcon/Earth.png
+- Assets/FKGame/Resources/EditorIcon/At.png
+- Assets/FKGame/Resources/UIResource/Rounded Square.png
+- Assets/FKGame/Resources/ColorfulTextures/SwatchOrangeAlbedo.png
+- Assets/FKGame/Resources/EditorIcon/Save.png
+- Assets/FKGame/Resources/EditorIcon/Locked.png
+- Assets/FKGame/Resources/GameIcon/ItemIcon/Copper.png
+- Assets/FKGame/Resources/Sounds/Battle.ogg
+- Assets/FKGame/Resources/UIResource/Circle Inner Glow Big.png
+- Assets/FKGame/Resources/Editor Skin/Button/Button Active.png
+- Assets/FKGame/Resources/EditorIcon/Share.png
+- Assets/FKGame/Resources/EditorIcon/Front.png
+- Assets/FKGame/Resources/EditorIcon/Emote.png
+- Assets/FKGame/Resources/Condition Item.png
+- Assets/FKGame/Resources/EditorIcon/Good.png
+- Assets/FKGame/Resources/GameIcon/ItemIcon/Shield.png
+- Assets/FKGame/Resources/GraphIcons/Sqrt.png
+- Assets/FKGame/Resources/Editor Skin/Node Hover.png
+- Assets/FKGame/Resources/GraphIcons/Pow.png
+- Assets/FKGame/Resources/UIResource/Crosshair.png
+- Assets/FKGame/Resources/GameIcon/ItemIcon/Rune.png
+- Assets/FKGame/Resources/Editor Skin/Round Button Hover.png
+- Assets/FKGame/Resources/EditorIcon/Location.png
+- Assets/FKGame/Resources/GameIcon/ItemIcon/Health Potion.png
+- Assets/FKGame/Resources/Editor Skin/Center Pane Dark.png
+- Assets/FKGame/Resources/GameIcon/SkillIcon/Critikal Strike.png
+- Assets/FKGame/Resources/EditorIcon/Minus.png
+- Assets/FKGame/Resources/EditorIcon/Exit.png
+- Assets/FKGame/Resources/EditorIcon/Friends.png
+- Assets/FKGame/Resources/Quest.png
+- Assets/FKGame/Resources/EditorIcon/Followers.png
+- Assets/FKGame/Resources/EditorIcon/Compas.png
+- Assets/FKGame/Resources/GameIcon/EquipmentIcon/Shield.png
+- Assets/FKGame/Resources/GameIcon/ItemIcon/MagicStone.png
+- Assets/FKGame/Resources/EditorIcon/Home.png
+- Assets/FKGame/Resources/ColorfulTextures/SwatchTurquoiseAlbedo.png
+- Assets/FKGame/Resources/GameIcon/ItemIcon/Silver.png
+- Assets/FKGame/Resources/EditorIcon/Back.png
+- Assets/FKGame/Resources/GameIcon/ItemIcon/Iron.png
+- Assets/FKGame/Resources/UIResource/CompassLine.png
+- Assets/FKGame/Resources/EditorIcon/Font.png
+- Assets/FKGame/Resources/Sounds/Thorn Storm.ogg
+- Assets/FKGame/Resources/EditorIcon/View.png
+- Assets/FKGame/Resources/Editor Skin/Right Pane.png
+- Assets/FKGame/Resources/UIResource/Header.png
+- Assets/FKGame/Resources/Databases/FKQuestDatabase.asset
+- Assets/FKGame/Resources/ColorfulTextures/SwatchPinkDAlbedo.png
+- Assets/FKGame/Resources/EditorIcon/Navigation.png
+- Assets/FKGame/Resources/Editor Skin/Node Normal.png
+- Assets/FKGame/Resources/GameIcon/SkillIcon/Whirl Wind.png
+- Assets/FKGame/Resources/EditorIcon/Feedback.png
+- Assets/FKGame/Resources/EditorIcon/Setting.png
+- Assets/FKGame/Resources/EditorIcon/Following.png
+- Assets/FKGame/Resources/GameIcon/MenuIcon/Settings.png
+- Assets/FKGame/Resources/Databases/FKSpellDatabase.asset
+- Assets/FKGame/Resources/GameIcon/ItemIcon/Nail.png
+- Assets/FKGame/Resources/EditorIcon/Delete.png
+- Assets/FKGame/Resources/ColorfulTextures/SwatchNavyAlbedo.png
+- Assets/FKGame/Resources/GameIcon/ItemIcon/Pickaxe.png
+- Assets/FKGame/Resources/UIResource/Selection Line.png
+- Assets/FKGame/Resources/Databases/FKItemDatabase.asset
+- Assets/FKGame/Resources/EditorIcon/Download.png
+- Assets/FKGame/Resources/GameIcon/MenuIcon/Hammer.png
+- Assets/FKGame/Resources/UIResource/CompassBackground.png
+- Assets/FKGame/Resources/ColorfulTextures/SwatchWhiteAlbedo.png
+- Assets/FKGame/Resources/UIResource/Compass.png
+- Assets/FKGame/Resources/Editor Skin/Node Active.png
+- Assets/FKGame/Resources/EditorIcon/Link.png
+- Assets/FKGame/Resources/GraphIcons/Round.png
+- Assets/FKGame/Resources/Editor Skin/Button/Button Hover.png
+- Assets/FKGame/Resources/GameIcon/ItemIcon/Cooked Fish.png
+- Assets/FKGame/Resources/EditorIcon/Ranking.png
+- Assets/FKGame/Resources/Editor Skin/Center Pane.png
+- Assets/FKGame/Resources/GraphIcons/Divide.png
+- Assets/FKGame/Resources/Stats.png
+- Assets/FKGame/Resources/ColorfulTextures/SwatchNavyDarkAlbedo.png
+- Assets/FKGame/Resources/Editor Skin/Right Arrow.png
+- Assets/FKGame/Resources/Component.png
+- Assets/FKGame/Resources/GameIcon/SkillIcon/Cleave.png
+- Assets/FKGame/Resources/EditorIcon/Hide.png
+- Assets/FKGame/Resources/Sounds/Air Burst.ogg
+- Assets/FKGame/Resources/GameIcon/MenuIcon/Bag.png
+- Assets/FKGame/Resources/Editor Skin/Right Pane Dark.png
+- Assets/FKGame/Resources/EditorIcon/Audio.png
+- Assets/FKGame/Resources/GameIcon/ItemIcon/Scroll.png
+- Assets/FKGame/Resources/UIResource/Circle Outline Big.png
+- Assets/FKGame/Resources/UIResource/Rounded Square Dotted Outline.png
+- Assets/FKGame/Resources/GameIcon/SkillIcon/Damage Buff.png
+- Assets/FKGame/Resources/Editor Skin/Round Button Active.png
+- Assets/FKGame/Resources/EditorIcon/Arrow Down.png
+- Assets/FKGame/Resources/EditorIcon/Comments.png
+- Assets/FKGame/Resources/EditorIcon/Sound.png
+- Assets/FKGame/Resources/EditorIcon/Update.png
+- Assets/FKGame/Resources/Databases/FKSkillDatabase.asset
+- Assets/FKGame/Resources/GameIcon/MenuIcon/Spells.png
+- Assets/FKGame/Resources/UIResource/Selection Dot.png
+- Assets/FKGame/Resources/UIResource/Square Dotted Outline.png
+- Assets/FKGame/Resources/GraphIcons/Subtract.png
+- Assets/FKGame/Resources/GameIcon/ItemIcon/Fishing Rod.png
+- Assets/FKGame/Resources/GameIcon/SkillIcon/Mortal Strike.png
+- Assets/FKGame/Resources/GameIcon/ItemIcon/Platinum.png
+- Assets/FKGame/Resources/GameIcon/MenuIcon/Map.png
+- Assets/FKGame/Resources/GameIcon/EquipmentIcon/Torso.png
+- Assets/FKGame/Resources/UIResource/Square Shadow.png
+- Assets/FKGame/Resources/GameIcon/SkillIcon/Horse.png
+- Assets/FKGame/Resources/GameIcon/ItemIcon/Fence.png
+- Assets/FKGame/Resources/GameIcon/ItemIcon/Arrow.png
+- Assets/FKGame/Resources/Sounds/Fire Ignite.ogg
+- Assets/FKGame/Resources/GameIcon/EquipmentIcon/Legs.png
+- Assets/FKGame/Resources/GameIcon/ItemIcon/Rusty Sword.png
+- Assets/FKGame/Resources/UIResource/Square Outline.png
+- Assets/FKGame/Resources/EditorIcon/Next.png
+- Assets/FKGame/Resources/GameIcon/SkillIcon/Thorn Storm.png
+- Assets/FKGame/Resources/GameIcon/EquipmentIcon/Shoulders.png
+- Assets/FKGame/Resources/ColorfulTextures/SwatchYellowAlbedo.png
+- Assets/FKGame/Resources/GameIcon/ItemIcon/Hammer.png
+- Assets/FKGame/Resources/EditorIcon/Cancel.png
+- Assets/FKGame/Resources/Sounds/Metal Drop.wav
+- Assets/FKGame/Resources/GameIcon/EquipmentIcon/Amulet.png
+- Assets/FKGame/Resources/EditorIcon/File.png
+- Assets/FKGame/Resources/GameIcon/SkillIcon/Holy Sword.png
+- Assets/FKGame/Resources/EditorIcon/Grade.png
+- Assets/FKGame/Resources/EditorIcon/Forward.png
+- Assets/FKGame/Resources/Item.png
+- Assets/FKGame/Resources/Editor Skin/Pin Empty.png
+- Assets/FKGame/Resources/UIResource/Square Shadowed.png
+- Assets/FKGame/Resources/GameIcon/ItemIcon/Axe.png
+- Assets/FKGame/Resources/GameIcon/EquipmentIcon/Sword.png
+- Assets/FKGame/Resources/GameIcon/ItemIcon/Bow.png
+- Assets/FKGame/Resources/EditorIcon/Info.png
+- Assets/FKGame/Resources/EditorIcon/Person.png
+- Assets/FKGame/Resources/ColorfulTextures/SwatchMauveAlbedo.png
+- Assets/FKGame/Resources/GameIcon/ItemIcon/Campfire.png
+- Assets/FKGame/Resources/GameIcon/ItemIcon/Raw Fish.png
+- Assets/FKGame/Resources/EditorIcon/Shield.png
+- Assets/FKGame/Resources/UIResource/Rounded Square Outline.png
+- Assets/FKGame/Resources/Databases/FKStatDatabase.asset
+- Assets/FKGame/Resources/GameIcon/SkillIcon/Healing.png
+- Assets/FKGame/Resources/UIResource/Circle.png
+- Assets/FKGame/Resources/Editor Skin/Pin Connected.png
+- Assets/FKGame/Resources/EditorIcon/Search.png
+- Assets/FKGame/Resources/GameIcon/EquipmentIcon/Head.png
+- Assets/FKGame/Resources/Sounds/Open Chest.wav
+- Assets/FKGame/Resources/GameIcon/MenuIcon/Person.png
+Dependencies: []

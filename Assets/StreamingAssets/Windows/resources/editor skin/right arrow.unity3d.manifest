@@ -1,0 +1,17 @@
+ManifestFileVersion: 0
+CRC: 893262359
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 0bc349779f61ed89591c6454bae7e23d
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 2612ac43db082a73502ee80f2eceb73f
+HashAppended: 0
+ClassTypes:
+- Class: 28
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers: []
+Assets:
+- Assets/FKGame/Resources/Editor Skin/Right Arrow.png
+Dependencies: []

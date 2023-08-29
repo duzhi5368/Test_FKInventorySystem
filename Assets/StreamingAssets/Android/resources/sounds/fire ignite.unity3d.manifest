@@ -1,0 +1,17 @@
+ManifestFileVersion: 0
+CRC: 3766222597
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 97bf62a6e75319d748537629b14749bc
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 9a2ca7bdbd1871f7131daf57de908e0c
+HashAppended: 0
+ClassTypes:
+- Class: 83
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers: []
+Assets:
+- Assets/FKGame/Resources/Sounds/Fire Ignite.ogg
+Dependencies: []

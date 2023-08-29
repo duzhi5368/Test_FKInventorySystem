@@ -6,7 +6,6 @@ namespace FKGame
     [CustomPropertyDrawer(typeof(CompoundAttribute))]
     public class CompoundDrawer : PropertyDrawer
     {
-
         public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
         {
             EditorGUIUtility.wideMode = true;

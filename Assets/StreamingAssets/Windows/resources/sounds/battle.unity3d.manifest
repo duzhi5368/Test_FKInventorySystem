@@ -1,0 +1,17 @@
+ManifestFileVersion: 0
+CRC: 1541504607
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 01a2bcbe90c63613e4e72eeee93b5c9d
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 9a2ca7bdbd1871f7131daf57de908e0c
+HashAppended: 0
+ClassTypes:
+- Class: 83
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers: []
+Assets:
+- Assets/FKGame/Resources/Sounds/Battle.ogg
+Dependencies: []

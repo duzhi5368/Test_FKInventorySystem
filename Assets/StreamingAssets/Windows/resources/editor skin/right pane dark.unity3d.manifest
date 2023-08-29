@@ -1,0 +1,17 @@
+ManifestFileVersion: 0
+CRC: 362715399
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 6d2d088801c8820f8b3ca756ff8e5d11
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 2612ac43db082a73502ee80f2eceb73f
+HashAppended: 0
+ClassTypes:
+- Class: 28
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers: []
+Assets:
+- Assets/FKGame/Resources/Editor Skin/Right Pane Dark.png
+Dependencies: []

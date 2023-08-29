@@ -1,0 +1,19 @@
+ManifestFileVersion: 0
+CRC: 3553189480
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 78e691e4db95f8b518d84971e65b5695
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 2d8df09e698f722ada1caa03d3413830
+HashAppended: 0
+ClassTypes:
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 213
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers: []
+Assets:
+- Assets/FKGame/Resources/EditorIcon/Front.png
+Dependencies: []

@@ -1,0 +1,19 @@
+ManifestFileVersion: 0
+CRC: 1213652533
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 4547d18a91b6119e0057dece11f1dfc1
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 2d8df09e698f722ada1caa03d3413830
+HashAppended: 0
+ClassTypes:
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 213
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers: []
+Assets:
+- Assets/FKGame/Resources/ColorfulTextures/SwatchNavyAlbedo.png
+Dependencies: []

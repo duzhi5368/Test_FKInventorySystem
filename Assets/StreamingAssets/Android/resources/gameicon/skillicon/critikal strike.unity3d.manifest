@@ -1,0 +1,19 @@
+ManifestFileVersion: 0
+CRC: 112883884
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 042293787ced2e36de989e3373dde839
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 2d8df09e698f722ada1caa03d3413830
+HashAppended: 0
+ClassTypes:
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 213
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers: []
+Assets:
+- Assets/FKGame/Resources/GameIcon/SkillIcon/Critikal Strike.png
+Dependencies: []

@@ -1,0 +1,17 @@
+ManifestFileVersion: 0
+CRC: 1397963519
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 939dc10a345a5c7556d436e6194b86d8
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 9a2ca7bdbd1871f7131daf57de908e0c
+HashAppended: 0
+ClassTypes:
+- Class: 83
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers: []
+Assets:
+- Assets/FKGame/Resources/Sounds/Metal Drop.wav
+Dependencies: []

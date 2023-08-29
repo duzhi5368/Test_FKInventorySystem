@@ -2,13 +2,13 @@
 using UnityEngine.Events;
 using System.Collections.Generic;
 //------------------------------------------------------------------------
-// 回调函数
+// 回调处理器，用作组件为GameObject添加回调事件
 //------------------------------------------------------------------------
 namespace FKGame
 {
 	public abstract class CallbackHandler : MonoBehaviour {
 		[HideInInspector]
-		public List<CallbackHandler.Entry> delegates;
+		public List<Entry> delegates;
 		public abstract string[] Callbacks {
 			get;
 		}
@@ -21,7 +21,7 @@ namespace FKGame
 				int count = this.delegates.Count;
 				while (num < count)
 				{
-					CallbackHandler.Entry item = this.delegates[num];
+					Entry item = this.delegates[num];
 					if (item.eventID == eventID && item.callback != null)
 					{
 						item.callback.Invoke(eventData);

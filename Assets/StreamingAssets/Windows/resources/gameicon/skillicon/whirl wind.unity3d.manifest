@@ -1,0 +1,19 @@
+ManifestFileVersion: 0
+CRC: 4080561839
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 7ca92541d1ba17945fcd140c7e77b849
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 2d8df09e698f722ada1caa03d3413830
+HashAppended: 0
+ClassTypes:
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 213
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers: []
+Assets:
+- Assets/FKGame/Resources/GameIcon/SkillIcon/Whirl Wind.png
+Dependencies: []

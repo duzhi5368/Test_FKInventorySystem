@@ -1,0 +1,19 @@
+ManifestFileVersion: 0
+CRC: 2220300625
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 506c9eb1ced48c08a1311f2dc3c93c3f
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 2d8df09e698f722ada1caa03d3413830
+HashAppended: 0
+ClassTypes:
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 213
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers: []
+Assets:
+- Assets/FKGame/Resources/GraphIcons/Sqrt.png
+Dependencies: []
