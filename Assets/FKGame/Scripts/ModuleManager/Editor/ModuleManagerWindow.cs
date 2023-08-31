@@ -8,7 +8,7 @@ using UnityEngine.Networking;
 using System.Linq;
 using UnityEngine.Events;
 using FKGame.Macro;
-
+//------------------------------------------------------------------------
 namespace FKGame
 {
     [InitializeOnLoad]
@@ -18,7 +18,7 @@ namespace FKGame
         private const float LIST_MAX_WIDTH = 600f;
         private const float LIST_RESIZE_WIDTH = 10f;
 
-        private static string m_ModuleTxtPath = "https://deviongames.com/modules/modules.txt";
+        private static string m_ModuleTxtPath = "https://github.com/duzhi5368/GlobalConfigs/FKUnityModuleConfig.txt";
         private Rect m_SidebarRect = new Rect(0, 30, 280, 1000);
         private Vector2 m_ScrollPosition;
         private string m_SearchString = LanguagesMacro.RESEARCH;

@@ -24,28 +24,28 @@ namespace FKGame.QuestSystem
         [InspectorLabel(LanguagesMacro.QUEST_SELECTION_WINDOW_WIDGET)]
         public string questSelectionWindowName = "Quest Selection";
 
-        private Notification m_Notification;
-        public Notification notification
+        private UINotification m_Notification;
+        public UINotification notification
         {
             get
             {
                 if (this.m_Notification == null)
                 {
-                    this.m_Notification = WidgetUtility.Find<Notification>(this.notificationName);
+                    this.m_Notification = WidgetUtility.Find<UINotification>(this.notificationName);
                 }
                 Assert.IsNotNull(this.m_Notification, "Notification widget with name " + this.notificationName + " is not present in scene.");
                 return this.m_Notification;
             }
         }
 
-        private DialogBox m_DialogBox;
-        public DialogBox dialogBox
+        private UIDialogBox m_DialogBox;
+        public UIDialogBox dialogBox
         {
             get
             {
                 if (this.m_DialogBox == null)
                 {
-                    this.m_DialogBox = WidgetUtility.Find<DialogBox>(this.dialogBoxName);
+                    this.m_DialogBox = WidgetUtility.Find<UIDialogBox>(this.dialogBoxName);
                 }
                 Assert.IsNotNull(this.m_DialogBox, "DialogBox widget with name " + this.dialogBoxName + " is not present in scene.");
                 return this.m_DialogBox;
@@ -66,14 +66,14 @@ namespace FKGame.QuestSystem
             }
         }
 
-        private DialogBox m_QuestSelectionWindow;
-        public DialogBox questSelectionWindow
+        private UIDialogBox m_QuestSelectionWindow;
+        public UIDialogBox questSelectionWindow
         {
             get
             {
                 if (this.m_QuestSelectionWindow == null)
                 {
-                    this.m_QuestSelectionWindow = WidgetUtility.Find<DialogBox>(this.questSelectionWindowName);
+                    this.m_QuestSelectionWindow = WidgetUtility.Find<UIDialogBox>(this.questSelectionWindowName);
                 }
                 Assert.IsNotNull(this.m_QuestSelectionWindow, "DialogBox widget with name " + this.questSelectionWindowName + " is not present in scene.");
                 return this.m_QuestSelectionWindow;

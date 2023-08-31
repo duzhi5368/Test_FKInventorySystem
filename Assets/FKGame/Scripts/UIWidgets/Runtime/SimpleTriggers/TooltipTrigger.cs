@@ -23,13 +23,13 @@ namespace FKGame.UIWidgets
 		public Sprite icon;
         public StringPair[] properties;
 
-		private Tooltip instance;
+		private UITooltip instance;
         private Coroutine m_DelayTooltipCoroutine;
         private List<KeyValuePair<string, string>> m_PropertyPairs;
 
 		private void Start ()
 		{
-			instance = WidgetUtility.Find<Tooltip> (instanceName);
+			instance = WidgetUtility.Find<UITooltip> (instanceName);
 			if (enabled && instance == null) {
 				enabled = false;
 			}

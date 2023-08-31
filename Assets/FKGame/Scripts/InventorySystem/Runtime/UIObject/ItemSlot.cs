@@ -28,11 +28,11 @@ namespace FKGame.InventorySystem
                 m_DragObject = value;
                 if (m_DragObject != null && m_DragObject.item != null)
                 {
-                    UICursor.Set(m_DragObject.item.Icon);
+                    ComponentUICursor.Set(m_DragObject.item.Icon);
                 }
                 else
                 {
-                    UICursor.Clear();
+                    ComponentUICursor.Clear();
                 }
             }
         }
@@ -140,7 +140,7 @@ namespace FKGame.InventorySystem
                 if (isUnstacking && Container.StackOrAdd(this, stack.item) )
                 {
                     stack.item = null;
-                    UICursor.Clear();
+                    ComponentUICursor.Clear();
                 }
                 if (isUnstacking)
                     return;
@@ -152,7 +152,7 @@ namespace FKGame.InventorySystem
                 } 
                 else if (Container.UseContextMenu && Container.ContextMenuButton.HasFlag((InputButton)Mathf.Clamp(((int)eventData.button * 2), 1, int.MaxValue))) 
                 {
-                    UIWidgets.ContextMenu menu = InventoryManager.UI.contextMenu;
+                    UIWidgets.UIContextMenu menu = InventoryManager.UI.contextMenu;
                     if (menu == null) { return; }
                     menu.Clear();
 

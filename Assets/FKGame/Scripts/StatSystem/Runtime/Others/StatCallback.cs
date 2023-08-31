@@ -17,7 +17,7 @@ namespace FKGame.StatSystem
         [SerializeField]
         protected float m_Value = 0f;
         [SerializeField]
-        protected Actions m_Actions;
+        protected ActionList m_Actions;
 
         protected Stat m_Stat;
         protected StatsHandler m_Handler;
@@ -38,7 +38,7 @@ namespace FKGame.StatSystem
                     }
                     break;
             }
-            this.m_Sequence = new Sequence(handler.gameObject, new PlayerInfo("Player"),handler.GetComponent<Blackboard>(), this.m_Actions.actions.ToArray());
+            this.m_Sequence = new Sequence(handler.gameObject, new PlayerInfo("Player"),handler.GetComponent<ComponentBlackboard>(), this.m_Actions.actions.ToArray());
             this.m_Handler.onUpdate += Update;
         }
 

@@ -59,7 +59,7 @@ namespace FKGame.StatSystem
             {
                 StatsManager.RegisterStatsHandler(this);
             }
-            EventHandler.Register<GameObject, Object>(gameObject, "SendDamage", SendDamage);
+            ComponentEventHandler.Register<GameObject, Object>(gameObject, "SendDamage", SendDamage);
         }
 
        /* private void OnGUI()
@@ -168,7 +168,7 @@ namespace FKGame.StatSystem
                     damage *= 2f;
 
                 receiverHandler.ApplyDamage(damageData.receivingStat, damage);
-                EventHandler.Execute(receiver, "OnGetHit", gameObject, damageData.receivingStat, damage);
+                ComponentEventHandler.Execute(receiver, "OnGetHit", gameObject, damageData.receivingStat, damage);
 
                 SendMessage("UseItem", SendMessageOptions.DontRequireReceiver);
 
@@ -184,7 +184,7 @@ namespace FKGame.StatSystem
                     Destroy(effect, damageData.lifeTime);
                 }
                 if(damageData.enableShake)
-                    CameraEffects.Shake(damageData.duration, damageData.speed, damageData.amount);
+                    ComponentCameraEffects.Shake(damageData.duration, damageData.speed, damageData.amount);
 
                 if (damageData.hitSounds.Length > 0)
                     receiverHandler.PlaySound(damageData.hitSounds[UnityEngine.Random.Range(0, damageData.hitSounds.Length)], damageData.audioMixerGroup, damageData.volumeScale);

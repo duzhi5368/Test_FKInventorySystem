@@ -23,7 +23,7 @@ namespace FKGame.InventorySystem
         [SerializeField]
         private List<ArgumentVariable> m_Arguments = new List<ArgumentVariable>();
         [SerializeField]
-        private NotificationOptions m_FailureNotification = null;
+        private UINotificationOptions m_FailureNotification = null;
 
         private GameObject m_TargetObject;
 

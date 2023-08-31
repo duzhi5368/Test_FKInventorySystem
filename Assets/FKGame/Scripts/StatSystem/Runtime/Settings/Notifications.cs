@@ -8,7 +8,7 @@ namespace FKGame.StatSystem
 {
     public static class NotificationExtension
     {
-        public static void Show(this NotificationOptions options, UnityAction<int> result, params string[] buttons)
+        public static void Show(this UINotificationOptions options, UnityAction<int> result, params string[] buttons)
         {
             if (StatsManager.UI.dialogBox != null)
             {
@@ -16,7 +16,7 @@ namespace FKGame.StatSystem
             }
         }
 
-        public static void Show(this NotificationOptions options, params string[] replacements)
+        public static void Show(this UINotificationOptions options, params string[] replacements)
         {
             if (StatsManager.UI.notification != null)
             {

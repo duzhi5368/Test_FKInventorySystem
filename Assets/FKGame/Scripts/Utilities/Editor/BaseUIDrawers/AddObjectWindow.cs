@@ -201,7 +201,7 @@ namespace FKGame
         {
             Element root = new Element(ObjectNames.NicifyVariableName(this.m_Type.Name), "");
 
-             Type[] types = AppDomain.CurrentDomain.GetAssemblies().SelectMany(assembly => assembly.GetTypes()).Where(type => (IsAssignableToGenericType(type,this.m_Type) || this.m_Type.IsAssignableFrom(type)) && !type.IsAbstract && !type.HasAttribute(typeof(ExcludeFromCreation))).ToArray();
+             Type[] types = AppDomain.CurrentDomain.GetAssemblies().SelectMany(assembly => assembly.GetTypes()).Where(type => (IsAssignableToGenericType(type,this.m_Type) || this.m_Type.IsAssignableFrom(type)) && !type.IsAbstract && !type.HasAttribute(typeof(ExcludeFromCreationAttribute))).ToArray();
             types = types.OrderBy(x => x.BaseType.Name).ToArray();
             foreach (Type type in types)
             {

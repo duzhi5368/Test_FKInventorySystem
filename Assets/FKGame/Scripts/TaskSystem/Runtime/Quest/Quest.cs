@@ -75,7 +75,7 @@ namespace FKGame.QuestSystem
         }
 
         [SerializeReference]
-        public List<Reward> rewards = new List<Reward>();
+        public List<QuestReward> rewards = new List<QuestReward>();
 
         [HeaderLine(LanguagesMacro.TASKS)]
         [SerializeField]
@@ -143,7 +143,7 @@ namespace FKGame.QuestSystem
         public bool CanActivate() {
             for (int i = 0; i < conditions.Count; i++) {
                 ICondition condition = conditions[i];
-                condition.Initialize(QuestManager.current.PlayerInfo.gameObject, QuestManager.current.PlayerInfo, QuestManager.current.PlayerInfo.gameObject.GetComponent<Blackboard>());
+                condition.Initialize(QuestManager.current.PlayerInfo.gameObject, QuestManager.current.PlayerInfo, QuestManager.current.PlayerInfo.gameObject.GetComponent<ComponentBlackboard>());
                 condition.OnStart();
                 if (condition.OnUpdate() == ActionStatus.Failure)
                 {

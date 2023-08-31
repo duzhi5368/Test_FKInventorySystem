@@ -23,14 +23,14 @@ namespace FKGame.StatSystem.Configuration
         public string dialogBoxName = "Dialog Box";
 
 
-        private Notification m_Notification;
-        public Notification notification
+        private UINotification m_Notification;
+        public UINotification notification
         {
             get
             {
                 if (this.m_Notification == null)
                 {
-                    this.m_Notification = WidgetUtility.Find<Notification>(this.notificationName);
+                    this.m_Notification = WidgetUtility.Find<UINotification>(this.notificationName);
                     Debug.Log(this.m_Notification);
                 }
                 Assert.IsNotNull(this.m_Notification, "Notification widget with name " + this.notificationName + " is not present in scene.");
@@ -38,14 +38,14 @@ namespace FKGame.StatSystem.Configuration
             }
         }
 
-        private DialogBox m_DialogBox;
-        public DialogBox dialogBox
+        private UIDialogBox m_DialogBox;
+        public UIDialogBox dialogBox
         {
             get
             {
                 if (this.m_DialogBox == null)
                 {
-                    this.m_DialogBox = WidgetUtility.Find<DialogBox>(this.dialogBoxName);
+                    this.m_DialogBox = WidgetUtility.Find<UIDialogBox>(this.dialogBoxName);
                 }
                 Assert.IsNotNull(this.m_DialogBox, "DialogBox widget with name " + this.dialogBoxName + " is not present in scene.");
                 return this.m_DialogBox;

@@ -9,7 +9,7 @@ using UnityEngine;
 //------------------------------------------------------------------------
 namespace FKGame
 {
-    [CustomEditor(typeof(Blackboard),true)]
+    [CustomEditor(typeof(ComponentBlackboard),true)]
     public class BlackboardInspector : Editor
     {
         protected SerializedProperty m_Variables;
@@ -55,7 +55,7 @@ namespace FKGame
                 }
                 else
                 {
-                    Type[] types = AppDomain.CurrentDomain.GetAssemblies().SelectMany(assembly => assembly.GetTypes()).Where(x => typeof(Variable).IsAssignableFrom(x) && !x.IsAbstract && !x.HasAttribute(typeof(ExcludeFromCreation))).ToArray();
+                    Type[] types = AppDomain.CurrentDomain.GetAssemblies().SelectMany(assembly => assembly.GetTypes()).Where(x => typeof(Variable).IsAssignableFrom(x) && !x.IsAbstract && !x.HasAttribute(typeof(ExcludeFromCreationAttribute))).ToArray();
                     types = types.OrderBy(x => x.BaseType.Name).ToArray();
 
                     GenericMenu menu = new GenericMenu();
@@ -143,7 +143,7 @@ namespace FKGame
             };
             this.m_VariableList.onAddCallback = (ReorderableList list) => {
 
-                Type[] types = AppDomain.CurrentDomain.GetAssemblies().SelectMany(assembly => assembly.GetTypes()).Where(x => typeof(Variable).IsAssignableFrom(x) && !x.IsAbstract && !x.HasAttribute(typeof(ExcludeFromCreation))).ToArray();
+                Type[] types = AppDomain.CurrentDomain.GetAssemblies().SelectMany(assembly => assembly.GetTypes()).Where(x => typeof(Variable).IsAssignableFrom(x) && !x.IsAbstract && !x.HasAttribute(typeof(ExcludeFromCreationAttribute))).ToArray();
                 types = types.OrderBy(x => x.BaseType.Name).ToArray();
 
                 GenericMenu menu = new GenericMenu();

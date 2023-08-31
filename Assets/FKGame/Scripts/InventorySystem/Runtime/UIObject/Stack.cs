@@ -3,19 +3,19 @@ using FKGame.UIWidgets;
 //------------------------------------------------------------------------
 namespace FKGame.InventorySystem
 {
-    [RequireComponent(typeof(Spinner))]
+    [RequireComponent(typeof(ComponentSpinner))]
     public class Stack : UIWidget
     {
         [HideInInspector]
         public Item item;
         private Canvas canvas;
-        private Spinner spinner;
+        private ComponentSpinner spinner;
         
         protected override void OnAwake()
         {
             base.OnAwake();
             this.canvas = GetComponentInParent<Canvas>();
-            this.spinner = GetComponent<Spinner>();
+            this.spinner = GetComponent<ComponentSpinner>();
         }
 
         public void SetItem(Item item)
@@ -40,7 +40,7 @@ namespace FKGame.InventorySystem
                 newItem.Rarity = item.Rarity;
                 newItem.Stack = amount;
                 item = newItem;
-                UICursor.Set(item.Icon);
+                ComponentUICursor.Set(item.Icon);
                 base.Close();
             }
         }

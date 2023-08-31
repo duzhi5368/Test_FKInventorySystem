@@ -7,7 +7,7 @@ using UnityEngine;
 //------------------------------------------------------------------------
 namespace FKGame
 {
-    [CustomEditor(typeof(AudioEventListener))]
+    [CustomEditor(typeof(ComponentAudioEventListener))]
     public class AudioEventListenerInspector : Editor
     {
         private SerializedProperty m_Script;

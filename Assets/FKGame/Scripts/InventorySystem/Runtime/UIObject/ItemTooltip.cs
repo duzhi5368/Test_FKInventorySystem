@@ -2,7 +2,7 @@
 //------------------------------------------------------------------------
 namespace FKGame.InventorySystem
 {
-    public class ItemTooltip : Tooltip
+    public class ItemTooltip : UITooltip
     {
         public void Show(Item item)
         {

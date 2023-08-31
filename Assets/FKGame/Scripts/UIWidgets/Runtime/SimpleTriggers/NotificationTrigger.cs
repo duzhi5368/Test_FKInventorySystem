@@ -5,15 +5,15 @@ using FKGame.UIWidgets;
 // 提示信息窗
 //------------------------------------------------------------------------
 public class NotificationTrigger : MonoBehaviour {
-	private Notification m_Notification;
-	public NotificationOptions[] options;
+	private UINotification m_Notification;
+	public UINotificationOptions[] options;
 
 	private void Start(){
-		this.m_Notification = WidgetUtility.Find<Notification> ("Notification");
+		this.m_Notification = WidgetUtility.Find<UINotification> ("Notification");
 	}
 
 	public void AddRandomNotification(){
-		NotificationOptions option=options[Random.Range(0,options.Length)];
+		UINotificationOptions option=options[Random.Range(0,options.Length)];
 		m_Notification.AddItem(option);
 	}
 
@@ -22,7 +22,7 @@ public class NotificationTrigger : MonoBehaviour {
 	}
 
 	public void AddNotification(float index){
-		NotificationOptions option = options [Mathf.RoundToInt (index)];
+		UINotificationOptions option = options [Mathf.RoundToInt (index)];
 		m_Notification.AddItem (option);
 	}
 }

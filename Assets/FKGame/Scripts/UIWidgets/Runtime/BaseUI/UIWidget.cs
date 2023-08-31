@@ -9,7 +9,7 @@ using System.Collections.Generic;
 namespace FKGame.UIWidgets
 {
 	[RequireComponent(typeof(CanvasGroup))]
-	public class UIWidget : CallbackHandler
+	public class UIWidget : ComponentCallbackHandler
 	{
 		[Tooltip("组件名称，可通过 WidgetUtility.Find<T>(name) 进行按名称和分类进行搜索")]
 		[SerializeField]
@@ -111,7 +111,7 @@ namespace FKGame.UIWidgets
 
 		private void Awake ()
 		{
-			WidgetInputHandler.RegisterInput(this.m_KeyCode, this);
+			ComponentWidgetInputHandler.RegisterInput(this.m_KeyCode, this);
 			m_RectTransform = GetComponent<RectTransform> ();
 			m_CanvasGroup = GetComponent<CanvasGroup> ();
 			this.m_Scrollbars = GetComponentsInChildren<Scrollbar>();
@@ -304,7 +304,7 @@ namespace FKGame.UIWidgets
 		}
 
 		protected virtual void OnDestroy() {
-			WidgetInputHandler.UnregisterInput(this.m_KeyCode, this);
+			ComponentWidgetInputHandler.UnregisterInput(this.m_KeyCode, this);
 		}
 
 		public void Lock(bool state)

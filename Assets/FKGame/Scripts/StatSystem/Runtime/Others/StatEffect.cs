@@ -27,7 +27,7 @@ namespace FKGame.StatSystem
         public void Initialize(StatsHandler handler)
         {
             this.m_Handler = handler;
-            this.m_Sequence = new Sequence(handler.gameObject, new PlayerInfo("Player"), handler.GetComponent<Blackboard>(), this.m_Actions.ToArray());
+            this.m_Sequence = new Sequence(handler.gameObject, new PlayerInfo("Player"), handler.GetComponent<ComponentBlackboard>(), this.m_Actions.ToArray());
             this.m_Sequence.Start();
         }
 

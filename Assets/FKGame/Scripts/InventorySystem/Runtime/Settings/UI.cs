@@ -29,25 +29,25 @@ namespace FKGame.InventorySystem.Configuration
         [InspectorLabel("Notification", "Name of Notification widget.")]
         public string dialogBoxName = "Dialog Box";
 
-        private Notification m_Notification;
-        public Notification notification {
+        private UINotification m_Notification;
+        public UINotification notification {
             get {
                 if (this.m_Notification == null) {
-                    this.m_Notification = WidgetUtility.Find<Notification>(this.notificationName);
+                    this.m_Notification = WidgetUtility.Find<UINotification>(this.notificationName);
                 }
                 Assert.IsNotNull(this.m_Notification, "Notification widget with name "+this.notificationName+" is not present in scene.");
                 return this.m_Notification;
             }
         }
 
-        private Tooltip m_Tooltip;
-        public Tooltip tooltip
+        private UITooltip m_Tooltip;
+        public UITooltip tooltip
         {
             get
             {
                 if (this.m_Tooltip == null)
                 {
-                    this.m_Tooltip = WidgetUtility.Find<Tooltip>(this.tooltipName);
+                    this.m_Tooltip = WidgetUtility.Find<UITooltip>(this.tooltipName);
                 }
                 Assert.IsNotNull(this.m_Tooltip, "Tooltip widget with name " + this.tooltipName + " is not present in scene.");
                 return this.m_Tooltip;
@@ -81,28 +81,28 @@ namespace FKGame.InventorySystem.Configuration
             }
         }
 
-        private UIWidgets.ContextMenu m_ContextMenu;
-        public UIWidgets.ContextMenu contextMenu
+        private UIWidgets.UIContextMenu m_ContextMenu;
+        public UIWidgets.UIContextMenu contextMenu
         {
             get
             {
                 if (this.m_ContextMenu == null)
                 {
-                    this.m_ContextMenu = WidgetUtility.Find<UIWidgets.ContextMenu>(this.contextMenuName);
+                    this.m_ContextMenu = WidgetUtility.Find<UIWidgets.UIContextMenu>(this.contextMenuName);
                 }
                 Assert.IsNotNull(this.m_ContextMenu, "ConextMenu widget with name " + this.contextMenuName + " is not present in scene.");
                 return this.m_ContextMenu;
             }
         }
 
-        private UIWidgets.DialogBox m_DialogBox;
-        public UIWidgets.DialogBox dialogBox
+        private UIWidgets.UIDialogBox m_DialogBox;
+        public UIWidgets.UIDialogBox dialogBox
         {
             get
             {
                 if (this.m_DialogBox == null)
                 {
-                    this.m_DialogBox = WidgetUtility.Find<UIWidgets.DialogBox>(this.dialogBoxName);
+                    this.m_DialogBox = WidgetUtility.Find<UIWidgets.UIDialogBox>(this.dialogBoxName);
                 }
                 Assert.IsNotNull(this.m_DialogBox, "DialogBox widget with name " + this.dialogBoxName + " is not present in scene.");
                 return this.m_DialogBox;

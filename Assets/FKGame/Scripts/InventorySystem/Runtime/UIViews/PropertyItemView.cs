@@ -7,9 +7,9 @@ namespace FKGame.InventorySystem
     public class PropertyItemView : ItemView
     {
         [SerializeField]
-        protected StringPairSlot m_SlotPrefab;
+        protected ComponentStringPairSlot m_SlotPrefab;
 
-        protected List<StringPairSlot> m_SlotCache = new List<StringPairSlot>();
+        protected List<ComponentStringPairSlot> m_SlotCache = new List<ComponentStringPairSlot>();
 
         public override void Repaint(Item item)
         {
@@ -31,7 +31,7 @@ namespace FKGame.InventorySystem
                         }
                         for (int i = 0; i < pairs.Count; i++)
                         {
-                            StringPairSlot slot = this.m_SlotCache[i];
+                            ComponentStringPairSlot slot = this.m_SlotCache[i];
                             slot.gameObject.SetActive(true);
                             slot.Target = pairs[i];
                         }
@@ -40,14 +40,14 @@ namespace FKGame.InventorySystem
                 }
             }
         }
-        protected virtual StringPairSlot CreateSlot()
+        protected virtual ComponentStringPairSlot CreateSlot()
         {
             if (this.m_SlotPrefab != null)
             {
                 GameObject go = (GameObject)Instantiate(this.m_SlotPrefab.gameObject);
                 go.SetActive(true);
                 go.transform.SetParent(this.m_SlotPrefab.transform.parent, false);
-                StringPairSlot slot = go.GetComponent<StringPairSlot>();
+                ComponentStringPairSlot slot = go.GetComponent<ComponentStringPairSlot>();
                 this.m_SlotCache.Add(slot);
 
                 return slot;

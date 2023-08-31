@@ -7,11 +7,11 @@ using UnityEngine.EventSystems;
 public class RadialMenuTrigger : MonoBehaviour, IPointerDownHandler
 { 
     public Sprite[] menuIcons;
-    private RadialMenu m_RadialMenu;
+    private UIRadialMenu m_RadialMenu;
 
     private void Start()
     {
-        this.m_RadialMenu = WidgetUtility.Find<RadialMenu>("RadialMenu");
+        this.m_RadialMenu = WidgetUtility.Find<UIRadialMenu>("RadialMenu");
     }
 
     public void OnPointerDown(PointerEventData eventData)

@@ -7,7 +7,7 @@ namespace FKGame.QuestSystem
 {
     public static class NotificationExtension
     {
-        public static void Show(this NotificationOptions options, UnityAction<int> result, params string[] buttons)
+        public static void Show(this UINotificationOptions options, UnityAction<int> result, params string[] buttons)
         {
             if (QuestManager.UI.dialogBox != null)
             {
@@ -15,7 +15,7 @@ namespace FKGame.QuestSystem
             }
         }
 
-        public static void Show(this NotificationOptions options, params string[] replacements)
+        public static void Show(this UINotificationOptions options, params string[] replacements)
         {
             if (QuestManager.UI.notification != null)
             {
@@ -38,32 +38,32 @@ namespace FKGame.QuestSystem
             }
         }
         [Header(LanguagesMacro.TRIGGER_HEADER)]
-        public NotificationOptions toFarAway = new NotificationOptions()
+        public UINotificationOptions toFarAway = new UINotificationOptions()
         {
             text = LanguagesMacro.TO_FAR_AWAY_NOTIFICATION
         };
-        public NotificationOptions inUse = new NotificationOptions()
+        public UINotificationOptions inUse = new UINotificationOptions()
         {
             text = LanguagesMacro.IN_USE_NOTIFICATION
         };
         [Header(LanguagesMacro.QUEST_HEADER)]
-        public NotificationOptions questCompleted = new NotificationOptions()
+        public UINotificationOptions questCompleted = new UINotificationOptions()
         {
             text = "{0} 任务已完成"
         };
-        public NotificationOptions questFailed = new NotificationOptions()
+        public UINotificationOptions questFailed = new UINotificationOptions()
         {
             text = "{0} 任务失败"
         };
-        public NotificationOptions taskCompleted = new NotificationOptions()
+        public UINotificationOptions taskCompleted = new UINotificationOptions()
         {
             text = "{0} 任务已完成"
         };
-        public NotificationOptions taskFailed = new NotificationOptions()
+        public UINotificationOptions taskFailed = new UINotificationOptions()
         {
             text = "{0} 任务失败"
         };
-        public NotificationOptions cancelQuest= new NotificationOptions()
+        public UINotificationOptions cancelQuest= new UINotificationOptions()
         {
             title = LanguagesMacro.CANCEL_QUEST,
             text = LanguagesMacro.ARE_YOU_SURE_CANCEL_QUEST

@@ -5,9 +5,9 @@ namespace FKGame.StatSystem
     {
         protected override StatsHandler GetStatsHandler()
         {
-            if (SelectableObject.current != null)
+            if (ComponentSelectableObject.current != null)
             {
-                return SelectableObject.current.GetComponent<StatsHandler>();
+                return ComponentSelectableObject.current.GetComponent<StatsHandler>();
 
             }
             return null;

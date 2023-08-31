@@ -10,14 +10,14 @@ namespace FKGame.InventorySystem
         [SerializeField]
         private Skill m_Skill = null;
         [SerializeField]
-        private ConditionType m_Condition = ConditionType.Greater;
+        private ActionConditionType m_Condition = ActionConditionType.Greater;
         [Range(0f,100f)]
         [SerializeField]
         private float m_Value = 0f;
         [SerializeField]
-        private NotificationOptions m_SuccessNotification = null;
+        private UINotificationOptions m_SuccessNotification = null;
         [SerializeField]
-        private NotificationOptions m_FailureNotification = null;
+        private UINotificationOptions m_FailureNotification = null;
 
         public override ActionStatus OnUpdate()
         {
@@ -36,13 +36,13 @@ namespace FKGame.InventorySystem
         {
             switch (this.m_Condition)
             {
-                case ConditionType.Greater:
+                case ActionConditionType.Greater:
                     return value > this.m_Value;
-                case ConditionType.GreaterOrEqual:
+                case ActionConditionType.GreaterOrEqual:
                     return value >= this.m_Value;
-                case ConditionType.Less:
+                case ActionConditionType.Less:
                     return value < this.m_Value;
-                case ConditionType.LessOrEqual:
+                case ActionConditionType.LessOrEqual:
                     return value <= this.m_Value;
             }
             return false;

@@ -75,7 +75,7 @@ namespace FKGame.InventorySystem
             for (int i = 0; i < conditions.Count; i++)
             {
                 ICondition condition = conditions[i];
-                condition.Initialize(InventoryManager.current.PlayerInfo.gameObject, InventoryManager.current.PlayerInfo, InventoryManager.current.PlayerInfo.gameObject.GetComponent<Blackboard>());
+                condition.Initialize(InventoryManager.current.PlayerInfo.gameObject, InventoryManager.current.PlayerInfo, InventoryManager.current.PlayerInfo.gameObject.GetComponent<ComponentBlackboard>());
                 condition.OnStart();
                 if (condition.OnUpdate() == ActionStatus.Failure)
                 {

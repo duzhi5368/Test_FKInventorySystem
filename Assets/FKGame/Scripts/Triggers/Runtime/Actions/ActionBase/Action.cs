@@ -21,13 +21,13 @@ namespace FKGame
 
         protected PlayerInfo playerInfo;
         protected GameObject gameObject;
-        protected Blackboard blackboard;
+        protected ComponentBlackboard blackboard;
 
         public Action() {
             this.m_Type = GetType().FullName;
         }
 
-        public void Initialize(GameObject gameObject, PlayerInfo playerInfo, Blackboard blackboard) {
+        public void Initialize(GameObject gameObject, PlayerInfo playerInfo, ComponentBlackboard blackboard) {
             this.gameObject = gameObject;
             this.playerInfo = playerInfo;
             this.blackboard = blackboard; 

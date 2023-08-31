@@ -11,11 +11,11 @@ public class DialogBoxTrigger : MonoBehaviour
     public Sprite icon;
     public string[] options;
 
-    private DialogBox m_DialogBox;
+    private UIDialogBox m_DialogBox;
 
     private void Start()
     {
-        this.m_DialogBox = FindObjectOfType<DialogBox>();   
+        this.m_DialogBox = FindObjectOfType<UIDialogBox>();   
     }
 
     public void Show() {

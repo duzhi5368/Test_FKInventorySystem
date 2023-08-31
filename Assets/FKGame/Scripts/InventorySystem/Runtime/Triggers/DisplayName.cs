@@ -30,8 +30,8 @@ namespace FKGame.InventorySystem
         private void Start()
         {
             m_Trigger = GetComponent<BaseTrigger>();
-            EventHandler.Register(gameObject, "OnPointerEnterTrigger", OnPointerEnterTrigger);
-            EventHandler.Register(gameObject, "OnPointerExitTrigger", OnPointerExitTrigger);
+            ComponentEventHandler.Register(gameObject, "OnPointerEnterTrigger", OnPointerEnterTrigger);
+            ComponentEventHandler.Register(gameObject, "OnPointerExitTrigger", OnPointerExitTrigger);
             if (this.m_DisplayType.HasFlag<DisplayNameType>(DisplayNameType.Always))
                 DoDisplayName(true);
         }

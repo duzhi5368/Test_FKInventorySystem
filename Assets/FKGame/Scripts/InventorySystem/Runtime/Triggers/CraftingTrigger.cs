@@ -59,15 +59,15 @@ namespace FKGame.InventorySystem
         protected bool m_IsCrafting;
         protected float m_ProgressDuration;
         protected float m_ProgressInitTime;
-        protected Progressbar m_Progressbar;
-        protected Spinner m_AmountSpinner;
+        protected UIProgressbar m_Progressbar;
+        protected ComponentSpinner m_AmountSpinner;
 
         protected override void Start()
         {
             base.Start();
             this.m_ResultStorageContainer = WidgetUtility.Find<ItemContainer>(this.m_StorageWindow);
             this.m_RequiredIngredientsContainer = WidgetUtility.Find<ItemContainer>(this.m_IngredientsWindow);
-            this.m_Progressbar = WidgetUtility.Find<Progressbar>(this.m_CraftingProgressbar);
+            this.m_Progressbar = WidgetUtility.Find<UIProgressbar>(this.m_CraftingProgressbar);
 
             ItemContainer container = GetComponent<ItemContainer>();
             if (container != null) {
@@ -80,7 +80,7 @@ namespace FKGame.InventorySystem
         {
             if (Trigger.currentUsedWindow == item.Container && !slot.MoveItem())
             {
-                this.m_AmountSpinner = Trigger.currentUsedWindow.GetComponentInChildren<Spinner>();
+                this.m_AmountSpinner = Trigger.currentUsedWindow.GetComponentInChildren<ComponentSpinner>();
                 if (this.m_AmountSpinner != null)
                 {
                     this.m_AmountSpinner.min = 1;

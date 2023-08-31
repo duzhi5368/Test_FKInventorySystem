@@ -31,7 +31,7 @@ public class TestButton1 : MonoBehaviour
         }
     }
 
-    public UtilityBehavior utilityBehavior;
+    public ComponentUtilityBehavior utilityBehavior;
     private List<MyTestObj> m_MyTestObjList;
 
     void Start()
@@ -50,7 +50,7 @@ public class TestButton1 : MonoBehaviour
     public void OnButton1Click()
     {
         //utilityBehavior.QuitApplication();
-        CameraEffects.Shake();
+        ComponentCameraEffects.Shake();
 
         string testObjStr = JsonSerializer.Serialize(m_MyTestObjList.ToArray());
         Debug.Log(testObjStr);

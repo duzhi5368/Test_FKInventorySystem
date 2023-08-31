@@ -2,7 +2,7 @@
 //------------------------------------------------------------------------
 namespace FKGame.InventorySystem
 {
-    public abstract class VisibleItem : CallbackHandler
+    public abstract class VisibleItem : ComponentCallbackHandler
     {
         public override string[] Callbacks => new string[] { "OnEquip", "OnUnEquip" };
 

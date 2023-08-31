@@ -42,7 +42,7 @@ namespace FKGame
             this.m_TriggerEvents = list.ToArray();
             if(actionTemplate != null)
                 actionTemplate = Instantiate(actionTemplate);
-            this.m_ActionBehavior = new Sequence(gameObject, PlayerInfo, GetComponent<Blackboard>(), actionTemplate != null? actionTemplate.actions.ToArray() : actions.ToArray());
+            this.m_ActionBehavior = new Sequence(gameObject, PlayerInfo, GetComponent<ComponentBlackboard>(), actionTemplate != null? actionTemplate.actions.ToArray() : actions.ToArray());
         }
 
         protected override void Update()
@@ -159,7 +159,7 @@ namespace FKGame
         }
         protected IEnumerator SequenceCoroutine(Action[] actions)
         {
-            Sequence sequence = new Sequence(gameObject, PlayerInfo, GetComponent<Blackboard>(), actions);
+            Sequence sequence = new Sequence(gameObject, PlayerInfo, GetComponent<ComponentBlackboard>(), actions);
             sequence.Start();
             while (sequence.Tick())
             {

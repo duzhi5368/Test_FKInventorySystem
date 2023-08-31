@@ -13,7 +13,7 @@ namespace FKGame
         private readonly IAction[] m_AllActions;
         private IAction[] m_Actions;
 
-        public Sequence(GameObject gameObject, PlayerInfo playerInfo, Blackboard blackboard, IAction[] actions) {
+        public Sequence(GameObject gameObject, PlayerInfo playerInfo, ComponentBlackboard blackboard, IAction[] actions) {
             this.m_AllActions = actions;
             for (int i = 0; i < this.m_AllActions.Length; i++)
             {

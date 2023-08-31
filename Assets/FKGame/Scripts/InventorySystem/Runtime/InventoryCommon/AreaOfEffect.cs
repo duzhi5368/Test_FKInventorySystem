@@ -26,7 +26,7 @@ namespace FKGame.InventorySystem
                 colliders = colliders.Where(x => x.GetComponent("StatsHandler") != null).ToArray();
                 for (int i = 0; i < colliders.Length; i++)
                 {
-                    EventHandler.Execute(InventoryManager.current.PlayerInfo.gameObject, "SendDamage", colliders[i].gameObject, this.m_Data);
+                    ComponentEventHandler.Execute(InventoryManager.current.PlayerInfo.gameObject, "SendDamage", colliders[i].gameObject, this.m_Data);
                 }
                 yield return new WaitForSeconds(this.m_RepeatDelay);
             }

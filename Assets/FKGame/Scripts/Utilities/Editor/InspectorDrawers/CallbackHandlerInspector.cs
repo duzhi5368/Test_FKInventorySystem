@@ -10,7 +10,7 @@ using UnityEngine;
 //------------------------------------------------------------------------
 namespace FKGame
 {
-	[CustomEditor(typeof(CallbackHandler), true)]
+	[CustomEditor(typeof(ComponentCallbackHandler), true)]
 	public class CallbackHandlerInspector : Editor {
 		protected GUIContent addButtonContent;
 		protected GUIContent[] eventCallbackTypes;
@@ -59,7 +59,7 @@ namespace FKGame
             this.m_DelegatesProperty = base.serializedObject.FindProperty("delegates");
 			this.addButtonContent = new GUIContent (LanguagesMacro.ADD_NEW_CALLBACK);
 			this.eventCallbackName = new GUIContent(string.Empty);
-			string[] names = (target as CallbackHandler).Callbacks;
+			string[] names = (target as ComponentCallbackHandler).Callbacks;
 			this.eventCallbackTypes = new GUIContent[(int)names.Length];
 			for (int i = 0; i < (int)names.Length; i++)
 			{

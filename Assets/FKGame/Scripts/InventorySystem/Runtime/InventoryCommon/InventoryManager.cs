@@ -297,7 +297,7 @@ namespace FKGame.InventorySystem
         public static void Serialize(ref string uiData, ref string sceneData) {
             List<MonoBehaviour> results = new List<MonoBehaviour>();
             UnityEngine.SceneManagement.SceneManager.GetActiveScene().GetRootGameObjects().ToList().ForEach(g => results.AddRange(g.GetComponentsInChildren<MonoBehaviour>(true)));
-            SingleInstance.GetInstanceObjects().ForEach(g => results.AddRange(g.GetComponentsInChildren<MonoBehaviour>(true)));
+            ComponentSingleInstance.GetInstanceObjects().ForEach(g => results.AddRange(g.GetComponentsInChildren<MonoBehaviour>(true)));
 
             ItemCollection[] serializables = results.OfType<ItemCollection>().Where(x => x.saveable).ToArray();
             IJsonSerializable[] ui = serializables.Where(x => x.GetComponent<ItemContainer>() != null).ToArray();

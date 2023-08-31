@@ -5,7 +5,7 @@ namespace FKGame
     [UnityEngine.Scripting.APIUpdating.MovedFromAttribute(true, null, "Assembly-CSharp")]
     public interface IAction
     {
-        void Initialize(GameObject gameObject, PlayerInfo playerInfo, Blackboard blackboard);
+        void Initialize(GameObject gameObject, PlayerInfo playerInfo, ComponentBlackboard blackboard);
 
         bool isActiveAndEnabled { get; }
         void OnSequenceStart();

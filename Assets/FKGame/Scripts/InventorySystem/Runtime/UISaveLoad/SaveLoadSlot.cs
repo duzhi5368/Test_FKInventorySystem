@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.EventSystems;
 using FKGame.UIWidgets;
-using ContextMenu = FKGame.UIWidgets.ContextMenu;
+using UIContextMenu = FKGame.UIWidgets.UIContextMenu;
 using UnityEngine.UI;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,11 +14,11 @@ namespace FKGame.InventorySystem
         public void OnPointerUp(PointerEventData eventData)
         {
             string key = GetComponentInChildren<Text>().text;
-            DialogBox dialogBox = InventoryManager.UI.dialogBox;
+            UIDialogBox dialogBox = InventoryManager.UI.dialogBox;
 
             if (eventData.button == PointerEventData.InputButton.Right)
             {
-                ContextMenu menu = InventoryManager.UI.contextMenu;
+                UIContextMenu menu = InventoryManager.UI.contextMenu;
                 menu.Clear();
                 menu.AddMenuItem("Load", () => {
                     dialogBox.Show("Load", "Are you sure you want to load this save? ", null, (int result) => {

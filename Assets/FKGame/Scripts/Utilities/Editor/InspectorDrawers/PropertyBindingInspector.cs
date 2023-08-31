@@ -8,7 +8,7 @@ using System.Reflection;
 //------------------------------------------------------------------------
 namespace FKGame
 {
-	[CustomEditor(typeof(PropertyBinding))]
+	[CustomEditor(typeof(ComponentPropertyBinding))]
 	public class PropertyBindingInspector : Editor {
 		private SerializedProperty execution;
 		private SerializedProperty interval;

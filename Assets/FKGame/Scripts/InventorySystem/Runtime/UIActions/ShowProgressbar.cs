@@ -17,12 +17,12 @@ namespace FKGame.InventorySystem
         private float  m_Duration = 1f;
 
         private float m_Time = 0f;
-        private Progressbar m_Widget;
+        private UIProgressbar m_Widget;
 
         public override void OnStart()
         {
             this.m_Time = 0f;
-            this.m_Widget = WidgetUtility.Find<Progressbar>(this.m_WidgetName);
+            this.m_Widget = WidgetUtility.Find<UIProgressbar>(this.m_WidgetName);
             if (this.m_Widget == null)
             {
                 Debug.LogWarning("Missing progressbar widget " + this.m_WidgetName + " in scene!");

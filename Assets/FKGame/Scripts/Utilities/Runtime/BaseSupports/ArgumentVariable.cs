@@ -3,6 +3,19 @@ using UnityEngine;
 //------------------------------------------------------------------------
 namespace FKGame
 {
+    public enum ArgumentType
+    {
+        None,
+        Bool,
+        Int,
+        Float,
+        String,
+        Vector2,
+        Vector3,
+        Color,
+        Object
+    }
+
     [System.Serializable]
     public class ArgumentVariable
     {
@@ -89,18 +102,5 @@ namespace FKGame
                     return string.Empty;
             }
         }
-    }
-
-    public enum ArgumentType
-    {
-        None,
-        Bool,
-        Int,
-        Float,
-        String,
-        Vector2,
-        Vector3,
-        Color,
-        Object
     }
 }

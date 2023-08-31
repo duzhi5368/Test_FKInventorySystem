@@ -40,10 +40,10 @@ namespace FKGame
                 if (m_LastCameraHit != current)
                 {
                     if(this.m_LastCameraHit != null)
-                        EventHandler.Execute(this.m_LastCameraHit, "OnPointerExitTrigger");
+                        ComponentEventHandler.Execute(this.m_LastCameraHit, "OnPointerExitTrigger");
 
                     m_LastCameraHit = current;
-                    EventHandler.Execute(m_LastCameraHit, "OnPointerEnterTrigger");
+                    ComponentEventHandler.Execute(m_LastCameraHit, "OnPointerEnterTrigger");
                 }
                 int button = -1;
                 if (Input.GetMouseButtonDown(0))
@@ -56,7 +56,7 @@ namespace FKGame
                 if (button != -1)
                 {
                     m_LastCameraHit = current;
-                    EventHandler.Execute<int>(m_LastCameraHit, "OnPoinerClickTrigger", button);
+                    ComponentEventHandler.Execute<int>(m_LastCameraHit, "OnPoinerClickTrigger", button);
                 }
                 
                 TriggerRaycaster.m_PointerOverTrigger = true;
@@ -65,7 +65,7 @@ namespace FKGame
             {
                 if (m_LastCameraHit != null)
                 {
-                    EventHandler.Execute(m_LastCameraHit, "OnPointerExitTrigger");
+                    ComponentEventHandler.Execute(m_LastCameraHit, "OnPointerExitTrigger");
                     m_LastCameraHit = null;
                 }
                 TriggerRaycaster.m_PointerOverTrigger = false;

@@ -26,7 +26,7 @@ namespace FKGame.InventorySystem
         [SerializeField]
         private float m_Number = 0f;
         [SerializeField]
-        private NotificationOptions m_FailureNotification = null;
+        private UINotificationOptions m_FailureNotification = null;
 
         private GameObject m_TargetObject;
 

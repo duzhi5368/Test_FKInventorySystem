@@ -95,15 +95,15 @@ namespace FKGame.InventorySystem
         }
 
         private GameObject GetTarget() {
-            if (SelectableObject.current != null)
+            if (ComponentSelectableObject.current != null)
             {
-                if(Vector3.Distance(SelectableObject.current.position,transform.position) < this.m_MaxDistance)
-                    return SelectableObject.current.gameObject;
+                if(Vector3.Distance(ComponentSelectableObject.current.position,transform.position) < this.m_MaxDistance)
+                    return ComponentSelectableObject.current.gameObject;
             }
 
             if (this.m_SelectBestTarget) {
                 Collider[] colliders = Physics.OverlapSphere(transform.position, this.m_MaxDistance);
-                Collider[] selectables = colliders.Where(x => x.GetComponent<SelectableObject>() != null).ToArray();
+                Collider[] selectables = colliders.Where(x => x.GetComponent<ComponentSelectableObject>() != null).ToArray();
 
                 GameObject from = InventoryManager.current.PlayerInfo.gameObject;
                 if (from == null) from =Camera.main.gameObject;
@@ -158,7 +158,7 @@ namespace FKGame.InventorySystem
             this.m_Rigidbody.constraints = RigidbodyConstraints.FreezeAll;
             transform.position = position;
             transform.parent = hit;
-            EventHandler.Execute(InventoryManager.current.PlayerInfo.gameObject, "SendDamage", hit.gameObject, this.m_Data); 
+            ComponentEventHandler.Execute(InventoryManager.current.PlayerInfo.gameObject, "SendDamage", hit.gameObject, this.m_Data); 
             if(this.m_DestroyOnCollision)
                 Destroy(gameObject, this.m_DestroyDelay);
         }

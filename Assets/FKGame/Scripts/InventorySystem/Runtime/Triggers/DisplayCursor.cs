@@ -17,11 +17,11 @@ namespace FKGame.InventorySystem
         {
             if (state)
             {
-                UICursor.Set(this.m_Sprite, this.m_Size, false, this.m_AnimatorState);
+                ComponentUICursor.Set(this.m_Sprite, this.m_Size, false, this.m_AnimatorState);
             }
             else
             {
-                UICursor.Clear();
+                ComponentUICursor.Clear();
             }
         }
 

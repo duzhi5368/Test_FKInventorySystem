@@ -5,7 +5,7 @@ using System.Linq;
 //------------------------------------------------------------------------
 namespace FKGame.InventorySystem
 {
-    public class Slot : CallbackHandler
+    public class Slot : ComponentCallbackHandler
     {
         //Actions to run when the trigger is used.
         [HideInInspector]

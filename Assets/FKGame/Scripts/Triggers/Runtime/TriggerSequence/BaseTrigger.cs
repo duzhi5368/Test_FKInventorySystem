@@ -8,7 +8,7 @@ using UnityEngine.EventSystems;
 namespace FKGame
 {
     [UnityEngine.Scripting.APIUpdating.MovedFromAttribute(true, null, "Assembly-CSharp")]
-    public abstract class BaseTrigger : CallbackHandler
+    public abstract class BaseTrigger : ComponentCallbackHandler
     {
         public abstract PlayerInfo PlayerInfo { get; }
         public override string[] Callbacks
@@ -103,7 +103,7 @@ namespace FKGame
                 triggerType = TriggerInputType.LeftClick;
             }
 
-            EventHandler.Register<int>(gameObject, "OnPoinerClickTrigger", OnPointerTriggerClick);
+            ComponentEventHandler.Register<int>(gameObject, "OnPoinerClickTrigger", OnPointerTriggerClick);
 
             if (gameObject == PlayerInfo.gameObject || this.useDistance == -1) {
                 InRange = true;

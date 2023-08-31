@@ -12,11 +12,11 @@ namespace FKGame.InventorySystem
         [SerializeField]
         private string m_WidgetName = "Notification";
         [SerializeField]
-        private NotificationOptions m_Notification = null;
+        private UINotificationOptions m_Notification = null;
 
         public override ActionStatus OnUpdate()
         {
-            Notification widget = WidgetUtility.Find<Notification>(this.m_WidgetName);
+            UINotification widget = WidgetUtility.Find<UINotification>(this.m_WidgetName);
             if (widget == null)
             {
                 Debug.LogWarning("Missing notification widget " + this.m_WidgetName + " in scene!");

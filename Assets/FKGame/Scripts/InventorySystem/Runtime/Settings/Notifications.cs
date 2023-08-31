@@ -6,7 +6,7 @@ namespace FKGame.InventorySystem
 {
     public static class NotificationExtension
     {
-        public static void Show(this NotificationOptions options, params string[] replacements)
+        public static void Show(this UINotificationOptions options, params string[] replacements)
         {
             if (InventoryManager.UI.notification != null)
             {
@@ -29,107 +29,107 @@ namespace FKGame.InventorySystem.Configuration
             }
         }
         [Header("Container:")]
-        public NotificationOptions containerFull = new NotificationOptions()
+        public UINotificationOptions containerFull = new UINotificationOptions()
         {
             text = "{0} is full!"
         };
 
-        public NotificationOptions failedRestriction = new NotificationOptions()
+        public UINotificationOptions failedRestriction = new UINotificationOptions()
         {
             text = "{0} can't be added to {1}."
         };
 
-        public NotificationOptions missingItem = new NotificationOptions()
+        public UINotificationOptions missingItem = new UINotificationOptions()
         {
             text = "This action requires {0}."
         };
 
-        public NotificationOptions missingCategoryItem = new NotificationOptions()
+        public UINotificationOptions missingCategoryItem = new UINotificationOptions()
         {
             text = "This action requires {0}."
         };
 
-        public NotificationOptions inCooldown = new NotificationOptions()
+        public UINotificationOptions inCooldown = new UINotificationOptions()
         {
             text = "{0} is in cooldown for {1} seconds!"
         };
-        public NotificationOptions selectItem = new NotificationOptions()
+        public UINotificationOptions selectItem = new UINotificationOptions()
         {
             text = "You need to select an item first."
         };
 
         [Header("Crafting:")]
-        public NotificationOptions alreadyCrafting = new NotificationOptions()
+        public UINotificationOptions alreadyCrafting = new UINotificationOptions()
         {
             text = "You are already crafting."
         };
-        public NotificationOptions craftedItem = new NotificationOptions()
+        public UINotificationOptions craftedItem = new UINotificationOptions()
         {
             text = "Successfully crafted {0}"
         };
-        public NotificationOptions missingIngredient = new NotificationOptions()
+        public UINotificationOptions missingIngredient = new UINotificationOptions()
         {
             text = "You don't have all ingredients to craft this item!"
         };
-        public NotificationOptions failedToCraft = new NotificationOptions()
+        public UINotificationOptions failedToCraft = new UINotificationOptions()
         {
             text = "You failed to craft {0}."
         };
 
         [Header("Enchanting:")]
-        public NotificationOptions alreadyEnchanting = new NotificationOptions()
+        public UINotificationOptions alreadyEnchanting = new UINotificationOptions()
         {
             text = "You are already enchating."
         };
-        public NotificationOptions enchantedItem = new NotificationOptions()
+        public UINotificationOptions enchantedItem = new UINotificationOptions()
         {
             text = "Successfully enchanted {0}."
         };
-        public NotificationOptions missingMaterials = new NotificationOptions()
+        public UINotificationOptions missingMaterials = new UINotificationOptions()
         {
             text = "You don't have all materials to enchant this item!"
         };
-        public NotificationOptions failedToEnchant = new NotificationOptions()
+        public UINotificationOptions failedToEnchant = new UINotificationOptions()
         {
             text = "You failed to enchant {0}."
         };
 
 
         [Header("Vendor:")]
-        public NotificationOptions soldItem = new NotificationOptions()
+        public UINotificationOptions soldItem = new UINotificationOptions()
         {
             text = "Sold {0} for {1}."
         };
-        public NotificationOptions boughtItem = new NotificationOptions()
+        public UINotificationOptions boughtItem = new UINotificationOptions()
         {
             text = "Bought {0} for {1}."
         };
-        public NotificationOptions noCurrencyToBuy = new NotificationOptions()
+        public UINotificationOptions noCurrencyToBuy = new UINotificationOptions()
         {
             text = "You don't have enough coins."
         };
 
-        public NotificationOptions cantSellItem = new NotificationOptions()
+        public UINotificationOptions cantSellItem = new UINotificationOptions()
         {
             text = "You can't sell this {0}!"
         };
 
         [Header("Trigger:")]
-        public NotificationOptions toFarAway = new NotificationOptions()
+        public UINotificationOptions toFarAway = new UINotificationOptions()
         {
             text = "This is to far away!"
         };
-        public NotificationOptions inUse = new NotificationOptions()
+        public UINotificationOptions inUse = new UINotificationOptions()
         {
             text = "My life is already fairly busy."
         };
-        public NotificationOptions empty = new NotificationOptions()
+        public UINotificationOptions empty = new UINotificationOptions()
         {
             text = "There is nothing to be found here."
         };
 
         [Header("Skills:")]
-        public NotificationOptions skillGain = new NotificationOptions()
+        public UINotificationOptions skillGain = new UINotificationOptions()
         {
             text = "Your {0} increased by {1}% to {2}%."
         };

@@ -59,8 +59,8 @@ namespace FKGame.InventorySystem
         [SerializeField]
         private string m_SellDialogButton = "Sell";
 
-        private DialogBox m_BuySellDialog;
-        private Spinner m_AmountSpinner;
+        private UIDialogBox m_BuySellDialog;
+        private ComponentSpinner m_AmountSpinner;
         private ItemContainer m_PriceInfo;
 
         private ItemContainer m_PurchasedStorageContainer;
@@ -99,9 +99,9 @@ namespace FKGame.InventorySystem
         protected override void Start()
         {
             base.Start();
-            this.m_BuySellDialog = WidgetUtility.Find<DialogBox>(this.m_BuySellDialogName);
+            this.m_BuySellDialog = WidgetUtility.Find<UIDialogBox>(this.m_BuySellDialogName);
             if (this.m_BuySellDialog != null) {
-               this.m_AmountSpinner = this.m_BuySellDialog.GetComponentInChildren<Spinner>();
+               this.m_AmountSpinner = this.m_BuySellDialog.GetComponentInChildren<ComponentSpinner>();
                this.m_PriceInfo = this.m_BuySellDialog.GetComponentInChildren<ItemContainer>();
             }
             this.m_PurchasedStorageContainer= WidgetUtility.Find<ItemContainer>(this.m_PurchasedStorageWindow);

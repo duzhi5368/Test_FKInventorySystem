@@ -10,9 +10,9 @@ namespace FKGame.InventorySystem
         [SerializeField]
         private Skill m_Skill= null;
         [SerializeField]
-        private NotificationOptions m_SuccessNotification = null;
+        private UINotificationOptions m_SuccessNotification = null;
         [SerializeField]
-        private NotificationOptions m_FailureNotification = null;
+        private UINotificationOptions m_FailureNotification = null;
 
         public override ActionStatus OnUpdate()
         {
