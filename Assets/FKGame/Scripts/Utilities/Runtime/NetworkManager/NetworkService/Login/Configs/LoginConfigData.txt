@@ -1,0 +1,9 @@
+key	loginName	UIIcon	UseItem	Description	LoginClassName	SupportPlatform	CustomInfo
+type	Enum|LoginPlatform	String&Texture	Bool	String&LocalizedLanguage	String	StringArray	String
+note	登录类型名称	UI上显示的图标	是否所有平台都启用当前登录	描述	对接SDK的ClassName	支持平台(使用UnityEngine.RuntimePlatform)	传入的自定义文本
+default	Tourist	null	TRUE	null	null	null	null
+Tourist		CLT_LoginWindow_Tourist		LoginConfigDescription/Tourist			
+GameCenter	Apple	CLT_LoginWindow_GameCenter	FALSE	LoginConfigDescription/GameCenter	GameCenterLoginSDKClass	IPhonePlayer|WindowsEditor	
+AccountLogin	AccountLogin	CLT_LoginWindow_Tourist	FALSE	LoginConfigDescription/AccountLogin		WindowsEditor|Android	
+Google	Google	CLT_LoginWindow_Google	FALSE	LoginConfigDescription/Google			
+FaceBook	FaceBook	CLT_LoginWindow_Facebook	FALSE	LoginConfigDescription/FaceBook			

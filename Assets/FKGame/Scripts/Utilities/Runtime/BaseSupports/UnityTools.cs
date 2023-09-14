@@ -167,6 +167,14 @@ namespace FKGame
             return bounds;
         }
 
+        public static void Swap<QT>(ref QT t1, ref QT t2)
+        {
+
+            QT temp = t1;
+            t1 = t2;
+            t2 = temp;
+        }
+
         public static string KeyToCaption(KeyCode key)
         {
             switch (key)
