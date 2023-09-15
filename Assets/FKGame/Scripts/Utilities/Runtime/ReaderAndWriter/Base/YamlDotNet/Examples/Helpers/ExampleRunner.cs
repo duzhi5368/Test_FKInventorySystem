@@ -2,14 +2,11 @@ using System;
 using System.Collections.Generic;
 using System.Reflection;
 using System.Text;
-
 using UnityEngine;
-using UnityEngine.Serialization;
-
 #if UNITY_EDITOR
 using UnityEditor;
 #endif
-
+//------------------------------------------------------------------------
 namespace YamlDotNet.Samples.Helpers {
     public class ExampleRunner : MonoBehaviour {
 
@@ -31,7 +28,7 @@ namespace YamlDotNet.Samples.Helpers {
             }
 
             public override string ToString() { return output.ToString(); }
-            public          void   Clear()    { output = new StringBuilder(); }
+            public void Clear(){ output = new StringBuilder(); }
         }
 
         public static string[] GetAllTestNames() {

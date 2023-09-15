@@ -134,7 +134,7 @@ namespace FKGame
                 }
                 string fullFileName = fullKeyName.Remove(indexEnd);
                 DataTable data = LoadDataTable(s_currentLanguage, fullFileName);
-                foreach (var item in data.TableIDs)
+                foreach (var item in data.tableIDDict)
                 {
                     try
                     {

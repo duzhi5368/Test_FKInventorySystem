@@ -1,7 +1,7 @@
 ﻿using System.IO;
 using YamlDotNet.Serialization;
 using YamlDotNet.Samples.Helpers;
-
+//------------------------------------------------------------------------
 namespace YamlDotNet.Samples
 {
     public class ConvertYamlToJson
@@ -14,18 +14,18 @@ namespace YamlDotNet.Samples
         }
 
         [Sample(
-            Title = "Convert YAML to JSON",
-            Description = "Shows how to convert a YAML document to JSON."
+            Title = "转换 YAML->JSON 格式",
+            Description = "演示如何将 YAML 文档转换为 JSON 格式."
         )]
         public void Main()
         {
             // convert string/file to YAML object
             var r = new StringReader(@"
-scalar: a scalar
-sequence:
-  - one
-  - two
-");
+                scalar: a scalar
+                sequence:
+                  - one
+                  - two
+                ");
             var deserializer = new DeserializerBuilder().Build();
             var yamlObject = deserializer.Deserialize(r);
 

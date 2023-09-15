@@ -18,8 +18,14 @@ namespace FKGame
         static void Initialize()
         {
             Camera camera = Camera.main;
+            if(camera == null)
+            {
+                return;
+            }
             if (camera.GetComponent<TriggerRaycaster>() == null)
+            {
                 camera.gameObject.AddComponent<TriggerRaycaster>();
+            }
         }
 
 

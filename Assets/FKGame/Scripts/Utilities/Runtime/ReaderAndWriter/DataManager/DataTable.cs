@@ -6,32 +6,32 @@ namespace FKGame
 {
     public class DataTable : Dictionary<string, SingleData>
     {
-        const char c_split = '\t';
-        const string c_newline = "\r\n";
-        const string c_defaultValueTableTitle = "default";
-        const string c_noteTableTitle = "note";
-        const string c_fieldTypeTableTitle = "type";
-        const char c_EnumSplit = '|';
-        const char c_DataFieldAssetTypeSplit = '&';
+        private const char      splitSign = '\t';
+        private const string    newlineSign = "\r\n";
+        private const string    defaultTableTitleValue = "default";
+        private const string    defaultNoteTableTitle = "note";
+        private const string    defautFieldTypeTableTitle = "type";
+        private const char      enumSplitSign = '|';
+        private const char      dataFieldAssetTypeSplitSign = '&';
 
         public string m_tableName;
 
         // 默认值
-        public Dictionary<string, string> m_defaultValue = new Dictionary<string, string>();
+        public Dictionary<string, string> defaultValueDict                  = new Dictionary<string, string>();
         // 注释
-        public Dictionary<string, string> m_noteValue = new Dictionary<string, string>();
+        public Dictionary<string, string> commentValueDict                  = new Dictionary<string, string>();
         // 储存每个字段是什么类型
-        public Dictionary<string, FieldType> m_tableTypes = new Dictionary<string, FieldType>();
+        public Dictionary<string, FieldType> tableTypesDict                 = new Dictionary<string, FieldType>();
         // 数组分割符号（字段名,分割字符）
-        public Dictionary<string, char[]> m_ArraySplitFormat = new Dictionary<string, char[]>();
+        public Dictionary<string, char[]> arraySplitFormatDict              = new Dictionary<string, char[]>();
         // 如果是枚举类型，这里储存二级类型
-        public Dictionary<string, string> m_tableEnumTypes = new Dictionary<string, string>();
+        public Dictionary<string, string> tableEnumTypeDict                 = new Dictionary<string, string>();
         // 单条记录所拥有的字段名
-        public List<string> TableKeys = new List<string>();
+        public List<string> tableKeyDict                                    = new List<string>();
         // 数据所有的Key
-        public List<string> TableIDs = new List<string>();
+        public List<string> tableIDDict                                     = new List<string>();
         // 字段的用途区分
-        public Dictionary<string, DataFieldAssetType> m_fieldAssetTypes = new Dictionary<string, DataFieldAssetType>();
+        public Dictionary<string, DataFieldAssetType> fieldAssetTypeDict    = new Dictionary<string, DataFieldAssetType>();
 
 
         // 将文本解析为表单数据
@@ -47,18 +47,18 @@ namespace FKGame
             {
                 int lineIndex = 0;
                 DataTable data = new DataTable();
-                string[] line = stringData.Split(c_newline.ToCharArray());
+                string[] line = stringData.Split(newlineSign.ToCharArray());
 
                 //第一行作为Key
                 debugContent = "解析Key";
-                data.TableKeys = new List<string>();
+                data.tableKeyDict = new List<string>();
                 string[] rowKeys = ConvertStringArray(line[0]);
                 for (int i = 0; i < rowKeys.Length; i++)
                 {
                     debugRowCount = i;
                     if (!rowKeys[i].Equals(""))
                     {
-                        data.TableKeys.Add(rowKeys[i]);
+                        data.tableKeyDict.Add(rowKeys[i]);
                     }
                 }
 
@@ -71,19 +71,19 @@ namespace FKGame
                         LineData = ConvertStringArray(line[lineIndex]);
 
                         //注释
-                        if (LineData[0].Equals(c_noteTableTitle))
+                        if (LineData[0].Equals(defaultNoteTableTitle))
                         {
                             debugContent = "解析注释";
                             AnalysisNoteValue(data, LineData);
                         }
                         //默认值
-                        else if (LineData[0].Equals(c_defaultValueTableTitle))
+                        else if (LineData[0].Equals(defaultTableTitleValue))
                         {
                             debugContent = "解析默认值";
                             AnalysisDefaultValue(data, LineData);
                         }
                         //数据类型
-                        else if (LineData[0].Equals(c_fieldTypeTableTitle))
+                        else if (LineData[0].Equals(defautFieldTypeTableTitle))
                         {
                             debugContent = "解析类型";
                             AnalysisFieldType(data, LineData);
@@ -97,7 +97,7 @@ namespace FKGame
                     }
                 }
 
-                data.TableIDs = new List<string>();
+                data.tableIDDict = new List<string>();
                 //开始解析数据
                 for (int i = lineIndex; i < line.Length; i++)
                 {
@@ -108,14 +108,14 @@ namespace FKGame
                     if (line[i] != "" && line[i] != null)
                     {
                         string[] row = ConvertStringArray(line[i]);
-                        for (int j = 0; j < data.TableKeys.Count; j++)
+                        for (int j = 0; j < data.tableKeyDict.Count; j++)
                         {
                             debugRowCount = j;
                             debugKey = row[0];
                             if (!row[j].Equals(""))
                             {
-                                debugProperty = data.TableKeys[j];
-                                dataTmp.Add(data.TableKeys[j], row[j]);
+                                debugProperty = data.tableKeyDict[j];
+                                dataTmp.Add(data.tableKeyDict[j], row[j]);
                             }
                         }
                         //第一个数据作为这一个记录的Key
@@ -133,41 +133,41 @@ namespace FKGame
         // 解析注释
         public static void AnalysisNoteValue(DataTable l_data, string[] l_lineData)
         {
-            l_data.m_noteValue = new Dictionary<string, string>();
+            l_data.commentValueDict = new Dictionary<string, string>();
 
-            for (int i = 0; i < l_lineData.Length && i < l_data.TableKeys.Count; i++)
+            for (int i = 0; i < l_lineData.Length && i < l_data.tableKeyDict.Count; i++)
             {
                 if (!l_lineData[i].Equals(""))
                 {
-                    l_data.m_noteValue.Add(l_data.TableKeys[i], l_lineData[i]);
+                    l_data.commentValueDict.Add(l_data.tableKeyDict[i], l_lineData[i]);
                 }
             }
         }
 
         public static void AnalysisDefaultValue(DataTable l_data, string[] l_lineData)
         {
-            l_data.m_defaultValue = new Dictionary<string, string>();
+            l_data.defaultValueDict = new Dictionary<string, string>();
 
-            for (int i = 0; i < l_lineData.Length && i < l_data.TableKeys.Count; i++)
+            for (int i = 0; i < l_lineData.Length && i < l_data.tableKeyDict.Count; i++)
             {
                 if (!l_lineData[i].Equals(""))
                 {
-                    l_data.m_defaultValue.Add(l_data.TableKeys[i], l_lineData[i]);
+                    l_data.defaultValueDict.Add(l_data.tableKeyDict[i], l_lineData[i]);
                 }
             }
         }
 
         public static void AnalysisFieldType(DataTable l_data, string[] l_lineData)
         {
-            l_data.m_tableTypes = new Dictionary<string, FieldType>();
+            l_data.tableTypesDict = new Dictionary<string, FieldType>();
 
-            for (int i = 1; i < l_lineData.Length && i < l_data.TableKeys.Count; i++)
+            for (int i = 1; i < l_lineData.Length && i < l_data.tableKeyDict.Count; i++)
             {
                 if (!l_lineData[i].Equals(""))
                 {
-                    string field = l_data.TableKeys[i];
-                    string[] tempType = l_lineData[i].Split(c_DataFieldAssetTypeSplit);
-                    string[] content = tempType[0].Split(c_EnumSplit);
+                    string field = l_data.tableKeyDict[i];
+                    string[] tempType = l_lineData[i].Split(dataFieldAssetTypeSplitSign);
+                    string[] content = tempType[0].Split(enumSplitSign);
                     try
                     {
                         string fieldType = content[0];
@@ -177,13 +177,13 @@ namespace FKGame
                             fieldType = tempSS[0];
                             string splitStr = tempSS[1].Replace("]", "");
 
-                            l_data.m_ArraySplitFormat.Add(field, splitStr.ToCharArray());
+                            l_data.arraySplitFormatDict.Add(field, splitStr.ToCharArray());
                         }
-                        l_data.m_tableTypes.Add(field, (FieldType)Enum.Parse(typeof(FieldType), fieldType));
+                        l_data.tableTypesDict.Add(field, (FieldType)Enum.Parse(typeof(FieldType), fieldType));
 
                         if (content.Length > 1)
                         {
-                            l_data.m_tableEnumTypes.Add(field, content[1]);
+                            l_data.tableEnumTypeDict.Add(field, content[1]);
                         }
                     }
                     catch (Exception e)
@@ -193,11 +193,11 @@ namespace FKGame
 
                     if (tempType.Length > 1)
                     {
-                        l_data.m_fieldAssetTypes.Add(field, (DataFieldAssetType)Enum.Parse(typeof(DataFieldAssetType), tempType[1]));
+                        l_data.fieldAssetTypeDict.Add(field, (DataFieldAssetType)Enum.Parse(typeof(DataFieldAssetType), tempType[1]));
                     }
                     else
                     {
-                        l_data.m_fieldAssetTypes.Add(field, DataFieldAssetType.Data);
+                        l_data.fieldAssetTypeDict.Add(field, DataFieldAssetType.Data);
                     }
                 }
             }
@@ -206,45 +206,45 @@ namespace FKGame
         public static string Serialize(DataTable data)
         {
             StringBuilder build = new StringBuilder();
-            for (int i = 0; i < data.TableKeys.Count; i++)
+            for (int i = 0; i < data.tableKeyDict.Count; i++)
             {
-                build.Append(data.TableKeys[i]);
-                if (i != data.TableKeys.Count - 1)
+                build.Append(data.tableKeyDict[i]);
+                if (i != data.tableKeyDict.Count - 1)
                 {
-                    build.Append(c_split);
+                    build.Append(splitSign);
                 }
                 else
                 {
-                    build.Append(c_newline);
+                    build.Append(newlineSign);
                 }
             }
 
-            List<string> type = new List<string>(data.m_tableTypes.Keys);
-            build.Append(c_fieldTypeTableTitle);
+            List<string> type = new List<string>(data.tableTypesDict.Keys);
+            build.Append(defautFieldTypeTableTitle);
 
             if (type.Count > 0)
             {
-                build.Append(c_split);
-                for (int i = 1; i < data.TableKeys.Count; i++)
+                build.Append(splitSign);
+                for (int i = 1; i < data.tableKeyDict.Count; i++)
                 {
-                    string key = data.TableKeys[i];
+                    string key = data.tableKeyDict[i];
                     string typeString = "";
-                    if (data.m_tableTypes.ContainsKey(key))
+                    if (data.tableTypesDict.ContainsKey(key))
                     {
-                        typeString = data.m_tableTypes[key].ToString();
-                        if (data.m_ArraySplitFormat.ContainsKey(key))
+                        typeString = data.tableTypesDict[key].ToString();
+                        if (data.arraySplitFormatDict.ContainsKey(key))
                         {
                             typeString += "[";
-                            foreach (var item in data.m_ArraySplitFormat[key])
+                            foreach (var item in data.arraySplitFormatDict[key])
                             {
                                 typeString += item;
                             }
                             typeString += "]";
                         }
 
-                        if (data.m_tableEnumTypes.ContainsKey(key))
+                        if (data.tableEnumTypeDict.ContainsKey(key))
                         {
-                            typeString += c_EnumSplit + data.m_tableEnumTypes[key];
+                            typeString += enumSplitSign + data.tableEnumTypeDict[key];
                         }
                     }
                     else
@@ -252,41 +252,41 @@ namespace FKGame
                         typeString = FieldType.String.ToString();
                     }
 
-                    if (data.m_fieldAssetTypes.ContainsKey(key))
+                    if (data.fieldAssetTypeDict.ContainsKey(key))
                     {
-                        if (data.m_fieldAssetTypes[key] != DataFieldAssetType.Data)
-                            typeString += "&" + data.m_fieldAssetTypes[key];
+                        if (data.fieldAssetTypeDict[key] != DataFieldAssetType.Data)
+                            typeString += "&" + data.fieldAssetTypeDict[key];
                     }
 
                     build.Append(typeString);
-                    if (i != data.TableKeys.Count - 1)
+                    if (i != data.tableKeyDict.Count - 1)
                     {
-                        build.Append(c_split);
+                        build.Append(splitSign);
                     }
                     else
                     {
-                        build.Append(c_newline);
+                        build.Append(newlineSign);
                     }
                 }
             }
             else
             {
-                build.Append(c_newline);
+                build.Append(newlineSign);
             }
 
-            List<string> noteValue = new List<string>(data.m_noteValue.Keys);
-            build.Append(c_noteTableTitle);
+            List<string> noteValue = new List<string>(data.commentValueDict.Keys);
+            build.Append(defaultNoteTableTitle);
             if (noteValue.Count > 0)
             {
-                build.Append(c_split);
-                for (int i = 1; i < data.TableKeys.Count; i++)
+                build.Append(splitSign);
+                for (int i = 1; i < data.tableKeyDict.Count; i++)
                 {
-                    string key = data.TableKeys[i];
+                    string key = data.tableKeyDict[i];
                     string defauleNoteTmp = "";
 
-                    if (data.m_noteValue.ContainsKey(key))
+                    if (data.commentValueDict.ContainsKey(key))
                     {
-                        defauleNoteTmp = data.m_noteValue[key];
+                        defauleNoteTmp = data.commentValueDict[key];
                     }
                     else
                     {
@@ -295,34 +295,34 @@ namespace FKGame
 
                     build.Append(defauleNoteTmp);
 
-                    if (i != data.TableKeys.Count - 1)
+                    if (i != data.tableKeyDict.Count - 1)
                     {
-                        build.Append(c_split);
+                        build.Append(splitSign);
                     }
                     else
                     {
-                        build.Append(c_newline);
+                        build.Append(newlineSign);
                     }
                 }
             }
             else
             {
-                build.Append(c_newline);
+                build.Append(newlineSign);
             }
 
-            List<string> defaultValue = new List<string>(data.m_defaultValue.Keys);
-            build.Append(c_defaultValueTableTitle);
+            List<string> defaultValue = new List<string>(data.defaultValueDict.Keys);
+            build.Append(defaultTableTitleValue);
             if (defaultValue.Count > 0)
             {
-                build.Append(c_split);
-                for (int i = 1; i < data.TableKeys.Count; i++)
+                build.Append(splitSign);
+                for (int i = 1; i < data.tableKeyDict.Count; i++)
                 {
-                    string key = data.TableKeys[i];
+                    string key = data.tableKeyDict[i];
                     string defauleValueTmp = "";
 
-                    if (data.m_defaultValue.ContainsKey(key))
+                    if (data.defaultValueDict.ContainsKey(key))
                     {
-                        defauleValueTmp = data.m_defaultValue[key];
+                        defauleValueTmp = data.defaultValueDict[key];
                     }
                     else
                     {
@@ -331,44 +331,44 @@ namespace FKGame
 
                     build.Append(defauleValueTmp);
 
-                    if (i != data.TableKeys.Count - 1)
+                    if (i != data.tableKeyDict.Count - 1)
                     {
-                        build.Append(c_split);
+                        build.Append(splitSign);
                     }
                     else
                     {
-                        build.Append(c_newline);
+                        build.Append(newlineSign);
                     }
                 }
             }
             else
             {
-                build.Append(c_newline);
+                build.Append(newlineSign);
             }
 
-            foreach (string k in data.TableIDs)
+            foreach (string k in data.tableIDDict)
             {
                 SingleData dataTmp = data[k];
-                for (int i = 0; i < data.TableKeys.Count; i++)
+                for (int i = 0; i < data.tableKeyDict.Count; i++)
                 {
                     string valueTmp = "";
-                    string field = data.TableKeys[i];
+                    string field = data.tableKeyDict[i];
                     string defaultV = "";
-                    if (data.m_defaultValue.ContainsKey(field))
-                        defaultV = data.m_defaultValue[field];
+                    if (data.defaultValueDict.ContainsKey(field))
+                        defaultV = data.defaultValueDict[field];
                     if (dataTmp.ContainsKey(field) && dataTmp[field] != defaultV)
                     {
                         valueTmp = dataTmp[field];
                     }
 
                     build.Append(valueTmp);
-                    if (i != data.TableKeys.Count - 1)
+                    if (i != data.tableKeyDict.Count - 1)
                     {
-                        build.Append(c_split);
+                        build.Append(splitSign);
                     }
                     else
                     {
-                        build.Append(c_newline);
+                        build.Append(newlineSign);
                     }
                 }
             }
@@ -385,7 +385,7 @@ namespace FKGame
             {
                 if (state)
                 {
-                    if (lineContent[i] == c_split)
+                    if (lineContent[i] == splitSign)
                     {
                         result.Add(lineContent.Substring(startIndex, i - startIndex));
                         startIndex = i + 1;
@@ -410,13 +410,13 @@ namespace FKGame
         public FieldType GetFieldType(string key)
         {
             // 主键只能是String类型
-            if (key == TableKeys[0])
+            if (key == tableKeyDict[0])
             {
                 return FieldType.String;
             }
-            if (m_tableTypes.ContainsKey(key))
+            if (tableTypesDict.ContainsKey(key))
             {
-                return m_tableTypes[key];
+                return tableTypesDict[key];
             }
             else
             {
@@ -425,9 +425,9 @@ namespace FKGame
         }
         public char[] GetArraySplitFormat(string key)
         {
-            if (m_ArraySplitFormat.ContainsKey(key))
+            if (arraySplitFormatDict.ContainsKey(key))
             {
-                return m_ArraySplitFormat[key];
+                return arraySplitFormatDict[key];
             }
             return new char[0];
         }
@@ -435,28 +435,28 @@ namespace FKGame
         public void SetFieldType(string key, FieldType type, string enumType)
         {
             // 主键只能是String类型
-            if (key == TableKeys[0])
+            if (key == tableKeyDict[0])
             {
                 return;
             }
-            if (m_tableTypes.ContainsKey(key))
+            if (tableTypesDict.ContainsKey(key))
             {
-                m_tableTypes[key] = type;
+                tableTypesDict[key] = type;
             }
             else
             {
-                m_tableTypes.Add(key, type);
+                tableTypesDict.Add(key, type);
             }
             // 存储二级类型
             if (enumType != null)
             {
-                if (m_tableEnumTypes.ContainsKey(key))
+                if (tableEnumTypeDict.ContainsKey(key))
                 {
-                    m_tableEnumTypes[key] = enumType;
+                    tableEnumTypeDict[key] = enumType;
                 }
                 else
                 {
-                    m_tableEnumTypes.Add(key, enumType);
+                    tableEnumTypeDict.Add(key, enumType);
                 }
             }
         }
@@ -464,18 +464,18 @@ namespace FKGame
         public void SetAssetTypes(string key, DataFieldAssetType type)
         {
             // 主键只能是String类型
-            if (key == TableKeys[0])
+            if (key == tableKeyDict[0])
             {
                 return;
             }
 
-            if (m_fieldAssetTypes.ContainsKey(key))
+            if (fieldAssetTypeDict.ContainsKey(key))
             {
-                m_fieldAssetTypes[key] = type;
+                fieldAssetTypeDict[key] = type;
             }
             else
             {
-                m_fieldAssetTypes.Add(key, type);
+                fieldAssetTypeDict.Add(key, type);
             }
         }
 
@@ -490,9 +490,9 @@ namespace FKGame
 
         public string GetEnumType(string key)
         {
-            if (m_tableEnumTypes.ContainsKey(key))
+            if (tableEnumTypeDict.ContainsKey(key))
             {
-                return m_tableEnumTypes[key];
+                return tableEnumTypeDict[key];
             }
             else
             {
@@ -502,9 +502,9 @@ namespace FKGame
 
         public string GetDefault(string key)
         {
-            if (m_defaultValue.ContainsKey(key))
+            if (defaultValueDict.ContainsKey(key))
             {
-                return m_defaultValue[key];
+                return defaultValueDict[key];
             }
             else
             {
@@ -514,47 +514,47 @@ namespace FKGame
 
         public void SetDefault(string key, string value)
         {
-            if (!m_defaultValue.ContainsKey(key))
+            if (!defaultValueDict.ContainsKey(key))
             {
-                m_defaultValue.Add(key, value);
+                defaultValueDict.Add(key, value);
             }
             else
             {
-                m_defaultValue[key] = value;
+                defaultValueDict[key] = value;
             }
         }
 
         public void SetNote(string key, string note)
         {
-            if (!m_noteValue.ContainsKey(key))
+            if (!commentValueDict.ContainsKey(key))
             {
-                m_noteValue.Add(key, note);
+                commentValueDict.Add(key, note);
             }
             else
             {
-                m_noteValue[key] = note;
+                commentValueDict[key] = note;
             }
         }
 
         public string GetNote(string key)
         {
-            if (!m_noteValue.ContainsKey(key))
+            if (!commentValueDict.ContainsKey(key))
             {
                 return null;
             }
             else
             {
-                return m_noteValue[key];
+                return commentValueDict[key];
             }
         }
 
         public void AddData(SingleData data)
         {
-            if (data.ContainsKey(TableKeys[0]))
+            if (data.ContainsKey(tableKeyDict[0]))
             {
-                data.m_SingleDataKey = data[TableKeys[0]];
-                Add(data[TableKeys[0]], data);
-                TableIDs.Add(data[TableKeys[0]]);
+                data.keyComment = data[tableKeyDict[0]];
+                Add(data[tableKeyDict[0]], data);
+                tableIDDict.Add(data[tableKeyDict[0]]);
             }
             else
             {
@@ -565,7 +565,7 @@ namespace FKGame
         public void SetData(SingleData data)
         {
             // 主键
-            string mainKey = TableKeys[0];
+            string mainKey = tableKeyDict[0];
 
             if (data.ContainsKey(mainKey))
             {
@@ -577,7 +577,7 @@ namespace FKGame
                 else
                 {
                     Add(key, data);
-                    TableIDs.Add(key);
+                    tableIDDict.Add(key);
                 }
             }
             else
@@ -591,7 +591,7 @@ namespace FKGame
             if (ContainsKey(key))
             {
                 Remove(key);
-                TableIDs.Remove(key);
+                tableIDDict.Remove(key);
             }
             else
             {

@@ -15,8 +15,8 @@ namespace YamlDotNet.Samples
         }
 
         [Sample(
-            Title = "Loading a YAML Stream",
-            Description = "Explains how to load YAML using the representation model."
+            Title = "加载YAML流",
+            Description = "演示如何使用表示模型加载YAML流."
         )]
         public void Main()
         {

@@ -106,7 +106,6 @@ namespace FKGame
                     m_content = (0).ToString();
                     break;
                 case FieldType.Enum:
-
                     if (m_enumType != "" && m_enumType != null)
                     {
                         m_content = Enum.GetValues(GetEnumType()).GetValue(0).ToString();

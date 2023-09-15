@@ -66,9 +66,9 @@ namespace FKGame
             }
 
             DataTable data = GetDataTable();
-            for (int i = 0; i < data.TableIDs.Count; i++)
+            for (int i = 0; i < data.tableIDDict.Count; i++)
             {
-                GetData(data.TableIDs[i]);
+                GetData(data.tableIDDict[i]);
             }
         }
 

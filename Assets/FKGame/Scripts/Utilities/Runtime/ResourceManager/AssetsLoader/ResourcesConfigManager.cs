@@ -163,9 +163,9 @@ namespace FKGame
         {
             DataTable data = new DataTable();
 
-            data.TableKeys.Add(c_MainKey);
+            data.tableKeyDict.Add(c_MainKey);
 
-            data.TableKeys.Add(c_PathKey);
+            data.tableKeyDict.Add(c_PathKey);
             data.SetDefault(c_PathKey, "资源相对路径");
             data.SetFieldType(c_PathKey, FieldType.String, null);
 

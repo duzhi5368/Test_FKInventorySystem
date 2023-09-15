@@ -14,9 +14,9 @@ namespace FKGame
             try
             {
                 DataTable data = DataTable.Analysis(tableText);
-                for (int i = 0; i < data.TableIDs.Count; i++)
+                for (int i = 0; i < data.tableIDDict.Count; i++)
                 {
-                    string key = data.TableIDs[i];
+                    string key = data.tableIDDict[i];
                     T item = new T();
                     item.LoadData(data, key);
                     listData.Add(item);

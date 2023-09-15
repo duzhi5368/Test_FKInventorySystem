@@ -1,11 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.IO;
 using YamlDotNet.Core;
 using YamlDotNet.Core.Events;
 using YamlDotNet.Serialization;
 using YamlDotNet.Samples.Helpers;
-
+//------------------------------------------------------------------------
 namespace YamlDotNet.Samples
 {
     public class DeserializingMultipleDocuments
@@ -18,8 +17,8 @@ namespace YamlDotNet.Samples
         }
 
         [Sample(
-            Title = "Deserializing multiple documents",
-            Description = "Explains how to load multiple YAML documents from a stream."
+            Title = "反序列化流式多文档",
+            Description = "演示如何从stream中加载多个YAML文档."
         )]
         public void Main()
         {

@@ -4,7 +4,7 @@ using System.IO;
 using YamlDotNet.Serialization;
 using YamlDotNet.Serialization.NamingConventions;
 using YamlDotNet.Samples.Helpers;
-
+//------------------------------------------------------------------------
 namespace YamlDotNet.Samples
 {
     public class DeserializeObjectGraph
@@ -17,8 +17,8 @@ namespace YamlDotNet.Samples
         }
 
         [Sample(
-            Title = "Deserializing an object graph",
-            Description = "Shows how to convert a YAML document to an object graph."
+            Title = "反序列化对象图",
+            Description = "演示如何将 YAML 文档转换为 Object 图."
         )]
         public void Main()
         {

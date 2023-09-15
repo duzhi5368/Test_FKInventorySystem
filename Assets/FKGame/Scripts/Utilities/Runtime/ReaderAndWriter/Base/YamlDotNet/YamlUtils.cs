@@ -1,12 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using YamlDotNet.Serialization;
-
-public static  class YamlUtils
+﻿using YamlDotNet.Serialization;
+//------------------------------------------------------------------------
+public static class YamlUtils
 {
-
     public static string ToYaml(object obj)
     {
         if (obj == null)
