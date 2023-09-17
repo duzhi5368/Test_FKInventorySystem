@@ -6,7 +6,7 @@ namespace FKGame
     {
         public override uint LoginLogic(Login2Server msg, Session session, out Player player)
         {
-            RemoteConsoleSettingData config = RemoteConsoleSettingData.GetCofig();
+            RemoteConsoleSettingData config = RemoteConsoleSettingData.GetConfig();
 
             string key = msg.key;
             string pw = msg.password;

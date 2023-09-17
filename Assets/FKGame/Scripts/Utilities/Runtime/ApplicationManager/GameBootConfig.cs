@@ -15,7 +15,7 @@ namespace FKGame
 
         public long buildTime;                                  // 打包时间,取值DateTime.Now.Ticks
         public const string ConfigFileName = "GameBootConfig";
-        private const string SavePathDir = "Assets/GameCofig/Resources/";
+        private const string SavePathDir = "Assets/FKGame/Resources/Config/";
 
         public static GameBootConfig LoadConfig()
         {

@@ -6,6 +6,8 @@ namespace FKGame
 {
     public static class ParseTool
     {
+        static string[] nullStringArray = new string[0];
+
         public static float[] String2FloatArray(string value)
         {
             string[] strArray = String2StringArray(value);
@@ -44,7 +46,7 @@ namespace FKGame
             }
             catch (Exception e)
             {
-                throw new Exception("ParseVector2: Don't convert value to Vector2 value:" + value + "\n" + e.ToString()); // throw  
+                throw new Exception("【FK】ParseVector2: Don't convert value to Vector2 value:" + value + "\n" + e.ToString()); // throw  
             }
         }
 
@@ -74,7 +76,7 @@ namespace FKGame
             }
             catch (Exception e)
             {
-                throw new Exception("ParseVector3: Don't convert value to Vector3 value:" + value + "\n" + e.ToString()); // throw  
+                throw new Exception("【FK】ParseVector3: Can't convert value to Vector3 value:" + value + "\n" + e.ToString()); // throw  
             }
         }
 
@@ -110,11 +112,10 @@ namespace FKGame
             }
             catch (Exception e)
             {
-                throw new Exception("ParseColor: Don't convert value to Color value:" + value + "\n" + e.ToString()); // throw  
+                throw new Exception("【FK】ParseColor: Can't convert value to Color value:" + value + "\n" + e.ToString()); // throw  
             }
         }
-
-        static string[] c_NullStringArray = new string[0];
+        
         public static string[] String2StringArray(string value)
         {
             if (value != null
@@ -128,7 +129,7 @@ namespace FKGame
             }
             else
             {
-                return c_NullStringArray;
+                return nullStringArray;
             }
         }
 
@@ -169,7 +170,7 @@ namespace FKGame
             }
             catch (Exception e)
             {
-                Debug.LogError("charTagIndex:" + charTagIndex + " arraySplitFormat:" + arraySplitFormat.Length + " value:" + value.GetType() + "\n" + e);
+                Debug.LogError("【FK】charTagIndex:" + charTagIndex + " arraySplitFormat:" + arraySplitFormat.Length + " value:" + value.GetType() + "\n" + e);
                 return result;
             }
 
@@ -271,7 +272,7 @@ namespace FKGame
                 }
                 catch (Exception e)
                 {
-                    Debug.LogError(instance.GetType() + " instance.Length:" + instance.Length + " childValue.GetType():" + childValue.GetType() + "\n" + e);
+                    Debug.LogError("【FK】" + instance.GetType() + " instance.Length:" + instance.Length + " childValue.GetType():" + childValue.GetType() + "\n" + e);
                 }
             }
             return instance;
@@ -305,7 +306,7 @@ namespace FKGame
             }
             else
             {
-                Debug.LogError("不支持的数据类型：" + type.FullName + " value:" + value);
+                Debug.LogError("【FK】Unspport data type: " + type.FullName + " value:" + value);
             }
             return null;
         }

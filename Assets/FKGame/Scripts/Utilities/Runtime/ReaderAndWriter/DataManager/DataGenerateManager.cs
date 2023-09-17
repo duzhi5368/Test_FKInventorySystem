@@ -26,7 +26,7 @@ namespace FKGame
         {
             if (key == null)
             {
-                throw new Exception("DataGenerateManager<" + typeof(T).Name + "> GetData key is Null !");
+                throw new Exception("¡¾FK¡¿DataGenerateManager<" + typeof(T).Name + "> GetData key is Null !");
             }
 
             // ÇåÀí»º´æ

@@ -1,0 +1,1 @@
+{"runInBackground":true,"allAppModuleSetting":{"RemoteConsoleModule":{"ScriptName":"FKGame.RemoteConsoleModule","fieldValues":[],"propertyValues":[{"name":"Enable","typeName":"System.Boolean","isGeneric":false,"value":"true"}]}},"buildTime":0}

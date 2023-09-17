@@ -6,8 +6,8 @@ namespace FKGame
 {
     public class RecordManager
     {
-        public const string c_directoryName = "Record";
-        public const string c_expandName = "json";
+        public const string directoryName = GlobeDefine.SAVE_RECORD_DIRECTORY;
+        public const string expandName = "json";
         // ¼ÇÂ¼»º´æ
         static Dictionary<string, RecordTable> s_RecordCache = new Dictionary<string, RecordTable>();
         static Deserializer des = new Deserializer();
@@ -20,7 +20,7 @@ namespace FKGame
             }
             RecordTable record = null;
             string dataJson = "";
-            string fullPath = PathTool.GetAbsolutePath(ResLoadLocation.Persistent, PathTool.GetRelativelyPath(c_directoryName,RecordName,c_expandName));
+            string fullPath = PathTool.GetAbsolutePath(ResLoadLocation.Persistent, PathTool.GetRelativelyPath(directoryName,RecordName,expandName));
             if (File.Exists(fullPath))
             {
                 dataJson = ResourceIOTool.ReadStringByFile(fullPath);   // ¼ÇÂ¼ÓÀÔ¶´ÓÉ³ºÐÂ·¾¶¶ÁÈ¡
@@ -40,7 +40,7 @@ namespace FKGame
         public static void SaveData(string RecordName, RecordTable data)
         {
 #if !UNITY_WEBGL
-            ResourceIOTool.WriteStringByFile(PathTool.GetAbsolutePath(ResLoadLocation.Persistent,PathTool.GetRelativelyPath(c_directoryName,RecordName,c_expandName)),RecordTable.Serialize(data));
+            ResourceIOTool.WriteStringByFile(PathTool.GetAbsolutePath(ResLoadLocation.Persistent,PathTool.GetRelativelyPath(directoryName,RecordName,expandName)),RecordTable.Serialize(data));
 #if UNITY_EDITOR
             if (!Application.isPlaying)
             {
@@ -59,7 +59,7 @@ namespace FKGame
 
         public static void CleanAllRecord()
         {
-            FileTool.DeleteDirectory(Application.persistentDataPath + "/" + RecordManager.c_directoryName);
+            FileTool.DeleteDirectory(Application.persistentDataPath + "/" + RecordManager.directoryName);
             CleanCache();
         }
 

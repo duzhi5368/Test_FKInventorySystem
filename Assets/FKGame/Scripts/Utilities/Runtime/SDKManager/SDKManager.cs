@@ -119,9 +119,9 @@ namespace FKGame
                 isInit = true;
                 try
                 {
-                    if (ConfigManager.GetIsExistConfig(c_ConfigName))
+                    if (ConfigManager.IsConfigExist(c_ConfigName))
                     {
-                        SchemeData data = LoadGameSchemeConfig();
+                        SDKConfigSchemeData data = LoadGameSchemeConfig();
                         s_useNewSDKManager = data.UseNewSDKManager;
                         if (s_useNewSDKManager)
                         {
@@ -1427,14 +1427,14 @@ namespace FKGame
         }
 
         // 读取当前游戏内的SDK配置,找不到或者解析失败会返回Null
-        public static SchemeData LoadGameSchemeConfig()
+        public static SDKConfigSchemeData LoadGameSchemeConfig()
         {
-            if (ConfigManager.GetIsExistConfig(c_ConfigName))
+            if (ConfigManager.IsConfigExist(c_ConfigName))
             {
                 try
                 {
                     Dictionary<string, SingleField> configData = ConfigManager.GetData(c_ConfigName);
-                    return JsonUtility.FromJson<SchemeData>(configData[c_KeyName].GetString());
+                    return JsonUtility.FromJson<SDKConfigSchemeData>(configData[c_KeyName].GetString());
                 }
                 catch (Exception e)
                 {
@@ -1450,7 +1450,7 @@ namespace FKGame
         }
 
         public static void AnalyzeSchemeData(
-            SchemeData schemeData,
+            SDKConfigSchemeData schemeData,
             out List<LoginInterface> loginScheme,
             out List<ADInterface> ADScheme,
             out List<PayInterface> payScheme,
@@ -1515,7 +1515,7 @@ namespace FKGame
             }
         }
 
-        static void LoadService(SchemeData data)
+        static void LoadService(SDKConfigSchemeData data)
         {
             AnalyzeSchemeData(
                 data,

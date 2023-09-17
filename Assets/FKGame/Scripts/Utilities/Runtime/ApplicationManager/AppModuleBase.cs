@@ -13,12 +13,12 @@ namespace FKGame
             {
                 if (enable && !value)
                 {
-                    Debug.Log(GetType().Name + " Run OnDisable");
+                    Debug.Log(GetType().Name + " 功能关闭.");
                     OnDisable();
                 }
                 else if (!enable && value)
                 {
-                    Debug.Log(GetType().Name + " Run OnEnable");
+                    Debug.Log(GetType().Name + " 功能开启.");
                     OnEnable();
                 }
                 enable = value;

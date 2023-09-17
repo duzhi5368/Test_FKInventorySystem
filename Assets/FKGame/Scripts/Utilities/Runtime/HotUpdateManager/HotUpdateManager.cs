@@ -369,7 +369,7 @@ namespace FKGame
             if (ResourceManager.LoadType == AssetsLoadType.Resources)
             {
                 dataJson = ResourceIOTool.ReadStringByResource(
-                    c_versionFileName + "." + ConfigManager.c_expandName);
+                    c_versionFileName + "." + ConfigManager.expandName);
             }
             else
             {

@@ -112,7 +112,7 @@ namespace FKGame
                     }
                     else
                     {
-                        throw new Exception("EnumType is Null! ");
+                        throw new Exception("¡¾FK¡¿EnumType is Null! ");
                     }
                     break;
             }
@@ -190,12 +190,12 @@ namespace FKGame
         {
             if (m_content == null && m_content == "")
             {
-                throw new Exception("GetEnum Fail Content is null !");
+                throw new Exception("¡¾FK¡¿GetEnum Fail Content is null !");
             }
 
             if (GetEnumType() == null)
             {
-                throw new Exception("GetEnum Fail GetEnumType() is null !¡¡->" + m_enumType + "<-");
+                throw new Exception("¡¾FK¡¿GetEnum Fail GetEnumType() is null !¡¡->" + m_enumType + "<-");
             }
 
             try
@@ -204,7 +204,8 @@ namespace FKGame
             }
             catch (Exception e)
             {
-                throw new Exception("Enum Parse Fail! EnumType is ->" + m_enumType + "<-  GetEnumType() is ->" + GetEnumType() + "<- Content is ->" + m_content + "<-\n" + e.ToString());
+                throw new Exception("¡¾FK¡¿Enum Parse Fail! EnumType is ->" + m_enumType 
+                    + "<-  GetEnumType() is ->" + GetEnumType() + "<- Content is ->" + m_content + "<-\n" + e.ToString());
             }
         }
 

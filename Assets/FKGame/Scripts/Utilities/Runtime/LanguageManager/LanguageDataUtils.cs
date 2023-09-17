@@ -7,7 +7,7 @@ namespace FKGame
     {
         public static LanguageSettingConfig LoadRuntimeConfig()
         {
-            if (ResourcesConfigManager.GetIsExitRes(LanguageManager.c_configFileName))
+            if (ResourcesConfigManager.IsResourceExist(LanguageManager.c_configFileName))
             {
                 LanguageSettingConfig config;
                 string json = ResourceManager.LoadText(LanguageManager.c_configFileName);

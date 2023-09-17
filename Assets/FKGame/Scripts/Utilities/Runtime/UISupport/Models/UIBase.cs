@@ -887,7 +887,7 @@ namespace FKGame
 
         public void SetImageSprite(Image img, string name, bool is_nativesize = false)
         {
-            if (ResourcesConfigManager.GetIsExitRes(name))
+            if (ResourcesConfigManager.IsResourceExist(name))
             {
                 UGUITool.SetImageSprite(img, name, is_nativesize);
                 if (!loadSpriteNames.ContainsKey(name))

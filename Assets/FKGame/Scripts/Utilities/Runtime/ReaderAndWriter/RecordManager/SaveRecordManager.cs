@@ -170,7 +170,7 @@ namespace FKGame
         // 检查保存文件的完整性
         public bool CheckSaveFileMD5()
         {
-            Debug.Log("开始检查保存文件的完整性");
+            Debug.Log("【FK】Begin to check file integrity by MD5.");
             if (Directory.Exists(GetFileDir()))
             {
                 string[] filePaths = PathUtils.GetDirectoryFilePath(GetFileDir());
@@ -199,7 +199,7 @@ namespace FKGame
                         string md5New = MD5Utils.GetMD5Base64(dataByte);
                         if (md5New != md5)
                         {
-                            Debug.LogError("文件：" + fileName + " md5不正确:" + md5 + " md5New:" + md5New + "\n" + text);
+                            Debug.LogError("【FK】File：" + fileName + " md5 not match: " + md5 + " md5New:" + md5New + "\n" + text);
                             return false;
                         }
                     }

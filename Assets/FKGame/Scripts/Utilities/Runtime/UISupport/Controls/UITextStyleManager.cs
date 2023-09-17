@@ -84,7 +84,7 @@ namespace FKGame
             {
                 TextStyleData data = GetTextStyleData(name, language);
 
-                if (!ResourcesConfigManager.GetIsExitRes(data.fontName))
+                if (!ResourcesConfigManager.IsResourceExist(data.fontName))
                 {
                     Debug.LogError("dont find font :" + data.fontName);
                 }
@@ -107,7 +107,7 @@ namespace FKGame
 
         public static void SetText(Text text, TextStyleData data)
         {
-            if (!ResourcesConfigManager.GetIsExitRes(data.fontName))
+            if (!ResourcesConfigManager.IsResourceExist(data.fontName))
             {
                 Debug.LogError("dont find font :" + data.fontName);
             }

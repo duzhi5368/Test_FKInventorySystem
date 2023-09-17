@@ -43,7 +43,7 @@ namespace FKGame
             RemoteDeviceInfo deviceInfo = RemoteDeviceInfo.GetLocalDeviceInfo();
             deviceInfo.otherData.Add("ServerVersion", ServerVersionInfo.Version);
             deviceInfo.otherData.Add("MinClientVersion", ServerVersionInfo.MinClientVersion);
-            RemoteConsoleSettingData config = RemoteConsoleSettingData.GetCofig();
+            RemoteConsoleSettingData config = RemoteConsoleSettingData.GetConfig();
             try
             {
                 string deviceInfoStr = JsonSerializer.ToJson(deviceInfo);

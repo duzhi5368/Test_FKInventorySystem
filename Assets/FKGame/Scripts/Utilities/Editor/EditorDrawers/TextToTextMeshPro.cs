@@ -12,8 +12,7 @@ namespace FKGame
 {
 	public class TextToTextMeshPro : EditorWindow
 	{
-
-		[UnityEditor.MenuItem("Tools/FKGame/内置工具/字体更新工具", false)]
+		[MenuItem("Tools/FKGame/内置工具/字体更新工具", false)]
 		public static void ShowWindow()
 		{
 			TextToTextMeshPro window = EditorWindow.GetWindow<TextToTextMeshPro>(LanguagesMacro.FONT_UPDATE_EDITOR_TITLE);

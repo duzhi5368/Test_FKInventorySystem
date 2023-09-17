@@ -14,7 +14,7 @@ namespace FKGame
 		private GameObject m_Source;
 		private GameObject m_Destination;
 
-		[UnityEditor.MenuItem("Tools/FKGame/内置工具/游戏对象组件拷贝工具", false)]
+		[MenuItem("Tools/FKGame/内置工具/游戏对象组件拷贝工具", false)]
 		public static void ShowWindow()
 		{
 			CopyComponentEditor window = EditorWindow.GetWindow<CopyComponentEditor>(LanguagesMacro.COMPONENT_COPY_EDITOR_TITLE);

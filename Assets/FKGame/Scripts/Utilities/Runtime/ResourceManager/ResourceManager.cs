@@ -108,7 +108,7 @@ namespace FKGame
 
         public static void DestoryAssetsCounter(string name, int times = 1)
         {
-            if (!ResourcesConfigManager.GetIsExitRes(name))
+            if (!ResourcesConfigManager.IsResourceExist(name))
                 return;
             string path = ResourcesConfigManager.GetLoadPath(loadType, name);
             if (times <= 0)
@@ -141,7 +141,7 @@ namespace FKGame
 
         public static bool GetResourceIsExist(string name)
         {
-            return ResourcesConfigManager.GetIsExitRes(name);
+            return ResourcesConfigManager.IsResourceExist(name);
         }
     }
 }

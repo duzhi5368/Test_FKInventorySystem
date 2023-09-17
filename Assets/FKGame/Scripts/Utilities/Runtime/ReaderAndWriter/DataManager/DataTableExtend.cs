@@ -2,7 +2,6 @@ using System.Collections.Generic;
 using System;
 using UnityEngine;
 using System.Collections;
-using UnityEngine.Networking;
 //------------------------------------------------------------------------
 namespace FKGame
 {
@@ -24,7 +23,7 @@ namespace FKGame
             }
             catch (Exception e)
             {
-                Debug.LogError("表格数据解析错误：" + e);
+                Debug.LogError("【FK】Parser dataTable error: " + e);
             }
             return listData;
         }
@@ -49,10 +48,10 @@ namespace FKGame
         {
             if (string.IsNullOrEmpty(url))
             {
-                Debug.LogError("下载数据失败URL is null");
+                Debug.LogError("【FK】Download data failed: URL is null");
                 if (callBack != null)
                 {
-                    callBack(null, "url is null");
+                    callBack(null, "URL is null");
                 }
                 yield break;
             }
@@ -62,7 +61,7 @@ namespace FKGame
             yield return www;
             if (!string.IsNullOrEmpty(www.error))
             {
-                Debug.LogError("下载数据失败URL:" + url + "\n error:" + www.error);
+                Debug.LogError("【FK】Download data failed: URL = " + url + "\n error:" + www.error);
                 if (callBack != null)
                 {
                     callBack(null, www.error);

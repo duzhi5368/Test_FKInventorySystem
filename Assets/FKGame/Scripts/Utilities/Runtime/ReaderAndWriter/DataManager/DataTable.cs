@@ -49,8 +49,8 @@ namespace FKGame
                 DataTable data = new DataTable();
                 string[] line = stringData.Split(newlineSign.ToCharArray());
 
-                //第一行作为Key
-                debugContent = "解析Key";
+                // 第一行作为Key
+                debugContent = "Parse key";
                 data.tableKeyDict = new List<string>();
                 string[] rowKeys = ConvertStringArray(line[0]);
                 for (int i = 0; i < rowKeys.Length; i++)
@@ -70,35 +70,35 @@ namespace FKGame
                         debugLineCount = lineIndex;
                         LineData = ConvertStringArray(line[lineIndex]);
 
-                        //注释
+                        // 注释
                         if (LineData[0].Equals(defaultNoteTableTitle))
                         {
-                            debugContent = "解析注释";
+                            debugContent = "Parse comment";
                             AnalysisNoteValue(data, LineData);
                         }
-                        //默认值
+                        // 默认值
                         else if (LineData[0].Equals(defaultTableTitleValue))
                         {
-                            debugContent = "解析默认值";
+                            debugContent = "Parse default value";
                             AnalysisDefaultValue(data, LineData);
                         }
-                        //数据类型
+                        // 数据类型
                         else if (LineData[0].Equals(defautFieldTypeTableTitle))
                         {
-                            debugContent = "解析类型";
+                            debugContent = "Parse type";
                             AnalysisFieldType(data, LineData);
                         }
-                        //数据正文
+                        // 数据正文
                         else
                         {
-                            debugContent = "解析正文";
+                            debugContent = "Parse content";
                             break;
                         }
                     }
                 }
 
                 data.tableIDDict = new List<string>();
-                //开始解析数据
+                // 开始解析数据
                 for (int i = lineIndex; i < line.Length; i++)
                 {
                     debugLineCount = i;
@@ -118,7 +118,7 @@ namespace FKGame
                                 dataTmp.Add(data.tableKeyDict[j], row[j]);
                             }
                         }
-                        //第一个数据作为这一个记录的Key
+                        // 第一个数据作为这一个记录的Key
                         data.AddData(dataTmp);
                     }
                 }
@@ -126,7 +126,8 @@ namespace FKGame
             }
             catch (Exception e)
             {
-                throw new Exception("DataTable Analysis Error: 错误位置：" + debugContent + " 行:" + debugLineCount / 2 + " 列：" + debugRowCount + " key:->" + debugKey + "<- PropertyName：->" + debugProperty + "<-\n" + e.ToString()); // throw  
+                throw new Exception("【FK】DataTable Analysis Error: " + debugContent + " -> Col:" + debugLineCount / 2 
+                    + " Row：" + debugRowCount + " Key:->" + debugKey + " <- PropertyName：-> " + debugProperty + " <-\n" + e.ToString()); // throw  
             }
         }
 
@@ -188,7 +189,7 @@ namespace FKGame
                     }
                     catch (Exception e)
                     {
-                        throw new Exception("AnalysisFieldType Exception: " + content + "\n" + e.ToString());
+                        throw new Exception("【FK】AnalysisFieldType Exception: " + content + "\n" + e.ToString());
                     }
 
                     if (tempType.Length > 1)
@@ -392,7 +393,7 @@ namespace FKGame
                     }
                     else if (lineContent[i] == '\"')
                     {
-                        state = false; //转为引号状态
+                        state = false; // 转为引号状态
                     }
                 }
                 else
@@ -558,7 +559,7 @@ namespace FKGame
             }
             else
             {
-                throw new Exception("Add SingleData fail! The dataTable dont have MainKey!");
+                throw new Exception("【FK】Add SingleData fail! The dataTable don't have MainKey!");
             }
         }
 
@@ -566,7 +567,6 @@ namespace FKGame
         {
             // 主键
             string mainKey = tableKeyDict[0];
-
             if (data.ContainsKey(mainKey))
             {
                 string key = data[mainKey];
@@ -582,7 +582,7 @@ namespace FKGame
             }
             else
             {
-                throw new Exception("Add SingleData fail! The dataTable dont have MainKeyKey!");
+                throw new Exception("【FK】Set SingleData fail! The dataTable don't have MainKeyKey!");
             }
         }
 
@@ -595,7 +595,7 @@ namespace FKGame
             }
             else
             {
-                throw new Exception("Add SingleData fail!");
+                throw new Exception("【FK】Remove SingleData fail! The dataTable don't have MainKeyKey!");
             }
         }
     }

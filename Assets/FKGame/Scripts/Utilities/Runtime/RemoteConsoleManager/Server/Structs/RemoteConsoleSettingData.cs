@@ -16,7 +16,7 @@ namespace FKGame
         private const string KeyBase64 = "cmMyOWpKM0NQVGxmRmhlSHFSQXd3SWdRbEkweVJEWEJ3ZnduUmJ3TFNGR1R6RzFMNjRudzVBUzdYRHowdWVLbFZBSkFMUFJwNE4zR2JuMTVxRFR6eEJnS21Rcm1EVTJOVTRYTVhSWkZDWlJHaG02Sm1UaUZteU1zNFl6WDlEQTg=";
         private const string SavePathDir = ResourcesMacro.REMOTE_CONSOLE_SAVE_PATH_DIR;
         
-        public static RemoteConsoleSettingData GetCofig()
+        public static RemoteConsoleSettingData GetConfig()
         {
             if (Application.isPlaying)
             {

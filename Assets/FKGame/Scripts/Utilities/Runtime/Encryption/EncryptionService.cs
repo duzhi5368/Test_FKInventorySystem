@@ -70,7 +70,7 @@ namespace FKGame
             {
                 isInit = true;
 
-                if (ConfigManager.GetIsExistConfig(c_EncryptionConfig))
+                if (ConfigManager.IsConfigExist(c_EncryptionConfig))
                 {
                     isSecret = ConfigManager.GetData(c_EncryptionConfig, c_isSecretKey).GetBool();
                     publickey = ConfigManager.GetData(c_EncryptionConfig, c_publickey).GetString();

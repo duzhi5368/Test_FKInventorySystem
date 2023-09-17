@@ -2,10 +2,9 @@ using System.Collections.Generic;
 using System;
 using UnityEngine;
 using System.Collections;
-
+//------------------------------------------------------------------------
 namespace FKGame
 {
-
     public class PreloadManager : MonoBehaviour
     {
         private static PreloadManager instance = null;

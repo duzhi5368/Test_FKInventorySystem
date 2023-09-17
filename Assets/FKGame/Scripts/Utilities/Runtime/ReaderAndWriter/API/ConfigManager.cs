@@ -5,22 +5,22 @@ namespace FKGame
 {
     public static class ConfigManager
     {
-        public const string c_directoryName = "Config";
-        public const string c_expandName = "json";
+        public const string directoryName = GlobeDefine.CONFIG_DIRECTORY;
+        public const string expandName = "json";
 
         // ≈‰÷√ª∫¥Ê
-        static Dictionary<string, Dictionary<string, SingleField>> s_configCache = new Dictionary<string, Dictionary<string, SingleField>>();
+        static Dictionary<string, Dictionary<string, SingleField>> configCache = new Dictionary<string, Dictionary<string, SingleField>>();
 
-        public static bool GetIsExistConfig(string ConfigName)
+        public static bool IsConfigExist(string ConfigName)
         {
-            return ResourcesConfigManager.GetIsExitRes(ConfigName);
+            return ResourcesConfigManager.IsResourceExist(ConfigName);
         }
 
         public static Dictionary<string, SingleField> GetData(string ConfigName)
         {
-            if (s_configCache.ContainsKey(ConfigName))
+            if (configCache.ContainsKey(ConfigName))
             {
-                return s_configCache[ConfigName];
+                return configCache[ConfigName];
             }
 
             string dataJson = "";
@@ -28,13 +28,13 @@ namespace FKGame
 
             if (dataJson == "")
             {
-                throw new Exception("ConfigManager GetData not find " + ConfigName);
+                throw new Exception("°æFK°øConfigManager GetData not find " + ConfigName);
             }
             else
             {
                 Dictionary<string, SingleField> config = JsonSerializer.Json2Dictionary<SingleField>(dataJson);
 
-                s_configCache.Add(ConfigName, config);
+                configCache.Add(ConfigName, config);
                 return config;
             }
         }
@@ -46,11 +46,11 @@ namespace FKGame
 
         public static void CleanCache()
         {
-            foreach (var item in s_configCache.Keys)
+            foreach (var item in configCache.Keys)
             {
                 ResourceManager.DestoryAssetsCounter(item);
             }
-            s_configCache.Clear();
+            configCache.Clear();
         }
     }
 }

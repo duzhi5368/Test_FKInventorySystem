@@ -17,7 +17,7 @@ namespace FKGame
 
         private void OnClick()
         {
-            if (ResourcesConfigManager.GetIsExitRes(audioName))
+            if (ResourcesConfigManager.IsResourceExist(audioName))
             {
                 AudioManager.PlaySFX2D(audioName, volume);
             }

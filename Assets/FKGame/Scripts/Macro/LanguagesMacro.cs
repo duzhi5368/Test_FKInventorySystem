@@ -123,6 +123,7 @@ namespace FKGame.Macro
         public const string IS_SHOW_DEBUG_INFO = "是否显示DEBUG信息";
         public const string IS_AUTO_SAVE = "自动保存";
         public const string IS_AUTO_SAVE_TIP = "是否自动保存本数据库";
+        public const string SAVE = "保存";
         public const string SAVE_KEY = "主键名";
         public const string SAVE_KEY_TIP = "本数据库保存的键名";
         public const string SAVE_RATE = "时间间隔";
@@ -215,5 +216,8 @@ namespace FKGame.Macro
         public const string SLOT_RESTRICTIONS = "格子限制器";
         public const string ADD_NEW_CALLBACK = "添加新回调事件";
         public const string MULTIPLE_INSTANCE = "场景中有多个单例对象，请注意检查: ";
+        public const string GAME_BOOT_CONFIG_WINODW_TITLE = "游戏框架基本配置器";
+        public const string AUDIO_GROUP_SYSTEM_WINDOW_TITLE = "音乐组系统编辑器";
+        public const string AUDIO_MANAGER_WINDOW_TITLE = "声音音效管理器";
     }
 }

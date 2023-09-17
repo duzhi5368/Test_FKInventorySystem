@@ -9,7 +9,7 @@ namespace FKGame
 
         public string GetSaveDirectoryName()
         {
-            return "Record";
+            return GlobeDefine.SAVE_RECORD_DIRECTORY;
         }
 
         public string Object2String(object obj)

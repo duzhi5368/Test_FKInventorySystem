@@ -28,7 +28,7 @@ namespace FKGame
         {
             if (s_URLTable == null)
             {
-                if (ConfigManager.GetIsExistConfig(s_configName))
+                if (ConfigManager.IsConfigExist(s_configName))
                 {
                     s_URLTable = ConfigManager.GetData(s_configName);
                 }

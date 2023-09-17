@@ -154,7 +154,6 @@ namespace FKGame
         public static ApplicationVoidCallback s_OnApplicationOnDrawGizmos = null;
         public static ApplicationVoidCallback s_OnApplicationLateUpdate = null;
 
-
         void OnApplicationQuit()
         {
             if (s_OnApplicationQuit != null)

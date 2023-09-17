@@ -25,7 +25,7 @@ namespace FKGame
             s_isInit = false;
         }
 
-        public static bool GetIsExitRes(string resName)
+        public static bool IsResourceExist(string resName)
         {
             resName = resName.ToLower();
 
@@ -98,7 +98,7 @@ namespace FKGame
 
             if (ResourceManager.LoadType == AssetsLoadType.Resources)
             {
-                data = ResourceIOTool.ReadStringByResource(c_ManifestFileName + "." + DataManager.c_expandName);
+                data = ResourceIOTool.ReadStringByResource(c_ManifestFileName + "." + DataManager.expandName);
             }
             else
             {
@@ -150,8 +150,7 @@ namespace FKGame
         public static void CreateResourcesConfig()
         {
             string content = DataTable.Serialize(GenerateResourcesConfig());
-            string path = PathTool.GetAbsolutePath(ResLoadLocation.Resource, c_ManifestFileName + "." + DataManager.c_expandName);
-
+            string path = PathTool.GetAbsolutePath(ResLoadLocation.Resource, c_ManifestFileName + "." + DataManager.expandName);
             ResourceIOTool.WriteStringByFile(path, content);
         }
 

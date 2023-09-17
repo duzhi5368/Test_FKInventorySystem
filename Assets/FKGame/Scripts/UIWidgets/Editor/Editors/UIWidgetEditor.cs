@@ -11,7 +11,7 @@ namespace FKGame.UIWidgets
 {
 	public class UIWidgetEditor : EditorWindow
 	{
-		[UnityEditor.MenuItem ("Tools/FKGame/UI管理器", false, -999)]
+		[MenuItem ("Tools/FKGame/UI管理器", false, -999)]
 		public static void ShowWindow ()
 		{
 			UIWidgetEditor window = EditorWindow.GetWindow<UIWidgetEditor> (LanguagesMacro.UI_MANAGER_VIEWER_TITLE);

@@ -31,7 +31,7 @@ namespace FKGame
             }
             else
             {
-                throw new Exception("RecordTable Not Find " + key);
+                throw new Exception("¡¾FK¡¿RecordTable can't find key " + key);
             }
         }
 

@@ -78,15 +78,19 @@ namespace FKGame
             using (UnityWebRequest w = UnityWebRequest.Get(m_ModuleTxtPath))
             {
                 yield return w.SendWebRequest();
-                while (!w.isDone) { yield return null; }
-
-                ModuleItem[] items = JsonHelper.FromJson<ModuleItem>(w.downloadHandler.text);
-
-                for (int i = 0; i < items.Length; i++)
-                {
-                    items[i].Initialize();
+                while (!w.isDone) {
+                    yield return null; 
                 }
-                result.Invoke(items);
+                string moduleText = w.downloadHandler.text;
+                if(string.IsNullOrEmpty(moduleText))
+                {
+                    ModuleItem[] items = JsonHelper.FromJson<ModuleItem>(w.downloadHandler.text);
+                    for (int i = 0; i < items.Length; i++)
+                    {
+                        items[i].Initialize();
+                    }
+                    result.Invoke(items);
+                }
             }
         }
 
